@@ -52,9 +52,7 @@ const Register = () => {
       style: { background: "#22c55e", color: "#fff" },
     });
 
-    setTimeout(() => {
-      navigate("/register2");
-    }, 2000);
+    navigate("/register2");
   };
 
   const showError = (msg) => {
@@ -152,7 +150,7 @@ const Register = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="py-[18px] px-[60px] bg-[#ED272C] rounded-[5px] text-white text-base font-bold max-w-[192px]"
+          className="py-[18px] px-[60px] bg-[#ED272C] rounded-[5px] text-white text-base font-bold max-w-[192px] cursor-pointer"
         >
           Continue
         </button>
@@ -176,7 +174,7 @@ const FormField = ({
       value={value}
       placeholder={placeholder}
       onChange={(e) => onChange(e.target.value)}
-      className="w-full h-[50px] py-3 px-4 border border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm"
+      className="w-full h-[50px] py-3 px-4 border border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm cursor-pointer"
     />
   </div>
 );
