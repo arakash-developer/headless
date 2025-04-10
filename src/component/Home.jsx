@@ -1,40 +1,6 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-
-
 import React, { useEffect, useState } from "react";
-// React Router dom........
-import {
-  createRoutesFromElements,
-  createBrowserRouter,
-  Route,
-  RouterProvider,
-} from "react-router-dom";
 
-
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path='/' element={<RootLayout />}>
-      <Route index path='/' element={<Home />}></Route>
-      <Route index path='/home' element={<Home />}></Route>
-      <Route path='/about' element={<About />}></Route>
-      <Route path='/service' element={<Service />}></Route>
-    <Route path='*' element={<Error />}/>
-    </Route>
-  )
-);
-
-const App = () => {
+const Home = () => {
   const [postData, setPostData] = useState([]);
   const [message, setMessage] = useState("");
   const [formData, setFormData] = useState({
@@ -42,6 +8,8 @@ const App = () => {
     email: "arakash.developer1@gmail.com",
     password: "akash556600",
     role: "administrator",
+    firstName: "Akash",
+    lastName: "Developer",
   });
 
   // Optional: Fetch posts from WordPress (you can remove this if not needed)
@@ -89,25 +57,40 @@ const App = () => {
 
   return (
     <div>
-      <div className="py-10 text-center">
-        <h1 className="text-4xl font-bold mb-4">Posts</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6 bg-gray-50">
-          {postData.map((item, index) => (
-            <div key={index} className="bg-white p-5 rounded-2xl shadow">
-              <h3 className="text-xl font-semibold">{item.slug}</h3>
-              <p className="text-sm text-gray-600">
-                {item.content?.rendered?.replace(/<[^>]*>/g, "")}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      {/* <div className="py-10 text-center">
+          <h1 className="text-4xl font-bold mb-4">Posts</h1>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6 bg-gray-50">
+            {postData.map((item, index) => (
+              <div key={index} className="bg-white p-5 rounded-2xl shadow">
+                <h3 className="text-xl font-semibold">{item.slug}</h3>
+                <p className="text-sm text-gray-600">
+                  {item.content?.rendered?.replace(/<[^>]*>/g, "")}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div> */}
 
       <form
         onSubmit={handleSubmit}
         className="mt-10 max-w-md mx-auto p-6 bg-white rounded-2xl shadow space-y-4"
       >
-        <h2 className="text-2xl font-bold text-center capitalize">Headless Wp Register</h2>
+        <h2 className="text-2xl font-bold text-center capitalize">
+          Headless Wp Register
+        </h2>
 
         <div>
           <label htmlFor="username" className="block text-sm font-medium">
@@ -166,11 +149,11 @@ const App = () => {
                 <label
                   key={roleOption}
                   className={`flex items-center px-3 py-1.5 text-xs border rounded-md cursor-pointer transition
-          ${
-            formData.role === roleOption
-              ? "bg-blue-600 text-white border-blue-600"
-              : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
-          }`}
+            ${
+              formData.role === roleOption
+                ? "bg-blue-600 text-white border-blue-600"
+                : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
+            }`}
                 >
                   <input
                     type="checkbox"
@@ -199,4 +182,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Home;
