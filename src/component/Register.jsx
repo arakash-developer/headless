@@ -1,182 +1,183 @@
 import React, { useState } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
-import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const [captchaToken, setCaptchaToken] = useState(null);
+  const navigate = useNavigate();
+  const [toastError, setToastError] = useState("Error");
+  const [formData, setFormData] = useState({
+    code: "",
+    email: "",
+    firstName: "",
+    lastName: "",
+    title: "",
+    company: "",
+    phone: "",
+    extension: "",
+  });
 
-  const handleCaptchaChange = (token) => {
-    console.log("reCAPTCHA token:", token);
-    setCaptchaToken(token);
+  const toastStyle = {
+    position: "bottom-left",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    style: {
+      background: "#ED272C",
+      color: "#fff",
+    },
   };
 
-  const handleSubmit = (e) => {
+  const registerCheck = (e) => {
     e.preventDefault();
 
-    if (!captchaToken) {
-      alert("Please verify reCAPTCHA");
-      return;
-    }
+    const { email, firstName, lastName, title, company, phone, extension } =
+      formData;
 
-    // Submit your form with captchaToken
-    console.log("Submitting form with reCAPTCHA token:", captchaToken);
+    if (!email) return showError("Email is required");
+    if (!firstName) return showError("First Name is required");
+    if (!lastName) return showError("Last Name is required");
+    if (!title) return showError("Title is required");
+    if (!company) return showError("Company is required");
+    if (!phone) return showError("Phone number is required");
+    if (!extension) return showError("Extension is required");
+
+    console.log("✅ All data valid:", formData);
+    toast.success(
+      "Form submitted!",
+      {
+        ...toastStyle,
+        style: { background: "#22c55e", color: "#fff" }, // green success
+      },
+      navigate("/register2")
+    );
   };
+
+  const showError = (msg) => {
+    setToastError(msg);
+    toast.error(msg, toastStyle);
+  };
+
   return (
-    <>
-      <div className="max-w-[855px] px-[80px] py-[30px] pt-[62px] bg-[#fff]">
-        <div className="">
-          <h2 className="text-[#080607] text-center text-[32px] not-italic font-semibold leading-[normal]">
-            Create your Account
-          </h2>
-          <div className="pt-[50px] max-w-[280px] mx-auto flex justify-between items-center relative">
-            <div className="bg-[#ED272C] w-[32px] h-[32px] rounded-full border-[1px] border-[#ED272C] relative z-[2]"></div>
-            <div className="w-full border-[1px] border-[#ED272C] absolute z-[1]"></div>
-            <div className="bg-[#ED272C] w-[22px] h-[22px] rounded-full border-[1px] border-[#ED272C] relative z-[2]"></div>
-          </div>
-          <div className="pb-[60px] pt-[25px] max-w-[346px] mx-auto flex justify-between items-center ">
-            <p className="text-[#080607] text-base not-italic font-semibold leading-[normal]">
-              User Info
-            </p>
-            <p className="text-[#919191] text-base not-italic font-medium leading-[normal]">
-              Create Account
-            </p>
-          </div>
+    <div className="max-w-[855px] px-[80px] py-[30px] pt-[62px] bg-[#fff]">
+      <h2 className="text-[#080607] text-center text-[32px] font-semibold">
+        Create your Account
+      </h2>
 
-          <form action="" className="flex flex-col gap-y-6">
-            <div className="flex flex-col gap-y-2">
-              <label
-                htmlFor=""
-                className="text-[#080607] text-base not-italic font-medium leading-[normal]"
-              >
-                Invitation Code (Optional)
-              </label>
-              <input
-                type="text"
-                className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
-              />
-            </div>
-            <div className="flex flex-col gap-y-2">
-              <label
-                htmlFor=""
-                className="text-[#080607] text-base not-italic font-medium leading-[normal]"
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                required
-                className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
-              />
-            </div>
+      <form
+        className="flex flex-col gap-y-6 pt-[50px]"
+        onSubmit={registerCheck}
+      >
+        {/* Invitation Code */}
+        <FormField
+          label="Invitation Code (Optional)"
+          placeholder=""
+          value={formData.code}
+          onChange={(val) => setFormData({ ...formData, code: val })}
+        />
 
-            <div className="flex items-start justify-between gap-x-[41px]">
-              <div className="w-1/2 flex flex-col gap-y-2">
-                <label
-                  htmlFor=""
-                  className="text-[#080607] text-base not-italic font-medium leading-[normal] "
-                >
-                  First Name
-                </label>
-                <input
-                  type="text"
-                  className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
-                />
-              </div>
-              <div className="w-1/2 flex flex-col gap-y-2">
-                <label
-                  htmlFor=""
-                  className="text-[#080607] text-base not-italic font-medium leading-[normal]"
-                >
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
-                />
-              </div>
-            </div>
-            <div className="flex items-start justify-between gap-x-[41px]">
-              <div className="w-1/2 flex flex-col gap-y-2">
-                <label
-                  htmlFor=""
-                  className="text-[#080607] text-base not-italic font-medium leading-[normal] "
-                >
-                  Title
-                </label>
+        {/* Email */}
+        <FormField
+          label="Email"
+          type="email"
+          required
+          value={formData.email}
+          onChange={(val) => setFormData({ ...formData, email: val })}
+        />
 
-                <input
-                  type="text"
-                  required
-                  className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
-                />
-              </div>
-              <div className="w-1/2 flex flex-col gap-y-2">
-                <label
-                  htmlFor=""
-                  className="text-[#080607] text-base not-italic font-medium leading-[normal]"
-                >
-                  Company
-                </label>
-                <input
-                required
-                  type="text"
-                  className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
-                />
-              </div>
-            </div>
-            <div className="flex items-start justify-between gap-x-[41px]">
-              <div className="w-1/2 flex flex-col gap-y-2">
-                <label
-                  htmlFor=""
-                  className="text-[#080607] text-base not-italic font-medium leading-[normal] "
-                >
-                  Phone
-                </label>
-                <input
-                  type="number"
-                  required
-                  placeholder="(123) 23232323"
-                  className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
-                />
-              </div>
-              <div className="w-1/2 flex flex-col gap-y-2">
-                <label
-                  htmlFor=""
-                  className="text-[#080607] text-base not-italic font-medium leading-[normal]"
-                >
-                  Extension
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="123"
-                  className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
-                />
-              </div>
-            </div>
-            <div className="flex items-center gap-3 cursor-pointer">
-              <input
-                type="checkbox"
-                className="rounded flex w-5 h-5 items-center cursor-pointer"
-                required
-              />
-              <p className="text-[#919191] text-sm not-italic font-normal leading-[normal]">
-                I acknowledge that I have read and agree to the Terms of Use and
-                Privacy Policy.
-              </p>
-            </div>
-
-            <ReCAPTCHA
-              sitekey="6LexKxIrAAAAAOvHn0uFYdSxW6blTsRqhdz-rOhF"
-              onChange={handleCaptchaChange}
-            />
-            <p className="pt-3 mb-[34px] text-[#919191] text-sm not-italic font-normal leading-[normal]">This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</p>
-            <Link to="/register2" className="py-[18px] px-[60px] bg-[#ED272C] rounded-[5px] text-[#FFF] text-base not-italic font-bold leading-[normal] max-w-[192px] continue-button cursor-pointer">Continue</Link>
-          </form>
+        {/* First & Last Name */}
+        <div className="flex gap-x-[41px]">
+          <FormField
+            label="First Name"
+            value={formData.firstName}
+            onChange={(val) => setFormData({ ...formData, firstName: val })}
+            wrapperClass="w-1/2"
+          />
+          <FormField
+            label="Last Name"
+            value={formData.lastName}
+            onChange={(val) => setFormData({ ...formData, lastName: val })}
+            wrapperClass="w-1/2"
+          />
         </div>
-      </div>
-    </>
+
+        {/* Title & Company */}
+        <div className="flex gap-x-[41px]">
+          <FormField
+            label="Title"
+            value={formData.title}
+            onChange={(val) => setFormData({ ...formData, title: val })}
+            wrapperClass="w-1/2"
+          />
+          <FormField
+            label="Company"
+            value={formData.company}
+            onChange={(val) => setFormData({ ...formData, company: val })}
+            wrapperClass="w-1/2"
+          />
+        </div>
+
+        {/* Phone & Extension */}
+        <div className="flex gap-x-[41px]">
+          <FormField
+            label="Phone"
+            placeholder="(123) 4567890"
+            type="number"
+            value={formData.phone}
+            onChange={(val) => setFormData({ ...formData, phone: val })}
+            wrapperClass="w-1/2"
+          />
+          <FormField
+            label="Extension"
+            placeholder="123"
+            value={formData.extension}
+            onChange={(val) => setFormData({ ...formData, extension: val })}
+            wrapperClass="w-1/2"
+          />
+        </div>
+
+        {/* Terms Checkbox */}
+        <div className="flex items-center gap-3 cursor-pointer">
+          <input type="checkbox" className="w-5 h-5 rounded" required />
+          <p className="text-[#919191] text-sm font-normal">
+            I acknowledge that I have read and agree to the Terms of Use and
+            Privacy Policy.
+          </p>
+        </div>
+
+        {/* Submit Button */}
+        <button
+          type="submit"
+          className="py-[18px] px-[60px] bg-[#ED272C] rounded-[5px] text-white text-base font-bold max-w-[192px]"
+        >
+          Continue
+        </button>
+      </form>
+    </div>
   );
 };
+
+const FormField = ({
+  label,
+  value,
+  onChange,
+  type = "text",
+  placeholder,
+  wrapperClass = "flex flex-col gap-y-2",
+}) => (
+  <div className={wrapperClass}>
+    <label className="text-[#080607] text-base font-medium">{label}</label>
+    <input
+      type={type}
+      value={value}
+      placeholder={placeholder}
+      onChange={(e) => onChange(e.target.value)}
+      className="w-full h-[50px] py-3 px-4 border border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm"
+    />
+  </div>
+);
 
 export default Register;
