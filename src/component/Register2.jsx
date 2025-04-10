@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-import { Link } from "react-router-dom";
 
 const Register = () => {
   const [captchaToken, setCaptchaToken] = useState(null);
@@ -26,12 +25,12 @@ const Register = () => {
       <div className="max-w-[855px] px-[80px] py-[30px] pt-[62px] bg-[#fff]">
         <div className="">
           <h2 className="text-[#080607] text-center text-[32px] not-italic font-semibold leading-[normal]">
-            Create your Account
+            Create your Account2
           </h2>
           <div className="pt-[50px] max-w-[280px] mx-auto flex justify-between items-center relative">
-            <div className="bg-[#ED272C] w-[32px] h-[32px] rounded-full border-[1px] border-[#ED272C] relative z-[2]"></div>
-            <div className="w-full border-[1px] border-[#ED272C] absolute z-[1]"></div>
             <div className="bg-[#ED272C] w-[22px] h-[22px] rounded-full border-[1px] border-[#ED272C] relative z-[2]"></div>
+            <div className="w-full border-[1px] border-[#ED272C] absolute z-[1]"></div>
+            <div className="bg-[#ED272C] w-[32px] h-[32px] rounded-full border-[1px] border-[#ED272C] relative z-[2]"></div>
           </div>
           <div className="pb-[60px] pt-[25px] max-w-[346px] mx-auto flex justify-between items-center ">
             <p className="text-[#080607] text-base not-italic font-semibold leading-[normal]">
@@ -171,7 +170,7 @@ const Register = () => {
               onChange={handleCaptchaChange}
             />
             <p className="pt-3 mb-[34px] text-[#919191] text-sm not-italic font-normal leading-[normal]">This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</p>
-            <Link to="/register2" className="py-[18px] px-[60px] bg-[#ED272C] rounded-[5px] text-[#FFF] text-base not-italic font-bold leading-[normal] max-w-[192px] continue-button cursor-pointer">Continue</Link>
+            <button className="py-[18px] px-[60px] bg-[#ED272C] rounded-[5px] text-[#FFF] text-base not-italic font-bold leading-[normal] max-w-[192px] continue-button cursor-pointer">Continue</button>
           </form>
         </div>
       </div>

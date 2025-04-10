@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import Home from "./component/Home";
 import Register from "./component/Register";
+import Register2 from "./component/Register2";
 import InviteUser from "./component/InviteUser";
 
 const router = createBrowserRouter(
@@ -16,8 +17,8 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />}>
       <Route index path="/" element={<Register />}></Route>
       <Route index path="/home" element={<Register />}></Route>
+      <Route index path="/register2" element={<Register2 />}></Route>
       <Route path='/inviteuser' element={<InviteUser />}></Route>
-      {/* <Route path='/service' element={<Service />}></Route> */}
       <Route path="*" element={<Error />} />
     </Route>
   )
