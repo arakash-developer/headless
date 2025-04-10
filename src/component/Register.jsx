@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 const Register = () => {
   const navigate = useNavigate();
   const [toastError, setToastError] = useState("Error");
+  const [agree, setAgree] = useState(false);
+
   const [formData, setFormData] = useState({
     code: "",
     email: "",
@@ -34,8 +36,7 @@ const Register = () => {
   const registerCheck = (e) => {
     e.preventDefault();
 
-    const { email, firstName, lastName, title, company, phone, extension } =
-      formData;
+    const { email, firstName, lastName, title, company, phone, extension } = formData;
 
     if (!email) return showError("Email is required");
     if (!firstName) return showError("First Name is required");
@@ -44,16 +45,16 @@ const Register = () => {
     if (!company) return showError("Company is required");
     if (!phone) return showError("Phone number is required");
     if (!extension) return showError("Extension is required");
+    if (!agree) return showError("Please agree to the Terms and Privacy Policy");
 
-    console.log("✅ All data valid:", formData);
-    toast.success(
-      "Form submitted!",
-      {
-        ...toastStyle,
-        style: { background: "#22c55e", color: "#fff" }, // green success
-      },
-      navigate("/register2")
-    );
+    toast.success("Form submitted!", {
+      ...toastStyle,
+      style: { background: "#22c55e", color: "#fff" },
+    });
+
+    setTimeout(() => {
+      navigate("/register2");
+    }, 2000);
   };
 
   const showError = (msg) => {
@@ -67,14 +68,10 @@ const Register = () => {
         Create your Account
       </h2>
 
-      <form
-        className="flex flex-col gap-y-6 pt-[50px]"
-        onSubmit={registerCheck}
-      >
+      <form className="flex flex-col gap-y-6 pt-[50px]" onSubmit={registerCheck}>
         {/* Invitation Code */}
         <FormField
           label="Invitation Code (Optional)"
-          placeholder=""
           value={formData.code}
           onChange={(val) => setFormData({ ...formData, code: val })}
         />
@@ -141,10 +138,14 @@ const Register = () => {
 
         {/* Terms Checkbox */}
         <div className="flex items-center gap-3 cursor-pointer">
-          <input type="checkbox" className="w-5 h-5 rounded" required />
+          <input
+            type="checkbox"
+            className="w-5 h-5 rounded"
+            checked={agree}
+            onChange={(e) => setAgree(e.target.checked)}
+          />
           <p className="text-[#919191] text-sm font-normal">
-            I acknowledge that I have read and agree to the Terms of Use and
-            Privacy Policy.
+            I acknowledge that I have read and agree to the Terms of Use and Privacy Policy.
           </p>
         </div>
 
