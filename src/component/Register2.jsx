@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaCheck } from "react-icons/fa";
 import { toast } from "react-toastify";
 
@@ -10,6 +10,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [score, setScore] = useState(0);
   const [confirmpassword, setConfirmpassword] = useState("");
+  let navigate = useNavigate();
 
   const handleCaptchaChange = (token) => {
     console.log("reCAPTCHA token:", token);
@@ -70,6 +71,7 @@ const Register = () => {
     if (password !== confirmpassword) {
       toast.error("Password does not match", toastStyle);
     } else {
+      navigate("/regsuccess");
       toast.success("Form Submitted!", {
         ...toastStyle,
         style: { background: "#22c55e", color: "#fff" },

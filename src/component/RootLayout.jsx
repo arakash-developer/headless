@@ -9,7 +9,7 @@ const Root = () => {
       <Navbar />
       <div className="flex items-start h-full">
         <Sidebar />
-        <div className="bg-[#DBDCDE] h-full w-full">
+        <div className="h-full w-full">
           <div className="overflow-scroll h-[90%]">
             <div className="pl-[50px] pt-[35px]">
               <Outlet />

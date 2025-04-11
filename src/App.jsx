@@ -13,6 +13,7 @@ import Register2 from "./component/Register2";
 import InviteUser from "./component/InviteUser";
 import Demo from "./component/Demo";
 import Password from "./component/Password";
+import RegistrationSuccess from "./component/RegistrationSuccess";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
       <Route path='/inviteuser' element={<InviteUser />}></Route>
       <Route path='/demo' element={<Demo />}></Route>
       <Route path='/password' element={<Password />}></Route>
+      <Route path='/regsuccess' element={<RegistrationSuccess />}></Route>
       <Route path="*" element={<Error />} />
     </Route>
   )
