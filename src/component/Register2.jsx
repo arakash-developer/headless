@@ -49,7 +49,7 @@ const Register = () => {
     progress: undefined,
     theme: "colored",
     style: {
-      background: "#ED272C",
+      background: "#FFC107",
       color: "#fff",
     },
   };
@@ -74,14 +74,14 @@ const Register = () => {
       navigate("/regsuccess");
       toast.success("Form Submitted!", {
         ...toastStyle,
-        style: { background: "#22c55e", color: "#fff" },
+        style: { background: "#ED272C", color: "#fff" },
       });
     }
   };
 
   return (
     <>
-      <div className="max-w-[855px] px-[80px] py-[30px] pt-[62px] bg-[#fff]">
+      <div className="max-w-[855px] px-[80px] py-[30px] pt-[62px] bg-[#fff] formboxshadow rounded-[5px]">
         <div className="">
           <h2 className="text-[#080607] text-center text-[32px] not-italic font-semibold leading-[normal]">
             Create your Account

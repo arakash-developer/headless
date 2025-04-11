@@ -14,6 +14,7 @@ import InviteUser from "./component/InviteUser";
 import Demo from "./component/Demo";
 import Password from "./component/Password";
 import RegistrationSuccess from "./component/RegistrationSuccess";
+import Demo2 from "./component/Demo2";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
       <Route path='/demo' element={<Demo />}></Route>
       <Route path='/password' element={<Password />}></Route>
       <Route path='/regsuccess' element={<RegistrationSuccess />}></Route>
+      <Route path='/demo2' element={<Demo2 />}></Route>
       <Route path="*" element={<Error />} />
     </Route>
   )
