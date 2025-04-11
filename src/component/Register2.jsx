@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { Link, useNavigate } from "react-router-dom";
 import { FaCheck } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { Contex } from "../context/User";
+import postUser from "../lib/postUser";
 
 const Register = () => {
   const [captchaToken, setCaptchaToken] = useState(null);
@@ -10,6 +12,9 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [score, setScore] = useState(0);
   const [confirmpassword, setConfirmpassword] = useState("");
+  let { invitation, setInvitation } = useContext(Contex);
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   let navigate = useNavigate();
 
   const handleCaptchaChange = (token) => {
@@ -62,7 +67,12 @@ const Register = () => {
     setScore(calculateStrength(val));
   };
 
-  let handleSubmitform = (e) => {
+  let formData = {
+    userName,
+    password,
+  };
+
+  let handleSubmitform = async (e) => {
     e.preventDefault();
     if (!userName) return toast.error("Username is required", toastStyle);
     if (!password) return toast.error("Password is required", toastStyle);
@@ -71,6 +81,7 @@ const Register = () => {
     if (password !== confirmpassword) {
       toast.error("Password does not match", toastStyle);
     } else {
+      let maindata = { ...invitation, ...formData };
       navigate("/regsuccess");
       toast.success("Form Submitted!", {
         ...toastStyle,
@@ -78,21 +89,21 @@ const Register = () => {
       });
     }
   };
-
   return (
     <>
+      {message}
       <h2 className="text-[#080607] pb-5 text-[32px] not-italic font-semibold leading-[normal]">
         Create your Account
       </h2>
       <div className="max-w-[855px] px-[65px] py-[37px] bg-[#fff] rounded-[5px] formboxshadow">
         <div className="">
-        <div className="max-w-[280px] mx-auto flex justify-between items-center relative">
-          <div className="bg-[#ED272C] w-[22px] h-[22px] rounded-full border-[1px] border-[#ED272C] relative z-[2] flex justify-center items-center text-[12px]">
-            {/* <FaCheck className="text-[#fff]" /> */}
+          <div className="max-w-[280px] mx-auto flex justify-between items-center relative">
+            <div className="bg-[#ED272C] w-[22px] h-[22px] rounded-full border-[1px] border-[#ED272C] relative z-[2] flex justify-center items-center text-[12px]">
+              {/* <FaCheck className="text-[#fff]" /> */}
+            </div>
+            <div className="w-full border-[1px] border-[#ED272C] absolute z-[1]"></div>
+            <div className="bg-[#ED272C] w-[32px] h-[32px] rounded-full border-[1px] border-[#ED272C] relative z-[2]"></div>
           </div>
-          <div className="w-full border-[1px] border-[#ED272C] absolute z-[1]"></div>
-          <div className="bg-[#ED272C] w-[32px] h-[32px] rounded-full border-[1px] border-[#ED272C] relative z-[2]"></div>
-        </div>
           <div className="pb-[60px] pt-[25px] max-w-[346px] mx-auto flex justify-between items-center ">
             <p className="text-[#080607] text-base not-italic font-semibold leading-[normal]">
               User Info

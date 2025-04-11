@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { FaCheck } from "react-icons/fa";
+import { Contex } from "../context/User";
 
 const Register = () => {
   const navigate = useNavigate();
   const [toastError, setToastError] = useState("Error");
   const [agree, setAgree] = useState(false);
-
+  let { invitation, setInvitation } = useContext(Contex);
   const [formData, setFormData] = useState({
     code: "",
     email: "",
@@ -54,7 +55,7 @@ const Register = () => {
       ...toastStyle,
       style: { background: "#ED272C", color: "#fff" },
     });
-
+    setInvitation(formData);
     navigate("/register2");
   };
 
@@ -63,6 +64,8 @@ const Register = () => {
     toast.error(msg, toastStyle);
   };
 
+
+  console.log(invitation);
   return (
     <>
       <h2 className="text-[#080607] pb-5 text-[32px] not-italic font-semibold leading-[normal]">
@@ -76,7 +79,7 @@ const Register = () => {
           <div className="w-full border-[1px] border-[#ED272C] absolute z-[1]"></div>
           <div className="bg-[#ED272C] w-[32px] h-[32px] rounded-full border-[1px] border-[#ED272C] relative z-[2]"></div>
         </div>
-        <div className="pb-[60px] pt-[25px] max-w-[346px] mx-auto flex justify-between items-center ">
+        <div className="pt-[25px] max-w-[346px] mx-auto flex justify-between items-center ">
           <p className="text-[#080607] text-base not-italic font-semibold leading-[normal]">
             User Info
           </p>
@@ -86,7 +89,7 @@ const Register = () => {
         </div>
 
         <form
-          className="flex flex-col gap-y-6 pt-[50px]"
+          className="flex flex-col gap-y-6 pt-[58px]"
           onSubmit={registerCheck}
         >
           {/* Invitation Code */}
