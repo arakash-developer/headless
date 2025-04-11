@@ -1,16 +1,25 @@
 import React, { useEffect, useState } from "react";
 
-const Home = () => {
+const Demo = () => {
   const [postData, setPostData] = useState([]);
   const [message, setMessage] = useState("");
+  // const [formData, setFormData] = useState({
+  //   username: "akash1",
+  //   email: "arakash.developer1@gmail.com",
+  //   password: "akash556600",
+  //   role: "administrator",
+  //   firstName: "Akash",
+  //   lastName: "Developer",
+  // });
   const [formData, setFormData] = useState({
     username: "akash1",
     email: "arakash.developer1@gmail.com",
     password: "akash556600",
     role: "administrator",
-    firstName: "Akash",
-    lastName: "Developer",
+    first_name: "Akash",       // ✅ match WP field
+    last_name: "Developer",    // ✅ match WP field
   });
+  
 
   // Optional: Fetch posts from WordPress (you can remove this if not needed)
   const getdata = async () => {
@@ -35,7 +44,8 @@ const Home = () => {
 
     try {
       const res = await fetch(
-        "https://4amitest-bli6.wp1.sh/wp-json/custom/v1/register",
+        // "https://4amitest-bli6.wp1.sh/wp-json/custom/v1/register",
+        "https://akashtest.wp1.sh/wp-json/custom/v1/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -182,4 +192,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Demo;

@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { Link } from "react-router-dom";
 import { FaCheck } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const [captchaToken, setCaptchaToken] = useState(null);
+  let [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [score, setScore] = useState(0);
+  const [confirmpassword, setConfirmpassword] = useState("");
 
   const handleCaptchaChange = (token) => {
     console.log("reCAPTCHA token:", token);
@@ -22,6 +27,56 @@ const Register = () => {
     // Submit your form with captchaToken
     console.log("Submitting form with reCAPTCHA token:", captchaToken);
   };
+
+  const calculateStrength = (pass) => {
+    let s = 0;
+    if (pass.length >= 8) s++;
+    if (/[A-Z]/.test(pass)) s++;
+    if (/[a-z]/.test(pass)) s++;
+    if (/\d/.test(pass)) s++;
+    if (/[\W_]/.test(pass)) s++;
+    return s;
+  };
+
+  const toastStyle = {
+    position: "bottom-left",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    style: {
+      background: "#ED272C",
+      color: "#fff",
+    },
+  };
+
+  const handleChange = (e) => {
+    console.log(score);
+
+    const val = e.target.value;
+    setPassword(val);
+    setScore(calculateStrength(val));
+  };
+
+  let handleSubmitform = (e) => {
+    e.preventDefault();
+    if (!userName) return toast.error("Username is required", toastStyle);
+    if (!password) return toast.error("Password is required", toastStyle);
+    if (!confirmpassword)
+      return toast.error("Confirm Password is required", toastStyle);
+    if (password !== confirmpassword) {
+      toast.error("Password does not match", toastStyle);
+    } else {
+      toast.success("Form Submitted!", {
+        ...toastStyle,
+        style: { background: "#22c55e", color: "#fff" },
+      });
+    }
+  };
+
   return (
     <>
       <div className="max-w-[855px] px-[80px] py-[30px] pt-[62px] bg-[#fff]">
@@ -55,6 +110,7 @@ const Register = () => {
               </label>
               <input
                 type="text"
+                onChange={(e) => setUserName(e.target.value)}
                 className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
               />
             </div>
@@ -67,15 +123,21 @@ const Register = () => {
               </label>
               <input
                 type="text"
-                required
+                onChange={handleChange}
                 className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
               />
+
               <div className="">
                 <p className="text-[#080607] text-base not-italic font-normal leading-6">
                   Password strength
                 </p>
-                <div className="h-[6px] rounded-[4px] bg-[#080607] w-full my-[10px]"></div>
-                <p className="text-[#919191] text-sm not-italic font-normal leading-[1.31rem]">Minimum 6 characters</p>
+                <div
+                  className="h-[6px] rounded-[4px] bg-[#080607] w-full my-[10px] transition-all duration-300"
+                  style={{ width: `${(score / 5) * 100}%` }}
+                ></div>
+                <p className="text-[#919191] text-sm not-italic font-normal leading-[1.31rem]">
+                  Minimum 6 characters
+                </p>
               </div>
             </div>
             <div className="flex flex-col gap-y-2">
@@ -87,7 +149,7 @@ const Register = () => {
               </label>
               <input
                 type="text"
-                required
+                onChange={(e) => setConfirmpassword(e.target.value)}
                 className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
               />
             </div>
@@ -102,6 +164,7 @@ const Register = () => {
               <Link
                 to="/"
                 className="py-[18px] px-[60px] bg-[#ED272C] rounded-[5px] text-[#FFF] text-base not-italic font-bold leading-[normal] max-w-[192px] continue-button cursor-pointer"
+                onClick={handleSubmitform}
               >
                 Sign Up
               </Link>

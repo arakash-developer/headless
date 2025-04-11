@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { FaCheck } from "react-icons/fa";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -36,7 +37,8 @@ const Register = () => {
   const registerCheck = (e) => {
     e.preventDefault();
 
-    const { email, firstName, lastName, title, company, phone, extension } = formData;
+    const { email, firstName, lastName, title, company, phone, extension } =
+      formData;
 
     if (!email) return showError("Email is required");
     if (!firstName) return showError("First Name is required");
@@ -45,9 +47,10 @@ const Register = () => {
     if (!company) return showError("Company is required");
     if (!phone) return showError("Phone number is required");
     if (!extension) return showError("Extension is required");
-    if (!agree) return showError("Please agree to the Terms and Privacy Policy");
+    if (!agree)
+      return showError("Please agree to the Terms and Privacy Policy");
 
-    toast.success("Form submitted!", {
+    toast.success("Next Step!", {
       ...toastStyle,
       style: { background: "#22c55e", color: "#fff" },
     });
@@ -62,11 +65,29 @@ const Register = () => {
 
   return (
     <div className="max-w-[855px] px-[80px] py-[30px] pt-[62px] bg-[#fff]">
-      <h2 className="text-[#080607] text-center text-[32px] font-semibold">
+      <h2 className="text-[#080607] text-center text-[32px] not-italic font-semibold leading-[normal]">
         Create your Account
       </h2>
+      <div className="pt-[50px] max-w-[280px] mx-auto flex justify-between items-center relative">
+        <div className="bg-[#ED272C] w-[22px] h-[22px] rounded-full border-[1px] border-[#ED272C] relative z-[2] flex justify-center items-center text-[12px]">
+          {/* <FaCheck className="text-[#fff]" /> */}
+        </div>
+        <div className="w-full border-[1px] border-[#ED272C] absolute z-[1]"></div>
+        <div className="bg-[#ED272C] w-[32px] h-[32px] rounded-full border-[1px] border-[#ED272C] relative z-[2]"></div>
+      </div>
+      <div className="pb-[60px] pt-[25px] max-w-[346px] mx-auto flex justify-between items-center ">
+        <p className="text-[#080607] text-base not-italic font-semibold leading-[normal]">
+          User Info
+        </p>
+        <p className="text-[#919191] text-base not-italic font-medium leading-[normal]">
+          Create Account
+        </p>
+      </div>
 
-      <form className="flex flex-col gap-y-6 pt-[50px]" onSubmit={registerCheck}>
+      <form
+        className="flex flex-col gap-y-6 pt-[50px]"
+        onSubmit={registerCheck}
+      >
         {/* Invitation Code */}
         <FormField
           label="Invitation Code (Optional)"
@@ -143,7 +164,8 @@ const Register = () => {
             onChange={(e) => setAgree(e.target.checked)}
           />
           <p className="text-[#919191] text-sm font-normal">
-            I acknowledge that I have read and agree to the Terms of Use and Privacy Policy.
+            I acknowledge that I have read and agree to the Terms of Use and
+            Privacy Policy.
           </p>
         </div>
 
