@@ -81,18 +81,18 @@ const Register = () => {
 
   return (
     <>
-      <div className="max-w-[855px] px-[80px] py-[30px] pt-[62px] bg-[#fff] formboxshadow rounded-[5px]">
+      <h2 className="text-[#080607] pb-5 text-[32px] not-italic font-semibold leading-[normal]">
+        Create your Account
+      </h2>
+      <div className="max-w-[855px] px-[65px] py-[37px] bg-[#fff] rounded-[5px] formboxshadow">
         <div className="">
-          <h2 className="text-[#080607] text-center text-[32px] not-italic font-semibold leading-[normal]">
-            Create your Account
-          </h2>
-          <div className="pt-[50px] max-w-[280px] mx-auto flex justify-between items-center relative">
-            <div className="bg-[#ED272C] w-[22px] h-[22px] rounded-full border-[1px] border-[#ED272C] relative z-[2] flex justify-center items-center text-[12px]">
-              <FaCheck className="text-[#fff]" />
-            </div>
-            <div className="w-full border-[1px] border-[#ED272C] absolute z-[1]"></div>
-            <div className="bg-[#ED272C] w-[32px] h-[32px] rounded-full border-[1px] border-[#ED272C] relative z-[2]"></div>
+        <div className="max-w-[280px] mx-auto flex justify-between items-center relative">
+          <div className="bg-[#ED272C] w-[22px] h-[22px] rounded-full border-[1px] border-[#ED272C] relative z-[2] flex justify-center items-center text-[12px]">
+            {/* <FaCheck className="text-[#fff]" /> */}
           </div>
+          <div className="w-full border-[1px] border-[#ED272C] absolute z-[1]"></div>
+          <div className="bg-[#ED272C] w-[32px] h-[32px] rounded-full border-[1px] border-[#ED272C] relative z-[2]"></div>
+        </div>
           <div className="pb-[60px] pt-[25px] max-w-[346px] mx-auto flex justify-between items-center ">
             <p className="text-[#080607] text-base not-italic font-semibold leading-[normal]">
               User Info
