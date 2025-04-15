@@ -56,7 +56,7 @@ const Register2 = () => {
     progress: undefined,
     theme: "colored",
     style: {
-      background: "#FFC107",
+      background: "#080607",
       color: "#fff",
     },
   };
