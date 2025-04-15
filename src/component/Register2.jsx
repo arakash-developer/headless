@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { Contex } from "../context/User";
 import postUser from "../lib/postUser";
 
-const Register = () => {
+const Register2 = () => {
   const [captchaToken, setCaptchaToken] = useState(null);
   let [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -189,4 +189,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Register2;
