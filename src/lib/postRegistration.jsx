@@ -17,10 +17,10 @@ const postRegistration = async (formData) => {
     } else if (res.status === 400) {
       return `Error: ${data.error || "Registration failed"}`;
     } else {
-      return new Error(`Error: ${res.status} ${res.statusText}`);
+     return `Error: ${data.error || "An unexpected error occurred"}`;
     }
   } catch (err) {
-    return new Error(err);
+    return new Error(err.meessage);
   } finally {
   }
 

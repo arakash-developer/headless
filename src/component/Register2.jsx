@@ -72,7 +72,6 @@ const Register2 = () => {
   let formData = {
     userName,
     password,
-    company: "s",
   };
 
   let handleSubmitform = async (e) => {
@@ -84,12 +83,24 @@ const Register2 = () => {
     if (password !== confirmpassword) {
       toast.error("Password does not match", toastStyle);
     } else {
-      setInvitation({...invitation, ...formData});
-      console.log(invitation);
-      let response = await postRegistration(invitation);
-      console.log(response);
+      setInvitation({ ...invitation, ...formData });
+      let datas = {
+        username: userName,
+        password: password,
+        email: invitation.email,
+        firstName: invitation.firstName,
+        lastName: invitation.lastName,
+        title: invitation.title,
+        company: invitation.company,
+        phone: invitation.phone,
+        extension: invitation.extension,
+        code: invitation.code,
+      };
+      // console.log(datas);
       // navigate("/login");
-      toast.success("Form Submitted!", {
+      let response = await postRegistration(datas);
+      // console.log(response);
+      toast.success(response, {
         ...toastStyle,
         style: { background: "#ED272C", color: "#fff" },
       });
