@@ -100,7 +100,7 @@ const Register2 = () => {
       let response = await postRegistration(datas);
       // console.log(response);
       if (response?.login) {
-        navigate("/login");
+        navigate("/regsuccess");
         toast.success(response.message, {
           ...toastStyle,
           style: { background: "#ED272C", color: "#fff" },
