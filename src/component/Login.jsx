@@ -42,7 +42,7 @@ const Login = () => {
           },
         };
         toast.error("Invalid credentials", toastStyle);
-        // throw new Error('Invalid credentials');
+        throw new Error("Invalid credentials");
       }
 
       const data = await response.json();
@@ -130,7 +130,6 @@ const Login = () => {
               Sign In
             </button>
           </form>
-          {error && <p className="text-red-500 mt-2">{error}</p>}
         </div>
         <div className="">
           <img
