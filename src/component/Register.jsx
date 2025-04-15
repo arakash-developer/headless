@@ -103,7 +103,7 @@ const Register = () => {
             label="Email"
             type="email"
             required
-            value={formData.email}
+            value={formData.email || invitation.email}
             onChange={(val) => setFormData({ ...formData, email: val })}
           />
 
@@ -111,13 +111,13 @@ const Register = () => {
           <div className="flex gap-x-[41px]">
             <FormField
               label="First Name"
-              value={formData.firstName}
+              value={formData.firstName || invitation.firstName}
               onChange={(val) => setFormData({ ...formData, firstName: val })}
               wrapperClass="w-1/2"
             />
             <FormField
               label="Last Name"
-              value={formData.lastName}
+              value={formData.lastName || invitation.lastName}
               onChange={(val) => setFormData({ ...formData, lastName: val })}
               wrapperClass="w-1/2"
             />
@@ -127,13 +127,13 @@ const Register = () => {
           <div className="flex gap-x-[41px]">
             <FormField
               label="Title"
-              value={formData.title}
+              value={formData.title || invitation.title}
               onChange={(val) => setFormData({ ...formData, title: val })}
               wrapperClass="w-1/2"
             />
             <FormField
               label="Company"
-              value={formData.company}
+              value={formData.company || invitation.company}
               onChange={(val) => setFormData({ ...formData, company: val })}
               wrapperClass="w-1/2"
             />
@@ -145,14 +145,14 @@ const Register = () => {
               label="Phone"
               placeholder="(123) 4567890"
               type="number"
-              value={formData.phone}
+              value={formData.phone || invitation.phone}
               onChange={(val) => setFormData({ ...formData, phone: val })}
               wrapperClass="w-1/2"
             />
             <FormField
               label="Extension"
               placeholder="123"
-              value={formData.extension}
+              value={formData.extension || invitation.extension}
               onChange={(val) => setFormData({ ...formData, extension: val })}
               wrapperClass="w-1/2"
             />
