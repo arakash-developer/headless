@@ -8,7 +8,9 @@ const Navbar = () => {
       <Link to="/" className="flex-shrink-0">
         <img src={Logo} alt="f" />
       </Link>
+      <Link to="/login" className="flex-shrink-0">
       <p className="text-[#000] text-base not-italic font-normal leading-6">Already have an account? <span className="text-[#ED272C] text-base not-italic font-medium leading-6">Log In</span></p>
+      </Link>
     </nav>
   );
 };
