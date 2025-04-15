@@ -5,6 +5,7 @@ import { FaCheck } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { Contex } from "../context/User";
 import postUser from "../lib/postUser";
+import postRegistration from "../lib/postRegistration";
 
 const Register2 = () => {
   const [captchaToken, setCaptchaToken] = useState(null);
@@ -71,6 +72,7 @@ const Register2 = () => {
   let formData = {
     userName,
     password,
+    company: "s",
   };
 
   let handleSubmitform = async (e) => {
@@ -82,18 +84,17 @@ const Register2 = () => {
     if (password !== confirmpassword) {
       toast.error("Password does not match", toastStyle);
     } else {
-      let maindata = { ...invitation, ...formData };
-      navigate("/login");
+      setInvitation({...invitation, ...formData});
+      console.log(invitation);
+      let response = await postRegistration(invitation);
+      console.log(response);
+      // navigate("/login");
       toast.success("Form Submitted!", {
         ...toastStyle,
         style: { background: "#ED272C", color: "#fff" },
       });
     }
   };
-
-  const location = useLocation();
-  const userdata = location.state?.userdata; // Access the user data passed via state
-  console.log(userdata);
 
   return (
     <>

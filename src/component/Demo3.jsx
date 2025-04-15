@@ -3,9 +3,9 @@ import postRegistration from '../lib/postRegistration'
 
 const Demo3 = () => {
     const [formData, setFormData] = useState({
-      username: "a",
+      username: "as",
       password: "a",
-      email: "aaaa@gmail.com",
+      email: "aasaa@gmail.com",
       firstName: "s",
       lastName: "s",
       title: "s",
@@ -14,7 +14,9 @@ const Demo3 = () => {
       extension: "s",
       code: "s",
     });
-  
+
+
+
   let handlerData = async () => {
     let response = await postRegistration(formData);
     console.log(response);
