@@ -17,6 +17,7 @@ import RegistrationSuccess from "./component/RegistrationSuccess";
 import Demo2 from "./component/Demo2";
 import Login from "./component/Login";
 import Demo3 from "./component/Demo3";
+import Dashboard from "./component/Dashboard";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,6 +32,7 @@ const router = createBrowserRouter(
       <Route path='/demo2' element={<Demo2 />}></Route>
       <Route path='/login' element={<Login />}></Route>
       <Route path='/demo3' element={<Demo3 />}></Route>
+      <Route path='/dashboard' element={<Dashboard />}></Route>
       <Route path="*" element={<Error />} />
     </Route>
   )
