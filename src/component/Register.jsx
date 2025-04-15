@@ -56,7 +56,7 @@ const Register = () => {
       style: { background: "#ED272C", color: "#fff" },
     });
     setInvitation(formData);
-    navigate("/register2");
+    navigate("/register2",{ state: { userdata: formData } });
   };
 
   const showError = (msg) => {

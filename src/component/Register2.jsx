@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaCheck } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { Contex } from "../context/User";
@@ -15,6 +15,7 @@ const Register2 = () => {
   let { invitation, setInvitation } = useContext(Contex);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+
   let navigate = useNavigate();
 
   const handleCaptchaChange = (token) => {
@@ -89,6 +90,11 @@ const Register2 = () => {
       });
     }
   };
+
+  const location = useLocation();
+  const userdata = location.state?.userdata; // Access the user data passed via state
+  console.log(userdata);
+
   return (
     <>
       {message}
