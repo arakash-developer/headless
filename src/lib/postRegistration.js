@@ -13,7 +13,7 @@ const postRegistration = async (formData) => {
     const data = await res.json();
 
     if (res.ok) {
-      return "Registration successful!";
+      return {message: "Registration successful!", login:true};
     } else if (res.status === 400) {
       return `Error: ${data.error || "Registration failed"}`;
     } else {

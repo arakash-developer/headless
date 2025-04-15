@@ -97,13 +97,16 @@ const Register2 = () => {
         code: invitation.code,
       };
       // console.log(datas);
-      // navigate("/login");
       let response = await postRegistration(datas);
       // console.log(response);
-      toast.success(response, {
-        ...toastStyle,
-        style: { background: "#ED272C", color: "#fff" },
-      });
+      if (response?.login) {
+        navigate("/login");
+        toast.success(response.message, {
+          ...toastStyle,
+          style: { background: "#ED272C", color: "#fff" },
+        });
+      }
+      toast.error(response, toastStyle);
     }
   };
 
