@@ -94,7 +94,7 @@ const Register = () => {
           {/* Invitation Code */}
           <FormField
             label="Invitation Code (Optional)"
-            value={formData.code || pastUseData.code}
+            value={formData.code || invitation.code}
             onChange={(val) => setFormData({ ...formData, code: val })}
           />
 
