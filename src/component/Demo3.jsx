@@ -1,104 +1,32 @@
-import React, { useState } from "react";
-import Loginbanner from "../../public/loginbanner.png";
+import React, { useState } from 'react'
+import postRegistration from '../lib/postRegistration'
 
 const Demo3 = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");  // State for error message
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-
-    const loginData = { username: email, password };
-
-    try {
-      const response = await fetch('https://4amitest-bli6.wp1.sh/wp-json/custom/v1/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(loginData),
-      });
-
-      if (!response.ok) {
-        throw new Error('Invalid credentials');
-      }
-
-      const data = await response.json();
-
-      // Store the JWT token in localStorage for future requests
-      localStorage.setItem('auth_token', data.token);  
-      window.location.href = "/dashboard";  // Redirect user after successful login
-
-    } catch (error) {
-      setError(error.message);  // Show error if credentials are invalid
-    }
-  };
+    const [formData, setFormData] = useState({
+      username: "a",
+      password: "a",
+      email: "aaaa@gmail.com",
+      firstName: "s",
+      lastName: "s",
+      title: "s",
+      company: "s",
+      phone: "s",
+      extension: "s",
+      code: "s",
+    });
+  
+  let handlerData = async () => {
+    let response = await postRegistration(formData);
+    console.log(response);
+  }
 
   return (
-    <div className="h-full">
-      <div className="loginBox bg-[#fff] max-w-[1036px] mr-[64px] mb-[171px] rounded-[5px] px-[125px] py-5 grid grid-cols-2 gap-[80px] h-full items-center">
-        <div className="max-w-[380px]">
-          <h3 className="text-[#080607] text-4xl not-italic font-bold leading-10">
-            Log In
-          </h3>
-          <p className="text-[#919191] text-base not-italic font-normal leading-6 mt-3 mb-[28px]">
-            Good to see you again! Enter your details to continue using the dashboard
-          </p>
-          <form onSubmit={handleLogin} className="flex flex-col gap-y-6">
-            <div className="flex flex-col gap-y-2">
-              <label
-                htmlFor="email"
-                className="text-[#080607] text-base not-italic font-medium leading-[normal]"
-              >
-                Email
-              </label>
-              <input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
-                required
-              />
-            </div>
-            <div className="flex flex-col gap-y-2">
-              <label
-                htmlFor="password"
-                className="text-[#080607] text-base not-italic font-medium leading-[normal]"
-              >
-                Password
-              </label>
-              <input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
-                required
-              />
-            </div>
-            <div className="flex items-center gap-3 cursor-pointer">
-              <input type="checkbox" />
-              <p className="text-[#919191] text-sm font-normal">
-                Remember Password
-              </p>
-            </div>
-            <button
-              type="submit"
-              className="py-[18px] px-[60px] bg-[#ED272C] rounded-[5px] text-white text-base font-bold max-w-[192px] cursor-pointer"
-            >
-              Sign In
-            </button>
-          </form>
-          {error && <p className="text-red-500 mt-2">{error}</p>}
-        </div>
-        <div className="">
-          <img className="bg-cover rounded-[5px]" src={Loginbanner} alt="Login Banner" />
-        </div>
-      </div>
-    </div>
-  );
-};
 
-export default Demo3;
+    <div>
+      <h1>dd</h1>
+      <p className='py-5 px-10 bg-red-400' onClick={handlerData}>GG</p>
+    </div>
+  )
+}
+
+export default Demo3
