@@ -56,16 +56,15 @@ const Register = () => {
       style: { background: "#ED272C", color: "#fff" },
     });
     setInvitation(formData);
-    navigate("/register2",{ state: { userdata: formData } });
+    navigate("/register2");
   };
 
+  
   const showError = (msg) => {
     setToastError(msg);
     toast.error(msg, toastStyle);
   };
 
-
-  console.log(invitation);
   return (
     <>
       <h2 className="text-[#080607] pb-5 text-[32px] not-italic font-semibold leading-[normal]">
@@ -95,7 +94,7 @@ const Register = () => {
           {/* Invitation Code */}
           <FormField
             label="Invitation Code (Optional)"
-            value={formData.code}
+            value={formData.code || pastUseData.code}
             onChange={(val) => setFormData({ ...formData, code: val })}
           />
 
