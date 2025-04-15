@@ -11,7 +11,7 @@ const Root = () => {
         <Sidebar />
         <div className="h-full w-full">
           <div className="overflow-scroll h-[90%]">
-            <div className="pl-[50px] pt-[35px]">
+            <div className="px-[50px] pt-[35px]">
               <Outlet />
             </div>
           </div>
