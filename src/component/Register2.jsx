@@ -82,7 +82,7 @@ const Register = () => {
       toast.error("Password does not match", toastStyle);
     } else {
       let maindata = { ...invitation, ...formData };
-      navigate("/regsuccess");
+      navigate("/login");
       toast.success("Form Submitted!", {
         ...toastStyle,
         style: { background: "#ED272C", color: "#fff" },
