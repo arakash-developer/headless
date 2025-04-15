@@ -47,9 +47,12 @@ const Login = () => {
 
       const data = await response.json();
 
-      // Store the JWT token in localStorage for future requests
+      // Store the JWT token and user data in localStorage for future requests
       localStorage.setItem("auth_token", data.token);
-      navigate("/dashboard"); // Redirect to dashboard
+      localStorage.setItem("user_data", JSON.stringify(data.user)); // Store user data
+
+      navigate("/dashboard", { state: { user: data.user } }); // Pass user data to the dashboard via state
+
       const toastStyle = {
         position: "bottom-left",
         autoClose: 2000,
@@ -60,14 +63,11 @@ const Login = () => {
         progress: undefined,
         theme: "colored",
         style: {
-          background: "#FFC107",
+          background: "#ED272C",
           color: "#fff",
         },
       };
-      toast.success("Login Successful!", {
-        ...toastStyle,
-        style: { background: "#ED272C", color: "#fff" },
-      });
+      toast.success("Login Successful!", toastStyle);
     } catch (error) {
       setError(error.message); // Show error if credentials are invalid
     }
