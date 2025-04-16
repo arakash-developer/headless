@@ -99,22 +99,37 @@ const CompanyRegistration = () => {
             {/* Industry */}
             <div className="w-full">
               <label className="text-[#080607] text-base font-medium">
-                Industry
+              Industry
               </label>
-              <select
-                //   value={formData.source}
-                //   onChange={(e) =>
-                //     setFormData({ ...formData, source: e.target.value })
-                //   }
-                className="w-full h-[50px] py-3 px-4 border bg-[#F4F5F9] border-[#DBDCDE] rounded-[8px] appearance-none"
-              >
-                <option value="">Select One</option>
-                <option value="Referral">Referral</option>
-                <option value="Event">Event</option>
-                <option value="Social">Social</option>
-              </select>
+              <div className="relative cursor-pointer">
+                <select
+                  //   value={formData.source}
+                  //   onChange={(e) =>
+                  //     setFormData({ ...formData, source: e.target.value })
+                  //   }
+                  className="w-full h-[50px] py-3 px-4 border bg-[#F4F5F9] border-[#DBDCDE] rounded-[8px] appearance-none cursor-pointer"
+                >
+                  <option value="">Select One</option>
+                  <option value="Referral">Referral</option>
+                  <option value="Event">Event</option>
+                  <option value="Social">Social</option>
+                </select>
+                <img
+                  className="absolute top-1/2 -translate-y-1/2 right-[16px]"
+                  src={DownArrow}
+                  alt=""
+                />
+              </div>
             </div>
           </div>
+            {/* Website (Optional) */}
+            <FormField
+            label="Website (Optional)"
+            type="text"
+            required
+            // value={formData.email || invitation.email}
+            // onChange={(val) => setFormData({ ...formData, email: val })}
+          />
         </form>
       </div>
     </div>
