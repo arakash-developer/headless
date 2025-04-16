@@ -82,14 +82,18 @@ const CompanyRegistration = () => {
                   //   onChange={(e) =>
                   //     setFormData({ ...formData, source: e.target.value })
                   //   }
-                  className="w-full h-[50px] py-3 px-4 border bg-[#F4F5F9] border-[#DBDCDE] rounded-[8px] appearance-none"
+                  className="w-full h-[50px] py-3 px-4 border bg-[#F4F5F9] border-[#DBDCDE] rounded-[8px] appearance-none cursor-pointer"
                 >
                   <option value="">Select One</option>
                   <option value="Referral">Referral</option>
                   <option value="Event">Event</option>
                   <option value="Social">Social</option>
                 </select>
-                <img className="absolute top-1/2 -translate-y-1/2 right-[16px]" src={DownArrow} alt="" />
+                <img
+                  className="absolute top-1/2 -translate-y-1/2 right-[16px]"
+                  src={DownArrow}
+                  alt=""
+                />
               </div>
             </div>
             {/* Industry */}
