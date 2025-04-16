@@ -99,7 +99,7 @@ const CompanyRegistration = () => {
             {/* Industry */}
             <div className="w-full">
               <label className="text-[#080607] text-base font-medium">
-              Industry
+                Industry
               </label>
               <div className="relative cursor-pointer">
                 <select
@@ -122,14 +122,28 @@ const CompanyRegistration = () => {
               </div>
             </div>
           </div>
-            {/* Website (Optional) */}
-            <FormField
+          {/* Website (Optional) */}
+          <FormField
             label="Website (Optional)"
             type="text"
             required
             // value={formData.email || invitation.email}
             // onChange={(val) => setFormData({ ...formData, email: val })}
           />
+          <div className="flex gap-[42px] items-center">
+            <button
+              type="submit"
+              className="py-[18px] px-[60px] bg-[#ED272C] border border-[#ED272C] rounded-[5px] text-white text-base font-bold cursor-pointer"
+            >
+              Register Company
+            </button>{" "}
+            <button
+              type="submit"
+              className="py-[18px] px-[60px] bg-[#FFF] text-[#080607] border border-[#919191] rounded-[5px] cursor-pointer overflow-hidden text-zinc-950/[0.5] text-center text-ellipsis text-base not-italic font-semibold leading-[1.31rem]"
+            >
+            Clear Form
+            </button>
+          </div>
         </form>
       </div>
     </div>
