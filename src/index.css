@@ -32,9 +32,8 @@ img {
 .loginBox {
   box-shadow: 0px 6px 25px 0px rgba(219, 220, 222, 0.2);
   box-shadow: 0px 12px 40px 0px rgba(219, 220, 222, 0.3);
-
-}
-img{
-  max-width: 100%;
 }
 
+.companyregform {
+  box-shadow: 0px 6px 25px 0px rgba(0, 0, 0, 0.1);
+}
