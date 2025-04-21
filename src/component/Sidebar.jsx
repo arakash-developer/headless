@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
-import { RiHome5Fill } from "react-icons/ri";
-import Homeicon from "../../public/icons/home.svg";
-import { SiGooglechrome, SiGooglehome } from "react-icons/si";
 import { FaPlus } from "react-icons/fa";
+import { SiGooglehome } from "react-icons/si";
+import { NavLink, useLocation } from "react-router-dom";
 import Avatar from "../../public/avatar.png";
 const Sidebar = () => {
   let [active, setActive] = useState(false);
@@ -43,7 +41,13 @@ const Sidebar = () => {
       </ul>
       <div className="mb-[195px] w-full flex justify-center items-center">
         <div className="flex w-56 h-[72px] py-3  px-[10px]  items-center gap-3 bg-[#080607] rounded-[8px] justify-between">
-          <img className="rounded-full" src={Avatar} alt={Avatar} />
+          <div className="flex items-center gap-3">
+            <img className="rounded-full" src={Avatar} alt={Avatar} />
+            <div className="flex flex-col gap-[2px]">
+              <h3 className="text-[#FFF] text-base not-italic font-medium leading-5">Michael</h3>
+              <p className="text-[#ABABAB] text-xs not-italic font-medium leading-5">User</p>
+            </div>
+          </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="31"
