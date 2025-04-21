@@ -3,6 +3,7 @@ import { FaPlus } from "react-icons/fa";
 import { SiGooglehome } from "react-icons/si";
 import { NavLink, useLocation } from "react-router-dom";
 import Avatar from "../../public/avatar.png";
+import Logo from "../../public/logo.png";
 const Sidebar = () => {
   let [active, setActive] = useState(false);
   const location = useLocation();
@@ -16,7 +17,11 @@ const Sidebar = () => {
     }
   }, []);
   return (
-    <div className="mt-[38px] w-72 h-full bg-[#FFF] sidebar flex flex-col justify-between">
+    <div className="h-full mt-[48px]">
+    <div className="heading w-full flex justify-center items-center">
+      <img src={Logo} alt={Logo} />
+    </div>
+       <div className="mt-[111px] w-72 h-full bg-[#FFF] sidebar flex flex-col justify-between">
       <ul className="flex flex-col gap-y-[18px]">
         <li>
           <NavLink
@@ -39,7 +44,7 @@ const Sidebar = () => {
           </NavLink>
         </li>
       </ul>
-      <div className="mb-[195px] w-full flex justify-center items-center">
+      <div className="mb-[237px] w-full flex justify-center items-center">
         <div className="flex w-56 h-[72px] py-3  px-[10px]  items-center gap-3 bg-[#080607] rounded-[8px] justify-between">
           <div className="flex items-center gap-3">
             <img className="rounded-full" src={Avatar} alt={Avatar} />
@@ -75,6 +80,8 @@ const Sidebar = () => {
         </div>
       </div>
     </div>
+    </div>
+ 
   );
 };
 
