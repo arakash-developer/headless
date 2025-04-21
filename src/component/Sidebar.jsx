@@ -16,7 +16,7 @@ const Sidebar = () => {
     }
   }, []);
   return (
-    <div className="mt-[38px] w-72 h-full !bg-[red] sidebar flex flex-col justify-between">
+    <div className="mt-[38px] w-72 h-full bg-[#FFF] sidebar flex flex-col justify-between">
       <ul className="flex flex-col gap-y-[18px]">
         <li>
           <NavLink
