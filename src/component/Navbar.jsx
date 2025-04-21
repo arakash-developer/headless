@@ -22,18 +22,18 @@ const Navbar = () => {
           >
             <g opacity="0.8">
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 clip-rule="evenodd"
                 d="M9.74991 12.7796C12.6606 11.5427 14.0174 8.1805 12.7804 5.26997C11.5434 2.35945 8.18098 1.00274 5.27028 2.23968C2.35958 3.47663 1.0028 6.83882 2.23982 9.74934C3.47683 12.6599 6.83921 14.0166 9.74991 12.7796Z"
                 stroke="#919191"
-                stroke-width="1.2"
+                strokeWidth="1.2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
               />
               <path
                 d="M11.5586 11.5581L15.9999 15.9998"
                 stroke="#919191"
-                stroke-width="1.2"
+                strokeWidth="1.2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
               />

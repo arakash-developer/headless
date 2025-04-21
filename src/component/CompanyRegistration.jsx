@@ -127,6 +127,7 @@ const CompanyRegistration = () => {
       if (data.status === "success") {
         nevigate("/companydata");
         toast.success(data.message || "Company registered successfully!", toastStyle);
+        const token = localStorage.setItem("com_auth_token","akash");
         handleClear();
       } else {
         showToast(data.message || "Something went wrong");

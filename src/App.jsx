@@ -20,6 +20,7 @@ import Demo3 from "./component/Demo3";
 import Dashboard from "./component/Dashboard";
 import CompanyRegistration from "./component/CompanyRegistration";
 import CompanyDataViewer from "./component/CompanyDataViewer";
+import ProtectedCompany from "./Protect Rule/ProtectedCompany";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -34,7 +35,11 @@ const router = createBrowserRouter(
       <Route path="/demo2" element={<Demo2 />}></Route>
       <Route path="/login" element={<Login />}></Route>
       <Route path="/demo3" element={<Demo3 />}></Route>
-      <Route path="/dashboard" element={<Dashboard />}></Route>
+      <Route path="/dashboard" element={
+        <ProtectedCompany>
+        <Dashboard />
+        </ProtectedCompany>
+    }></Route>
       <Route path="/companyregistration" element={<CompanyRegistration />}></Route>
       <Route path="/companydata" element={<CompanyDataViewer />}></Route>
       <Route path="*" element={<Error />} />
