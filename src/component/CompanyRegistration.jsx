@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import DownArrow from "../../public/icons/down.svg";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 // Toast style config
 const toastStyle = {
@@ -57,6 +58,9 @@ const CompanyRegistration = () => {
     website: "",
   });
 
+  const [loading, setLoading] = useState(false);
+  let nevigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -66,18 +70,18 @@ const CompanyRegistration = () => {
     const { name, value } = e.target;
 
     if (!value.trim()) {
-      showToast(`${name.replace(/([A-Z])/g, ' $1')} is required`);
+      showToast(`${name.replace(/([A-Z])/g, " $1")} is required`);
     }
 
     if (name === "businessEmail" && value) {
-      const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      const valid = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(value);
       if (!valid) {
         showToast("Invalid email format");
       }
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const {
@@ -89,23 +93,48 @@ const CompanyRegistration = () => {
       industry,
     } = formData;
 
-    if (!companyName.trim()) {
-      showToast("Company Name is required");
-    } else if (!businessEmail.trim()) {
-      showToast("Business Email is required");
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(businessEmail)) {
-      showToast("Invalid email format");
-    } else if (!phone.trim()) {
-      showToast("Phone is required");
-    } else if (!address.trim()) {
-      showToast("Company Address is required");
-    } else if (!companySize.trim()) {
-      showToast("Company Size is required");
-    } else if (!industry.trim()) {
-      showToast("Industry is required");
-    } else {
-      console.log("Submitted Data:", formData);
-      toast.success("Company registered successfully!", toastStyle);
+    // Validation checks
+    if (!companyName.trim()) return showToast("Company Name is required");
+    if (!businessEmail.trim()) return showToast("Business Email is required");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(businessEmail))
+      return showToast("Invalid email format");
+    if (!phone.trim()) return showToast("Phone is required");
+    if (!address.trim()) return showToast("Company Address is required");
+    if (!companySize.trim()) return showToast("Company Size is required");
+    if (!industry.trim()) return showToast("Industry is required");
+
+    const token = localStorage.getItem("auth_token");
+    if (!token) return showToast("Authentication token missing. Please log in.");
+
+    try {
+      setLoading(true);
+
+      const response = await fetch(
+        "https://4amitest-bli6.wp1.sh/wp-json/custom/v1/register-company",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const data = await response.json();
+      setLoading(false);
+
+      if (data.status === "success") {
+        nevigate("/companydata");
+        toast.success(data.message || "Company registered successfully!", toastStyle);
+        handleClear();
+      } else {
+        showToast(data.message || "Something went wrong");
+      }
+    } catch (err) {
+      setLoading(false);
+      showToast("Failed to register. Please try again.");
+      console.error("Error submitting form:", err);
     }
   };
 
@@ -129,22 +158,57 @@ const CompanyRegistration = () => {
         Register Your Company
       </h2>
       <p className="text-[#919191] text-base not-italic font-normal leading-6 mt-3 mb-6">
-        Add your company details to start using your dashboard and invite team members
+        Add your company details to start using your dashboard and invite team
+        members
       </p>
 
       <div className="max-w-[793px] py-[43px] px-[50px] bg-[#FFF] rounded-[5px] companyregform">
         <form className="flex flex-col gap-y-6" onSubmit={handleSubmit}>
-          <FormField label="Company Name" name="companyName" value={formData.companyName} onChange={handleChange} onBlur={handleBlur} />
-          <FormField label="Business Email" name="businessEmail" type="email" value={formData.businessEmail} onChange={handleChange} onBlur={handleBlur} />
+          <FormField
+            label="Company Name"
+            name="companyName"
+            value={formData.companyName}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+          <FormField
+            label="Business Email"
+            name="businessEmail"
+            type="email"
+            value={formData.businessEmail}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
           <div className="flex gap-x-[41px]">
-            <FormField label="Phone" name="phone" value={formData.phone} onChange={handleChange} onBlur={handleBlur} wrapperClass="w-1/2" />
-            <FormField label="Extension" name="extension" value={formData.extension} onChange={handleChange} wrapperClass="w-1/2" />
+            <FormField
+              label="Phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              wrapperClass="w-1/2"
+            />
+            <FormField
+              label="Extension"
+              name="extension"
+              value={formData.extension}
+              onChange={handleChange}
+              wrapperClass="w-1/2"
+            />
           </div>
-          <FormField label="Company Address" name="address" value={formData.address} onChange={handleChange} onBlur={handleBlur} />
+          <FormField
+            label="Company Address"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
 
           <div className="flex gap-x-[42px]">
             <div className="w-full">
-              <label className="text-[#080607] text-base font-medium">Company Size</label>
+              <label className="text-[#080607] text-base font-medium">
+                Company Size
+              </label>
               <div className="relative cursor-pointer">
                 <select
                   name="companySize"
@@ -158,12 +222,18 @@ const CompanyRegistration = () => {
                   <option value="11-50">11-50</option>
                   <option value="51+">51+</option>
                 </select>
-                <img className="absolute top-1/2 -translate-y-1/2 right-[16px]" src={DownArrow} alt="down-arrow" />
+                <img
+                  className="absolute top-1/2 -translate-y-1/2 right-[16px]"
+                  src={DownArrow}
+                  alt="down-arrow"
+                />
               </div>
             </div>
 
             <div className="w-full">
-              <label className="text-[#080607] text-base font-medium">Industry</label>
+              <label className="text-[#080607] text-base font-medium">
+                Industry
+              </label>
               <div className="relative cursor-pointer">
                 <select
                   name="industry"
@@ -177,18 +247,35 @@ const CompanyRegistration = () => {
                   <option value="Healthcare">Healthcare</option>
                   <option value="Finance">Finance</option>
                 </select>
-                <img className="absolute top-1/2 -translate-y-1/2 right-[16px]" src={DownArrow} alt="down-arrow" />
+                <img
+                  className="absolute top-1/2 -translate-y-1/2 right-[16px]"
+                  src={DownArrow}
+                  alt="down-arrow"
+                />
               </div>
             </div>
           </div>
 
-          <FormField label="Website (Optional)" name="website" value={formData.website} onChange={handleChange} />
+          <FormField
+            label="Website (Optional)"
+            name="website"
+            value={formData.website}
+            onChange={handleChange}
+          />
 
           <div className="flex gap-[42px] items-center">
-            <button type="submit" className="py-[18px] px-[60px] bg-[#ED272C] border border-[#ED272C] rounded-[5px] text-white text-base font-bold cursor-pointer">
-              Register Company
+            <button
+              type="submit"
+              disabled={loading}
+              className="py-[18px] px-[60px] bg-[#ED272C] border border-[#ED272C] rounded-[5px] text-white text-base font-bold cursor-pointer"
+            >
+              {loading ? "Submitting..." : "Register Company"}
             </button>
-            <button type="button" onClick={handleClear} className="py-[18px] px-[60px] bg-[#FFF] text-[#080607] border border-[#919191] rounded-[5px] cursor-pointer overflow-hidden text-zinc-950/[0.5] text-center text-ellipsis text-base not-italic font-semibold leading-[1.31rem]">
+            <button
+              type="button"
+              onClick={handleClear}
+              className="py-[18px] px-[60px] bg-[#FFF] text-[#080607] border border-[#919191] rounded-[5px] cursor-pointer overflow-hidden text-zinc-950/[0.5] text-center text-ellipsis text-base not-italic font-semibold leading-[1.31rem]"
+            >
               Clear Form
             </button>
           </div>
