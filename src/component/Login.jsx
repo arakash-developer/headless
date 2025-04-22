@@ -51,7 +51,30 @@ const Login = () => {
       localStorage.setItem("auth_token", data.token);
       localStorage.setItem("user_data", JSON.stringify(data.user)); // Store user data
 
-      navigate("/dashboard", { state: { user: data.user } }); // Pass user data to the dashboard via state
+      // Now check if the company email exists
+      const companyDataResponse = await fetch(
+        "https://4amitest-bli6.wp1.sh/wp-json/custom/v1/company-data",
+        {
+          headers: {
+            Authorization: `Bearer ${data.token}`,
+          },
+        }
+      );
+
+      const companyData = await companyDataResponse.json();
+
+      if (companyData.status === "success") {
+        const companyEmails = companyData.data.map(company => company.businessEmail);
+        if (companyEmails.includes(email)) {
+          // Email exists in the company data, navigate to dashboard
+          navigate("/dashboard", { state: { user: data.user } }); // Pass user data to the dashboard via state
+        } else {
+          // Email does not exist, navigate to company registration
+          navigate("/companyregistration");
+        }
+      } else {
+        toast.error(companyData.message || "Failed to load company data.", toastStyle);
+      }
 
       const toastStyle = {
         position: "bottom-left",
