@@ -62,7 +62,8 @@ const Dashboard = () => {
   // Logout function to clear localStorage and navigate to the login page
   const handleLogout = () => {
     localStorage.removeItem("auth_token");
-    localStorage.removeItem("user_data");
+    localStorage.removeItem("logintoken");
+    localStorage.removeItem("com_auth_token");
     navigate("/login"); // Navigate to login page after logout
     toast.success("Logged out successfully", toastStyle);
   };

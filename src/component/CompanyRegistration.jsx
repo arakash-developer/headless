@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import DownArrow from "../../public/icons/down.svg";
-import { useNavigate } from "react-router-dom";
 
 // Toast style config
 const toastStyle = {
@@ -44,9 +44,13 @@ const FormField = ({
 );
 
 const CompanyRegistration = () => {
+  const location = useLocation(); // Use useLocation to get the passed state
+  const userEmail = location.state?.useremail; // Retrieve the useremail passed via state
+  console.log("userEmail:", userEmail); // Log the userEmail for debugging
+
   const [formData, setFormData] = useState({
     companyName: "",
-    businessEmail: "",
+    businessEmail: userEmail, // Initialize with userEmail as businessEmail
     phone: "",
     extension: "",
     address: "",
@@ -76,8 +80,6 @@ const CompanyRegistration = () => {
 
     if (!companyName) return "Company Name is required";
     if (!businessEmail.trim()) return "Business Email is required";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(businessEmail))
-      return "Invalid email format";
     if (!phone.trim()) return "Phone is required";
     if (!address.trim()) return "Company Address is required";
     if (!companySize.trim()) return "Company Size is required";
@@ -92,8 +94,7 @@ const CompanyRegistration = () => {
     if (validationError) return showToast(validationError);
 
     const token = localStorage.getItem("auth_token");
-    if (!token)
-      return showToast("Authentication token missing. Please log in.");
+    if (!token) return showToast("Authentication token missing. Please log in.");
 
     try {
       setLoading(true);
@@ -106,7 +107,7 @@ const CompanyRegistration = () => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(formData), // Send the full formData with businessEmail
         }
       );
 
@@ -114,7 +115,7 @@ const CompanyRegistration = () => {
       setLoading(false);
 
       if (data.status === "success") {
-        navigate("/companydata");
+        navigate("/dashboard");
         toast.success(
           data.message || "Company registered successfully!",
           toastStyle
@@ -134,7 +135,7 @@ const CompanyRegistration = () => {
   const handleClear = () => {
     setFormData({
       companyName: "",
-      businessEmail: "",
+      businessEmail: userEmail, // Keep businessEmail as userEmail even after clearing the form
       phone: "",
       extension: "",
       address: "",
@@ -150,7 +151,7 @@ const CompanyRegistration = () => {
     if (!loading && formData.companyName === "") {
       setFormData({
         companyName: "",
-        businessEmail: "",
+        businessEmail: userEmail,
         phone: "",
         extension: "",
         address: "",
@@ -159,7 +160,7 @@ const CompanyRegistration = () => {
         website: "",
       });
     }
-  }, [loading]);
+  }, [loading, userEmail]);
 
   return (
     <div>
@@ -167,7 +168,8 @@ const CompanyRegistration = () => {
         Register Your Company
       </h2>
       <p className="text-[#919191] text-base not-italic font-normal leading-6 mt-3 mb-6">
-        Add your company details to start using your dashboard and invite team members
+        Add your company details to start using your dashboard and invite team
+        members
       </p>
 
       <div className="max-w-[793px] py-[43px] px-[50px] bg-[#FFF] rounded-[5px] companyregform">
@@ -182,8 +184,8 @@ const CompanyRegistration = () => {
             label="Business Email"
             name="businessEmail"
             type="email"
-            value={formData.businessEmail}
-            onChange={handleChange}
+            value={formData.businessEmail} // Use formData.businessEmail here
+            readOnly // Make the field read-only
           />
           <div className="flex gap-x-[41px]">
             <FormField

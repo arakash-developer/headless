@@ -70,11 +70,13 @@ const Login = () => {
         if (companyEmails.includes(email)) {
           // Email exists in the company data, navigate to dashboard
           localStorage.setItem("logintoken", "akash@123"); // Store the login token in localStorage
+          localStorage.setItem("com_auth_token", "akash"); // Store the login token in localStorage
+         
           navigate("/dashboard", { state: { user: data.user } }); // Pass user data to the dashboard via state
         } else {
           localStorage.setItem("logintoken", "akash@123"); // Store the login token in localStorage
           // Email does not exist, navigate to company registration
-          navigate("/companyregistration");
+          navigate("/companyregistration",{ state: { useremail: email }} );
         }
       } else {
         toast.error(
