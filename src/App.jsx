@@ -21,6 +21,7 @@ import Dashboard from "./component/Dashboard";
 import CompanyRegistration from "./component/CompanyRegistration";
 import CompanyDataViewer from "./component/CompanyDataViewer";
 import ProtectedCompany from "./Protect Rule/ProtectedCompany";
+import CompanyRegSuc from "./component/CompanyRegSuc";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -41,6 +42,7 @@ const router = createBrowserRouter(
         </ProtectedCompany>
     }></Route>
       <Route path="/companyregistration" element={<CompanyRegistration />}></Route>
+      <Route path="/companyregSuc" element={<CompanyRegSuc />}></Route>
       <Route path="/companydata" element={<CompanyDataViewer />}></Route>
       <Route path="*" element={<Error />} />
     </Route>
