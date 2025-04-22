@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Loginbanner from "../../public/loginbanner.png";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import Loginbanner from "../../public/loginbanner.png";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -64,16 +64,23 @@ const Login = () => {
       const companyData = await companyDataResponse.json();
 
       if (companyData.status === "success") {
-        const companyEmails = companyData.data.map(company => company.businessEmail);
+        const companyEmails = companyData.data.map(
+          (company) => company.businessEmail
+        );
         if (companyEmails.includes(email)) {
           // Email exists in the company data, navigate to dashboard
+          localStorage.setItem("logintoken", "akash@123"); // Store the login token in localStorage
           navigate("/dashboard", { state: { user: data.user } }); // Pass user data to the dashboard via state
         } else {
+          localStorage.setItem("logintoken", "akash@123"); // Store the login token in localStorage
           // Email does not exist, navigate to company registration
           navigate("/companyregistration");
         }
       } else {
-        toast.error(companyData.message || "Failed to load company data.", toastStyle);
+        toast.error(
+          companyData.message || "Failed to load company data.",
+          toastStyle
+        );
       }
 
       const toastStyle = {
