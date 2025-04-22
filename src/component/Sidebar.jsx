@@ -23,11 +23,11 @@ const Sidebar = () => {
     console.log(iscompanyrestored);
   }, [con]);
   return (
-    <div className="h-full mt-[48px]">
+    <div className="h-full pt-[48px] sidebar">
       <div className="heading w-full flex justify-center items-center">
         <img src={Logo} alt={Logo} />
       </div>
-      <div className="mt-[111px] w-72 h-full bg-[#FFF] sidebar flex flex-col justify-between">
+      <div className="mt-[111px] w-72 h-full flex flex-col justify-between">
         <ul className="flex flex-col gap-y-[18px]">
           <li>
             <NavLink

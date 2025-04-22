@@ -59,40 +59,37 @@ const CompanyDataViewer = () => {
       ) : companies.length === 0 ? (
         <p className="text-gray-500">No company data found.</p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr className="bg-gray-100 text-sm text-[#080607]">
-                <th className="py-2 px-4 border">Company Name</th>
-                <th className="py-2 px-4 border">Email</th>
-                <th className="py-2 px-4 border">Phone</th>
-                <th className="py-2 px-4 border">Size</th>
-                <th className="py-2 px-4 border">Industry</th>
-                <th className="py-2 px-4 border">Website</th>
-              </tr>
-            </thead>
-            <tbody>
-              {companies.map((company, idx) => (
-                <tr key={idx} className="border-t text-sm hover:bg-gray-50">
-                  <td className="py-2 px-4 border">{company.companyName || "-"}</td>
-                  <td className="py-2 px-4 border">{company.businessEmail || "-"}</td>
-                  <td className="py-2 px-4 border">{company.phone || "-"}</td>
-                  <td className="py-2 px-4 border">{company.companySize || "-"}</td>
-                  <td className="py-2 px-4 border">{company.industry || "-"}</td>
-                  <td className="py-2 px-4 border">
-                    {company.website ? (
-                      <a href={company.website} className="text-blue-600 underline" target="_blank" rel="noreferrer">
-                        {company.website}
-                      </a>
-                    ) : (
-                      "-"
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <ol className="list-decimal pl-6">
+          {companies.map((company, idx) => (
+            <li key={idx} className="mb-4">
+              <div>
+                <strong>Company Name:</strong> {company.companyName || "-"}
+              </div>
+              <div>
+                <strong>Email:</strong> {company.businessEmail || "-"}
+              </div>
+              <div>
+                <strong>Phone:</strong> {company.phone || "-"}
+              </div>
+              <div>
+                <strong>Size:</strong> {company.companySize || "-"}
+              </div>
+              <div>
+                <strong>Industry:</strong> {company.industry || "-"}
+              </div>
+              <div>
+                <strong>Website:</strong>{" "}
+                {company.website ? (
+                  <a href={company.website} className="text-blue-600 underline" target="_blank" rel="noreferrer">
+                    {company.website}
+                  </a>
+                ) : (
+                  "-"
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
       )}
     </div>
   );

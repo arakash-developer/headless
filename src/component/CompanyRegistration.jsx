@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DownArrow from "../../public/icons/down.svg";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+
 import { useNavigate } from "react-router-dom";
 
 // Toast style config
@@ -59,7 +59,7 @@ const CompanyRegistration = () => {
   });
 
   const [loading, setLoading] = useState(false);
-  let nevigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -69,21 +69,29 @@ const CompanyRegistration = () => {
   const handleBlur = (e) => {
     const { name, value } = e.target;
 
+    // Basic validation on blur
     if (!value.trim()) {
       showToast(`${name.replace(/([A-Z])/g, " $1")} is required`);
     }
 
     if (name === "businessEmail" && value) {
-      const valid = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(value);
+      const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); // Simple check for email format
       if (!valid) {
-        showToast("Invalid email format");
+        showToast("Please enter a valid email address");
+      }
+    }
+    
+
+    if (name === "phone" && value) {
+      const phoneValid = /^[0-9]{10}$/.test(value); // Basic 10-digit phone validation
+      if (!phoneValid) {
+        showToast("Phone number must be 10 digits.");
       }
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  // Consolidated validation logic
+  const validateForm = () => {
     const {
       companyName,
       businessEmail,
@@ -93,15 +101,21 @@ const CompanyRegistration = () => {
       industry,
     } = formData;
 
-    // Validation checks
-    if (!companyName.trim()) return showToast("Company Name is required");
-    if (!businessEmail.trim()) return showToast("Business Email is required");
+    if (!companyName.trim()) return "Company Name is required";
+    if (!businessEmail.trim()) return "Business Email is required";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(businessEmail))
-      return showToast("Invalid email format");
-    if (!phone.trim()) return showToast("Phone is required");
-    if (!address.trim()) return showToast("Company Address is required");
-    if (!companySize.trim()) return showToast("Company Size is required");
-    if (!industry.trim()) return showToast("Industry is required");
+      return "Invalid email format";
+    if (!phone.trim()) return "Phone is required";
+    if (!address.trim()) return "Company Address is required";
+    if (!companySize.trim()) return "Company Size is required";
+    if (!industry.trim()) return "Industry is required";
+    return null;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const validationError = validateForm();
+    if (validationError) return showToast(validationError);
 
     const token = localStorage.getItem("auth_token");
     if (!token) return showToast("Authentication token missing. Please log in.");
@@ -125,9 +139,9 @@ const CompanyRegistration = () => {
       setLoading(false);
 
       if (data.status === "success") {
-        nevigate("/companydata");
+        navigate("/companydata");
         toast.success(data.message || "Company registered successfully!", toastStyle);
-        const token = localStorage.setItem("com_auth_token","akash");
+        localStorage.setItem("com_auth_token", "akash");
         handleClear();
       } else {
         showToast(data.message || "Something went wrong");
@@ -150,17 +164,32 @@ const CompanyRegistration = () => {
       industry: "",
       website: "",
     });
+    setLoading(false); // Reset loading state when clearing the form
   };
+
+  // UseEffect to reset form after successful submission
+  useEffect(() => {
+    if (!loading && formData.companyName === "") {
+      setFormData({
+        companyName: "",
+        businessEmail: "",
+        phone: "",
+        extension: "",
+        address: "",
+        companySize: "",
+        industry: "",
+        website: "",
+      });
+    }
+  }, [loading]);
 
   return (
     <div>
-      <ToastContainer />
       <h2 className="text-[#080607] text-[28px] leading-8 not-italic font-semibold">
         Register Your Company
       </h2>
       <p className="text-[#919191] text-base not-italic font-normal leading-6 mt-3 mb-6">
-        Add your company details to start using your dashboard and invite team
-        members
+        Add your company details to start using your dashboard and invite team members
       </p>
 
       <div className="max-w-[793px] py-[43px] px-[50px] bg-[#FFF] rounded-[5px] companyregform">
@@ -270,7 +299,13 @@ const CompanyRegistration = () => {
               disabled={loading}
               className="py-[18px] px-[60px] bg-[#ED272C] border border-[#ED272C] rounded-[5px] text-white text-base font-bold cursor-pointer"
             >
-              {loading ? "Submitting..." : "Register Company"}
+              {loading ? (
+                <div className="spinner-border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+              ) : (
+                "Register Company"
+              )}
             </button>
             <button
               type="button"
