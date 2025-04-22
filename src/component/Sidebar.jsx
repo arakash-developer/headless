@@ -8,6 +8,7 @@ const Sidebar = () => {
   let [active, setActive] = useState(false);
   const [key, setKey] = useState("");
   let [islogin, setIsLogin] = useState(false);
+  let [userData, setUserData] = useState({});
   const location = useLocation();
   let [iscompanyrestored, setIsCompanyRestored] = useState(false);
   console.log(location.pathname);
@@ -20,8 +21,9 @@ const Sidebar = () => {
       setIsLogin(false);
     }
     console.log("aaaaa", islogin);
-  });
-  console.log("aaaaa2");
+    const storedObject = JSON.parse(localStorage.getItem("user_data"));
+    setUserData(storedObject);
+  },[]);
 
   return (
     <div className="h-full pt-[48px] sidebar">
@@ -59,11 +61,11 @@ const Sidebar = () => {
               <div className="flex items-center gap-3">
                 <img className="rounded-full" src={Avatar} alt={Avatar} />
                 <div className="flex flex-col gap-[2px]">
-                  <h3 className="text-[#FFF] text-base not-italic font-medium leading-5">
-                    Michael
+                  <h3 className="text-[#FFF] text-base not-italic font-medium leading-5 capitalize">
+                   {userData?.username}
                   </h3>
-                  <p className="text-[#ABABAB] text-xs not-italic font-medium leading-5">
-                    User
+                  <p className="text-[#ABABAB] text-xs not-italic font-medium leading-5 capitalize">
+                  {userData?.roles[0]}
                   </p>
                 </div>
               </div>
