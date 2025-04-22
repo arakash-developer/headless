@@ -25,7 +25,9 @@ const Sidebar = () => {
   return (
     <div className="h-full pt-[48px] sidebar">
       <div className="heading w-full flex justify-center items-center">
-        <img src={Logo} alt={Logo} />
+        <NavLink to="/">
+          <img className='cursor-pointer' src={Logo} alt={Logo} />
+        </NavLink>
       </div>
       <div className="mt-[111px] w-72 h-full flex flex-col justify-between">
         <ul className="flex flex-col gap-y-[18px]">
