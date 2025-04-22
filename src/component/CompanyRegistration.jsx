@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import DownArrow from "../../public/icons/down.svg";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-
+import DownArrow from "../../public/icons/down.svg";
 import { useNavigate } from "react-router-dom";
 
 // Toast style config
@@ -30,7 +29,6 @@ const FormField = ({
   type = "text",
   placeholder,
   wrapperClass = "flex flex-col gap-y-2",
-  onBlur,
 }) => (
   <div className={wrapperClass}>
     <label className="text-[#080607] text-base font-medium">{label}</label>
@@ -40,7 +38,6 @@ const FormField = ({
       value={value}
       placeholder={placeholder}
       onChange={onChange}
-      onBlur={onBlur}
       className="w-full h-[50px] py-3 px-4 bg-[#F4F5F9] border border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm cursor-pointer"
     />
   </div>
@@ -66,30 +63,6 @@ const CompanyRegistration = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleBlur = (e) => {
-    const { name, value } = e.target;
-
-    // Basic validation on blur
-    if (!value.trim()) {
-      showToast(`${name.replace(/([A-Z])/g, " $1")} is required`);
-    }
-
-    if (name === "businessEmail" && value) {
-      const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); // Simple check for email format
-      if (!valid) {
-        showToast("Please enter a valid email address");
-      }
-    }
-    
-
-    if (name === "phone" && value) {
-      const phoneValid = /^[0-9]{10}$/.test(value); // Basic 10-digit phone validation
-      if (!phoneValid) {
-        showToast("Phone number must be 10 digits.");
-      }
-    }
-  };
-
   // Consolidated validation logic
   const validateForm = () => {
     const {
@@ -101,7 +74,7 @@ const CompanyRegistration = () => {
       industry,
     } = formData;
 
-    if (!companyName.trim()) return "Company Name is required";
+    if (!companyName) return "Company Name is required";
     if (!businessEmail.trim()) return "Business Email is required";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(businessEmail))
       return "Invalid email format";
@@ -114,11 +87,13 @@ const CompanyRegistration = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const validationError = validateForm();
     if (validationError) return showToast(validationError);
 
     const token = localStorage.getItem("auth_token");
-    if (!token) return showToast("Authentication token missing. Please log in.");
+    if (!token)
+      return showToast("Authentication token missing. Please log in.");
 
     try {
       setLoading(true);
@@ -140,7 +115,10 @@ const CompanyRegistration = () => {
 
       if (data.status === "success") {
         navigate("/companydata");
-        toast.success(data.message || "Company registered successfully!", toastStyle);
+        toast.success(
+          data.message || "Company registered successfully!",
+          toastStyle
+        );
         localStorage.setItem("com_auth_token", "akash");
         handleClear();
       } else {
@@ -199,7 +177,6 @@ const CompanyRegistration = () => {
             name="companyName"
             value={formData.companyName}
             onChange={handleChange}
-            onBlur={handleBlur}
           />
           <FormField
             label="Business Email"
@@ -207,7 +184,6 @@ const CompanyRegistration = () => {
             type="email"
             value={formData.businessEmail}
             onChange={handleChange}
-            onBlur={handleBlur}
           />
           <div className="flex gap-x-[41px]">
             <FormField
@@ -215,7 +191,6 @@ const CompanyRegistration = () => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              onBlur={handleBlur}
               wrapperClass="w-1/2"
             />
             <FormField
@@ -231,7 +206,6 @@ const CompanyRegistration = () => {
             name="address"
             value={formData.address}
             onChange={handleChange}
-            onBlur={handleBlur}
           />
 
           <div className="flex gap-x-[42px]">
@@ -244,7 +218,6 @@ const CompanyRegistration = () => {
                   name="companySize"
                   value={formData.companySize}
                   onChange={handleChange}
-                  onBlur={handleBlur}
                   className="w-full h-[50px] py-3 px-4 border bg-[#F4F5F9] border-[#DBDCDE] rounded-[8px] appearance-none cursor-pointer"
                 >
                   <option value="">Select One</option>
@@ -269,7 +242,6 @@ const CompanyRegistration = () => {
                   name="industry"
                   value={formData.industry}
                   onChange={handleChange}
-                  onBlur={handleBlur}
                   className="w-full h-[50px] py-3 px-4 border bg-[#F4F5F9] border-[#DBDCDE] rounded-[8px] appearance-none cursor-pointer"
                 >
                   <option value="">Select One</option>
