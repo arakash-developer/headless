@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loginbanner from "../../public/loginbanner.png";
 
+import { Contex } from "../context/User";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(""); // State for error message
+  const [error, setError] = useState("");
   let navigate = useNavigate();
-
+  let { setIsLogin,islogin } = useContext(Contex);
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -68,15 +69,14 @@ const Login = () => {
           (company) => company.businessEmail
         );
         if (companyEmails.includes(email)) {
-          // Email exists in the company data, navigate to dashboard
-          localStorage.setItem("logintoken", "akash@123"); // Store the login token in localStorage
-          localStorage.setItem("com_auth_token", "akash"); // Store the login token in localStorage
-         
-          navigate("/dashboard", { state: { user: data.user } }); // Pass user data to the dashboard via state
+          localStorage.setItem("logintoken", "akash@123");
+          localStorage.setItem("com_auth_token", "akash"); 
+          setIsLogin(true);
+          navigate("/dashboard", { state: { user: data.user } }); 
         } else {
-          localStorage.setItem("logintoken", "akash@123"); // Store the login token in localStorage
-          // Email does not exist, navigate to company registration
-          navigate("/companyregistration",{ state: { useremail: email }} );
+          setIsLogin(true);
+          localStorage.setItem("logintoken", "akash@123");
+          navigate("/companyregistration", { state: { useremail: email } });
         }
       } else {
         toast.error(
