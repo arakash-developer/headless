@@ -66,7 +66,6 @@ const App = () => {
     <div className="h-[100vh]">
       {/* //Router Provider..... */}
       <RouterProvider router={router} />
-      {/* <Demo3 /> */}
     </div>
   );
 };
