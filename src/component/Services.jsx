@@ -29,6 +29,7 @@ const Services = () => {
 
   // Handle checkbox toggle
   const handleCheckboxChange = (id) => {
+    setActive(!active);
     const updatedServices = services.map((service) =>
       service.id === id ? { ...service, selected: !service.selected } : service
     );
@@ -96,8 +97,16 @@ const Services = () => {
                       type="checkbox"
                       checked={service.selected}
                       onChange={() => handleCheckboxChange(service.id)}
-                      className="mr-2"
+                      id={`checkbox-${service.id}`}
+                      className="peer hidden" // Hide the native checkbox
                     />
+
+                    <label
+                      htmlFor={`checkbox-${service.id}`}
+                      className="flex items-center justify-center cursor-pointer w-5 h-5 rounded-md peer-checked:bg-[var(--primary2)] peer-checked:border-[var(--primary2)] border-2 border-[var(--neutral-400)]"
+                    >
+                      <FaCheck className="text-[#FFF] text-[32px] not-italic font-semibold leading-10" />
+                    </label>
                   </td>
                   <td className="px-4 py-2 border-b-2 border-r-2">
                     {service.selected ? service.tokens : 0}
