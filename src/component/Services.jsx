@@ -97,7 +97,7 @@ const Services = () => {
                   <td className="px-4 py-2 border-b-2 border-r-2">
                     <label className="flex items-center">{service.name}</label>
                   </td>
-                  <td className="px-4 py-2 border-b-2 border-r-2">
+                  <td className="px-6 py-2 border-b-2 border-r-2">
                     <input
                       type="checkbox"
                       onChange={() => handleCheckboxChange(service.id)}
@@ -114,7 +114,7 @@ const Services = () => {
                       )}
                     </label>
                   </td>
-                  <td className="px-4 py-2 border-b-2 border-r-2">
+                  <td className="px-6 py-2 border-b-2 border-r-2">
                     <Tooltip title="Paid with tokens">
                       <Button
                         style={{
@@ -131,7 +131,7 @@ const Services = () => {
                       </Button>
                     </Tooltip>
                   </td>
-                  <td className="px-4 py-2 border-b-2">
+                  <td className="px-6 py-2 border-b-2">
                     {service.selected ? service.hourly : 0}
                   </td>
                 </tr>
