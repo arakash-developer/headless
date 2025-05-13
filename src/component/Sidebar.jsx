@@ -5,6 +5,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import Avatar from "../../public/avatar.png";
 import Logo from "../../public/logo.png";
 import ServiceIcon from "../assets/ServiceIcon";
+import HomeIcon from "../assets/HomeIcon";
 const Sidebar = () => {
   let [active, setActive] = useState(false);
   const [key, setKey] = useState("");
@@ -55,7 +56,7 @@ const Sidebar = () => {
                activeClassName="active"
               to="/dashboard"
             >
-              <SiGooglehome />
+             <HomeIcon color="#080607" />
               <p className="py-1">Dashboard</p>
             </NavLink>
           </li>
