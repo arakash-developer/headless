@@ -1,4 +1,3 @@
-import React from "react";
 import RootLayout from "./component/RootLayout";
 // React Router dom........
 import {
@@ -14,7 +13,12 @@ import Dashboard from "./component/Dashboard";
 import Demo from "./component/Demo";
 import Demo2 from "./component/Demo2";
 import Demo3 from "./component/Demo3";
+import Demo4 from "./component/Demo4";
+import Demo5 from "./component/Demo5";
+import Demo6 from "./component/Demo6";
 import InviteUser from "./component/InviteUser";
+import Reg1 from "./component/layers/Reg1";
+import Reg2 from "./component/layers/Reg2";
 import Login from "./component/Login";
 import Password from "./component/Password";
 import Register from "./component/Register";
@@ -22,9 +26,6 @@ import Register2 from "./component/Register2";
 import RegistrationSuccess from "./component/RegistrationSuccess";
 import LoginProtected from "./Protect Rule/LoginProtected";
 import ProtectedCompany from "./Protect Rule/ProtectedCompany";
-import Demo4 from "./component/Demo4";
-import Demo5 from "./component/Demo5";
-import Demo6 from "./component/Demo6";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -41,6 +42,8 @@ const router = createBrowserRouter(
       <Route path="/demo3" element={<Demo3 />}></Route>
       <Route path="/demo5" element={<Demo5 />}></Route>
       <Route path="/demo6" element={<Demo6 />}></Route>
+      <Route path="/reg1" component={Reg1} />
+      <Route path="/reg2" component={Reg2} />
       <Route
         path="/dashboard"
         element={

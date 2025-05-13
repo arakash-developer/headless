@@ -4,6 +4,7 @@ import { SiGooglehome } from "react-icons/si";
 import { NavLink, useLocation } from "react-router-dom";
 import Avatar from "../../public/avatar.png";
 import Logo from "../../public/logo.png";
+import ServiceIcon from "../assets/ServiceIcon";
 const Sidebar = () => {
   let [active, setActive] = useState(false);
   const [key, setKey] = useState("");
@@ -61,13 +62,24 @@ const Sidebar = () => {
           <li>
             <NavLink
               className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
+              to="/services"
+              activeClassName="active"
+            
+            >
+            <ServiceIcon color="#080607" />
+              <p className="py-1">Services</p>
+            </NavLink>
+          </li>
+          {/* <li>
+            <NavLink
+              className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
               to="/inviteuser"
               activeClassName="active"
             >
               <FaPlus />
               <p className="py-1">Invite a User</p>
             </NavLink>
-          </li>
+          </li> */}
         </ul>
         <div className="mb-[237px] w-full flex justify-center items-center">
           {islogin && (
