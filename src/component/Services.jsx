@@ -1,8 +1,8 @@
 import { Button, Tooltip } from "antd";
 import { useState } from "react";
 import { FaCheck } from "react-icons/fa6";
-import Token from "../assets/Token";
 import TimeIcon from "../assets/TimeIcon";
+import Token from "../assets/Token";
 
 const Services = () => {
   const [activeButton, setActiveButton] = useState(null); // Track the active button
@@ -154,6 +154,17 @@ const Services = () => {
             </tbody>
           </table>
         </div>
+      </div>
+      <div className="pt-3 pb-[33px] pl-5 mt-6 bg-[var(--secondary)] servicecard rounded-[8px]">
+        <h3 className="font-semibold text-lg leading-[156%] text-[#343a40]">
+          Customer Information
+        </h3>
+        <form className="mt-3">
+          <div className="flex flex-col gap-y-[2px]">
+            <label htmlFor="" className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">Lessee No</label>
+            <input type="text" placeholder='L-1001'/>
+          </div>
+        </form>
       </div>
     </>
   );
