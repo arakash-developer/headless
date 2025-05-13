@@ -162,7 +162,7 @@ const Services = () => {
         <form className="mt-3">
           <div className="flex flex-col gap-y-[2px]">
             <label htmlFor="" className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">Lessee No</label>
-            <input type="text" placeholder='L-1001'/>
+            <input type="text" className='font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px] outline-none' placeholder='L-1001'/>
           </div>
         </form>
       </div>
