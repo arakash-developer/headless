@@ -1,5 +1,7 @@
+import { Button, Tooltip } from "antd";
 import { useState } from "react";
 import { FaCheck } from "react-icons/fa6";
+import Token from "../assets/Token";
 
 const Services = () => {
   const [activeButton, setActiveButton] = useState(null); // Track the active button
@@ -113,7 +115,11 @@ const Services = () => {
                     </label>
                   </td>
                   <td className="px-4 py-2 border-b-2 border-r-2">
-                    {service.selected ? service.tokens : 0}
+                    <Tooltip title="Paid with tokens">
+                      <Button>
+                        <Token color="var(--text-secondary)" />
+                      </Button>
+                    </Tooltip>
                   </td>
                   <td className="px-4 py-2 border-b-2">
                     {service.selected ? service.hourly : 0}
