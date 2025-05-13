@@ -2,6 +2,7 @@ import { Button, Tooltip } from "antd";
 import { useState } from "react";
 import { FaCheck } from "react-icons/fa6";
 import Token from "../assets/Token";
+import TimeIcon from "../assets/TimeIcon";
 
 const Services = () => {
   const [activeButton, setActiveButton] = useState(null); // Track the active button
@@ -131,8 +132,22 @@ const Services = () => {
                       </Button>
                     </Tooltip>
                   </td>
-                  <td className="px-6 py-2 border-b-2">
-                    {service.selected ? service.hourly : 0}
+                  <td className="px-6 py-2 border-b-2 border-r-2">
+                    <Tooltip title="Paid hourly">
+                      <Button
+                        style={{
+                          backgroundColor: "transparent",
+                          color: "",
+                          borderRadius: "0",
+                          border: "none",
+                          padding: "0",
+                          fontSize: "16px",
+                          transition: "background-color 0.3s ease",
+                        }}
+                      >
+                        <TimeIcon color="var(--text-secondary)" />
+                      </Button>
+                    </Tooltip>
                   </td>
                 </tr>
               ))}
