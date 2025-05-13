@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaCheck } from "react-icons/fa6";
 
 const Services = () => {
   const [services, setServices] = useState([
@@ -70,13 +71,16 @@ const Services = () => {
           <table className="min-w-full table-auto border-collapse">
             <thead>
               <tr>
-                <th className="px-4 py-2 border-t-2 border-b-2 border-r-2 text-left">
+                <th className="px-6 py-3 font-medium text-xs text-[var(--text-secondary)] border-b border-r border-[var(--neutral)] text-left">
                   Services
                 </th>
-                <th className="px-4 py-2 border-t-2 border-b-2 border-r-2 text-left">
+                <th className="px-6 py-3 font-medium text-xs text-[var(--text-secondary)] border-b border-r border-[var(--neutral)] text-left">
+                  <FaCheck />
+                </th>
+                <th className="px-6 py-3 font-medium text-xs text-[var(--text-secondary)] border-b border-r border-[var(--neutral)] text-left">
                   Tokens
                 </th>
-                <th className="px-4 py-2 border-t-2 border-b-2 text-left">
+                <th className="px-6 py-3 font-medium text-xs text-[var(--text-secondary)] border-b border-r border-[var(--neutral)] text-left">
                   Hourly
                 </th>
               </tr>
@@ -85,15 +89,15 @@ const Services = () => {
               {services.map((service) => (
                 <tr key={service.id} className="hover:bg-gray-50">
                   <td className="px-4 py-2 border-b-2 border-r-2">
-                    <label className="flex items-center">
-                      <input
-                        type="checkbox"
-                        checked={service.selected}
-                        onChange={() => handleCheckboxChange(service.id)}
-                        className="mr-2"
-                      />
-                      {service.name}
-                    </label>
+                    <label className="flex items-center">{service.name}</label>
+                  </td>
+                  <td className="px-4 py-2 border-b-2 border-r-2">
+                    <input
+                      type="checkbox"
+                      checked={service.selected}
+                      onChange={() => handleCheckboxChange(service.id)}
+                      className="mr-2"
+                    />
                   </td>
                   <td className="px-4 py-2 border-b-2 border-r-2">
                     {service.selected ? service.tokens : 0}
