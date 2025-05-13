@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import DownArrow from "../../public/icons/down.svg";
@@ -14,7 +14,7 @@ const toastStyle = {
   progress: undefined,
   theme: "colored",
   style: {
-    background: "#080607",
+    background: "var(--primary2)",
     color: "#fff",
   },
 };
@@ -31,7 +31,9 @@ const FormField = ({
   wrapperClass = "flex flex-col gap-y-2",
 }) => (
   <div className={wrapperClass}>
-    <label className="text-[#080607] text-base font-medium">{label}</label>
+    <label className="text-[var(--primary2)] text-base font-medium">
+      {label}
+    </label>
     <input
       type={type}
       name={name}
@@ -94,7 +96,8 @@ const CompanyRegistration = () => {
     if (validationError) return showToast(validationError);
 
     const token = localStorage.getItem("auth_token");
-    if (!token) return showToast("Authentication token missing. Please log in.");
+    if (!token)
+      return showToast("Authentication token missing. Please log in.");
 
     try {
       setLoading(true);
@@ -164,7 +167,7 @@ const CompanyRegistration = () => {
 
   return (
     <div>
-      <h2 className="text-[#080607] text-[28px] leading-8 not-italic font-semibold">
+      <h2 className="text-[var(--primary2)] text-[28px] leading-8 not-italic font-semibold">
         Register Your Company
       </h2>
       <p className="text-[#919191] text-base not-italic font-normal leading-6 mt-3 mb-6">
@@ -212,7 +215,7 @@ const CompanyRegistration = () => {
 
           <div className="flex gap-x-[42px]">
             <div className="w-full">
-              <label className="text-[#080607] text-base font-medium">
+              <label className="text-[var(--primary2)] text-base font-medium">
                 Company Size
               </label>
               <div className="relative cursor-pointer">
@@ -236,7 +239,7 @@ const CompanyRegistration = () => {
             </div>
 
             <div className="w-full">
-              <label className="text-[#080607] text-base font-medium">
+              <label className="text-[var(--primary2)] text-base font-medium">
                 Industry
               </label>
               <div className="relative cursor-pointer">
@@ -271,7 +274,7 @@ const CompanyRegistration = () => {
             <button
               type="submit"
               disabled={loading}
-              className="py-[18px] px-[60px] bg-[#ED272C] border border-[#ED272C] rounded-[5px] text-white text-base font-bold cursor-pointer"
+              className="py-[18px] px-[60px] bg-[var(--primary)] border border-[var(--primary)] rounded-[5px] text-white text-base font-bold cursor-pointer"
             >
               {loading ? (
                 <div className="spinner-border" role="status">
@@ -284,7 +287,7 @@ const CompanyRegistration = () => {
             <button
               type="button"
               onClick={handleClear}
-              className="py-[18px] px-[60px] bg-[#FFF] text-[#080607] border border-[#919191] rounded-[5px] cursor-pointer overflow-hidden text-zinc-950/[0.5] text-center text-ellipsis text-base not-italic font-semibold leading-[1.31rem]"
+              className="py-[18px] px-[60px] bg-[#FFF] text-[var(--primary2)] border border-[#919191] rounded-[5px] cursor-pointer overflow-hidden text-zinc-950/[0.5] text-center text-ellipsis text-base not-italic font-semibold leading-[1.31rem]"
             >
               Clear Form
             </button>

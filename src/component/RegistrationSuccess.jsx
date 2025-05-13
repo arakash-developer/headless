@@ -1,4 +1,3 @@
-import React from "react";
 import { FaCheck } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -6,7 +5,7 @@ const RegistrationSuccess = () => {
   return (
     <>
       <div className="p-[60px] bg-[#E9E9E9] max-w-[800px]">
-        <div className="w-[75px] h-[75px] bg-[#ED272C] mx-auto mb-10 rounded-full flex justify-center items-center">
+        <div className="w-[75px] h-[75px] bg-[var(--primary)] mx-auto mb-10 rounded-full flex justify-center items-center">
           <FaCheck className="text-[#FFF] text-[32px] not-italic font-semibold leading-10" />
         </div>
         <h2 className="text-[#000] text-[32px] not-italic font-bold leading-10 text-center">
@@ -19,7 +18,7 @@ const RegistrationSuccess = () => {
         <div className="w-full flex justify-center">
           <Link
             to="/login"
-            className="bg-[#ED272C] py-[18px] px-[60px] text-[#fff] text-[16px] not-italic text-center rounded-[5px]  font-semibold leading-7"
+            className="bg-[var(--primary)] py-[18px] px-[60px] text-[#fff] text-[16px] not-italic text-center rounded-[5px]  font-semibold leading-7"
           >
             Go to Log In
           </Link>

@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { FaPlus } from "react-icons/fa";
+import { useEffect, useState } from "react";
 import { SiGooglehome } from "react-icons/si";
 import { NavLink, useLocation } from "react-router-dom";
 import Avatar from "../../public/avatar.png";
 import Logo from "../../public/logo.png";
-import ServiceIcon from "../assets/ServiceIcon";
 import HomeIcon from "../assets/HomeIcon";
+import ServiceIcon from "../assets/ServiceIcon";
 const Sidebar = () => {
   let [active, setActive] = useState(false);
   const [key, setKey] = useState("");
@@ -25,7 +24,7 @@ const Sidebar = () => {
     console.log("aaaaa", islogin);
     const storedObject = JSON.parse(localStorage.getItem("user_data"));
     setUserData(storedObject);
-  },[]);
+  }, []);
 
   return (
     <div className="h-full pt-[48px] sidebar">
@@ -41,7 +40,7 @@ const Sidebar = () => {
               className={`text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px] ${
                 active ? "active" : ""
               }`}
-               activeClassName="active"
+              activeClassName="active"
               to="/"
             >
               <SiGooglehome />
@@ -53,10 +52,10 @@ const Sidebar = () => {
               className={`text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px] ${
                 active ? "active" : ""
               }`}
-               activeClassName="active"
+              activeClassName="active"
               to="/dashboard"
             >
-             <HomeIcon color="#080607" />
+              <HomeIcon color="var(--primary2)" />
               <p className="py-1">Dashboard</p>
             </NavLink>
           </li>
@@ -65,9 +64,8 @@ const Sidebar = () => {
               className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
               to="/services"
               activeClassName="active"
-            
             >
-            <ServiceIcon color="#080607" />
+              <ServiceIcon color="var(--primary2)" />
               <p className="py-1">Services</p>
             </NavLink>
           </li>
@@ -84,15 +82,15 @@ const Sidebar = () => {
         </ul>
         <div className="mb-[237px] w-full flex justify-center items-center">
           {islogin && (
-            <div className="flex w-56 h-[72px] py-3  px-[10px]  items-center gap-3 bg-[#080607] rounded-[8px] justify-between">
+            <div className="flex w-56 h-[72px] py-3  px-[10px]  items-center gap-3 bg-[var(--primary2)] rounded-[8px] justify-between">
               <div className="flex items-center gap-3">
                 <img className="rounded-full" src={Avatar} alt={Avatar} />
                 <div className="flex flex-col gap-[2px]">
                   <h3 className="text-[#FFF] text-base not-italic font-medium leading-5 capitalize">
-                   {userData?.username}
+                    {userData?.username}
                   </h3>
                   <p className="text-[#ABABAB] text-xs not-italic font-medium leading-5 capitalize">
-                  {userData?.roles[0]}
+                    {userData?.roles[0]}
                   </p>
                 </div>
               </div>

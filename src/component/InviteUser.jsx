@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { toast } from "react-toastify";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import Key from "../../public/key.svg";
 
 const InviteUser = () => {
@@ -74,7 +74,7 @@ const InviteUser = () => {
 
     toast.success("Next Step!", {
       ...toastStyle,
-      style: { background: "#ED272C", color: "#fff" },
+      style: { background: "var(--primary)", color: "#fff" },
     });
 
     navigate("/register2");
@@ -83,7 +83,7 @@ const InviteUser = () => {
   return (
     <div>
       <div className="mt-5">
-        <h2 className="text-[#080607] text-[28px] leading-8 font-semibold">
+        <h2 className="text-[var(--primary2)] text-[28px] leading-8 font-semibold">
           Send an Invitation
         </h2>
         <p className="max-w-[813px] text-[#919191] text-base font-normal leading-6 mb-[30px]">
@@ -95,34 +95,80 @@ const InviteUser = () => {
       </div>
 
       <div className="max-w-[855px] p-[60px] bg-[#fff] rounded-[5px] formboxshadow">
-        <form className="flex flex-col gap-y-6 pt-[50px]" onSubmit={registerCheck}>
+        <form
+          className="flex flex-col gap-y-6 pt-[50px]"
+          onSubmit={registerCheck}
+        >
           {/* First & Last Name */}
           <div className="flex gap-x-[41px]">
-            <FormField label="First Name" value={formData.firstName} onChange={(val) => setFormData({ ...formData, firstName: val })} wrapperClass="w-1/2" />
-            <FormField label="Last Name" value={formData.lastName} onChange={(val) => setFormData({ ...formData, lastName: val })} wrapperClass="w-1/2" />
+            <FormField
+              label="First Name"
+              value={formData.firstName}
+              onChange={(val) => setFormData({ ...formData, firstName: val })}
+              wrapperClass="w-1/2"
+            />
+            <FormField
+              label="Last Name"
+              value={formData.lastName}
+              onChange={(val) => setFormData({ ...formData, lastName: val })}
+              wrapperClass="w-1/2"
+            />
           </div>
 
           {/* Title & Company */}
           <div className="flex gap-x-[41px]">
-            <FormField label="Title" value={formData.title} onChange={(val) => setFormData({ ...formData, title: val })} wrapperClass="w-1/2" />
-            <FormField label="Company" value={formData.company} onChange={(val) => setFormData({ ...formData, company: val })} wrapperClass="w-1/2" />
+            <FormField
+              label="Title"
+              value={formData.title}
+              onChange={(val) => setFormData({ ...formData, title: val })}
+              wrapperClass="w-1/2"
+            />
+            <FormField
+              label="Company"
+              value={formData.company}
+              onChange={(val) => setFormData({ ...formData, company: val })}
+              wrapperClass="w-1/2"
+            />
           </div>
 
           {/* Phone & Extension */}
           <div className="flex gap-x-[41px]">
-            <FormField label="Phone" type="text" placeholder="(123) 4567890" value={formData.phone} onChange={(val) => setFormData({ ...formData, phone: val })} wrapperClass="w-1/2" />
-            <FormField label="Extension" placeholder="123" value={formData.extension} onChange={(val) => setFormData({ ...formData, extension: val })} wrapperClass="w-1/2" />
+            <FormField
+              label="Phone"
+              type="text"
+              placeholder="(123) 4567890"
+              value={formData.phone}
+              onChange={(val) => setFormData({ ...formData, phone: val })}
+              wrapperClass="w-1/2"
+            />
+            <FormField
+              label="Extension"
+              placeholder="123"
+              value={formData.extension}
+              onChange={(val) => setFormData({ ...formData, extension: val })}
+              wrapperClass="w-1/2"
+            />
           </div>
 
           {/* Email */}
-          <FormField label="Email" type="email" required value={formData.email} onChange={(val) => setFormData({ ...formData, email: val })} />
+          <FormField
+            label="Email"
+            type="email"
+            required
+            value={formData.email}
+            onChange={(val) => setFormData({ ...formData, email: val })}
+          />
 
           {/* Source */}
           <div>
-            <label className="text-[#080607] text-base font-medium">Source</label>
+            <label className="text-[var(--primary2)] text-base font-medium">
+              Source
+            </label>
             <select
               value={formData.source}
-              onChange={(e) => setFormData({ ...formData, source: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, source: e.target.value })
+              }
               className="w-full h-[50px] py-3 px-4 border border-[#DBDCDE] rounded-[8px]"
             >
               <option value="">Select One</option>
@@ -134,10 +180,14 @@ const InviteUser = () => {
 
           {/* Category */}
           <div>
-            <label className="text-[#080607] text-base font-medium">Category</label>
+            <label className="text-[var(--primary2)] text-base font-medium">
+              Category
+            </label>
             <select
               value={formData.category}
-              onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, category: e.target.value })
+              }
               className="w-full h-[50px] py-3 px-4 border border-[#DBDCDE] rounded-[8px]"
             >
               <option value="">Select One</option>
@@ -148,15 +198,22 @@ const InviteUser = () => {
           </div>
 
           {/* Code Display */}
-          <p className="pb-2 text-[#080607] text-base font-medium">Unique Invitation Code</p>
+          <p className="pb-2 text-[var(--primary2)] text-base font-medium">
+            Unique Invitation Code
+          </p>
           <div className="rounded-[5px] py-5 px-4 flex gap-x-[9px] items-center border border-[#DBDCDE] cursor-pointer max-w-[167px]">
-            <p className="overflow-hidden text-[#080607] text-sm font-semibold">Generate Code</p>
+            <p className="overflow-hidden text-[var(--primary2)] text-sm font-semibold">
+              Generate Code
+            </p>
             <img src={Key} alt="key icon" />
           </div>
 
           {/* Submit & Clear */}
           <div className="flex gap-x-[42px] items-center">
-            <button type="submit" className="py-[18px] px-[60px] bg-[#ED272C] rounded-[5px] text-white text-base font-bold max-w-[275px] cursor-pointer">
+            <button
+              type="submit"
+              className="py-[18px] px-[60px] bg-[var(--primary)] rounded-[5px] text-white text-base font-bold max-w-[275px] cursor-pointer"
+            >
               Send Invitation
             </button>
             <button
@@ -176,7 +233,7 @@ const InviteUser = () => {
                 });
                 setToastError("");
               }}
-              className="py-[18px] px-[60px] border border-[#919191] rounded-[5px] text-[#08060780] text-base font-bold max-w-[275px] cursor-pointer"
+              className="py-[18px] px-[60px] border border-[#919191] rounded-[5px] text-[var(--primary2)80] text-base font-bold max-w-[275px] cursor-pointer"
             >
               Clear Form
             </button>
@@ -187,9 +244,18 @@ const InviteUser = () => {
   );
 };
 
-const FormField = ({ label, value, onChange, type = "text", placeholder, wrapperClass = "flex flex-col gap-y-2" }) => (
+const FormField = ({
+  label,
+  value,
+  onChange,
+  type = "text",
+  placeholder,
+  wrapperClass = "flex flex-col gap-y-2",
+}) => (
   <div className={wrapperClass}>
-    <label className="text-[#080607] text-base font-medium">{label}</label>
+    <label className="text-[var(--primary2)] text-base font-medium">
+      {label}
+    </label>
     <input
       type={type}
       value={value}

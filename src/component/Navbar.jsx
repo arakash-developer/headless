@@ -1,4 +1,3 @@
-import React from "react"; // Assuming you have a CSS file for styling
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -44,7 +43,7 @@ const Navbar = () => {
       <Link to="/login" className="flex-shrink-0">
         <p className="text-[#000] text-base not-italic font-normal leading-6">
           Already have an account?{" "}
-          <span className="text-[#ED272C] text-base not-italic font-medium leading-6">
+          <span className="text-[var(--primary)] text-base not-italic font-medium leading-6">
             Log In
           </span>
         </p>

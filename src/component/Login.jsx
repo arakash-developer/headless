@@ -38,7 +38,7 @@ const Login = () => {
           progress: undefined,
           theme: "colored",
           style: {
-            background: "#080607",
+            background: "var(--primary2)",
             color: "#fff",
           },
         };
@@ -95,7 +95,7 @@ const Login = () => {
         progress: undefined,
         theme: "colored",
         style: {
-          background: "#ED272C",
+          background: "var(--primary)",
           color: "#fff",
         },
       };
@@ -109,7 +109,7 @@ const Login = () => {
     <div className="h-full">
       <div className="loginBox bg-[#fff] max-w-[1036px] mr-[64px] mb-[171px] rounded-[5px] px-[125px] py-5 grid grid-cols-2 gap-[80px] h-full items-center">
         <div className="max-w-[380px]">
-          <h3 className="text-[#080607] text-4xl not-italic font-bold leading-10">
+          <h3 className="text-[var(--primary2)] text-4xl not-italic font-bold leading-10">
             Log In
           </h3>
           <p className="text-[#919191] text-base not-italic font-normal leading-6 mt-[8px] mb-[28px]">
@@ -121,7 +121,7 @@ const Login = () => {
               <div className="flex flex-col gap-y-2">
                 <label
                   htmlFor="email"
-                  className="text-[#080607] text-base not-italic font-medium leading-[normal]"
+                  className="text-[var(--primary2)] text-base not-italic font-medium leading-[normal]"
                 >
                   Email
                 </label>
@@ -137,7 +137,7 @@ const Login = () => {
               <div className="flex flex-col gap-y-2">
                 <label
                   htmlFor="password"
-                  className="text-[#080607] text-base not-italic font-medium leading-[normal]"
+                  className="text-[var(--primary2)] text-base not-italic font-medium leading-[normal]"
                 >
                   Password
                 </label>
@@ -159,7 +159,7 @@ const Login = () => {
             </div>
             <button
               type="submit"
-              className="py-[18px] px-[60px] bg-[#ED272C] rounded-[5px] text-white text-base font-bold max-w-[192px] cursor-pointer"
+              className="py-[18px] px-[60px] bg-[var(--primary)] rounded-[5px] text-white text-base font-bold max-w-[192px] cursor-pointer"
             >
               Sign In
             </button>

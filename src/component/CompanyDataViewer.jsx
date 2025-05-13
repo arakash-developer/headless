@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -6,7 +6,7 @@ const toastStyle = {
   position: "bottom-left",
   autoClose: 3000,
   theme: "colored",
-  style: { background: "#080607", color: "#fff" },
+  style: { background: "var(--primary2)", color: "#fff" },
 };
 
 const CompanyDataViewer = () => {
@@ -23,11 +23,14 @@ const CompanyDataViewer = () => {
     }
 
     try {
-      const response = await fetch("https://4amitest-bli6.wp1.sh/wp-json/custom/v1/company-data", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        "https://4amitest-bli6.wp1.sh/wp-json/custom/v1/company-data",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       const data = await response.json();
 
@@ -52,7 +55,9 @@ const CompanyDataViewer = () => {
   return (
     <div className="max-w-5xl mx-auto p-6 bg-white rounded shadow">
       <ToastContainer />
-      <h2 className="text-2xl font-bold text-[#080607] mb-4">Registered Companies</h2>
+      <h2 className="text-2xl font-bold text-[var(--primary2)] mb-4">
+        Registered Companies
+      </h2>
 
       {loading ? (
         <p className="text-gray-600">Loading...</p>
@@ -80,7 +85,12 @@ const CompanyDataViewer = () => {
               <div>
                 <strong>Website:</strong>{" "}
                 {company.website ? (
-                  <a href={company.website} className="text-blue-600 underline" target="_blank" rel="noreferrer">
+                  <a
+                    href={company.website}
+                    className="text-blue-600 underline"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     {company.website}
                   </a>
                 ) : (

@@ -1,7 +1,6 @@
-import React, { useContext, useState } from "react";
-import { toast } from "react-toastify";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaCheck } from "react-icons/fa";
+import { toast } from "react-toastify";
 import { Contex } from "../context/User";
 
 const Register = () => {
@@ -30,7 +29,7 @@ const Register = () => {
     progress: undefined,
     theme: "colored",
     style: {
-      background: "#080607",
+      background: "var(--primary2)",
       color: "#fff",
     },
   };
@@ -53,13 +52,12 @@ const Register = () => {
 
     toast.success("Next Step!", {
       ...toastStyle,
-      style: { background: "#ED272C", color: "#fff" },
+      style: { background: "var(--primary)", color: "#fff" },
     });
     setInvitation(formData);
     navigate("/register2");
   };
 
-  
   const showError = (msg) => {
     setToastError(msg);
     toast.error(msg, toastStyle);
@@ -67,19 +65,19 @@ const Register = () => {
 
   return (
     <>
-      <h2 className="text-[#080607] pb-5 text-[32px] not-italic font-semibold leading-[normal]">
+      <h2 className="text-[var(--primary2)] pb-5 text-[32px] not-italic font-semibold leading-[normal]">
         Create your Account
       </h2>
       <div className="max-w-[855px] px-[65px] py-[37px] bg-[#fff] rounded-[5px] formboxshadow">
         <div className="max-w-[280px] mx-auto flex justify-between items-center relative">
-          <div className="bg-[#ED272C] w-[22px] h-[22px] rounded-full border-[1px] border-[#ED272C] relative z-[2] flex justify-center items-center text-[12px]">
+          <div className="bg-[var(--primary)] w-[22px] h-[22px] rounded-full border-[1px] border-[var(--primary)] relative z-[2] flex justify-center items-center text-[12px]">
             {/* <FaCheck className="text-[#fff]" /> */}
           </div>
-          <div className="w-full border-[1px] border-[#ED272C] absolute z-[1]"></div>
-          <div className="bg-[#ED272C] w-[32px] h-[32px] rounded-full border-[1px] border-[#ED272C] relative z-[2]"></div>
+          <div className="w-full border-[1px] border-[var(--primary)] absolute z-[1]"></div>
+          <div className="bg-[var(--primary)] w-[32px] h-[32px] rounded-full border-[1px] border-[var(--primary)] relative z-[2]"></div>
         </div>
         <div className="pt-[25px] max-w-[346px] mx-auto flex justify-between items-center ">
-          <p className="text-[#080607] text-base not-italic font-semibold leading-[normal]">
+          <p className="text-[var(--primary2)] text-base not-italic font-semibold leading-[normal]">
             User Info
           </p>
           <p className="text-[#919191] text-base not-italic font-medium leading-[normal]">
@@ -175,7 +173,7 @@ const Register = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="py-[18px] px-[60px] bg-[#ED272C] rounded-[5px] text-white text-base font-bold max-w-[192px] cursor-pointer"
+            className="py-[18px] px-[60px] bg-[var(--primary)] rounded-[5px] text-white text-base font-bold max-w-[192px] cursor-pointer"
           >
             Continue
           </button>
@@ -194,7 +192,9 @@ const FormField = ({
   wrapperClass = "flex flex-col gap-y-2",
 }) => (
   <div className={wrapperClass}>
-    <label className="text-[#080607] text-base font-medium">{label}</label>
+    <label className="text-[var(--primary2)] text-base font-medium">
+      {label}
+    </label>
     <input
       type={type}
       value={value}

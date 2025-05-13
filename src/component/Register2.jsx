@@ -1,10 +1,7 @@
-import React, { useContext, useState } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FaCheck } from "react-icons/fa";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Contex } from "../context/User";
-import postUser from "../lib/postUser";
 import postRegistration from "../lib/postRegistration";
 
 const Register2 = () => {
@@ -56,7 +53,7 @@ const Register2 = () => {
     progress: undefined,
     theme: "colored",
     style: {
-      background: "#080607",
+      background: "var(--primary2)",
       color: "#fff",
     },
   };
@@ -103,7 +100,7 @@ const Register2 = () => {
         navigate("/regsuccess");
         toast.success(response.message, {
           ...toastStyle,
-          style: { background: "#ED272C", color: "#fff" },
+          style: { background: "var(--primary)", color: "#fff" },
         });
       }
       toast.error(response, toastStyle);
@@ -113,20 +110,20 @@ const Register2 = () => {
   return (
     <>
       {message}
-      <h2 className="text-[#080607] pb-5 text-[32px] not-italic font-semibold leading-[normal]">
+      <h2 className="text-[var(--primary2)] pb-5 text-[32px] not-italic font-semibold leading-[normal]">
         Create your Account
       </h2>
       <div className="max-w-[855px] px-[65px] py-[37px] bg-[#fff] rounded-[5px] formboxshadow">
         <div className="">
           <div className="max-w-[280px] mx-auto flex justify-between items-center relative">
-            <div className="bg-[#ED272C] w-[22px] h-[22px] rounded-full border-[1px] border-[#ED272C] relative z-[2] flex justify-center items-center text-[12px]">
+            <div className="bg-[var(--primary)] w-[22px] h-[22px] rounded-full border-[1px] border-[var(--primary)] relative z-[2] flex justify-center items-center text-[12px]">
               {/* <FaCheck className="text-[#fff]" /> */}
             </div>
-            <div className="w-full border-[1px] border-[#ED272C] absolute z-[1]"></div>
-            <div className="bg-[#ED272C] w-[32px] h-[32px] rounded-full border-[1px] border-[#ED272C] relative z-[2]"></div>
+            <div className="w-full border-[1px] border-[var(--primary)] absolute z-[1]"></div>
+            <div className="bg-[var(--primary)] w-[32px] h-[32px] rounded-full border-[1px] border-[var(--primary)] relative z-[2]"></div>
           </div>
           <div className="pb-[60px] pt-[25px] max-w-[346px] mx-auto flex justify-between items-center ">
-            <p className="text-[#080607] text-base not-italic font-semibold leading-[normal]">
+            <p className="text-[var(--primary2)] text-base not-italic font-semibold leading-[normal]">
               User Info
             </p>
             <p className="text-[#919191] text-base not-italic font-medium leading-[normal]">
@@ -138,7 +135,7 @@ const Register2 = () => {
             <div className="flex flex-col gap-y-2">
               <label
                 htmlFor=""
-                className="text-[#080607] text-base not-italic font-medium leading-[normal]"
+                className="text-[var(--primary2)] text-base not-italic font-medium leading-[normal]"
               >
                 Username
               </label>
@@ -151,7 +148,7 @@ const Register2 = () => {
             <div className="flex flex-col gap-y-2">
               <label
                 htmlFor=""
-                className="text-[#080607] text-base not-italic font-medium leading-[normal]"
+                className="text-[var(--primary2)] text-base not-italic font-medium leading-[normal]"
               >
                 Password
               </label>
@@ -162,11 +159,11 @@ const Register2 = () => {
               />
 
               <div className="">
-                <p className="text-[#080607] text-base not-italic font-normal leading-6">
+                <p className="text-[var(--primary2)] text-base not-italic font-normal leading-6">
                   Password strength
                 </p>
                 <div
-                  className="h-[6px] rounded-[4px] bg-[#080607] w-full my-[10px] transition-all duration-300"
+                  className="h-[6px] rounded-[4px] bg-[var(--primary2)] w-full my-[10px] transition-all duration-300"
                   style={{ width: `${(score / 5) * 100}%` }}
                 ></div>
                 <p className="text-[#919191] text-sm not-italic font-normal leading-[1.31rem]">
@@ -177,7 +174,7 @@ const Register2 = () => {
             <div className="flex flex-col gap-y-2">
               <label
                 htmlFor=""
-                className="text-[#080607] text-base not-italic font-medium leading-[normal]"
+                className="text-[var(--primary2)] text-base not-italic font-medium leading-[normal]"
               >
                 Confirm Password
               </label>
@@ -191,13 +188,13 @@ const Register2 = () => {
             <div className="flex items-start gap-2">
               <Link
                 to="/"
-                className="py-[18px] px-[60px] rounded-[5px] text-[#080607] border border-[#080607] text-base not-italic font-bold leading-[normal] max-w-[192px] continue-button cursor-pointer"
+                className="py-[18px] px-[60px] rounded-[5px] text-[var(--primary2)] border border-[var(--primary2)] text-base not-italic font-bold leading-[normal] max-w-[192px] continue-button cursor-pointer"
               >
                 Back
               </Link>
               <Link
                 to="/"
-                className="py-[18px] px-[60px] bg-[#ED272C] rounded-[5px] text-[#FFF] text-base not-italic font-bold leading-[normal] max-w-[192px] continue-button cursor-pointer"
+                className="py-[18px] px-[60px] bg-[var(--primary)] rounded-[5px] text-[#FFF] text-base not-italic font-bold leading-[normal] max-w-[192px] continue-button cursor-pointer"
                 onClick={handleSubmitform}
               >
                 Sign Up
