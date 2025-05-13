@@ -26,6 +26,7 @@ import Register2 from "./component/Register2";
 import RegistrationSuccess from "./component/RegistrationSuccess";
 import LoginProtected from "./Protect Rule/LoginProtected";
 import ProtectedCompany from "./Protect Rule/ProtectedCompany";
+import Services from "./component/Services";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -63,6 +64,7 @@ const router = createBrowserRouter(
       <Route path="/companyregSuc" element={<CompanyRegSuc />}></Route>
       <Route path="/companydata" element={<CompanyDataViewer />}></Route>
       <Route path="/demo4" element={<Demo4 />}></Route>
+      <Route path="/services" element={<Services />}></Route>
       <Route path="*" element={<Error />} />
     </Route>
   )
