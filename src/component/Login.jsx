@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import Loginbanner from "../../public/loginbanner.png";
+import Loginbanner from "../../public/logIn.png";
 
 import { Contex } from "../context/User";
 const Login = () => {
@@ -9,7 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   let navigate = useNavigate();
-  let { setIsLogin,islogin } = useContext(Contex);
+  let { setIsLogin, islogin } = useContext(Contex);
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -70,9 +70,9 @@ const Login = () => {
         );
         if (companyEmails.includes(email)) {
           localStorage.setItem("logintoken", "akash@123");
-          localStorage.setItem("com_auth_token", "akash"); 
+          localStorage.setItem("com_auth_token", "akash");
           setIsLogin(true);
-          navigate("/dashboard", { state: { user: data.user } }); 
+          navigate("/dashboard", { state: { user: data.user } });
         } else {
           setIsLogin(true);
           localStorage.setItem("logintoken", "akash@123");
@@ -112,44 +112,46 @@ const Login = () => {
           <h3 className="text-[#080607] text-4xl not-italic font-bold leading-10">
             Log In
           </h3>
-          <p className="text-[#919191] text-base not-italic font-normal leading-6 mt-3 mb-[28px]">
+          <p className="text-[#919191] text-base not-italic font-normal leading-6 mt-[8px] mb-[28px]">
             Good to see you again! Enter your details to continue using the
             dashboard
           </p>
-          <form onSubmit={handleLogin} className="flex flex-col gap-y-6">
-            <div className="flex flex-col gap-y-2">
-              <label
-                htmlFor="email"
-                className="text-[#080607] text-base not-italic font-medium leading-[normal]"
-              >
-                Email
-              </label>
-              <input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
-                required
-              />
+          <form onSubmit={handleLogin}>
+            <div className="flex flex-col gap-y-[20px]">
+              <div className="flex flex-col gap-y-2">
+                <label
+                  htmlFor="email"
+                  className="text-[#080607] text-base not-italic font-medium leading-[normal]"
+                >
+                  Email
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
+                  required
+                />
+              </div>
+              <div className="flex flex-col gap-y-2">
+                <label
+                  htmlFor="password"
+                  className="text-[#080607] text-base not-italic font-medium leading-[normal]"
+                >
+                  Password
+                </label>
+                <input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
+                  required
+                />
+              </div>
             </div>
-            <div className="flex flex-col gap-y-2">
-              <label
-                htmlFor="password"
-                className="text-[#080607] text-base not-italic font-medium leading-[normal]"
-              >
-                Password
-              </label>
-              <input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
-                required
-              />
-            </div>
-            <div className="flex items-center gap-3 cursor-pointer">
+            <div className="mt-2 mb-6 flex items-center gap-3 cursor-pointer">
               <input type="checkbox" />
               <p className="text-[#919191] text-sm font-normal">
                 Remember Password
