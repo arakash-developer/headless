@@ -98,7 +98,6 @@ const Services = () => {
                   <td className="px-4 py-2 border-b-2 border-r-2">
                     <input
                       type="checkbox"
-                      checked={service.selected}
                       onChange={() => handleCheckboxChange(service.id)}
                       id={`checkbox-${service.id}`}
                       className="peer hidden" // Hide the native checkbox
@@ -106,10 +105,10 @@ const Services = () => {
 
                     <label
                       htmlFor={`checkbox-${service.id}`}
-                      className="flex items-center justify-center cursor-pointer w-5 h-5 rounded-md peer-checked:bg-[var(--primary2)] peer-checked:border-[var(--primary2)] border-2 border-[var(--neutral-400)]"
+                      className="flex items-center justify-center cursor-pointer w-5 h-5 rounded-md bg-transparent peer-checked:bg-[var(--primary2)] peer-checked:border-[var(--primary2)] border-2 border-[var(--neutral-400)]"
                     >
                       {service.id === activeButton && (
-                        <FaCheck className="text-[#FFF] text-[32px]" />
+                        <FaCheck className="text-[#FFF] text-[15px] font-bold" />
                       )}
                     </label>
                   </td>
