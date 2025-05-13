@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaCheck } from "react-icons/fa6";
 
 const Services = () => {
+  const [activeButton, setActiveButton] = useState(null); // Track the active button
   const [services, setServices] = useState([
     { id: 1, name: "Residual Analysis", tokens: 3, hourly: 20, selected: true },
     {
@@ -29,7 +30,9 @@ const Services = () => {
 
   // Handle checkbox toggle
   const handleCheckboxChange = (id) => {
-    setActive(!active);
+    setActiveButton(id); // Set the active button on click
+    console.log(`Button ${id} clicked`);
+
     const updatedServices = services.map((service) =>
       service.id === id ? { ...service, selected: !service.selected } : service
     );
@@ -105,7 +108,9 @@ const Services = () => {
                       htmlFor={`checkbox-${service.id}`}
                       className="flex items-center justify-center cursor-pointer w-5 h-5 rounded-md peer-checked:bg-[var(--primary2)] peer-checked:border-[var(--primary2)] border-2 border-[var(--neutral-400)]"
                     >
-                      <FaCheck className="text-[#FFF] text-[32px] not-italic font-semibold leading-10" />
+                      {service.id === activeButton && (
+                        <FaCheck className="text-[#FFF] text-[32px]" />
+                      )}
                     </label>
                   </td>
                   <td className="px-4 py-2 border-b-2 border-r-2">
