@@ -201,3 +201,108 @@ const App = () => {
 
 export default App;
 nee
+
+
+
+backup
+
+
+<?php
+/**
+ * Plugin Name: Custom REST Register (Full Fields)
+ * Description: Register WordPress users via REST with extended fields and no role set.
+ * Version: 1.0
+ * Author: Atiqur Rahman Akash
+ */
+
+// Allow CORS for frontend app
+add_action('init', function () {
+  // Define the allowed origins
+  $allowed_origins = [
+    'http://localhost:5173', 
+    'https://4ami-jynw.wp1.sh',
+  ];
+
+  // Get the request origin
+  $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+
+  // Check if the request origin is in the allowed origins
+  if (in_array($origin, $allowed_origins)) {
+    header("Access-Control-Allow-Origin: $origin");
+    header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+    header("Access-Control-Allow-Headers: Content-Type, Authorization");
+  }
+
+  // Handle OPTIONS request for pre-flight CORS checks
+  if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    status_header(200);
+    exit;
+  }
+});
+
+// Register REST endpoint
+add_action('rest_api_init', function () {
+  register_rest_route('custom/v1', '/register', [
+    'methods' => 'POST',
+    'callback' => 'custom_full_register',
+    'permission_callback' => '__return_true',
+  ]);
+});
+
+function custom_full_register($request) {
+  try {
+    $params = $request->get_json_params();
+
+    // Get data from request
+    $username = sanitize_text_field($params['username'] ?? '');
+    $email = sanitize_email($params['email'] ?? '');
+    $password = $params['password'] ?? '';
+
+    // Validate required fields
+    if (empty($username) || empty($email) || empty($password)) {
+      return new WP_REST_Response(['success' => false, 'error' => 'Missing required fields'], 400);
+    }
+
+    // Check if username or email already exists
+    if (username_exists($username) || email_exists($email)) {
+      return new WP_REST_Response(['success' => false, 'error' => 'Username or email already exists'], 409);
+    }
+
+    // Create the user
+    $user_id = wp_create_user($username, $password, $email);
+    if (is_wp_error($user_id)) {
+      return new WP_REST_Response(['success' => false, 'error' => $user_id->get_error_message()], 500);
+    }
+
+    // Update first/last name
+    wp_update_user([
+      'ID' => $user_id,
+      'first_name' => sanitize_text_field($params['firstName'] ?? ''),
+      'last_name'  => sanitize_text_field($params['lastName'] ?? ''),
+    ]);
+
+    // Save custom user meta fields
+    $meta_fields = ['code', 'title', 'company', 'phone', 'extension'];
+    foreach ($meta_fields as $field) {
+      if (!empty($params[$field])) {
+        update_user_meta($user_id, $field, sanitize_text_field($params[$field]));
+      }
+    }
+
+    // Return success response
+    return new WP_REST_Response([
+      'success' => true,
+      'message' => 'User registered successfully',
+      'user_id' => $user_id
+    ], 200);
+
+  } catch (Throwable $e) {
+    // Return error response if exception occurs
+    return new WP_REST_Response([
+      'success' => false,
+      'error' => $e->getMessage(),
+      'line' => $e->getLine()
+    ], 500);
+  }
+}
+?>
