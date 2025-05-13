@@ -21,12 +21,12 @@ import Reg1 from "./component/layers/Reg1";
 import Reg2 from "./component/layers/Reg2";
 import Login from "./component/Login";
 import Password from "./component/Password";
-import Register from "./component/Register";
-import Register2 from "./component/Register2";
+import Register from "./component/registers/Register";
+import Register2 from "./component/registers/Register2";
 import RegistrationSuccess from "./component/RegistrationSuccess";
+import Services from "./component/Services";
 import LoginProtected from "./Protect Rule/LoginProtected";
 import ProtectedCompany from "./Protect Rule/ProtectedCompany";
-import Services from "./component/Services";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

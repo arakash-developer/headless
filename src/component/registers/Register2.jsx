@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Contex } from "../context/User";
-import postRegistration from "../lib/postRegistration";
+import { Contex } from "../../context/User";
+import postRegistration from "../../lib/postRegistration";
 
 const Register2 = () => {
   const [captchaToken, setCaptchaToken] = useState(null);
