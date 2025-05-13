@@ -116,7 +116,17 @@ const Services = () => {
                   </td>
                   <td className="px-4 py-2 border-b-2 border-r-2">
                     <Tooltip title="Paid with tokens">
-                      <Button>
+                      <Button
+                        style={{
+                          backgroundColor: "transparent",
+                          color: "",
+                          borderRadius: "0",
+                          border: "none",
+                          padding: "0",
+                          fontSize: "16px",
+                          transition: "background-color 0.3s ease",
+                        }}
+                      >
                         <Token color="var(--text-secondary)" />
                       </Button>
                     </Tooltip>
