@@ -1,4 +1,4 @@
-import RootLayout from "./components/RootLayout";
+import RootLayout from "./components/main/RootLayout";
 // React Router dom........
 import {
   createBrowserRouter,

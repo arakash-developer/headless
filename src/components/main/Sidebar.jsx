@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { SiGooglehome } from "react-icons/si";
 import { NavLink, useLocation } from "react-router-dom";
-import Avatar from "../../public/avatar.png";
-import Logo from "../../public/logo.png";
-import HomeIcon from "../assets/HomeIcon";
-import ServiceIcon from "../assets/ServiceIcon";
+import Avatar from "@public/avatar.png";
+import Logo from "@public/logo.png";
+import HomeIcon from "@assets/HomeIcon";
+import ServiceIcon from "@assets/ServiceIcon";
 const Sidebar = () => {
   let [active, setActive] = useState(false);
   const [key, setKey] = useState("");
