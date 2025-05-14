@@ -47,7 +47,12 @@ const Services = () => {
     { value: "true", label: "Yes" },
     { value: "false", label: "No" },
   ];
-
+  const sourceType = [
+    { value: "Dealer", label: "Dealer" },
+    { value: "Broker", label: "Broker" },
+    { value: "Syndication", label: "Syndication" },
+    { value: "Direct", label: "Direct" },
+  ];
   const handleChange = (option) => {
     setSelected(option);
     console.log("Selected:", option);
@@ -253,7 +258,7 @@ const Services = () => {
         </h3>
 
         <form className="mt-3 ">
-          <div className="">
+          <div className="flex flex-col gap-y-4">
             <div className="flex gap-x-6 items-center justify-between">
               <div className="w-1/2 flex flex-col gap-y-[2px]">
                 <label
@@ -294,26 +299,9 @@ const Services = () => {
                   className="w-full"
                   dropdownMatchSelectWidth={false}
                 >
-                  {options.map((option) => (
+                  {sourceType.map((option) => (
                     <Select.Option key={option.value} value={option.value}>
-                      <div className="flex items-center gap-x-2">
-                        <Tooltip title="Is the AMI representatives authorized to communicate directly with the Lessee?">
-                          <Button
-                            style={{
-                              backgroundColor: "transparent",
-                              color: "",
-                              borderRadius: "0",
-                              border: "none",
-                              padding: "0",
-                              fontSize: "16px",
-                              transition: "background-color 0.3s ease",
-                            }}
-                          >
-                            <InfoIcon color="var(--text-secondary)" />
-                          </Button>
-                        </Tooltip>
-                        <p>{option.label}</p>
-                      </div>
+                      <p>{option.label}</p>
                     </Select.Option>
                   ))}
                 </Select>
@@ -325,11 +313,11 @@ const Services = () => {
                   htmlFor=""
                   className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
                 >
-                  Lessee No
+                  Contact
                 </label>
                 <Input
                   className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="L-1001"
+                  placeholder="Enter contact name"
                 />
               </div>
               <div className="w-1/2 flex flex-col gap-y-[2px]">
@@ -337,24 +325,12 @@ const Services = () => {
                   htmlFor=""
                   className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
                 >
-                  Lessee
+                  Title
                 </label>
 
                 <Input
                   className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Apex Digital Solutions"
-                />
-              </div>
-              <div className="w-1/2 flex flex-col gap-y-[2px]">
-                <label
-                  htmlFor=""
-                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
-                >
-                  Cell
-                </label>
-                <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Michael Adams"
+                  placeholder="Enter title"
                 />
               </div>
               <div className="w-1/2 flex flex-col gap-y-[2px]">
@@ -401,11 +377,11 @@ const Services = () => {
                   htmlFor=""
                   className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
                 >
-                  Lessee No
+                  Phone Number 1
                 </label>
                 <Input
                   className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="L-1001"
+                  placeholder="Enter phone number 1"
                 />
               </div>
               <div className="w-1/2 flex flex-col gap-y-[2px]">
@@ -413,12 +389,12 @@ const Services = () => {
                   htmlFor=""
                   className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
                 >
-                  Lessee
+                  Phone Number 2
                 </label>
 
                 <Input
                   className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Apex Digital Solutions"
+                  placeholder="Enter phone number 2"
                 />
               </div>
               <div className="w-1/2 flex flex-col gap-y-[2px]">
@@ -430,46 +406,8 @@ const Services = () => {
                 </label>
                 <Input
                   className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Michael Adams"
+                  placeholder="Enter cell number"
                 />
-              </div>
-              <div className="w-1/2 flex flex-col gap-y-[2px]">
-                <label
-                  htmlFor=""
-                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
-                >
-                  Communication
-                </label>
-                <Select
-                  defaultValue="true"
-                  style={{ height: "40px" }}
-                  onChange={handleChange}
-                  className="w-full"
-                  dropdownMatchSelectWidth={false}
-                >
-                  {options.map((option) => (
-                    <Select.Option key={option.value} value={option.value}>
-                      <div className="flex items-center gap-x-2">
-                        <Tooltip title="Is the AMI representatives authorized to communicate directly with the Lessee?">
-                          <Button
-                            style={{
-                              backgroundColor: "transparent",
-                              color: "",
-                              borderRadius: "0",
-                              border: "none",
-                              padding: "0",
-                              fontSize: "16px",
-                              transition: "background-color 0.3s ease",
-                            }}
-                          >
-                            <InfoIcon color="var(--text-secondary)" />
-                          </Button>
-                        </Tooltip>
-                        <p>{option.label}</p>
-                      </div>
-                    </Select.Option>
-                  ))}
-                </Select>
               </div>
             </div>{" "}
             <div className="flex gap-x-6 items-center justify-between">
@@ -478,11 +416,11 @@ const Services = () => {
                   htmlFor=""
                   className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
                 >
-                  Lessee No
+                  Email
                 </label>
                 <Input
                   className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="L-1001"
+                  placeholder="Enter email address"
                 />
               </div>
               <div className="w-1/2 flex flex-col gap-y-[2px]">
@@ -490,64 +428,14 @@ const Services = () => {
                   htmlFor=""
                   className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
                 >
-                  Lessee
-                </label>
-
-                <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Apex Digital Solutions"
-                />
-              </div>
-              <div className="w-1/2 flex flex-col gap-y-[2px]">
-                <label
-                  htmlFor=""
-                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
-                >
-                  Cell
+                  Website
                 </label>
                 <Input
                   className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Michael Adams"
+                  placeholder="Enter website"
                 />
               </div>
-              <div className="w-1/2 flex flex-col gap-y-[2px]">
-                <label
-                  htmlFor=""
-                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
-                >
-                  Communication
-                </label>
-                <Select
-                  defaultValue="true"
-                  style={{ height: "40px" }}
-                  onChange={handleChange}
-                  className="w-full"
-                  dropdownMatchSelectWidth={false}
-                >
-                  {options.map((option) => (
-                    <Select.Option key={option.value} value={option.value}>
-                      <div className="flex items-center gap-x-2">
-                        <Tooltip title="Is the AMI representatives authorized to communicate directly with the Lessee?">
-                          <Button
-                            style={{
-                              backgroundColor: "transparent",
-                              color: "",
-                              borderRadius: "0",
-                              border: "none",
-                              padding: "0",
-                              fontSize: "16px",
-                              transition: "background-color 0.3s ease",
-                            }}
-                          >
-                            <InfoIcon color="var(--text-secondary)" />
-                          </Button>
-                        </Tooltip>
-                        <p>{option.label}</p>
-                      </div>
-                    </Select.Option>
-                  ))}
-                </Select>
-              </div>
+              <div className="w-1/2"></div>
             </div>
           </div>
         </form>
