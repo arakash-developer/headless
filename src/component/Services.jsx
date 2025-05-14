@@ -1,9 +1,9 @@
-import { Button, Select, Tooltip } from "antd";
+import { Button, Input, Select, Tooltip } from "antd";
 import { useState } from "react";
 import { FaCheck } from "react-icons/fa6";
+import InfoIcon from "../assets/InfoIcon";
 import TimeIcon from "../assets/TimeIcon";
 import Token from "../assets/Token";
-
 const Services = () => {
   const [activeButton, setActiveButton] = useState(null); // Track the active button
   const [services, setServices] = useState([
@@ -206,9 +206,9 @@ const Services = () => {
             >
               Cell
             </label>
-            <input
-              type="text"
-              className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px] outline-none"
+
+            <Input
+              className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
               placeholder="Michael Adams"
             />
           </div>
@@ -223,11 +223,17 @@ const Services = () => {
               defaultValue="lucy"
               style={{ height: "40px" }}
               onChange={handleChange}
-              className="w-full pl-[60px]"
+              className="w-full"
+              dropdownMatchSelectWidth={false}
             >
               {options.map((option) => (
                 <Select.Option key={option.value} value={option.value}>
-                  Comm: {option.label}
+                  <div className="flex items-center gap-x-2">
+                    <p>
+                      <InfoIcon color="var(--text-secondary)" />
+                    </p>
+                    <p>{option.label}</p>
+                  </div>
                 </Select.Option>
               ))}
             </Select>
