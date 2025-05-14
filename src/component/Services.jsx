@@ -44,9 +44,8 @@ const Services = () => {
   };
 
   const options = [
-    { value: "jack", label: "Jack" },
-    { value: "lucy", label: "Lucy" },
-    { value: "yiminghe", label: "Yiminghe" },
+    { value: true, label: "Yes" },
+    { value: false, label: "No" },
   ];
 
   const handleChange = (option) => {
@@ -225,9 +224,21 @@ const Services = () => {
               {options.map((option) => (
                 <Select.Option key={option.value} value={option.value}>
                   <div className="flex items-center gap-x-2">
-                    <p>
-                      <InfoIcon color="var(--text-secondary)" />
-                    </p>
+                    <Tooltip title="Is the AMI representatives authorized to communicate directly with the Lessee?">
+                      <Button
+                        style={{
+                          backgroundColor: "transparent",
+                          color: "",
+                          borderRadius: "0",
+                          border: "none",
+                          padding: "0",
+                          fontSize: "16px",
+                          transition: "background-color 0.3s ease",
+                        }}
+                      >
+                        <InfoIcon color="var(--text-secondary)" />
+                      </Button>
+                    </Tooltip>
                     <p>{option.label}</p>
                   </div>
                 </Select.Option>
