@@ -689,7 +689,7 @@ const Services = () => {
                 >
                   Terms (Months)
                 </label>
-                <div className="flex items-center gap-x-6">
+                <div className="flex items-center justify-between gap-x-6">
                   <CustomRadio
                     value="option1"
                     current={selected}
@@ -738,6 +738,17 @@ const Services = () => {
                     onChange={setSelected}
                     label="96"
                   />
+                  <div className="flex items-center gap-x-2">
+                    <CustomRadio
+                      value="option3"
+                      current={selected}
+                      onChange={setSelected}
+                      label=""
+                    />
+                    <div className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-1 pl-[10px] pr-[60px] border border-[var(--neutral-400)] rounded-[8px]">
+                      Others
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="w-1/2 flex flex-col gap-y-[2px]">
