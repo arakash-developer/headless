@@ -506,7 +506,10 @@ const Services = () => {
       ))}
 
       <div className="mt-4 max-w-[183px] ml-auto">
-        <Button onClick={addForm}  className="w-full py-2 px-4 flex gap-x-2 items-center rounded-[8px] bg-[var(--neutral-200] h-10">
+        <Button
+          onClick={addForm}
+          className="w-full py-2 px-4 flex gap-x-2 items-center rounded-[8px] bg-[var(--neutral-200] h-10"
+        >
           <FaPlus />
           <p className="font-medium text-sm leading-[171%] text-[#343a40]">
             Add Another Asset
