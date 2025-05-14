@@ -34,6 +34,7 @@ const Services = () => {
   ]);
   const [selected, setSelected] = useState({ value: "lucy", label: "Lucy" });
   const [forms, setForms] = useState([{ name: "", email: "" }]);
+  const [usageType, setUsageType] = useState("");
 
   // Handle checkbox toggle
   const handleCheckboxChange = (id) => {
@@ -74,6 +75,10 @@ const Services = () => {
   const handleChange = (option) => {
     setSelected(option);
     console.log("Selected:", option);
+  };
+  const handleUsageTypeChange = (option) => {
+    setSelected(option);
+    setUsageType(option);
   };
 
   return (
@@ -529,13 +534,30 @@ const Services = () => {
                 <Select
                   defaultValue="Hours"
                   style={{ height: "40px" }}
-                  onChange={handleChange}
+                  onChange={handleUsageTypeChange}
                   className="w-full"
                   dropdownMatchSelectWidth={false}
                 >
                   {usageType.map((option) => (
                     <Select.Option key={option.value} value={option.value}>
-                      <p>{option.label}</p>
+                      <div className="flex items-center gap-x-2">
+                        <Tooltip title={option.description}>
+                          <Button
+                            style={{
+                              backgroundColor: "transparent",
+                              color: "",
+                              borderRadius: "0",
+                              border: "none",
+                              padding: "0",
+                              fontSize: "16px",
+                              transition: "background-color 0.3s ease",
+                            }}
+                          >
+                            <InfoIcon color="var(--text-secondary)" />
+                          </Button>
+                        </Tooltip>
+                        <p>{option.label}</p>
+                      </div>
                     </Select.Option>
                   ))}
                 </Select>
