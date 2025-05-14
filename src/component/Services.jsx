@@ -1,4 +1,4 @@
-import { Button, Tooltip } from "antd";
+import { Button, Select, Tooltip } from "antd";
 import { useState } from "react";
 import { FaCheck } from "react-icons/fa6";
 import TimeIcon from "../assets/TimeIcon";
@@ -30,6 +30,7 @@ const Services = () => {
       selected: false,
     },
   ]);
+  const [selected, setSelected] = useState({ value: "lucy", label: "Lucy" });
 
   // Handle checkbox toggle
   const handleCheckboxChange = (id) => {
@@ -41,6 +42,18 @@ const Services = () => {
     );
     setServices(updatedServices);
   };
+
+  const options = [
+    { value: "jack", label: "Jack" },
+    { value: "lucy", label: "Lucy" },
+    { value: "yiminghe", label: "Yiminghe" },
+  ];
+
+  const handleChange = (option) => {
+    setSelected(option);
+    console.log("Selected:", option);
+  };
+
   return (
     <>
       <div className="mt-5">
@@ -161,20 +174,63 @@ const Services = () => {
         </h3>
         <form className="mt-3 flex gap-x-6 items-center justify-between">
           <div className="w-1/2 flex flex-col gap-y-[2px]">
-            <label htmlFor="" className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">Lessee No</label>
-            <input type="text" className='font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px] outline-none' placeholder='L-1001'/>
+            <label
+              htmlFor=""
+              className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
+            >
+              Lessee No
+            </label>
+            <input
+              type="text"
+              className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px] outline-none"
+              placeholder="L-1001"
+            />
           </div>
           <div className="w-1/2 flex flex-col gap-y-[2px]">
-            <label htmlFor="" className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">Lessee No</label>
-            <input type="text" className='font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px] outline-none' placeholder='L-1001'/>
+            <label
+              htmlFor=""
+              className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
+            >
+              Lessee
+            </label>
+            <input
+              type="text"
+              className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px] outline-none"
+              placeholder="Apex Digital Solutions"
+            />
           </div>
           <div className="w-1/2 flex flex-col gap-y-[2px]">
-            <label htmlFor="" className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">Lessee No</label>
-            <input type="text" className='font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px] outline-none' placeholder='L-1001'/>
+            <label
+              htmlFor=""
+              className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
+            >
+              Cell
+            </label>
+            <input
+              type="text"
+              className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px] outline-none"
+              placeholder="Michael Adams"
+            />
           </div>
           <div className="w-1/2 flex flex-col gap-y-[2px]">
-            <label htmlFor="" className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">Lessee No</label>
-            <input type="text" className='font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px] outline-none' placeholder='L-1001'/>
+            <label
+              htmlFor=""
+              className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
+            >
+              Communication
+            </label>
+            <Select
+              defaultValue="lucy"
+              style={{ height: "40px" }}
+              onChange={handleChange}
+              className="w-full pl-[60px]"
+            >
+              {options.map((option) => (
+                <Select.Option key={option.value} value={option.value}>
+                  Comm: {option.label}
+                </Select.Option>
+              ))}
+            </Select>
           </div>
         </form>
       </div>
