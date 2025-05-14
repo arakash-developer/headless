@@ -34,7 +34,7 @@ const Services = () => {
   ]);
   const [selected, setSelected] = useState({ value: "lucy", label: "Lucy" });
   const [forms, setForms] = useState([{ name: "", email: "" }]);
-  const [usageType, setUsageType] = useState("");
+  const [usageTypesellected, setUsageTypeselected] = useState("");
 
   // Handle checkbox toggle
   const handleCheckboxChange = (id) => {
@@ -78,7 +78,7 @@ const Services = () => {
   };
   const handleUsageTypeChange = (option) => {
     setSelected(option);
-    setUsageType(option);
+    setUsageTypeselected(option);
   };
 
   return (
@@ -567,12 +567,16 @@ const Services = () => {
                   htmlFor=""
                   className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
                 >
-                  Subject Current Hours
+                  {`Subject Current ${usageTypesellected}` ||
+                    "Subject Current Hours"}
                 </label>
 
                 <Input
                   className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Subject Current Hours"
+                  placeholder={
+                    `Subject Current ${usageTypesellected}` ||
+                    "Subject Current Hours"
+                  }
                 />
               </div>
               <div className="w-1/2 flex flex-col gap-y-[2px]">
@@ -598,17 +602,27 @@ const Services = () => {
               </div>
               <div className="w-1/2"></div>
             </div>{" "}
+          </div>
+        </form>
+      </div>
+      <div className="pt-3 pb-[33px] px-5 mt-6 bg-[var(--secondary)] servicecard rounded-[8px]">
+        <h3 className="font-semibold text-lg leading-[156%] text-[#343a40]">
+          Lease Terms
+        </h3>
+
+        <form className="mt-3 ">
+          <div className="flex flex-col gap-y-4">
             <div className="flex gap-x-6 items-center justify-between">
               <div className="w-1/2 flex flex-col gap-y-[2px]">
                 <label
                   htmlFor=""
                   className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
                 >
-                  Phone Number 1
+                  Application
                 </label>
                 <Input
                   className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Enter phone number 1"
+                  placeholder="Water Truck"
                 />
               </div>
               <div className="w-1/2 flex flex-col gap-y-[2px]">
@@ -616,12 +630,12 @@ const Services = () => {
                   htmlFor=""
                   className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
                 >
-                  Phone Number 2
+                  Environment
                 </label>
 
                 <Input
                   className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Enter phone number 2"
+                  placeholder="Volvo"
                 />
               </div>
               <div className="w-1/2 flex flex-col gap-y-[2px]">
@@ -629,25 +643,26 @@ const Services = () => {
                   htmlFor=""
                   className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
                 >
-                  Cell
+                  Proposed HPY / MPY
                 </label>
                 <Input
                   className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Enter cell number"
+                  placeholder="2500"
                 />
               </div>
-            </div>{" "}
+            </div>
             <div className="flex gap-x-6 items-center justify-between">
               <div className="w-1/2 flex flex-col gap-y-[2px]">
                 <label
                   htmlFor=""
                   className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
                 >
-                  Email
+                 Terms (Months)
                 </label>
+
                 <Input
                   className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Enter email address"
+                  placeholder='xxxdddd'
                 />
               </div>
               <div className="w-1/2 flex flex-col gap-y-[2px]">
@@ -655,15 +670,23 @@ const Services = () => {
                   htmlFor=""
                   className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
                 >
-                  Website
+                  New/Used
                 </label>
-                <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Enter website"
-                />
+                <Select
+                  defaultValue="New"
+                  style={{ height: "40px" }}
+                  onChange={handleChange}
+                  className="w-full"
+                  dropdownMatchSelectWidth={false}
+                >
+                  {NewUsed.map((option) => (
+                    <Select.Option key={option.value} value={option.value}>
+                      <p>{option.label}</p>
+                    </Select.Option>
+                  ))}
+                </Select>
               </div>
-              <div className="w-1/2"></div>
-            </div>
+            </div>{" "}
           </div>
         </form>
       </div>
