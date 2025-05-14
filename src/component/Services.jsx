@@ -180,9 +180,8 @@ const Services = () => {
             >
               Lessee No
             </label>
-            <input
-              type="text"
-              className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px] outline-none"
+            <Input
+              className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
               placeholder="L-1001"
             />
           </div>
@@ -193,9 +192,9 @@ const Services = () => {
             >
               Lessee
             </label>
-            <input
-              type="text"
-              className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px] outline-none"
+
+            <Input
+              className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
               placeholder="Apex Digital Solutions"
             />
           </div>
@@ -206,7 +205,6 @@ const Services = () => {
             >
               Cell
             </label>
-
             <Input
               className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
               placeholder="Michael Adams"
