@@ -1,0 +1,31 @@
+# name: Deploy via SFTP
+
+# on:
+#   push:
+#     branches:
+#       - main  # or your deploy branch
+
+# jobs:
+#   deploy:
+#     name: SFTP Deploy
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v3
+
+#       - name: Install dependencies & build
+#         run: |
+#           npm install
+#           npm run build # adjust based on your framework
+
+#       - name: Upload to server via SFTP
+#         uses: pressidium/lftp-mirror-action@v1
+#         with:
+#           host: ${{ secrets.SFTP_HOST }}
+#           port: ${{ secrets.SFTP_PORT }}
+#           user: ${{ secrets.SFTP_USER }}
+#           password: ${{ secrets.SFTP_PASSWORD }}
+#           localDir: dist
+#           remoteDir: /path/to/remote/folder
+#           options: --reverse --delete --verbose
