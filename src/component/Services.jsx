@@ -708,6 +708,36 @@ const Services = () => {
                     onChange={setSelected}
                     label="36"
                   />
+                  <CustomRadio
+                    value="option3"
+                    current={selected}
+                    onChange={setSelected}
+                    label="48"
+                  />
+                  <CustomRadio
+                    value="option3"
+                    current={selected}
+                    onChange={setSelected}
+                    label="60"
+                  />
+                  <CustomRadio
+                    value="option3"
+                    current={selected}
+                    onChange={setSelected}
+                    label="72"
+                  />
+                  <CustomRadio
+                    value="option3"
+                    current={selected}
+                    onChange={setSelected}
+                    label="84"
+                  />
+                  <CustomRadio
+                    value="option3"
+                    current={selected}
+                    onChange={setSelected}
+                    label="96"
+                  />
                 </div>
               </div>
               <div className="w-1/2 flex flex-col gap-y-[2px]">
