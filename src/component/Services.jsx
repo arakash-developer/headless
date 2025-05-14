@@ -247,6 +247,88 @@ const Services = () => {
           </div>
         </form>
       </div>
+      <div className="pt-3 pb-[33px] px-5 mt-6 bg-[var(--secondary)] servicecard rounded-[8px]">
+        <h3 className="font-semibold text-lg leading-[156%] text-[#343a40]">
+          Customer Information
+        </h3>
+        <form className="mt-3 flex gap-x-6 items-center justify-between">
+          <div className="w-1/2 flex flex-col gap-y-[2px]">
+            <label
+              htmlFor=""
+              className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
+            >
+              Lessee No
+            </label>
+            <Input
+              className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+              placeholder="L-1001"
+            />
+          </div>
+          <div className="w-1/2 flex flex-col gap-y-[2px]">
+            <label
+              htmlFor=""
+              className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
+            >
+              Lessee
+            </label>
+
+            <Input
+              className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+              placeholder="Apex Digital Solutions"
+            />
+          </div>
+          <div className="w-1/2 flex flex-col gap-y-[2px]">
+            <label
+              htmlFor=""
+              className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
+            >
+              Cell
+            </label>
+            <Input
+              className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+              placeholder="Michael Adams"
+            />
+          </div>
+          <div className="w-1/2 flex flex-col gap-y-[2px]">
+            <label
+              htmlFor=""
+              className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
+            >
+              Communication
+            </label>
+            <Select
+              defaultValue="lucy"
+              style={{ height: "40px" }}
+              onChange={handleChange}
+              className="w-full"
+              dropdownMatchSelectWidth={false}
+            >
+              {options.map((option) => (
+                <Select.Option key={option.value} value={option.value}>
+                  <div className="flex items-center gap-x-2">
+                    <Tooltip title="Is the AMI representatives authorized to communicate directly with the Lessee?">
+                      <Button
+                        style={{
+                          backgroundColor: "transparent",
+                          color: "",
+                          borderRadius: "0",
+                          border: "none",
+                          padding: "0",
+                          fontSize: "16px",
+                          transition: "background-color 0.3s ease",
+                        }}
+                      >
+                        <InfoIcon color="var(--text-secondary)" />
+                      </Button>
+                    </Tooltip>
+                    <p>{option.label}</p>
+                  </div>
+                </Select.Option>
+              ))}
+            </Select>
+          </div>
+        </form>
+      </div>
     </>
   );
 };
