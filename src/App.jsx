@@ -24,7 +24,7 @@ import Password from "./component/Password";
 import Register from "./component/registers/Register";
 import Register2 from "./component/registers/Register2";
 import RegistrationSuccess from "./component/RegistrationSuccess";
-import Services from "./component/Services";
+import Services from "./component/services/Services";
 import LoginProtected from "./Protect Rule/LoginProtected";
 import ProtectedCompany from "./Protect Rule/ProtectedCompany";
 

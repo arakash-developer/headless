@@ -2,9 +2,9 @@ import { Button, Input, Select, Tooltip } from "antd";
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
-import InfoIcon from "../assets/InfoIcon";
-import TimeIcon from "../assets/TimeIcon";
-import Token from "../assets/Token";
+import InfoIcon from "@assets/InfoIcon";
+import TimeIcon from "@assets/TimeIcon";
+import Token from "@assets/Token";
 
 const CustomRadio = ({ value, current, onChange, label }) => {
   const isChecked = value === current;
