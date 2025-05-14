@@ -6,6 +6,30 @@ import InfoIcon from "../assets/InfoIcon";
 import TimeIcon from "../assets/TimeIcon";
 import Token from "../assets/Token";
 
+const CustomRadio = ({ value, current, onChange, label }) => {
+  const isChecked = value === current;
+  return (
+    <label className="flex items-center gap-x-[5px] cursor-pointer select-none">
+      <input
+        type="radio"
+        value={value}
+        checked={isChecked}
+        onChange={() => onChange(value)}
+        className="peer hidden"
+      />
+      <div
+        className={`
+          w-[22px] h-[22px] rounded-full border-2 flex items-center justify-center text-white text-[12px]
+          ${isChecked ? "bg-black border-black" : "border-gray-400"}
+        `}
+      >
+        {isChecked && <FaCheck className="text-md" />}
+      </div>
+      <span className="text-sm text-gray-700">{label}</span>
+    </label>
+  );
+};
+
 const Services = () => {
   const [activeButton, setActiveButton] = useState(null); // Track the active button
   const [services, setServices] = useState([
@@ -70,6 +94,12 @@ const Services = () => {
       label: "Other",
       description: "Gallons per month, Units per month, Feet per month, etc",
     },
+  ];
+  const structureType = [
+    { value: "FMV", label: "FMV" },
+    { value: "TRAC", label: "TRAC" },
+    { value: "Capital", label: "Capital" },
+    { value: "$1 Out", label: "$1 Out" },
   ];
 
   const handleChange = (option) => {
@@ -657,13 +687,28 @@ const Services = () => {
                   htmlFor=""
                   className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
                 >
-                 Terms (Months)
+                  Terms (Months)
                 </label>
-
-                <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder='xxxdddd'
-                />
+                <div className="flex items-center gap-x-6">
+                  <CustomRadio
+                    value="option1"
+                    current={selected}
+                    onChange={setSelected}
+                    label="12"
+                  />
+                  <CustomRadio
+                    value="option2"
+                    current={selected}
+                    onChange={setSelected}
+                    label="24"
+                  />
+                  <CustomRadio
+                    value="option3"
+                    current={selected}
+                    onChange={setSelected}
+                    label="36"
+                  />
+                </div>
               </div>
               <div className="w-1/2 flex flex-col gap-y-[2px]">
                 <label
@@ -673,13 +718,14 @@ const Services = () => {
                   New/Used
                 </label>
                 <Select
-                  defaultValue="New"
+                  defaultValue="FMV"
                   style={{ height: "40px" }}
                   onChange={handleChange}
                   className="w-full"
                   dropdownMatchSelectWidth={false}
                 >
-                  {NewUsed.map((option) => (
+                  {/* akash */}
+                  {structureType.map((option) => (
                     <Select.Option key={option.value} value={option.value}>
                       <p>{option.label}</p>
                     </Select.Option>
