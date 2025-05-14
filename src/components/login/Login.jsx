@@ -1,9 +1,8 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import Loginbanner from "../../public/logIn.png";
-
-import { Contex } from "../context/User";
+import Loginbanner from "@public/logIn.png";
+import { Contex } from "@context/User";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

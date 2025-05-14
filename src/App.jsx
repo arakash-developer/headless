@@ -19,7 +19,7 @@ import Demo6 from "./components/demo/Demo6";
 import InviteUser from "./components/InviteUser";
 import Reg1 from "./components/layers/Reg1";
 import Reg2 from "./components/layers/Reg2";
-import Login from "./components/Login";
+import Login from "./components/login/Login";
 import Password from "./components/Password";
 import Register from "./components/registers/Register";
 import Register2 from "./components/registers/Register2";
