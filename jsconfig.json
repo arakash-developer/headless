@@ -9,8 +9,8 @@
       "@utils/*": ["src/utils/*"],
       "@assets/*": ["src/assets/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@layouts/*": ["src/layouts/*"]
-      "@context/*": ["src/context/*"]
+      "@layouts/*": ["src/layouts/*"],
+      "@context/*": ["src/context/*"],
     }
   },
   "include": ["src", "public"]
