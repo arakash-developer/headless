@@ -33,6 +33,7 @@ const Services = () => {
     },
   ]);
   const [selected, setSelected] = useState({ value: "lucy", label: "Lucy" });
+  const [forms, setForms] = useState([{ name: "", email: "" }]);
 
   // Handle checkbox toggle
   const handleCheckboxChange = (id) => {
@@ -55,6 +56,21 @@ const Services = () => {
     { value: "Syndication", label: "Syndication" },
     { value: "Direct", label: "Direct" },
   ];
+  const NewUsed = [
+    { value: "new", label: "New" },
+    { value: "used", label: "Used" },
+  ];
+  const usageType = [
+    { value: "Hours", label: "Hours", description: "Hours per month" },
+    { value: "Miles", label: "Miles", description: "Miles per month" },
+    { value: "Cycles", label: "Cycles", description: "Cycles per month" },
+    {
+      value: "Other",
+      label: "Other",
+      description: "Gallons per month, Units per month, Feet per month, etc",
+    },
+  ];
+
   const handleChange = (option) => {
     setSelected(option);
     console.log("Selected:", option);
@@ -442,17 +458,9 @@ const Services = () => {
           </div>
         </form>
       </div>
-      <div className="mt-4 max-w-[183px] ml-auto">
-        <Button className="w-full py-2 px-4 flex gap-x-2 items-center rounded-[8px] bg-[var(--neutral-200] h-10">
-          <FaPlus />
-          <p className="font-medium text-sm leading-[171%] text-[#343a40]">
-            Add Another Asset
-          </p>
-        </Button>
-      </div>
       <div className="pt-3 pb-[33px] px-5 mt-6 bg-[var(--secondary)] servicecard rounded-[8px]">
         <h3 className="font-semibold text-lg leading-[156%] text-[#343a40]">
-          Source Information
+          Asset Information
         </h3>
 
         <form className="mt-3 ">
@@ -463,11 +471,11 @@ const Services = () => {
                   htmlFor=""
                   className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
                 >
-                  Source No
+                  Subject Asset Type
                 </label>
                 <Input
                   className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="S-1002"
+                  placeholder="Water Truck"
                 />
               </div>
               <div className="w-1/2 flex flex-col gap-y-[2px]">
@@ -475,12 +483,12 @@ const Services = () => {
                   htmlFor=""
                   className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
                 >
-                  Source Name
+                  Subject Make
                 </label>
 
                 <Input
                   className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Enter source name"
+                  placeholder="Volvo"
                 />
               </div>
               <div className="w-1/2 flex flex-col gap-y-[2px]">
@@ -488,86 +496,85 @@ const Services = () => {
                   htmlFor=""
                   className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
                 >
-                  Source Type
+                  Subject Model
                 </label>
-                <Select
-                  defaultValue="Dealer"
-                  style={{ height: "40px" }}
-                  onChange={handleChange}
-                  className="w-full"
-                  dropdownMatchSelectWidth={false}
-                >
-                  {sourceType.map((option) => (
-                    <Select.Option key={option.value} value={option.value}>
-                      <p>{option.label}</p>
-                    </Select.Option>
-                  ))}
-                </Select>
+
+                <Input
+                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  placeholder="A40G"
+                />
               </div>
-            </div>{" "}
+              <div className="w-1/2 flex flex-col gap-y-[2px]">
+                <label
+                  htmlFor=""
+                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
+                >
+                  Subject Year
+                </label>
+
+                <Input
+                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  placeholder="2025"
+                />
+              </div>
+            </div>
             <div className="flex gap-x-6 items-center justify-between">
               <div className="w-1/2 flex flex-col gap-y-[2px]">
                 <label
                   htmlFor=""
                   className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
                 >
-                  Contact
-                </label>
-                <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Enter contact name"
-                />
-              </div>
-              <div className="w-1/2 flex flex-col gap-y-[2px]">
-                <label
-                  htmlFor=""
-                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
-                >
-                  Title
-                </label>
-
-                <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Enter title"
-                />
-              </div>
-              <div className="w-1/2 flex flex-col gap-y-[2px]">
-                <label
-                  htmlFor=""
-                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
-                >
-                  Communication
+                  Usage Type
                 </label>
                 <Select
-                  defaultValue="true"
+                  defaultValue="Hours"
                   style={{ height: "40px" }}
                   onChange={handleChange}
                   className="w-full"
+                  dropdownMatchSelectWidth={false}
                 >
-                  {options.map((option) => (
+                  {usageType.map((option) => (
                     <Select.Option key={option.value} value={option.value}>
-                      <div className="flex items-center gap-x-2">
-                        <Tooltip title="Is the AMI representatives authorized to communicate directly with the Lessee?">
-                          <Button
-                            style={{
-                              backgroundColor: "transparent",
-                              color: "",
-                              borderRadius: "0",
-                              border: "none",
-                              padding: "0",
-                              fontSize: "16px",
-                              transition: "background-color 0.3s ease",
-                            }}
-                          >
-                            <InfoIcon color="var(--text-secondary)" />
-                          </Button>
-                        </Tooltip>
-                        <p>{option.label}</p>
-                      </div>
+                      <p>{option.label}</p>
                     </Select.Option>
                   ))}
                 </Select>
               </div>
+              <div className="w-1/2 flex flex-col gap-y-[2px]">
+                <label
+                  htmlFor=""
+                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
+                >
+                  Subject Current Hours
+                </label>
+
+                <Input
+                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  placeholder="Subject Current Hours"
+                />
+              </div>
+              <div className="w-1/2 flex flex-col gap-y-[2px]">
+                <label
+                  htmlFor=""
+                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
+                >
+                  New/Used
+                </label>
+                <Select
+                  defaultValue="New"
+                  style={{ height: "40px" }}
+                  onChange={handleChange}
+                  className="w-full"
+                  dropdownMatchSelectWidth={false}
+                >
+                  {NewUsed.map((option) => (
+                    <Select.Option key={option.value} value={option.value}>
+                      <p>{option.label}</p>
+                    </Select.Option>
+                  ))}
+                </Select>
+              </div>
+              <div className="w-1/2"></div>
             </div>{" "}
             <div className="flex gap-x-6 items-center justify-between">
               <div className="w-1/2 flex flex-col gap-y-[2px]">
@@ -637,6 +644,14 @@ const Services = () => {
             </div>
           </div>
         </form>
+      </div>
+      <div className="mt-4 max-w-[183px] ml-auto">
+        <Button className="w-full py-2 px-4 flex gap-x-2 items-center rounded-[8px] bg-[var(--neutral-200] h-10">
+          <FaPlus />
+          <p className="font-medium text-sm leading-[171%] text-[#343a40]">
+            Add Another Asset
+          </p>
+        </Button>
       </div>
     </>
   );

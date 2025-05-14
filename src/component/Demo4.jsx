@@ -1,56 +1,64 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-const ServicesTable = () => {
-  const [services, setServices] = useState([
-    { id: 1, name: "Residual Analysis", tokens: 3, hourly: 20, selected: true },
-    { id: 2, name: "Appraisal / Valuation", tokens: 2, hourly: 15, selected: false },
-    { id: 3, name: "Insurance Quotation", tokens: 1, hourly: 25, selected: false },
-    { id: 4, name: "Residual Insurance", tokens: 4, hourly: 30, selected: false }
-  ]);
-
-  // Handle checkbox toggle
-  const handleCheckboxChange = (id) => {
-    const updatedServices = services.map((service) =>
-      service.id === id ? { ...service, selected: !service.selected } : service
-    );
-    setServices(updatedServices);
+// Reusable form component
+const UserForm = ({ index, onChange }) => {
+  const handleChange = (e) => {
+    onChange(index, e.target.name, e.target.value);
   };
 
   return (
-    <div className="container mx-auto p-6">
-      <h2 className="text-2xl font-semibold mb-4">Select Services</h2>
-      <p className="mb-4">Choose which services you want to include in this residual analysis project</p>
-      
-      <table className="min-w-full table-auto border-collapse">
-        <thead>
-          <tr>
-            <th className="px-4 py-2 border-t-2 border-b-2 border-r-2 text-left bg-gray-100">Services</th>
-            <th className="px-4 py-2 border-t-2 border-b-2 border-r-2 text-left bg-gray-100">Tokens</th>
-            <th className="px-4 py-2 border-t-2 border-b-2 text-left bg-gray-100">Hourly</th>
-          </tr>
-        </thead>
-        <tbody>
-          {services.map((service) => (
-            <tr key={service.id} className="hover:bg-gray-50">
-              <td className="px-4 py-2 border-b-2 border-r-2">
-                <label className="flex items-center">
-                  <input
-                    type="checkbox"
-                    checked={service.selected}
-                    onChange={() => handleCheckboxChange(service.id)}
-                    className="mr-2"
-                  />
-                  {service.name}
-                </label>
-              </td>
-              <td className="px-4 py-2 border-b-2 border-r-2">{service.selected ? service.tokens : 0}</td>
-              <td className="px-4 py-2 border-b-2">{service.selected ? service.hourly : 0}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="border p-4 mb-4 rounded shadow">
+      <h4 className="mb-2">User Form {index + 1}</h4>
+      <input
+        type="text"
+        name="name"
+        placeholder="Name"
+        className="block mb-2 p-2 border"
+        onChange={handleChange}
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        className="block mb-2 p-2 border"
+        onChange={handleChange}
+      />
     </div>
   );
 };
 
-export default ServicesTable;
+const App = () => {
+  const [forms, setForms] = useState([{ name: '', email: '' }]);
+
+  // Add a new empty form
+  const addForm = () => {
+    setForms([...forms, { name: '', email: '' }]);
+  };
+
+  // Update form data when user types
+  const updateFormData = (index, field, value) => {
+    const updated = [...forms];
+    updated[index][field] = value;
+    setForms(updated);
+  };
+
+  return (
+    <div className="p-6">
+      {forms.map((form, index) => (
+        <UserForm key={index} index={index} onChange={updateFormData} />
+      ))}
+
+      <button
+        onClick={addForm}
+        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+      >
+        Add Another User Form
+      </button>
+
+      {/* Debug: Show final form data */}
+      <pre className="mt-6 bg-gray-100 p-4 rounded">{JSON.stringify(forms, null, 2)}</pre>
+    </div>
+  );
+};
+
+export default App;
