@@ -12,7 +12,7 @@ const Root = () => {
         behavior: "smooth",
       });
     }
-  }, []);
+  },[]);
   return (
     <div className="h-full overflow-hidden">
       <div className="flex items-start h-full">
