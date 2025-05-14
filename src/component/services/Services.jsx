@@ -2,9 +2,10 @@ import InfoIcon from "@assets/InfoIcon";
 import TimeIcon from "@assets/TimeIcon";
 import Token from "@assets/Token";
 import { Button, Input, Select, Tooltip } from "antd";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
+import { Contex } from "../../context/User";
 import AssetTerm from "./AssetTerm";
 
 const CustomRadio = ({ value, current, onChange, label }) => {
@@ -106,9 +107,11 @@ const Services = () => {
   };
   const [forms, setForms] = useState([{ name: "", email: "" }]);
 
+  let { setAssetTerm, assetTerm } = useContext(Contex);
   // Add a new empty form
   const addForm = () => {
     setForms([...forms, { name: "", email: "" }]);
+    setAssetTerm(!assetTerm);
   };
 
   // Update form data when user types
@@ -117,7 +120,6 @@ const Services = () => {
     updated[index][field] = value;
     setForms(updated);
   };
-
   return (
     <>
       <div className="mt-5">

@@ -1,9 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
+import { Contex } from "../context/User";
 
 const Root = () => {
+  let {assetTerm}=useContext(Contex)
   const containerRef = useRef(null);
   useEffect(() => {
     if (containerRef.current) {
@@ -12,7 +14,7 @@ const Root = () => {
         behavior: "smooth",
       });
     }
-  },[]);
+  },[assetTerm]);
   return (
     <div className="h-full overflow-hidden">
       <div className="flex items-start h-full">
