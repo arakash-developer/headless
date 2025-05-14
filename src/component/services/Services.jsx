@@ -58,7 +58,6 @@ const Services = () => {
     },
   ]);
   const [selected, setSelected] = useState({ value: "lucy", label: "Lucy" });
-  const [forms, setForms] = useState([{ name: "", email: "" }]);
   const [usageTypesellected, setUsageTypeselected] = useState("");
 
   // Handle checkbox toggle
@@ -104,6 +103,19 @@ const Services = () => {
   const handleUsageTypeChange = (option) => {
     setSelected(option);
     setUsageTypeselected(option);
+  };
+  const [forms, setForms] = useState([{ name: "", email: "" }]);
+
+  // Add a new empty form
+  const addForm = () => {
+    setForms([...forms, { name: "", email: "" }]);
+  };
+
+  // Update form data when user types
+  const updateFormData = (index, field, value) => {
+    const updated = [...forms];
+    updated[index][field] = value;
+    setForms(updated);
   };
 
   return (
@@ -489,10 +501,12 @@ const Services = () => {
         </form>
       </div>
 
-      <AssetTerm />
+      {forms.map((form, index) => (
+        <AssetTerm key={index} />
+      ))}
 
       <div className="mt-4 max-w-[183px] ml-auto">
-        <Button className="w-full py-2 px-4 flex gap-x-2 items-center rounded-[8px] bg-[var(--neutral-200] h-10">
+        <Button onClick={addForm}  className="w-full py-2 px-4 flex gap-x-2 items-center rounded-[8px] bg-[var(--neutral-200] h-10">
           <FaPlus />
           <p className="font-medium text-sm leading-[171%] text-[#343a40]">
             Add Another Asset
