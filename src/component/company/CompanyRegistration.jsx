@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import DownArrow from "../../public/icons/down.svg";
+import DownArrow from "@public/icons/down.svg";
 
 // Toast style config
 const toastStyle = {

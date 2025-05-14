@@ -6,16 +6,16 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import CompanyDataViewer from "./component/CompanyDataViewer";
-import CompanyRegistration from "./component/CompanyRegistration";
-import CompanyRegSuc from "./component/CompanyRegSuc";
-import Dashboard from "./component/Dashboard";
-import Demo from "./component/Demo";
-import Demo2 from "./component/Demo2";
-import Demo3 from "./component/Demo3";
-import Demo4 from "./component/Demo4";
-import Demo5 from "./component/Demo5";
-import Demo6 from "./component/Demo6";
+import CompanyDataViewer from "./component/company/CompanyDataViewer";
+import CompanyRegistration from "./component/company/CompanyRegistration";
+import CompanyRegSuc from "./component/company/CompanyRegSuc";
+import Dashboard from "./component/daahboard/Dashboard";
+import Demo from "./component/demo/Demo";
+import Demo2 from "./component/demo/Demo2";
+import Demo3 from "./component/demo/Demo3";
+import Demo4 from "./component/demo/Demo4";
+import Demo5 from "./component/demo/Demo5";
+import Demo6 from "./component/demo/Demo6";
 import InviteUser from "./component/InviteUser";
 import Reg1 from "./component/layers/Reg1";
 import Reg2 from "./component/layers/Reg2";
@@ -23,7 +23,7 @@ import Login from "./component/Login";
 import Password from "./component/Password";
 import Register from "./component/registers/Register";
 import Register2 from "./component/registers/Register2";
-import RegistrationSuccess from "./component/RegistrationSuccess";
+import RegistrationSuccess from "./component/registers/RegistrationSuccess";
 import Services from "./component/services/Services";
 import LoginProtected from "./Protect Rule/LoginProtected";
 import ProtectedCompany from "./Protect Rule/ProtectedCompany";
