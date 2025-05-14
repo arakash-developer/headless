@@ -691,56 +691,56 @@ const Services = () => {
                 </label>
                 <div className="flex items-center justify-between gap-x-6">
                   <CustomRadio
-                    value="option1"
+                    value="12"
                     current={selected}
                     onChange={setSelected}
                     label="12"
                   />
                   <CustomRadio
-                    value="option2"
+                    value="24"
                     current={selected}
                     onChange={setSelected}
                     label="24"
                   />
                   <CustomRadio
-                    value="option3"
+                    value="36"
                     current={selected}
                     onChange={setSelected}
                     label="36"
                   />
                   <CustomRadio
-                    value="option3"
+                    value="48"
                     current={selected}
                     onChange={setSelected}
                     label="48"
                   />
                   <CustomRadio
-                    value="option3"
+                    value="60"
                     current={selected}
                     onChange={setSelected}
                     label="60"
                   />
                   <CustomRadio
-                    value="option3"
+                    value="72"
                     current={selected}
                     onChange={setSelected}
                     label="72"
                   />
                   <CustomRadio
-                    value="option3"
+                    value="84"
                     current={selected}
                     onChange={setSelected}
                     label="84"
                   />
                   <CustomRadio
-                    value="option3"
+                    value="96"
                     current={selected}
                     onChange={setSelected}
                     label="96"
                   />
                   <div className="flex items-center gap-x-2">
                     <CustomRadio
-                      value="option3"
+                      value="0"
                       current={selected}
                       onChange={setSelected}
                       label=""
