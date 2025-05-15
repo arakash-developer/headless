@@ -29,13 +29,15 @@ const Root = () => {
     <div className="h-full overflow-hidden">
       <div className="flex items-start h-full">
         <Sidebar />
-        <div className="h-full w-full ml-8">
+        <div className="h-full w-full">
           <Navbar />
           <div
-            className="mt-[35px] overflow-y-scroll h-[90%] bg-[var(--background)]"
+            className="overflow-y-scroll h-[90%] bg-[var(--background)]"
             ref={containerRef}
           >
-            <Outlet />
+            <div className="mt-[64px] ml-8">
+              <Outlet />
+            </div>
           </div>
         </div>
       </div>

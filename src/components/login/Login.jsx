@@ -158,7 +158,7 @@ const Login = () => {
             </div>
             <button
               type="submit"
-              className="py-[8px] px-8 bg-[var(--primary)] rounded-[5px] text-white text-base font-bold max-w-[192px] cursor-pointer"
+              className="py-[8px] px-8 bg-[var(--primary)] rounded-[5px] text-white max-w-[192px] cursor-pointer font-medium text-sm leading-[200%] text-var(--secondary)"
             >
               Sign In
             </button>
