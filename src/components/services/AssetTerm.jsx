@@ -257,7 +257,7 @@ const AssetTerm = () => {
                 >
                   Terms (Months)
                 </label>
-                <div className="flex items-center justify-between gap-x-6">
+                <div className="flex items-center justify-between gap-xl-3 xxl:gap-x-6">
                   <CustomRadio
                     value="12"
                     current={selected}
