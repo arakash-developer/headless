@@ -1,10 +1,10 @@
+import HomeIcon from "@assets/HomeIcon";
+import ServiceIcon from "@assets/ServiceIcon";
+import Avatar from "@public/avatar.png";
+import Logo from "@public/logo.png";
 import { useEffect, useState } from "react";
 import { SiGooglehome } from "react-icons/si";
 import { NavLink, useLocation } from "react-router-dom";
-import Avatar from "@public/avatar.png";
-import Logo from "@public/logo.png";
-import HomeIcon from "@assets/HomeIcon";
-import ServiceIcon from "@assets/ServiceIcon";
 const Sidebar = () => {
   let [active, setActive] = useState(false);
   const [key, setKey] = useState("");
@@ -67,6 +67,16 @@ const Sidebar = () => {
             >
               <ServiceIcon color="var(--primary2)" />
               <p className="py-1">Services</p>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
+              to="/residualanalysis"
+              activeClassName="active"
+            >
+              <ServiceIcon color="var(--primary2)" />
+              <p className="py-1">Residual Analysis</p>
             </NavLink>
           </li>
           {/* <li>

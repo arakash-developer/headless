@@ -1,9 +1,9 @@
-import React from 'react'
-
 const Residualanalysis = () => {
   return (
-    <div>Residualanalysis</div>
-  )
-}
+    <div>
+      <h2>All Residual Analysis</h2>
+    </div>
+  );
+};
 
-export default Residualanalysis
+export default Residualanalysis;

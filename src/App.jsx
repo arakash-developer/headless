@@ -27,6 +27,7 @@ import RegistrationSuccess from "./components/registers/RegistrationSuccess";
 import Services from "./components/services/Services";
 import LoginProtected from "./Protect Rule/LoginProtected";
 import ProtectedCompany from "./Protect Rule/ProtectedCompany";
+import Residualanalysis from "./components/residualanalysis/Residualanalysis";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -43,6 +44,7 @@ const router = createBrowserRouter(
       <Route path="/demo3" element={<Demo3 />}></Route>
       <Route path="/demo5" element={<Demo5 />}></Route>
       <Route path="/demo6" element={<Demo6 />}></Route>
+      <Route path="/residualanalysis" element={<Residualanalysis />}></Route>
       <Route path="/reg1" component={Reg1} />
       <Route path="/reg2" component={Reg2} />
       <Route
