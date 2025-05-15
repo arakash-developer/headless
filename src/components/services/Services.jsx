@@ -33,6 +33,37 @@ const CustomRadio = ({ value, current, onChange, label }) => {
   );
 };
 
+const FileUploadForm = ({ index, onChange }) => {
+  const handleFileChange = (e) => {
+    onChange(index, "file", e.target.files[0]);
+  };
+
+  const handleInputChange = (e) => {
+    onChange(index, e.target.name, e.target.value);
+  };
+
+  return (
+    <div className="border p-4 mb-4 rounded shadow">
+      <h4 className="mb-2 font-semibold">Upload Section {index + 1}</h4>
+
+      <input
+        type="file"
+        name="file"
+        className="block mb-2"
+        onChange={handleFileChange}
+      />
+
+      <input
+        type="text"
+        name="label"
+        placeholder="Label (optional)"
+        className="block mb-2 p-2 border rounded w-full"
+        onChange={handleInputChange}
+      />
+    </div>
+  );
+};
+
 const Services = () => {
   const [activeButton, setActiveButton] = useState(null); // Track the active button
   const [services, setServices] = useState([
@@ -121,6 +152,21 @@ const Services = () => {
     updated[index][field] = value;
     setForms(updated);
   };
+
+  const [uploads, setUploads] = useState([
+    { file: null, label: "", isChecked: false },
+  ]);
+
+  const addUploadForm = () => {
+    setUploads([...uploads, { file: null, label: "", isChecked: false }]);
+  };
+
+  const updateUploadData = (index, field, value) => {
+    const updated = [...uploads];
+    updated[index][field] = value;
+    setUploads(updated);
+  };
+
   return (
     <>
       <div className="mt-5">
@@ -520,10 +566,17 @@ const Services = () => {
         </Button>
       </div>
 
-      <AssetDoccuments />
+      {uploads.map((upload, index) => (
+        <AssetDoccuments
+          key={index}
+          index={index}
+          onChange={updateUploadData}
+        />
+      ))}
+
       <div className="mt-4 max-w-[183px] ml-auto">
         <Button
-          onClick={addForm}
+          onClick={addUploadForm}
           className="w-full py-2 px-4 flex gap-x-2 items-center rounded-[8px] bg-[var(--neutral] h-10"
         >
           <FaPlus />

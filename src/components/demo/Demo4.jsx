@@ -1,62 +1,73 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-// Reusable form component
-const UserForm = ({ index, onChange }) => {
-  const handleChange = (e) => {
+const FileUploadForm = ({ index, onChange }) => {
+  const handleFileChange = (e) => {
+    onChange(index, "file", e.target.files[0]);
+  };
+
+  const handleInputChange = (e) => {
     onChange(index, e.target.name, e.target.value);
   };
 
   return (
     <div className="border p-4 mb-4 rounded shadow">
-      <h4 className="mb-2">User Form {index + 1}</h4>
+      <h4 className="mb-2 font-semibold">Upload Section {index + 1}</h4>
+
+      <input
+        type="file"
+        name="file"
+        className="block mb-2"
+        onChange={handleFileChange}
+      />
+
       <input
         type="text"
-        name="name"
-        placeholder="Name"
-        className="block mb-2 p-2 border"
-        onChange={handleChange}
-      />
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        className="block mb-2 p-2 border"
-        onChange={handleChange}
+        name="label"
+        placeholder="Label (optional)"
+        className="block mb-2 p-2 border rounded w-full"
+        onChange={handleInputChange}
       />
     </div>
   );
 };
 
 const App = () => {
-  const [forms, setForms] = useState([{ name: '', email: '' }]);
+  const [uploads, setUploads] = useState([{ file: null, label: "" }]);
 
-  // Add a new empty form
-  const addForm = () => {
-    setForms([...forms, { name: '', email: '' }]);
+  const addUploadForm = () => {
+    setUploads([...uploads, { file: null, label: "" }]);
   };
 
-  // Update form data when user types
-  const updateFormData = (index, field, value) => {
-    const updated = [...forms];
+  const updateUploadData = (index, field, value) => {
+    const updated = [...uploads];
     updated[index][field] = value;
-    setForms(updated);
+    setUploads(updated);
   };
 
   return (
     <div className="p-6">
-      {forms.map((form, index) => (
-        <UserForm key={index} index={index} onChange={updateFormData} />
+      {uploads.map((upload, index) => (
+        <FileUploadForm key={index} index={index} onChange={updateUploadData} />
       ))}
 
       <button
-        onClick={addForm}
+        onClick={addUploadForm}
         className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
       >
-        Add Another User Form
+        Add Another File Upload
       </button>
 
-      {/* Debug: Show final form data */}
-      <pre className="mt-6 bg-gray-100 p-4 rounded">{JSON.stringify(forms, null, 2)}</pre>
+      {/* Debug Output */}
+      <pre className="mt-6 bg-gray-100 p-4 rounded overflow-x-auto">
+        {JSON.stringify(
+          uploads.map((u) => ({
+            label: u.label,
+            file: u.file ? u.file.name : null,
+          })),
+          null,
+          2
+        )}
+      </pre>
     </div>
   );
 };
