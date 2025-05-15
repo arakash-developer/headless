@@ -324,7 +324,7 @@ const AssetTerm = () => {
                   placeholder="2500"
                 />
               </div>
-                <div className="w-full flex flex-col gap-y-[2px]">
+              <div className="w-full flex flex-col gap-y-[2px]">
                 <label
                   htmlFor=""
                   className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
