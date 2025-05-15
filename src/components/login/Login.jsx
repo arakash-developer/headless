@@ -1,7 +1,8 @@
+import EyeIcon from "@/assets/EyeIcon";
 import { Contex } from "@context/User";
 import Loginbanner from "@public/logIn.png";
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -140,14 +141,19 @@ const Login = () => {
                 >
                   Password
                 </label>
-                <input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)]"
-                  required
-                />
+                <div className="relative">
+                  <input
+                    id="password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)]"
+                    required
+                  />
+                  <div className="absolute right-[16px] top-1/2 -translate-y-1/2 cursor-pointer">
+                    <EyeIcon />
+                  </div>
+                </div>
               </div>
             </div>
             <div className="mt-2 mb-6">
@@ -162,9 +168,9 @@ const Login = () => {
                     Remember Password
                   </p>
                 </div>
-                <p className="font-normal text-xs leading-[135%] text-[var(--primary)]">
+                <Link className="font-normal text-xs leading-[135%] text-[var(--primary)]">
                   Forgot Password?
-                </p>
+                </Link>
               </div>
             </div>
             <button
