@@ -16,7 +16,7 @@ const CustomRadio = ({ value, current, onChange, label }) => {
       />
       <div
         className={`
-          w-[22px] h-[22px] rounded-full border-2 flex items-center justify-center text-white text-[12px]
+          w-[22px] h-[22px] rounded-[5px] border-2 flex items-center justify-center text-white text-[12px]
           ${isChecked ? "bg-black border-black" : "border-gray-400"}
         `}
       >
@@ -250,7 +250,7 @@ const AssetTerm = () => {
               </div>
             </div>
             <div className="flex gap-x-6 items-center justify-between">
-              <div className="w-1/2 flex flex-col gap-y-[2px]">
+              <div className="w-2/3 flex flex-col gap-y-[2px]">
                 <label
                   htmlFor=""
                   className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
@@ -319,7 +319,7 @@ const AssetTerm = () => {
                   </div>
                 </div>
               </div>
-              <div className="w-1/2 flex flex-col gap-y-[2px]">
+              <div className="w-1/3 flex flex-col gap-y-[2px]">
                 <label
                   htmlFor=""
                   className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"

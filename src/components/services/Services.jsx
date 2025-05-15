@@ -1,13 +1,13 @@
 import InfoIcon from "@assets/InfoIcon";
 import TimeIcon from "@assets/TimeIcon";
 import Token from "@assets/Token";
+import AssetDoccuments from "@components/services/AssetDoccuments";
+import AssetTerm from "@components/services/AssetTerm";
+import { Contex } from "@context/User";
 import { Button, Input, Select, Tooltip } from "antd";
 import { useContext, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
-import { Contex } from "@context/User";
-import AssetDoccuments from "@components/services/AssetDoccuments";
-import AssetTerm from "@components/services/AssetTerm";
 
 const CustomRadio = ({ value, current, onChange, label }) => {
   const isChecked = value === current;
@@ -511,7 +511,7 @@ const Services = () => {
       <div className="mt-4 max-w-[183px] ml-auto">
         <Button
           onClick={addForm}
-          className="w-full py-2 px-4 flex gap-x-2 items-center rounded-[8px] bg-[var(--neutral-200] h-10"
+          className="w-full py-2 px-4 flex gap-x-2 items-center rounded-[8px] bg-[var(--neutral] h-10"
         >
           <FaPlus />
           <p className="font-medium text-sm leading-[171%] text-[#343a40]">
@@ -521,6 +521,17 @@ const Services = () => {
       </div>
 
       <AssetDoccuments />
+      <div className="mt-4 max-w-[183px] ml-auto">
+        <Button
+          onClick={addForm}
+          className="w-full py-2 px-4 flex gap-x-2 items-center rounded-[8px] bg-[var(--neutral] h-10"
+        >
+          <FaPlus />
+          <p className="font-medium text-sm leading-[171%] text-[#343a40]">
+            Add Another Asset
+          </p>
+        </Button>
+      </div>
     </>
   );
 };
