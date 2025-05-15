@@ -25,6 +25,7 @@ const Sidebar = () => {
     const storedObject = JSON.parse(localStorage.getItem("user_data"));
     setUserData(storedObject);
   }, []);
+  const isActiveresidenanalysis = location.pathname === "/residualanalysis";
 
   return (
     <div className="h-full pt-[48px] sidebar">
@@ -35,7 +36,7 @@ const Sidebar = () => {
       </div>
       <div className="mt-[111px] w-72 h-full flex flex-col justify-between">
         <ul className="flex flex-col gap-y-[18px]">
-          <li>
+          {/* <li>
             <NavLink
               className={`text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px] ${
                 active ? "active" : ""
@@ -46,26 +47,24 @@ const Sidebar = () => {
               <SiGooglehome />
               <p className="py-1">Create Account</p>
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink
-              className={`text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px] ${
-                active ? "active" : ""
-              }`}
+              className={`text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]`}
               activeClassName="active"
               to="/dashboard"
             >
-              <HomeIcon color="var(--primary2)" />
+              <HomeIcon />
               <p className="py-1">Dashboard</p>
             </NavLink>
           </li>
           <li>
             <NavLink
-              className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
+              className="text-[var(--primary2)] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
               to="/services"
               activeClassName="active"
             >
-              <ServiceIcon color="var(--primary2)" />
+              <ServiceIcon />
               <p className="py-1">Services</p>
             </NavLink>
           </li>
@@ -75,7 +74,7 @@ const Sidebar = () => {
               to="/residualanalysis"
               activeClassName="active"
             >
-              <ServiceIcon color="var(--primary2)" />
+              <ServiceIcon />
               <p className="py-1">Residual Analysis</p>
             </NavLink>
           </li>
