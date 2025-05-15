@@ -168,7 +168,10 @@ const Services = () => {
     updated[index][field] = value;
     setUploads(updated);
   };
-
+  let [cancel, setCancel] = useState(false);
+  const handleCancelAsset = () => {
+    setCancel(!cancel);
+  };
   return (
     <>
       <div className="mt-5">
@@ -593,10 +596,35 @@ const Services = () => {
         <button className="bg-[var(--neutral)] font-medium text-sm leading-[171%] text-[var(--text-disabled)] py-3 px-4 rounded-[8px] border border-[var(--neutral)]">
           Submit
         </button>
-        <button className="py-3 px-4 rounded-[8px] border border-[#343a40] font-medium text-sm leading-[171%] text-[#343a40]">
+        <button
+          onClick={handleCancelAsset}
+          className="py-3 px-4 rounded-[8px] border border-[#343a40] font-medium text-sm leading-[171%] text-[#343a40]"
+        >
           Cancel
         </button>
       </div>
+
+      {cancel && (
+        <div className="popUp h-[253px] w-[656px] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[8px] bg-[var(--pop-up)] text-center py-[58px]">
+          <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
+            Are you sure you want to cancel?
+          </h2>
+          <p className="font-normal text-base leading-[150%] text-center text-[var(--text-secondary)] mt-4 mb-[26px]">
+            All unsaved changes will be lost.
+          </p>
+          <div className="flex gap-x-2 items-center justify-center">
+            <button className="py-2 px-[30px] bg-[var(--primary)] rounded-[5px] font-medium text-sm leading-[171%] text-[var(--secondary)] border border-[var(--primary)]">
+              Yes
+            </button>
+            <button
+              onClick={handleCancelAsset}
+              className="py-2 px-[30px] bg-[var(--secondary)] rounded-[5px] border border-[var(--primary2)] font-medium text-sm leading-[171%] text-[#343a40]"
+            >
+              No
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 };

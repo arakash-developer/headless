@@ -23,6 +23,11 @@
   --button-disabled: #e9ecef;
   --gray: #6f7482;
 }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 html,
 body {
   height: 100%;
