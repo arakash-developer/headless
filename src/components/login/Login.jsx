@@ -153,12 +153,18 @@ const Login = () => {
             <div className="mt-2 mb-6">
               <div className="w-full flex justify-between items-center">
                 <div className="flex items-center gap-3 cursor-pointer">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    className="accent-red-500 w-[18px] h-[18px] rounded-[4px] border-[var(--neutral-400)] focus:ring-red-400"
+                  />
+
                   <p className="text-[#919191] font-normal text-xs leading-[135%] text-var(--primary2)">
                     Remember Password
                   </p>
                 </div>
-                <p className="font-normal text-xs leading-[135%] text-[var(--primary)]">Forgot Password?</p>
+                <p className="font-normal text-xs leading-[135%] text-[var(--primary)]">
+                  Forgot Password?
+                </p>
               </div>
             </div>
             <button
