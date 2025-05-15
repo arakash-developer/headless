@@ -1,3 +1,4 @@
+import ResidualanalysisIcon from "@/assets/ResidualanalysisIcon";
 import HomeIcon from "@assets/HomeIcon";
 import ServiceIcon from "@assets/ServiceIcon";
 import Avatar from "@public/avatar.png";
@@ -28,13 +29,13 @@ const Sidebar = () => {
   const isActiveresidenanalysis = location.pathname === "/residualanalysis";
 
   return (
-    <div className="h-full pt-[48px] sidebar">
+    <div className="h-full pt-[48px]">
       <div className="heading w-full flex justify-center items-center">
         <NavLink to="/">
           <img className="cursor-pointer" src={Logo} alt={Logo} />
         </NavLink>
       </div>
-      <div className="mt-[111px] w-72 h-full flex flex-col justify-between">
+      <div className="mt-[111px] w-[230px] h-full flex flex-col justify-between">
         <ul className="flex flex-col gap-y-[18px]">
           {/* <li>
             <NavLink
@@ -74,7 +75,7 @@ const Sidebar = () => {
               to="/residualanalysis"
               activeClassName="active"
             >
-              <ServiceIcon />
+              <ResidualanalysisIcon />
               <p className="py-1">Residual Analysis</p>
             </NavLink>
           </li>
