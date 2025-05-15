@@ -107,7 +107,7 @@ const Login = () => {
   return (
     <>
       <div className="loginBox bg-[#fff] max-w-[1099px] mb-[171px] rounded-[5px] pl-[125px] pr-[20px] py-5 flex gap-[80px] h-full items-center">
-        <div className="max-w-[380px]">
+        <div className="max-w-[380px] py-[131px]">
           <h3 className="text-[var(--primary2)] text-4xl not-italic font-bold leading-10">
             Log In
           </h3>
