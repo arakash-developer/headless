@@ -8,6 +8,8 @@ import { Button, Input, Select, Tooltip } from "antd";
 import { useContext, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
+import AssetInformation from "./layers/AssetInformation";
+import AssetManager from "./layers/AssetManager";
 
 const CustomRadio = ({ value, current, onChange, label }) => {
   const isChecked = value === current;
@@ -585,6 +587,9 @@ const Services = () => {
           </p>
         </Button>
       </div>
+
+      <AssetInformation />
+      <AssetManager />
     </>
   );
 };
