@@ -108,10 +108,10 @@ const Login = () => {
     <>
       <div className="loginBox bg-[#fff] max-w-[1099px] mb-[171px] rounded-[5px] pl-[125px] pr-[20px] py-5 flex gap-[80px] h-full items-center">
         <div className="max-w-[380px] py-[131px]">
-          <h3 className="text-[var(--primary2)] text-4xl not-italic font-bold leading-10">
+          <h3 className="not-italic font-semibold text-4xl leading-[125%] text-[var(--primary2)]">
             Log In
           </h3>
-          <p className="text-[#919191] text-base not-italic font-normal leading-6 mt-[8px] mb-[28px]">
+          <p className="text-[#919191] not-italic mt-[8px] mb-[28px] font-normal text-base leading-[150%] text-[var(--text-secondary)]">
             Good to see you again! Enter your details to continue using the
             dashboard
           </p>
@@ -120,7 +120,7 @@ const Login = () => {
               <div className="flex flex-col gap-y-2">
                 <label
                   htmlFor="email"
-                  className="text-[var(--primary2)] text-base not-italic font-medium leading-[normal]"
+                  className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
                 >
                   Email
                 </label>
@@ -129,14 +129,14 @@ const Login = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
+                  className="w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4"
                   required
                 />
               </div>
               <div className="flex flex-col gap-y-2">
                 <label
-                  htmlFor="password"
-                  className="text-[var(--primary2)] text-base not-italic font-medium leading-[normal]"
+                  htmlFor="email"
+                  className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
                 >
                   Password
                 </label>
@@ -145,7 +145,7 @@ const Login = () => {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
+                  className="w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4"
                   required
                 />
               </div>
