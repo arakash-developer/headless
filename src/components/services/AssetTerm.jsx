@@ -249,7 +249,7 @@ const AssetTerm = () => {
                 />
               </div>
             </div>
-            <div className="flex gap-x-6 items-center justify-between">
+            <div className="w-full flex gap-x-6 items-center justify-between">
               <div className="w-2/3 flex flex-col gap-y-[2px]">
                 <label
                   htmlFor=""
@@ -257,7 +257,7 @@ const AssetTerm = () => {
                 >
                   Terms (Months)
                 </label>
-                <div className="flex items-center justify-between gap-xl-3 xxl:gap-x-6">
+                <div className="flex items-center justify-between">
                   <CustomRadio
                     value="12"
                     current={selected}
