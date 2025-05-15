@@ -1,8 +1,8 @@
-import { useContext, useEffect, useRef } from "react";
-import { Outlet } from "react-router-dom";
-import { Contex } from "@context/User";
-import Sidebar from "@components/main/Sidebar";
 import Navbar from "@components/main/Navbar";
+import Sidebar from "@components/main/Sidebar";
+import { Contex } from "@context/User";
+import { useContext, useRef } from "react";
+import { Outlet } from "react-router-dom";
 
 const Root = () => {
   const { assetTerm } = useContext(Contex);
@@ -29,15 +29,13 @@ const Root = () => {
     <div className="h-full overflow-hidden">
       <div className="flex items-start h-full">
         <Sidebar />
-        <div className="h-full w-full">
+        <div className="h-full w-full ml-8">
           <Navbar />
           <div
-            className="overflow-y-scroll h-[90%] bg-[var(--background)]"
+            className="mt-[35px] overflow-y-scroll h-[90%] bg-[var(--background)]"
             ref={containerRef}
           >
-            <div className="mt-[35px] ml-8">
-              <Outlet />
-            </div>
+            <Outlet />
           </div>
         </div>
       </div>

@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="mt-[35px] mb-6  navbar ml-8 mr-[60px] flex justify-between items-center">
-      {/* <div className="flex items-center relative">
+    <>
+      <nav className="mt-[35px] mb-6 navbar mr-[80px] flex justify-between items-center">
+        {/* <div className="flex items-center relative">
         <input
           type="text"
           // onChange={onChange}
@@ -40,16 +41,17 @@ const Navbar = () => {
           </svg>
         </div>
       </div> */}
-      <div className=""></div>
-      <Link to="/login" className="flex-shrink-0">
-        <p className="font-normal text-base leading-[150%] text-right text-var(--primary2)">
-          New to 4AMI?
-          <span className="ml-1 not-italic font-semibold text-lg leading-[156%] text-[var(--primary)]">
-            Sign Up
-          </span>
-        </p>
-      </Link>
-    </nav>
+        <div className=""></div>
+        <Link to="/login" className="flex-shrink-0">
+          <p className="font-normal text-base leading-[150%] text-right text-var(--primary2)">
+            New to 4AMI?
+            <span className="ml-1 not-italic font-semibold text-lg leading-[156%] text-[var(--primary)]">
+              Sign Up
+            </span>
+          </p>
+        </Link>
+      </nav>
+    </>
   );
 };
 
