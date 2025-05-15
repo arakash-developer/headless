@@ -9,21 +9,21 @@ const Root = () => {
   const containerRef = useRef(null);
   const isFirstRender = useRef(true); // Track initial render
 
-  useEffect(() => {
-    // Skip the effect on the initial mount
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
+  // useEffect(() => {
+  //   // Skip the effect on the initial mount
+  //   if (isFirstRender.current) {
+  //     isFirstRender.current = false;
+  //     return;
+  //   }
 
-    // Scroll to bottom when assetTerm changes
-    if (containerRef.current) {
-      containerRef.current.scrollTo({
-        top: containerRef.current.scrollHeight,
-        behavior: "smooth",
-      });
-    }
-  }, [assetTerm]); // ✅ Only run when assetTerm changes
+  //   // Scroll to bottom when assetTerm changes
+  //   if (containerRef.current) {
+  //     containerRef.current.scrollTo({
+  //       top: containerRef.current.scrollHeight,
+  //       behavior: "smooth",
+  //     });
+  //   }
+  // }, [assetTerm]); // ✅ Only run when assetTerm changes
 
   return (
     <div className="h-full overflow-hidden">
