@@ -106,7 +106,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="loginBox bg-[#fff]  mr-[80px] mb-[171px] rounded-[5px] px-[125px] py-5 flex gap-[80px] h-full items-center">
+      <div className="loginBox bg-[#fff] max-w-[1099px] mb-[171px] rounded-[5px] pl-[125px] pr-[20px] py-5 flex gap-[80px] h-full items-center">
         <div className="max-w-[380px]">
           <h3 className="text-[var(--primary2)] text-4xl not-italic font-bold leading-10">
             Log In
@@ -158,7 +158,7 @@ const Login = () => {
             </div>
             <button
               type="submit"
-              className="py-[18px] px-[60px] bg-[var(--primary)] rounded-[5px] text-white text-base font-bold max-w-[192px] cursor-pointer"
+              className="py-[8px] px-8 bg-[var(--primary)] rounded-[5px] text-white text-base font-bold max-w-[192px] cursor-pointer"
             >
               Sign In
             </button>
@@ -166,7 +166,7 @@ const Login = () => {
         </div>
         <div className="">
           <img
-            className="bg-cover rounded-[5px]"
+            className="bg-cover rounded-[5px] w-[564px] h-[633px]"
             src={Loginbanner}
             alt="Login Banner"
           />

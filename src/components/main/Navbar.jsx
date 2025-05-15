@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
-      <nav className="mt-[35px] mb-6 navbar mr-[80px] flex justify-between items-center">
+      <nav className="max-w-[1099px] mt-[35px] mb-6 navbar mr-[80px] flex justify-between items-center">
         {/* <div className="flex items-center relative">
         <input
           type="text"
