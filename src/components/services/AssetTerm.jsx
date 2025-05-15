@@ -209,34 +209,110 @@ const AssetTerm = () => {
         </h3>
 
         <form className="mt-3 ">
-          <div className="flex flex-col gap-y-4">
-            <div className="flex gap-x-6 items-center justify-between">
-              <div className="w-1/2 flex flex-col gap-y-[2px]">
-                <label
-                  htmlFor=""
-                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
-                >
-                  Application
-                </label>
-                <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Water Truck"
-                />
-              </div>
-              <div className="w-1/2 flex flex-col gap-y-[2px]">
-                <label
-                  htmlFor=""
-                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
-                >
-                  Environment
-                </label>
+          <div className="flex justify-between items-start gap-x-6">
+            <div className="w-1/2 flex items-start gap-x-6">
+              <div className="w-full flex flex-col gap-y-4">
+                <div className="flex w-full justify-between items-start gap-x-6">
+                  <div className="w-1/2 flex flex-col gap-y-[2px]">
+                    <label
+                      htmlFor=""
+                      className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
+                    >
+                      Application
+                    </label>
+                    <Input
+                      className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                      placeholder="Water Truck"
+                    />
+                  </div>
+                  <div className="w-1/2 flex flex-col gap-y-[2px]">
+                    <label
+                      htmlFor=""
+                      className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
+                    >
+                      Environment
+                    </label>
 
-                <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Volvo"
-                />
+                    <Input
+                      className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                      placeholder="Volvo"
+                    />
+                  </div>
+                </div>
+                <div className="w-full flex flex-col gap-y-[2px]">
+                  <label
+                    htmlFor=""
+                    className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
+                  >
+                    Terms (Months)
+                  </label>
+                  <div className="flex items-center justify-between">
+                    <CustomRadio
+                      value="12"
+                      current={selected}
+                      onChange={setSelected}
+                      label="12"
+                    />
+                    <CustomRadio
+                      value="24"
+                      current={selected}
+                      onChange={setSelected}
+                      label="24"
+                    />
+                    <CustomRadio
+                      value="36"
+                      current={selected}
+                      onChange={setSelected}
+                      label="36"
+                    />
+                    <CustomRadio
+                      value="48"
+                      current={selected}
+                      onChange={setSelected}
+                      label="48"
+                    />
+                    <CustomRadio
+                      value="60"
+                      current={selected}
+                      onChange={setSelected}
+                      label="60"
+                    />
+                    <CustomRadio
+                      value="72"
+                      current={selected}
+                      onChange={setSelected}
+                      label="72"
+                    />
+                    <CustomRadio
+                      value="84"
+                      current={selected}
+                      onChange={setSelected}
+                      label="84"
+                    />
+                    <CustomRadio
+                      value="96"
+                      current={selected}
+                      onChange={setSelected}
+                      label="96"
+                    />
+                    <div className="flex items-center gap-x-2">
+                      <CustomRadio
+                        value="0"
+                        current={selected}
+                        onChange={setSelected}
+                        label=""
+                      />
+                      <div className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-1 pl-[10px] pr-[60px] border border-[var(--neutral-400)] rounded-[8px]">
+                        Others
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="w-1/2 flex flex-col gap-y-[2px]">
+            </div>
+
+            <div className="w-1/2 flex flex-col gap-y-4">
+              <div className="w-full flex flex-col gap-y-[2px]">
                 <label
                   htmlFor=""
                   className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
@@ -248,78 +324,7 @@ const AssetTerm = () => {
                   placeholder="2500"
                 />
               </div>
-            </div>
-            <div className="w-full flex gap-x-6 items-center justify-between">
-              <div className="w-2/3 flex flex-col gap-y-[2px]">
-                <label
-                  htmlFor=""
-                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
-                >
-                  Terms (Months)
-                </label>
-                <div className="flex items-center justify-between">
-                  <CustomRadio
-                    value="12"
-                    current={selected}
-                    onChange={setSelected}
-                    label="12"
-                  />
-                  <CustomRadio
-                    value="24"
-                    current={selected}
-                    onChange={setSelected}
-                    label="24"
-                  />
-                  <CustomRadio
-                    value="36"
-                    current={selected}
-                    onChange={setSelected}
-                    label="36"
-                  />
-                  <CustomRadio
-                    value="48"
-                    current={selected}
-                    onChange={setSelected}
-                    label="48"
-                  />
-                  <CustomRadio
-                    value="60"
-                    current={selected}
-                    onChange={setSelected}
-                    label="60"
-                  />
-                  <CustomRadio
-                    value="72"
-                    current={selected}
-                    onChange={setSelected}
-                    label="72"
-                  />
-                  <CustomRadio
-                    value="84"
-                    current={selected}
-                    onChange={setSelected}
-                    label="84"
-                  />
-                  <CustomRadio
-                    value="96"
-                    current={selected}
-                    onChange={setSelected}
-                    label="96"
-                  />
-                  <div className="flex items-center gap-x-2">
-                    <CustomRadio
-                      value="0"
-                      current={selected}
-                      onChange={setSelected}
-                      label=""
-                    />
-                    <div className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-1 pl-[10px] pr-[60px] border border-[var(--neutral-400)] rounded-[8px]">
-                      Others
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="w-1/3 flex flex-col gap-y-[2px]">
+                <div className="w-full flex flex-col gap-y-[2px]">
                 <label
                   htmlFor=""
                   className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
@@ -340,7 +345,7 @@ const AssetTerm = () => {
                   ))}
                 </Select>
               </div>
-            </div>{" "}
+            </div>
           </div>
         </form>
       </div>
