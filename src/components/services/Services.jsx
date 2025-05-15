@@ -224,7 +224,7 @@ const Services = () => {
             <tbody>
               {services.map((service) => (
                 <tr key={service.id} className="hover:bg-gray-50">
-                  <td className="px-4 py-2 border-b border-r">
+                  <td className="px-6 py-2 border-b border-r">
                     <label className="flex items-center font-normal text-sm leading-[171%] text-[#343a40]">{service.name}</label>
                   </td>
                   <td className="px-6 py-2 border-b border-r-2">
