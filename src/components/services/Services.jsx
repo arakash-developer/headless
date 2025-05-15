@@ -587,9 +587,16 @@ const Services = () => {
           </p>
         </Button>
       </div>
-
       <AssetInformation />
       <AssetManager />
+      <div className="flex gap-x-2 items-center mt-6 mb-[62px]">
+        <button className="bg-[var(--neutral)] font-medium text-sm leading-[171%] text-[var(--text-disabled)] py-3 px-4 rounded-[8px] border border-[var(--neutral)]">
+          Submit
+        </button>
+        <button className="py-3 px-4 rounded-[8px] border border-[#343a40] font-medium text-sm leading-[171%] text-[#343a40]">
+          Cancel
+        </button>
+      </div>
     </>
   );
 };
