@@ -46,18 +46,17 @@ const AssetDoccuments = () => {
   return (
     <>
       <div className="pt-3 pb-[33px] px-5 mt-6 bg-[var(--secondary)] servicecard rounded-[8px]">
-        <div className="rounded-lg bg-[var(--background)] border border-dashed border-[var(--text-secondary)]">
+        <div className="w-full rounded-lg bg-[var(--background)] border border-dashed border-[var(--text-secondary)]">
           <Dragger {...uploadProps} style={{ padding: "12px 12px 20px 12px" }}>
-            <p className="ant-upload-drag-icon text-blue-500 text-3xl flex items-center justify-center">
+            <p className="ant-upload-drag-icon text-blue-500 text-3xl flex items-center justify-center mb-5">
               <AssecDocUpIcon />
             </p>
             <p className="font-medium text-sm leading-[171%] text-center text-[#343a40]">
               <span className=" text-[var(--primary)]">Upload images </span>
               or drag and drop
             </p>
-            <p className="text-sm text-gray-500">
-              Upload multiple files such as .csv, .xls, .pdf or .docx. Max 5
-              files. Max size 10MB.
+            <p className="font-normal text-xs leading-[135%] text-center text-[var(--text-secondary)]">
+              PDF, DOCX, XLSX, JPG, PNG up to 10MB
             </p>
           </Dragger>
         </div>
