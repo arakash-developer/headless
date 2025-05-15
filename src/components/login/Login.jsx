@@ -1,8 +1,8 @@
+import { Contex } from "@context/User";
+import Loginbanner from "@public/logIn.png";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import Loginbanner from "@public/logIn.png";
-import { Contex } from "@context/User";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -105,74 +105,77 @@ const Login = () => {
   };
 
   return (
-    <div className="h-full">
-      <div className="loginBox bg-[#fff] max-w-[1036px] mr-[64px] mb-[171px] rounded-[5px] px-[125px] py-5 grid grid-cols-2 gap-[80px] h-full items-center">
-        <div className="max-w-[380px]">
-          <h3 className="text-[var(--primary2)] text-4xl not-italic font-bold leading-10">
-            Log In
-          </h3>
-          <p className="text-[#919191] text-base not-italic font-normal leading-6 mt-[8px] mb-[28px]">
-            Good to see you again! Enter your details to continue using the
-            dashboard
-          </p>
-          <form onSubmit={handleLogin}>
-            <div className="flex flex-col gap-y-[20px]">
-              <div className="flex flex-col gap-y-2">
-                <label
-                  htmlFor="email"
-                  className="text-[var(--primary2)] text-base not-italic font-medium leading-[normal]"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
-                  required
-                />
+    <>
+      <div className="h-[10px] w-full bg-red-600"></div>
+      <div className="h-full">
+        <div className="loginBox bg-[#fff] max-w-[1036px] mr-[64px] mb-[171px] rounded-[5px] px-[125px] py-5 grid grid-cols-2 gap-[80px] h-full items-center">
+          <div className="max-w-[380px]">
+            <h3 className="text-[var(--primary2)] text-4xl not-italic font-bold leading-10">
+              Log In
+            </h3>
+            <p className="text-[#919191] text-base not-italic font-normal leading-6 mt-[8px] mb-[28px]">
+              Good to see you again! Enter your details to continue using the
+              dashboard
+            </p>
+            <form onSubmit={handleLogin}>
+              <div className="flex flex-col gap-y-[20px]">
+                <div className="flex flex-col gap-y-2">
+                  <label
+                    htmlFor="email"
+                    className="text-[var(--primary2)] text-base not-italic font-medium leading-[normal]"
+                  >
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
+                    required
+                  />
+                </div>
+                <div className="flex flex-col gap-y-2">
+                  <label
+                    htmlFor="password"
+                    className="text-[var(--primary2)] text-base not-italic font-medium leading-[normal]"
+                  >
+                    Password
+                  </label>
+                  <input
+                    id="password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
+                    required
+                  />
+                </div>
               </div>
-              <div className="flex flex-col gap-y-2">
-                <label
-                  htmlFor="password"
-                  className="text-[var(--primary2)] text-base not-italic font-medium leading-[normal]"
-                >
-                  Password
-                </label>
-                <input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full h-[50px] py-3 px-4 border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal]"
-                  required
-                />
+              <div className="mt-2 mb-6 flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" />
+                <p className="text-[#919191] text-sm font-normal">
+                  Remember Password
+                </p>
               </div>
-            </div>
-            <div className="mt-2 mb-6 flex items-center gap-3 cursor-pointer">
-              <input type="checkbox" />
-              <p className="text-[#919191] text-sm font-normal">
-                Remember Password
-              </p>
-            </div>
-            <button
-              type="submit"
-              className="py-[18px] px-[60px] bg-[var(--primary)] rounded-[5px] text-white text-base font-bold max-w-[192px] cursor-pointer"
-            >
-              Sign In
-            </button>
-          </form>
-        </div>
-        <div className="">
-          <img
-            className="bg-cover rounded-[5px]"
-            src={Loginbanner}
-            alt="Login Banner"
-          />
+              <button
+                type="submit"
+                className="py-[18px] px-[60px] bg-[var(--primary)] rounded-[5px] text-white text-base font-bold max-w-[192px] cursor-pointer"
+              >
+                Sign In
+              </button>
+            </form>
+          </div>
+          <div className="">
+            <img
+              className="bg-cover rounded-[5px]"
+              src={Loginbanner}
+              alt="Login Banner"
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

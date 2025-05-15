@@ -35,7 +35,7 @@ const Root = () => {
             className="overflow-y-scroll h-[90%] bg-[var(--background)]"
             ref={containerRef}
           >
-            <div className="px-[50px] pt-[35px]">
+            <div className="mt-[35px] ml-8">
               <Outlet />
             </div>
           </div>
