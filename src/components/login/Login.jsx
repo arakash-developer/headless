@@ -150,11 +150,16 @@ const Login = () => {
                 />
               </div>
             </div>
-            <div className="mt-2 mb-6 flex items-center gap-3 cursor-pointer">
-              <input type="checkbox" />
-              <p className="text-[#919191] text-sm font-normal">
-                Remember Password
-              </p>
+            <div className="mt-2 mb-6">
+              <div className="w-full flex justify-between items-center">
+                <div className="flex items-center gap-3 cursor-pointer">
+                  <input type="checkbox" />
+                  <p className="text-[#919191] text-sm font-normal">
+                    Remember Password
+                  </p>
+                </div>
+                <p className="font-normal text-xs leading-[135%] text-[var(--primary)]">Forgot Password?</p>
+              </div>
             </div>
             <button
               type="submit"
