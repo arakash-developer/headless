@@ -1,5 +1,5 @@
 import AssecDocUpIcon from "@/assets/AssecDocUpIcon";
-import { Input, Upload } from "antd";
+import { Select, Upload } from "antd";
 const { Dragger } = Upload;
 
 const uploadProps = {
@@ -43,207 +43,66 @@ const uploadProps = {
 };
 
 const AssetDoccuments = () => {
+  const handleChange = (option) => {
+    setSelected(option);
+    console.log("Selected:", option);
+  };
+  const options = [
+    { value: "true", label: "Yes" },
+    { value: "false", label: "No" },
+  ];
+  const sourceType = [
+    { value: "Dealer", label: "Dealer" },
+    { value: "Broker", label: "Broker" },
+    { value: "Syndication", label: "Syndication" },
+    { value: "Direct", label: "Direct" },
+  ];
   return (
     <>
       <div className="pt-3 pb-[33px] px-5 mt-6 bg-[var(--secondary)] servicecard rounded-[8px]">
-        <div className="w-full rounded-lg bg-[var(--background)] border border-dashed border-[var(--text-secondary)]">
-          <Dragger {...uploadProps} style={{ padding: "12px 12px 20px 12px" }}>
-            <p className="ant-upload-drag-icon text-blue-500 text-3xl flex items-center justify-center mb-5">
-              <AssecDocUpIcon />
-            </p>
-            <p className="font-medium text-sm leading-[171%] text-center text-[#343a40]">
-              <span className=" text-[var(--primary)]">Upload images </span>
-              or drag and drop
-            </p>
-            <p className="font-normal text-xs leading-[135%] text-center text-[var(--text-secondary)]">
-              PDF, DOCX, XLSX, JPG, PNG up to 10MB
-            </p>
-          </Dragger>
-        </div>
-
         <h3 className="font-semibold text-lg leading-[156%] text-[#343a40]">
-          Source Information
+          Documents
         </h3>
 
         <form className="mt-3 ">
           <div className="flex flex-col gap-y-4">
-            <div className="flex gap-x-6 items-center justify-between">
-              <div className="w-1/2 flex flex-col gap-y-[2px]">
-                <label
-                  htmlFor=""
-                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
-                >
-                  Source No
-                </label>
-                <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="S-1002"
-                />
-              </div>
-              <div className="w-1/2 flex flex-col gap-y-[2px]">
-                <label
-                  htmlFor=""
-                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
-                >
-                  Source Name
-                </label>
-
-                <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Enter source name"
-                />
-              </div>
-              <div className="w-1/2 flex flex-col gap-y-[2px]">
-                <label
-                  htmlFor=""
-                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
-                >
-                  Source Type
-                </label>
-                {/* <Select
-                  defaultValue="Dealer"
-                  style={{ height: "40px" }}
-                  onChange={handleChange}
-                  className="w-full"
-                  dropdownMatchSelectWidth={false}
-                >
-                  {sourceType.map((option) => (
-                    <Select.Option key={option.value} value={option.value}>
-                      <p>{option.label}</p>
-                    </Select.Option>
-                  ))}
-                </Select> */}
-              </div>
-            </div>{" "}
-            <div className="flex gap-x-6 items-center justify-between">
-              <div className="w-1/2 flex flex-col gap-y-[2px]">
-                <label
-                  htmlFor=""
-                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
-                >
-                  Contact
-                </label>
-                <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Enter contact name"
-                />
-              </div>
-              <div className="w-1/2 flex flex-col gap-y-[2px]">
-                <label
-                  htmlFor=""
-                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
-                >
-                  Title
-                </label>
-
-                <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Enter title"
-                />
-              </div>
-              <div className="w-1/2 flex flex-col gap-y-[2px]">
-                <label
-                  htmlFor=""
-                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
-                >
-                  Communication
-                </label>
-                {/* <Select
-                  defaultValue="true"
-                  style={{ height: "40px" }}
-                  onChange={handleChange}
-                  className="w-full"
-                >
-                  {options.map((option) => (
-                    <Select.Option key={option.value} value={option.value}>
-                      <div className="flex items-center gap-x-2">
-                        <Tooltip title="Is the AMI representatives authorized to communicate directly with the Lessee?">
-                          <Button
-                            style={{
-                              backgroundColor: "transparent",
-                              color: "",
-                              borderRadius: "0",
-                              border: "none",
-                              padding: "0",
-                              fontSize: "16px",
-                              transition: "background-color 0.3s ease",
-                            }}
-                          >
-                            <InfoIcon color="var(--text-secondary)" />
-                          </Button>
-                        </Tooltip>
-                        <p>{option.label}</p>
-                      </div>
-                    </Select.Option>
-                  ))}
-                </Select> */}
-              </div>
-            </div>{" "}
-            <div className="flex gap-x-6 items-center justify-between">
-              <div className="w-1/2 flex flex-col gap-y-[2px]">
-                <label
-                  htmlFor=""
-                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
-                >
-                  Phone Number 1
-                </label>
-                <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Enter phone number 1"
-                />
-              </div>
-              <div className="w-1/2 flex flex-col gap-y-[2px]">
-                <label
-                  htmlFor=""
-                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
-                >
-                  Phone Number 2
-                </label>
-
-                <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Enter phone number 2"
-                />
-              </div>
-              <div className="w-1/2 flex flex-col gap-y-[2px]">
-                <label
-                  htmlFor=""
-                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
-                >
-                  Cell
-                </label>
-                <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Enter cell number"
-                />
-              </div>
-            </div>{" "}
-            <div className="flex gap-x-6 items-center justify-between">
-              <div className="w-1/2 flex flex-col gap-y-[2px]">
-                <label
-                  htmlFor=""
-                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
-                >
-                  Email
-                </label>
-                <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Enter email address"
-                />
-              </div>
-              <div className="w-1/2 flex flex-col gap-y-[2px]">
-                <label
-                  htmlFor=""
-                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
-                >
-                  Website
-                </label>
-                <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                  placeholder="Enter website"
-                />
-              </div>
-              <div className="w-1/2"></div>
+            <div className="w-full flex flex-col gap-y-[2px]">
+              <label
+                htmlFor=""
+                className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
+              >
+                Maintenance Records
+              </label>
+              <Select
+                defaultValue="Maintenance Records"
+                style={{ height: "40px" }}
+                onChange={handleChange}
+                className="w-full"
+                dropdownMatchSelectWidth={false}
+              >
+                {sourceType.map((option) => (
+                  <Select.Option key={option.value} value={option.value}>
+                    <p>{option.label}</p>
+                  </Select.Option>
+                ))}
+              </Select>
+            </div>
+            <div className="w-full rounded-lg bg-[var(--background)] border border-dashed border-[var(--text-secondary)]">
+              <Dragger
+                {...uploadProps}
+                style={{ padding: "12px 12px 20px 12px" }}
+              >
+                <p className="ant-upload-drag-icon text-blue-500 text-3xl flex items-center justify-center mb-5">
+                  <AssecDocUpIcon />
+                </p>
+                <p className="font-medium text-sm leading-[171%] text-center text-[#343a40]">
+                  <span className=" text-[var(--primary)]">Upload images </span>
+                  or drag and drop
+                </p>
+                <p className="font-normal text-xs leading-[135%] text-center text-[var(--text-secondary)]">
+                  PDF, DOCX, XLSX, JPG, PNG up to 10MB
+                </p>
+              </Dragger>
             </div>
           </div>
         </form>
