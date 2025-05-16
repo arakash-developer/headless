@@ -11,6 +11,7 @@
       "@hooks/*": ["src/hooks/*"],
       "@layouts/*": ["src/layouts/*"],
       "@context/*": ["src/context/*"],
+      "@routes/*": ["src/routes/*"],
     }
   },
   "include": ["src", "public"]
