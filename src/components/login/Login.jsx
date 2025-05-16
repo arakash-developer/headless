@@ -1,4 +1,5 @@
 import EyeIcon from "@/assets/EyeIcon";
+import Hiddeneye from "@/assets/Hiddeneye";
 import { Contex } from "@context/User";
 import Loginbanner from "@public/logIn.png";
 import { Checkbox } from "antd";
@@ -162,7 +163,7 @@ const Login = () => {
                     onClick={handleTogglePassword}
                     className="absolute right-[16px] top-1/2 -translate-y-1/2 cursor-pointer"
                   >
-                    <EyeIcon />
+                    {eyeon ? <EyeIcon /> : <Hiddeneye />}
                   </div>
                 </div>
               </div>
