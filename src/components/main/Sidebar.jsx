@@ -4,7 +4,9 @@ import ServiceIcon from "@assets/ServiceIcon";
 import Avatar from "@public/avatar.png";
 import Logo from "@public/logo.png";
 import { useEffect, useState } from "react";
+import { FaPlus } from "react-icons/fa";
 import { NavLink, useLocation } from "react-router-dom";
+
 const Sidebar = () => {
   let [active, setActive] = useState(false);
   const [key, setKey] = useState("");
@@ -26,6 +28,9 @@ const Sidebar = () => {
     setUserData(storedObject);
   }, []);
   const isActiveresidenanalysis = location.pathname === "/residualanalysis";
+  const isDashboard = location.pathname === "/dashboard";
+  let [routeName, setrouteName] = useState("");
+  const token = localStorage.getItem("logintoken");
 
   return (
     <>
@@ -53,42 +58,57 @@ const Sidebar = () => {
               <NavLink
                 className={`text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]`}
                 activeClassName="active"
-                to="/dashboard"
+                to="/public"
               >
                 <HomeIcon />
-                <p className="py-1">Dashboard</p>
+                <p className="py-1">Home</p>
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                className="text-[var(--primary2)] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
-                to="/services"
-                activeClassName="active"
-              >
-                <ServiceIcon />
-                <p className="py-1">Services</p>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
-                to="/residualanalysis"
-                activeClassName="active"
-              >
-                <ResidualanalysisIcon />
-                <p className="py-1">Residual Analysis</p>
-              </NavLink>
-            </li>
-            {/* <li>
-            <NavLink
-              className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
-              to="/inviteuser"
-              activeClassName="active"
-            >
-              <FaPlus />
-              <p className="py-1">Invite a User</p>
-            </NavLink>
-          </li> */}
+
+            {token && (
+              <>
+                <li>
+                  <NavLink
+                    className={`text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]`}
+                    activeClassName="active"
+                    to="/dashboard"
+                  >
+                    <HomeIcon />
+                    <p className="py-1">Dashboard</p>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="text-[var(--primary2)] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
+                    to="/services"
+                    activeClassName="active"
+                  >
+                    <ServiceIcon />
+                    <p className="py-1">Services</p>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
+                    to="/residualanalysis"
+                    activeClassName="active"
+                  >
+                    <ResidualanalysisIcon />
+                    <p className="py-1">Residual Analysis</p>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
+                    to="/inviteuser"
+                    activeClassName="active"
+                  >
+                    <FaPlus />
+                    <p className="py-1">Invite a User</p>
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
           <div className="mb-[237px] w-full flex justify-center items-center">
             {islogin && (
