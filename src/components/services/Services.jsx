@@ -173,7 +173,7 @@ const Services = () => {
     setCancel(!cancel);
   };
   return (
-    <>
+    <div className="mr-10">
       <div className="mt-5">
         <h1 className="font-semibold text-4xl leading-[125%] text-[var(--text-normal)]">
           Create Residual Analysis
@@ -625,7 +625,7 @@ const Services = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
