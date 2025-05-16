@@ -104,6 +104,10 @@ const Login = () => {
       setError(error.message); // Show error if credentials are invalid
     }
   };
+  let [eyeon, seteyeon] = useState(false);
+  const handleTogglePassword = () => {
+    seteyeon(!eyeon);
+  };
 
   return (
     <>
@@ -144,13 +148,13 @@ const Login = () => {
                 <div className="relative">
                   <input
                     id="password"
-                    type="password"
+                    type={eyeon ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className="w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)]"
                     required
                   />
-                  <div className="absolute right-[16px] top-1/2 -translate-y-1/2 cursor-pointer">
+                  <div onClick={handleTogglePassword} className="absolute right-[16px] top-1/2 -translate-y-1/2 cursor-pointer">
                     <EyeIcon />
                   </div>
                 </div>
@@ -161,7 +165,7 @@ const Login = () => {
                 <div className="flex items-center gap-3 cursor-pointer">
                   <input
                     type="checkbox"
-                    className="accent-red-500 w-[18px] h-[18px] rounded-[4px] border-[var(--neutral-400)] focus:ring-red-400"
+                    className="cursor-pointer accent-red-500 w-[18px] h-[18px] rounded-[4px] border-[var(--neutral-400)] focus:ring-red-400"
                   />
 
                   <p className="text-[#919191] font-normal text-xs leading-[135%] text-var(--primary2)">
@@ -183,7 +187,7 @@ const Login = () => {
         </div>
         <div className="">
           <img
-            className="bg-cover rounded-[5px] w-[564px] h-[633px]"
+            className="bg-cover rounded-[5px] xl:w-[564px] xl:h-[633px] h-[400px] w-[300px]"
             src={Loginbanner}
             alt="Login Banner"
           />
