@@ -9,25 +9,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import Demo from "./components/demo/Demo";
-import Demo4 from "./components/demo/Demo4";
-import InviteUser from "./components/InviteUser";
-import Password from "./components/Password";
-import Register from "./components/registers/Register";
-import Register2 from "./components/registers/Register2";
-import Residualanalysis from "./components/residualanalysis/Residualanalysis";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
-      <Route index path="/" element={<Register />}></Route>
-      <Route index path="/" element={<Register />}></Route>
-      <Route index path="/register2" element={<Register2 />}></Route>
-      <Route path="/inviteuser" element={<InviteUser />}></Route>
-      <Route path="/demo" element={<Demo />}></Route>
-      <Route path="/password" element={<Password />}></Route>
-      <Route path="/residualanalysis" element={<Residualanalysis />}></Route>
-
-      <Route path="/demo4" element={<Demo4 />}></Route>
       <Route path="*" element={<Error />} />
 
       {routes.map(({ path, component: Component, access }) => {
