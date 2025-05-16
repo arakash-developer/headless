@@ -111,7 +111,6 @@ html {
 .custom-checkbox:hover:not(.ant-checkbox-checked) .ant-checkbox-inner {
   background-color: var(--primary) !important; 
 }
-
 /* Optional: cursor pointer */
 .custom-checkbox:hover {
   cursor: pointer;
