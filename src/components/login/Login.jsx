@@ -1,6 +1,7 @@
 import EyeIcon from "@/assets/EyeIcon";
 import { Contex } from "@context/User";
 import Loginbanner from "@public/logIn.png";
+import { Checkbox } from "antd";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -108,6 +109,9 @@ const Login = () => {
   const handleTogglePassword = () => {
     seteyeon(!eyeon);
   };
+  const onChange = (e) => {
+    console.log(`checked = ${e.target.checked}`);
+  };
 
   return (
     <>
@@ -154,7 +158,10 @@ const Login = () => {
                     className="w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)]"
                     required
                   />
-                  <div onClick={handleTogglePassword} className="absolute right-[16px] top-1/2 -translate-y-1/2 cursor-pointer">
+                  <div
+                    onClick={handleTogglePassword}
+                    className="absolute right-[16px] top-1/2 -translate-y-1/2 cursor-pointer"
+                  >
                     <EyeIcon />
                   </div>
                 </div>
@@ -163,10 +170,10 @@ const Login = () => {
             <div className="mt-2 mb-6">
               <div className="w-full flex justify-between items-center">
                 <div className="flex items-center gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    className="cursor-pointer accent-red-500 w-[18px] h-[18px] rounded-[4px] border-[var(--neutral-400)] focus:ring-red-400"
-                  />
+                  <Checkbox
+                    onChange={onChange}
+                    className="custom-checkbox "
+                  ></Checkbox>
 
                   <p className="text-[#919191] font-normal text-xs leading-[135%] text-var(--primary2)">
                     Remember Password
