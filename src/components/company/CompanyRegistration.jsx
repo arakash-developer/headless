@@ -287,7 +287,7 @@ const CompanyRegistration = () => {
             <button
               type="button"
               onClick={handleClear}
-              className="py-[18px] px-[60px] bg-[#FFF] text-[var(--primary2)] border border-[#919191] rounded-[5px] cursor-pointer overflow-hidden text-zinc-950/[0.5] text-center text-ellipsis text-base not-italic font-semibold leading-[1.31rem]"
+              className="py-[18px] px-[60px] bg-[#FFF] text-[var(--primary2)] border border-[#919191] rounded-[5px] cursor-pointer overflow-hidden text-center text-ellipsis text-base not-italic font-semibold leading-[1.31rem]"
             >
               Clear Form
             </button>
