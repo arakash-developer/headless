@@ -54,16 +54,6 @@ const Sidebar = () => {
               <p className="py-1">Create Account</p>
             </NavLink>
           </li> */}
-            <li>
-              <NavLink
-                className={`text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]`}
-                activeClassName="active"
-                to="/public"
-              >
-                <HomeIcon />
-                <p className="py-1">Home</p>
-              </NavLink>
-            </li>
 
             {token && (
               <>

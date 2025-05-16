@@ -1,6 +1,15 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+    const location = useLocation();
+  const [routeName, setRouteName] = useState("");
+
+  useEffect(() => {
+    // Get the first part of the path after "/"
+    const currentRoute = location.pathname.split("/")[1];
+    setRouteName(currentRoute);
+  }, [location.pathname]);
   return (
     <>
       <nav className="mt-[35px] mb-6 mr-[80px] flex justify-between items-center">
@@ -42,11 +51,18 @@ const Navbar = () => {
         </div>
       </div> */}
         <div className=""></div>
-        <Link to="/login" className="flex-shrink-0">
+        <Link
+          to={routeName === "login" ? "/register" : "/login"}
+          className="flex-shrink-0"
+        >
           <p className="font-normal text-base leading-[150%] text-right text-var(--primary2)">
             New to 4AMI?
             <span className="ml-1 not-italic font-semibold text-lg leading-[156%] text-[var(--primary)]">
-              Sign Up
+              {routeName === "login"
+                ? "Sign Up"
+                : routeName === "register"
+                ? "Log In"
+                : ""}
             </span>
           </p>
         </Link>
