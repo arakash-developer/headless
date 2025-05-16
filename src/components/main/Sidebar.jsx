@@ -46,7 +46,7 @@ const Sidebar = () => {
             </NavLink>
           </li> */}
 
-            {token && (
+            {islogin && (
               <>
                 <li>
                   <NavLink
