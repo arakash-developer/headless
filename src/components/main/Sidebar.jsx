@@ -1,32 +1,23 @@
 import ResidualanalysisIcon from "@/assets/ResidualanalysisIcon";
+import { Contex } from "@/context/User";
 import HomeIcon from "@assets/HomeIcon";
 import ServiceIcon from "@assets/ServiceIcon";
 import Avatar from "@public/avatar.png";
 import Logo from "@public/logo.png";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { NavLink, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
   let [active, setActive] = useState(false);
   const [key, setKey] = useState("");
-  let [islogin, setIsLogin] = useState(false);
+  let { islogin } = useContext(Contex);
+  console.log(islogin);
   let [userData, setUserData] = useState({});
   const location = useLocation();
   let [iscompanyrestored, setIsCompanyRestored] = useState(false);
   console.log(location.pathname);
   let con = localStorage.setItem("isCompanyRestored", true);
-  useEffect(() => {
-    let islogins = localStorage.getItem("logintoken");
-    if (islogins) {
-      setIsLogin(true);
-    } else {
-      setIsLogin(false);
-    }
-    console.log("aaaaa", islogin);
-    const storedObject = JSON.parse(localStorage.getItem("user_data"));
-    setUserData(storedObject);
-  }, []);
   const isActiveresidenanalysis = location.pathname === "/residualanalysis";
   const isDashboard = location.pathname === "/dashboard";
   let [routeName, setrouteName] = useState("");
@@ -101,7 +92,7 @@ const Sidebar = () => {
             )}
           </ul>
           <div className="mb-[237px] w-full flex justify-center items-center">
-            {token && (
+            {islogin && (
               <div className="flex w-56 h-[72px] py-3  px-[10px]  items-center gap-3 bg-[var(--primary2)] rounded-[8px] justify-between">
                 <div className="flex items-center gap-3">
                   <img className="rounded-full" src={Avatar} alt={Avatar} />
