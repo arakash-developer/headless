@@ -7,12 +7,12 @@ const Navbar = () => {
 
   useEffect(() => {
     // Get the first part of the path after "/"
-    const currentRoute = location.pathname.split("/")[1];
+    const currentRoute = window.location.pathname.split("/")[1];
     setRouteName(currentRoute);
   }, [location.pathname]);
   return (
     <>
-      <nav className="mt-[35px] mb-6 mr-[80px] flex justify-between items-center">
+      <nav className="bg-[var(--background)] mt-[35px] mb-6 mr-[80px] flex justify-between items-center">
         {/* <div className="flex items-center relative">
         <input
           type="text"
@@ -52,20 +52,20 @@ const Navbar = () => {
       </div> */}
         <div className=""></div>
         <Link
-          to={routeName === "login" ? "/register" : "/login"}
+          to={routeName === "login" ? "/signup" : "/login"}
           className="flex-shrink-0"
         >
           <p className="font-normal text-base leading-[150%] text-right text-var(--primary2)">
             {routeName === "login"
               ? "New to 4AMI?"
-              : routeName === "register"
+              : routeName === "signup"
               ? "Alredy have an account?"
               : ""}
 
             <span className="ml-1 not-italic font-semibold text-lg leading-[156%] text-[var(--primary)]">
               {routeName === "login"
                 ? "Sign Up"
-                : routeName === "register"
+                : routeName === "signup"
                 ? "Log In"
                 : ""}
             </span>

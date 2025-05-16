@@ -34,7 +34,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="h-full pt-[48px] sidebar">
+      <div className="h-full pt-[48px]">
         <div className="heading w-full flex justify-center items-center">
           <NavLink to="/">
             <img className="cursor-pointer" src={Logo} alt={Logo} />

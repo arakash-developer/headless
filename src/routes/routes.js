@@ -13,9 +13,9 @@ import Services from "@components/services/Services";
 export const routes = [
   // public routes
   { path: "/register2", component: Register2, access: "public" },
-  { path: "/", component: Register, access: "public" },
+  { path: "/", component: Register, access: "private" },
+  { path: "/signup", component: Register, access: "public" },
   { path: "/inviteuser", component: InviteUser, access: "public" },
-  { path: "/register", component: Register, access: "public" },
   { path: "/login", component: Login, access: "public" },
   { path: "/forget", component: Forget, access: "public" },
   // private routes
