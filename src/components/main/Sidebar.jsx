@@ -2,7 +2,6 @@ import ResidualanalysisIcon from "@/assets/ResidualanalysisIcon";
 import { Contex } from "@/context/User";
 import HomeIcon from "@assets/HomeIcon";
 import ServiceIcon from "@assets/ServiceIcon";
-import Avatar from "@public/avatar.png";
 import Logo from "@public/logo.png";
 import { useContext, useState } from "react";
 import { FaPlus } from "react-icons/fa";
@@ -99,7 +98,13 @@ const Sidebar = () => {
             {token && (
               <div className="flex w-56 h-[72px] py-3  px-[10px]  items-center gap-3 bg-[var(--primary2)] rounded-[8px] justify-between">
                 <div className="flex items-center gap-3">
-                  <img className="rounded-full" src={Avatar} alt={Avatar} />
+                  <div className="w-[40px] h-[40px] rounded-full overflow-hidden">
+                    <img
+                      className="w-full h-full"
+                      src={userData?.avatar_url}
+                      alt={userData?.avatar_url}
+                    />
+                  </div>
                   <div className="flex flex-col gap-[2px]">
                     <h3 className="text-[#FFF] text-base not-italic font-medium leading-5 capitalize">
                       {userData?.username}
