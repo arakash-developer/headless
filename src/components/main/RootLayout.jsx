@@ -26,7 +26,7 @@ const Root = () => {
   // }, [assetTerm]); // ✅ Only run when assetTerm changes
 
   return (
-    <div className="h-full overflow-hidden">
+    <div className="h-full overflow-hidden bg-[var(--background)]">
       <div className="flex items-start h-full">
         <Sidebar />
         <div className="h-full w-full">

@@ -12,7 +12,7 @@ const Navbar = () => {
   }, [location.pathname]);
   return (
     <>
-      <nav className="bg-[var(--background)] mt-[35px] mb-6 mr-[80px] flex justify-between items-center">
+      <nav className="mt-[35px] mb-6 mr-[80px] flex justify-between items-center">
         {/* <div className="flex items-center relative">
         <input
           type="text"
