@@ -117,9 +117,9 @@ const Login = () => {
   return (
     <>
       <div className="loginBox bg-[#fff] max-w-[1099px] xl:mr-[80px] mb-[171px] rounded-[5px] pl-[125px] pr-[20px] py-5 grid grid-cols-2 gap-[80px] h-full items-center">
-        <div className="max-w-[380px] py-[131px]">
+        <div className="max-w-[380px] py-[47px]">
           <h3 className="not-italic font-semibold text-4xl leading-[125%] text-[var(--primary2)]">
-            Log In
+            Sign In
           </h3>
           <p className="text-[#919191] not-italic mt-[8px] mb-[28px] font-normal text-base leading-[150%] text-[var(--text-secondary)]">
             Good to see you again! Enter your details to continue using the
@@ -195,7 +195,7 @@ const Login = () => {
         </div>
         <div className="">
           <img
-            className="bg-cover rounded-[5px] xl:w-[564px] xl:h-[633px] h-[400px] w-[300px]"
+            className="bg-cover rounded-[5px]"
             src={Loginbanner}
             alt="Login Banner"
           />
