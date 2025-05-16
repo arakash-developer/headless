@@ -95,13 +95,13 @@ html {
 
 /* Checked state */
 .custom-checkbox .ant-checkbox-checked .ant-checkbox-inner {
-  background-color: var(--primary); 
+  background-color:  var(--primary);
   border-color: var(--primary);
 }
 
 /* Checked checkmark */
 .custom-checkbox .ant-checkbox-checked .ant-checkbox-inner::after {
-  border-color: var(--neutral-400);
+  border-color: #fff;
   width: 6px;
   height: 12px;
   border-width: 2px;
