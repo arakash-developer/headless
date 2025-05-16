@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
-    const location = useLocation();
+  const location = useLocation();
   const [routeName, setRouteName] = useState("");
 
   useEffect(() => {
@@ -56,12 +56,12 @@ const Navbar = () => {
           className="flex-shrink-0"
         >
           <p className="font-normal text-base leading-[150%] text-right text-var(--primary2)">
-              {routeName === "login"
-                ? "New to 4AMI?"
-                : routeName === "register"
-                ? "Alredy have an account?"
-                : ""}
-          
+            {routeName === "login"
+              ? "New to 4AMI?"
+              : routeName === "register"
+              ? "Alredy have an account?"
+              : ""}
+
             <span className="ml-1 not-italic font-semibold text-lg leading-[156%] text-[var(--primary)]">
               {routeName === "login"
                 ? "Sign Up"
