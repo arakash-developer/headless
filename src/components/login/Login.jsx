@@ -176,7 +176,7 @@ const Login = () => {
                     className="custom-checkbox "
                   ></Checkbox>
 
-                  <p className="text-[#919191] font-normal text-xs leading-[135%] text-var(--primary2)">
+                  <p className="text-[var(--text-secondary)] font-normal text-xs leading-[135%] text-var(--primary2)">
                     Remember Password
                   </p>
                 </div>
