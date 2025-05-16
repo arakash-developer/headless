@@ -109,7 +109,7 @@ html {
 
 /* Hover state when NOT checked */
 .custom-checkbox:hover:not(.ant-checkbox-checked) .ant-checkbox-inner {
-  background-color: transparent !important; /* red-100 */
+  background-color: var(--primary) !important; 
 }
 
 /* Optional: cursor pointer */
