@@ -101,7 +101,7 @@ const Sidebar = () => {
             )}
           </ul>
           <div className="mb-[237px] w-full flex justify-center items-center">
-            {islogin && (
+            {token && (
               <div className="flex w-56 h-[72px] py-3  px-[10px]  items-center gap-3 bg-[var(--primary2)] rounded-[8px] justify-between">
                 <div className="flex items-center gap-3">
                   <img className="rounded-full" src={Avatar} alt={Avatar} />
