@@ -13,7 +13,10 @@ const Sidebar = () => {
   const [key, setKey] = useState("");
   let { islogin } = useContext(Contex);
   console.log(islogin);
-  let [userData, setUserData] = useState({});
+  let userDataDemo = localStorage.getItem("user_data");
+  let userData = JSON.parse(userDataDemo);
+  console.log("userData", userData);
+
   const location = useLocation();
   let [iscompanyrestored, setIsCompanyRestored] = useState(false);
   console.log(location.pathname);
@@ -22,6 +25,7 @@ const Sidebar = () => {
   const isDashboard = location.pathname === "/dashboard";
   let [routeName, setrouteName] = useState("");
   const token = localStorage.getItem("logintoken");
+  console.log("token", token);
 
   return (
     <>
@@ -92,7 +96,7 @@ const Sidebar = () => {
             )}
           </ul>
           <div className="mb-[237px] w-full flex justify-center items-center">
-            {/* {islogin && (
+            {token && (
               <div className="flex w-56 h-[72px] py-3  px-[10px]  items-center gap-3 bg-[var(--primary2)] rounded-[8px] justify-between">
                 <div className="flex items-center gap-3">
                   <img className="rounded-full" src={Avatar} alt={Avatar} />
@@ -130,7 +134,7 @@ const Sidebar = () => {
                   </defs>
                 </svg>
               </div>
-            )} */}
+            )}
           </div>
         </div>
       </div>
