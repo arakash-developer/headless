@@ -56,7 +56,12 @@ const Navbar = () => {
           className="flex-shrink-0"
         >
           <p className="font-normal text-base leading-[150%] text-right text-var(--primary2)">
-            New to 4AMI?
+              {routeName === "login"
+                ? "New to 4AMI?"
+                : routeName === "register"
+                ? "Alredy have an account?"
+                : ""}
+          
             <span className="ml-1 not-italic font-semibold text-lg leading-[156%] text-[var(--primary)]">
               {routeName === "login"
                 ? "Sign Up"
