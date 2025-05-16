@@ -1,33 +1,30 @@
 import ResidualanalysisIcon from "@/assets/ResidualanalysisIcon";
-import { Contex } from "@/context/User";
 import HomeIcon from "@assets/HomeIcon";
 import ServiceIcon from "@assets/ServiceIcon";
 import Logo from "@public/logo.png";
-import { useContext, useState } from "react";
 import { FaPlus } from "react-icons/fa";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Sidebar = () => {
-  let [active, setActive] = useState(false);
-  const [key, setKey] = useState("");
-  let { islogin } = useContext(Contex);
-  console.log(islogin);
   let userDataDemo = localStorage.getItem("user_data");
   let userData = JSON.parse(userDataDemo);
-  console.log("userData", userData);
-
   const location = useLocation();
-  let [iscompanyrestored, setIsCompanyRestored] = useState(false);
-  console.log(location.pathname);
-  let con = localStorage.setItem("isCompanyRestored", true);
-  const isActiveresidenanalysis = location.pathname === "/residualanalysis";
-  const isDashboard = location.pathname === "/dashboard";
-  let [routeName, setrouteName] = useState("");
+  let navigate = useNavigate();
   const token = localStorage.getItem("logintoken");
-  console.log("token", token);
+  const toastStyle = {
+    position: "bottom-left",
+    autoClose: 3000,
+    theme: "colored",
+    style: { background: "var(--primary2)", color: "#fff" },
+  };
+
   let handlerCancel = () => {
+    localStorage.removeItem("auth_token");
     localStorage.removeItem("logintoken");
-    localStorage.removeItem("user_data");
+    localStorage.removeItem("com_auth_token");
+    navigate("/login");
+    toast.success("Logged out successfully", toastStyle);
   };
   return (
     <>
