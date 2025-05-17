@@ -69,26 +69,30 @@ const Navbar = () => {
           </>
         )}
         {!token && (
-          <Link
-            to={routeName === "login" ? "/signup" : "/login"}
-            className="flex-shrink-0"
-          >
-            <p className="font-normal text-base leading-[150%] text-right text-var(--primary2)">
-              {routeName === "login"
-                ? "New to 4AMI?"
-                : routeName === "signup"
-                ? "Alredy have an account?"
-                : ""}
-
-              <span className="ml-1 not-italic font-semibold text-lg leading-[156%] text-[var(--primary)]">
+          <div className="flex justify-end w-full
+           items-center">
+            
+            <Link
+              to={routeName === "login" ? "/signup" : "/login"}
+              className=""
+            >
+              <p className="font-normal text-base leading-[150%] text-right text-var(--primary2)">
                 {routeName === "login"
-                  ? "Sign Up"
+                  ? "New to 4AMI?"
                   : routeName === "signup"
-                  ? "Log In"
+                  ? "Alredy have an account?"
                   : ""}
-              </span>
-            </p>
-          </Link>
+
+                <span className="ml-1 not-italic font-semibold text-lg leading-[156%] text-[var(--primary)]">
+                  {routeName === "login"
+                    ? "Sign Up"
+                    : routeName === "signup"
+                    ? "Log In"
+                    : ""}
+                </span>
+              </p>
+            </Link>
+          </div>
         )}
       </nav>
     </>
