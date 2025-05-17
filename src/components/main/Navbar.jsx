@@ -1,3 +1,4 @@
+import DownArrow from "@/assets/DownArrow";
 import NotifyIcon from "@/assets/NotifyIcon";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -56,10 +57,13 @@ const Navbar = () => {
                 </svg>
               </div>
             </div>
-            <div className="flex gap-x-4 items-center">
+            <div className="flex gap-x-[25px] items-center">
               <NotifyIcon />
-              <div className="w-[35px] h-[35px] overflow-hidden rounded-full">
-                <img src={userData?.avatar_url} alt="Avatar" />
+              <div className="flex gap-x-1 items-center">
+                <div className="w-[35px] h-[35px] overflow-hidden rounded-full">
+                  <img src={userData?.avatar_url} alt="Avatar" />
+                </div>
+                <DownArrow />
               </div>
             </div>
           </>
