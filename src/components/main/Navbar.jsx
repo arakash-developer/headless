@@ -1,3 +1,4 @@
+import NotifyIcon from "@/assets/NotifyIcon";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -5,6 +6,8 @@ const Navbar = () => {
   const location = useLocation();
   const [routeName, setRouteName] = useState("");
   let token = localStorage.getItem("logintoken");
+  let userData = JSON.parse(localStorage.getItem("user_data"));
+  console.log(userData);
 
   useEffect(() => {
     // Get the first part of the path after "/"
@@ -53,7 +56,12 @@ const Navbar = () => {
                 </svg>
               </div>
             </div>
-            <div className="">ccc</div>
+            <div className="flex gap-x-4 items-center">
+              <NotifyIcon />
+              <div className="w-[35px] h-[35px] overflow-hidden rounded-full">
+                <img src={userData?.avatar_url} alt="Avatar" />
+              </div>
+            </div>
           </>
         )}
         {!token && (
