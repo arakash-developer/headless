@@ -1,4 +1,22 @@
+import CustomSort from "./layers/CustomSort";
+
 const Residualanalysis = () => {
+  const structureType = [
+    { value: "Project ID All", label: "Project ID All" },
+    { value: "Project ID All2", label: "Project ID All 2" },
+  ];
+  const AssetTypeAll = [
+    { value: "Asset Type All", label: "Asset Type All" },
+    { value: "Asset Type All2", label: "Asset Type All 2" },
+  ];
+  const StatusAll = [
+    { value: "Status All", label: "Status All" },
+    { value: "Status All2", label: "Status All 2" },
+  ];
+  const ClearFilter = [
+    { value: "Clear Filter", label: "Clear Filter" },
+    { value: "Clear Filter2", label: "Clear Filter 2" },
+  ];
   return (
     <>
       <div className="mt-5">
@@ -10,8 +28,11 @@ const Residualanalysis = () => {
           <span className="text-[#343a40;]"> All Residual Analysis</span>
         </p>
       </div>
-      <div className="mt-6 mb-4">
-        <button className="rounded-[8px] w-28 h-8 border border-[var(--neutral-400)] p-2"></button>
+      <div className="mt-6 mb-4 flex gap-x-3 items-center">
+        <CustomSort defaultValue="Project ID All" option={structureType} />
+        <CustomSort defaultValue="Asset Type All" option={AssetTypeAll} />
+        <CustomSort defaultValue="Status All" option={StatusAll} />
+        <CustomSort defaultValue="Clear Filter" option={ClearFilter} />
       </div>
     </>
   );
