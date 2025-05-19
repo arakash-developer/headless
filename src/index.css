@@ -130,3 +130,6 @@ html {
 .custom-tabs .ant-tabs-ink-bar {
   background-color: #ef4444 !important; /* Tailwind red-500 */
 }
+ul.companyProfile li a.active{
+  color: red !important;
+}

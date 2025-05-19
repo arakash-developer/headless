@@ -1,5 +1,21 @@
-import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+
 const Profile = () => {
+  const [activeHash, setActiveHash] = useState(
+    window.location.hash || "#home1"
+  );
+
+  useEffect(() => {
+    const onHashChange = () => {
+      setActiveHash(window.location.hash);
+    };
+
+    window.addEventListener("hashchange", onHashChange);
+
+    return () => {
+      window.removeEventListener("hashchange", onHashChange);
+    };
+  }, []);
   return (
     <>
       <div className="mt-5">
@@ -12,15 +28,42 @@ const Profile = () => {
         </p>
       </div>
       <div className="mt-[35px]">
-        <ul className="">
+        <ul className="flex items-center gap-x-[51px] companyProfile">
           <li>
-            <NavLink className="font-medium text-sm leading-[171%] text-[#343a40]" to="#home">Company Information</NavLink>
+            <a
+              href="#home1"
+              className={`font-medium text-sm leading-[171%] ${
+                activeHash === "#home1"
+                  ? "text-[#343a40] border-b-2 border-[var(--primary)]"
+                  : "text-[var(--text-disabled)]"
+              }`}
+            >
+              Company Information
+            </a>
           </li>
           <li>
-            <NavLink to="#home">Address</NavLink>
+            <a
+              href="#home2"
+              className={`font-medium text-sm leading-[171%] ${
+                activeHash === "#home2"
+                  ? "text-[#343a40] border-b-2 border-[var(--primary)]"
+                  : "text-[var(--text-disabled)]"
+              }`}
+            >
+              Address
+            </a>
           </li>
           <li>
-            <NavLink to="#home">Key Contacts</NavLink>
+            <a
+              href="#home3"
+              className={`font-medium text-sm leading-[171%] ${
+                activeHash === "#home3"
+                  ? "text-[#343a40] border-b-2 border-[var(--primary)]"
+                  : "text-[var(--text-disabled)]"
+              }`}
+            >
+              Key Contacts
+            </a>
           </li>
         </ul>
       </div>
