@@ -125,3 +125,8 @@ html {
   box-shadow: 0 6px 25px 0 rgba(219, 220, 222, 0.2);
   background: var(--secondary);
 }
+
+/* ✅ Customize the underline (ink bar) color */
+.custom-tabs .ant-tabs-ink-bar {
+  background-color: #ef4444 !important; /* Tailwind red-500 */
+}
