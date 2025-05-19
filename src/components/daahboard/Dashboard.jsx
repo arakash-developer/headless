@@ -304,7 +304,7 @@ const Dashboard = () => {
                     <IoFilterOutline className="text-md" />
                   </div>
                 </th>
-                <th class="p-4 border border-gray-300 border-t-0 border-l-0 border-r-0">
+                <th class="p-4 border border-gray-300 border-t-0 border-l-0">
                   <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
                     Residual Value
                     <IoFilterOutline className="text-md" />
