@@ -391,7 +391,7 @@ const Dashboard = () => {
             option={ClearFilter}
           />
         </div>
-        <table class="table-auto w-full border-collapse">
+        <table class="table-auto w-full border-collapse py-[14px] px-5 bg-[var(--secondary)]">
           <thead>
             <tr class="text-left bg-[var(--secondary)]">
               <th class="p-4 border border-gray-300 border-t-0 border-l-0 font-medium text-xs text-[var(--text-secondary)]">
