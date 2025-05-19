@@ -171,10 +171,12 @@ const Login = () => {
             <div className="mt-2 mb-6">
               <div className="w-full flex justify-between items-center">
                 <div className="flex items-center gap-2 cursor-pointer">
-                  <Checkbox
-                    onChange={onChange}
-                    className="custom-red-checkbox"
-                  ></Checkbox>
+                  <div className="">
+                    <Checkbox
+                      onChange={onChange}
+                      className="custom-red-checkbox"
+                    ></Checkbox>
+                  </div>
 
                   <p className="text-[var(--text-secondary)] font-normal text-xs leading-[135%] text-var(--primary2)">
                     Remember Password
