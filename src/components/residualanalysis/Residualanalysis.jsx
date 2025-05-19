@@ -1,3 +1,4 @@
+import Draft from "@/assets/Draft";
 import { Button, Checkbox, Select, Tooltip } from "antd";
 import { IoFilterOutline } from "react-icons/io5";
 import FilterIcon from "./../../assets/FilterIcon";
@@ -335,7 +336,9 @@ const Residualanalysis = () => {
                   {asset?.action?.value}
                 </td>
                 <td class="p-4 border border-gray-300 border-t-0 border-l-0">
-                  -
+                  <div className="rounded-[8px] w-10 h-10 flex items-center justify-center border-2 border-[var(--neutral-400)] bg-[var(--secondary)] cursor-pointer">
+                    <Draft />
+                  </div>
                 </td>
               </tr>
             ))}
@@ -343,7 +346,9 @@ const Residualanalysis = () => {
         </table>
       </div>
       <div className="mt-4 mb-[88px]">
-        <p className="font-normal text-sm leading-[171%] text-[var(--gray)]">1-10 of 120 items</p>
+        <p className="font-normal text-sm leading-[171%] text-[var(--gray)]">
+          1-10 of 120 items
+        </p>
       </div>
     </div>
   );
