@@ -2,7 +2,6 @@ import ResidualanalysisIcon from "@/assets/ResidualanalysisIcon";
 import HomeIcon from "@assets/HomeIcon";
 import ServiceIcon from "@assets/ServiceIcon";
 import Logo from "@public/logo.png";
-import { FaPlus } from "react-icons/fa";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -63,12 +62,22 @@ const Sidebar = () => {
                 </li>
                 <li>
                   <NavLink
-                    className="text-[var(--primary2)] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
+                    className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
                     to="/services"
                     activeClassName="active"
                   >
                     <ServiceIcon />
                     <p className="py-1">Services</p>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
+                    to="/profiles"
+                    activeClassName="active"
+                  >
+                    <ResidualanalysisIcon />
+                    <p className="py-1">Profiles</p>
                   </NavLink>
                 </li>
                 <li>
@@ -81,7 +90,7 @@ const Sidebar = () => {
                     <p className="py-1">Residual Analysis</p>
                   </NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink
                     className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
                     to="/inviteuser"
@@ -90,7 +99,7 @@ const Sidebar = () => {
                     <FaPlus />
                     <p className="py-1">Invite a User</p>
                   </NavLink>
-                </li>
+                </li> */}
               </>
             )}
           </ul>
