@@ -1,10 +1,9 @@
 import Credit from "@/assets/Credit";
-import Draft from "@/assets/Draft";
 import FilterIcon from "@/assets/FilterIcon";
 import InProgress from "@/assets/InProgress";
 import SearchDas from "@/assets/SearchDas";
 import Shopimg from "@/assets/Shopimg";
-import { Button, Checkbox, Select, Tooltip } from "antd";
+import { Button, Select, Tooltip } from "antd";
 import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 import { IoFilterOutline } from "react-icons/io5";
@@ -85,49 +84,28 @@ const Dashboard = () => {
   };
   const assets = [
     {
-      projectId: "P1231",
-      assetType: "Water Truck",
-      date: "10 May, 2025",
-      status: {
-        value: "Pending",
-        color: "text-[#343a40]",
-      },
-      health: "-",
-      action: {
-        value: "-",
-        color: "text-[#343a40]",
-      },
-      color: "bg-[var(--neutral-100)]",
-    },
-    {
       projectId: "P1001",
       assetType: "Dump Truck",
       date: "18 April, 2025",
       status: {
-        value: "Pending",
-        color: "text-[#343a40]",
+        value: "Completed",
+        color: "text-[var(--primary)]",
       },
-      health: "-",
-      action: {
-        value: "-",
-        color: "text-[#343a40]",
-      },
+      health: "Excellent",
       color: "bg-[var(--secondary)]",
+      residualValue: 140000,
     },
     {
       projectId: "P1120",
       assetType: "Aerial Lift",
       date: "15 April, 2025",
       status: {
-        value: "Completed",
-        color: "text-[var(--primary)]",
+        value: "Pending",
+        color: "text-[#343a40]",
       },
-      health: "Bad",
-      action: {
-        value: "View Report",
-        color: "text-[var(--primary)] underline",
-      },
+      health: "Average",
       color: "bg-[var(--neutral-100)]",
+      residualValue: 48500,
     },
     {
       projectId: "P2285",
@@ -137,102 +115,9 @@ const Dashboard = () => {
         value: "Completed",
         color: "text-[var(--primary)]",
       },
-      health: "Average",
-      action: {
-        value: "View Report",
-        color: "text-[var(--primary)] underline",
-      },
+      health: "Poor",
       color: "bg-[var(--secondary)]",
-    },
-    {
-      projectId: "P8030",
-      assetType: "Forklift",
-      date: "10 April, 2025",
-      status: {
-        value: "Pending",
-        color: "text-[#343a40]",
-      },
-      health: "-",
-      action: {
-        value: "-",
-        color: "text-[#343a40]",
-      },
-      color: "bg-[var(--neutral-100)]",
-    },
-    {
-      projectId: "P2202",
-      assetType: "Glow Lights",
-      date: "10 April, 2025",
-      status: {
-        value: "Completed",
-        color: "text-[var(--primary)]",
-      },
-      health: "Good",
-      action: {
-        value: "View Report",
-        color: "text-[var(--primary)] underline",
-      },
-      color: "bg-[var(--secondary)]",
-    },
-    {
-      projectId: "P5000",
-      assetType: "Transformer",
-      date: "8 April, 2025",
-      status: {
-        value: "Completed",
-        color: "text-[var(--primary)]",
-      },
-      health: "Bad",
-      action: {
-        value: "View Report",
-        color: "text-[var(--primary)] underline",
-      },
-      color: "bg-[var(--neutral-100)]",
-    },
-    {
-      projectId: "P5002",
-      assetType: "Excavator",
-      date: "5 April, 2025",
-      status: {
-        value: "Completed",
-        color: "text-[var(--primary)]",
-      },
-      health: "Average",
-      action: {
-        value: "View Report",
-        color: "text-[var(--primary)] underline",
-      },
-      color: "bg-[var(--secondary)]",
-    },
-    {
-      projectId: "P8005",
-      assetType: "Forklift",
-      date: "5 April, 2025",
-      status: {
-        value: "Completed",
-        color: "text-[var(--primary)]",
-      },
-      health: "Average",
-      action: {
-        value: "View Report",
-        color: "text-[var(--primary)] underline",
-      },
-      color: "bg-[var(--neutral-100)]",
-    },
-    {
-      projectId: "P8328",
-      assetType: "Wind Turbine",
-      date: "30 March, 2025",
-      status: {
-        value: "Completed",
-        color: "text-[var(--primary)]",
-      },
-      health: "Excellent",
-      action: {
-        value: "View Report",
-        color: "text-[var(--primary)] underline",
-      },
-      color: "bg-[var(--secondary)]",
+      residualValue: 7500,
     },
   ];
   const structureType = [
@@ -391,96 +276,76 @@ const Dashboard = () => {
             option={ClearFilter}
           />
         </div>
-        <table class="table-auto w-full border-collapse py-[14px] px-5 bg-[var(--secondary)]">
-          <thead>
-            <tr class="text-left bg-[var(--secondary)]">
-              <th class="p-4 border border-gray-300 border-t-0 border-l-0 font-medium text-xs text-[var(--text-secondary)]">
-                <Checkbox
-                  className="custom-red-checkbox"
-                  onChange={onChange}
-                ></Checkbox>
-              </th>
-              <th class="p-4 border border-gray-300 border-t-0 border-l-0">
-                <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                  Project ID
-                  <IoFilterOutline className="text-md" />
-                </div>
-              </th>
-              <th class="p-4 border border-gray-300 border-t-0 border-l-0">
-                <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                  Asset Type
-                  <IoFilterOutline className="text-md" />
-                </div>
-              </th>
-              <th class="p-4 border border-gray-300 border-t-0 border-l-0">
-                <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                  Date
-                  <IoFilterOutline className="text-md" />
-                </div>
-              </th>
-              <th class="p-4 border border-gray-300 border-t-0 border-l-0">
-                <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                  Status
-                  <IoFilterOutline className="text-md" />
-                </div>
-              </th>
-              <th class="p-4 border border-gray-300 border-t-0 border-l-0">
-                <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                  Health
-                  <IoFilterOutline className="text-md" />
-                </div>
-              </th>
-              <th class="p-4 border border-gray-300 border-t-0 border-l-0">
-                <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                  Action
-                  <IoFilterOutline className="text-md" />
-                </div>
-              </th>
-              <th class="p-4 border border-gray-300 border-t-0 border-l-0 border-r-0 font-medium text-xs text-[var(--text-secondary)]">
-                -
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {assets.map((asset, index) => (
-              <tr class={`${asset?.color}`}>
-                <td class="p-4 border border-gray-300 border-t-0 border-l-0">
-                  <Checkbox
-                    className="custom-red-checkbox"
-                    onChange={onChange}
-                  ></Checkbox>
-                </td>
-                <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                  {asset.projectId}
-                </td>
-                <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                  {asset.assetType}
-                </td>
-                <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                  {asset.date}
-                </td>
-                <td
-                  class={`p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] ${asset?.status?.color}`}
-                >
-                  {asset?.status?.value}
-                </td>
-                <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                  {asset.health}
-                </td>
-                <td
-                  class={`p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] ${asset?.action?.color}`}
-                >
-                  {asset?.action?.value}
-                </td>
-                <td class="p-4 border border-gray-300 border-t-0 border-l-0 border-r-0">
-                  <div className="rounded-[8px] w-10 h-10 flex items-center justify-center border-2 border-[var(--neutral-400)] bg-[var(--secondary)] cursor-pointer">
-                    <Draft />
+        <div className="py-[14px] px-5 bg-[var(--secondary)] rounded-[8px] dashboard-box">
+          <table class="table-auto w-full border-collapse">
+            <thead>
+              <tr class="text-left bg-[var(--secondary)]">
+                <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+                  <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                    Project ID
+                    <IoFilterOutline className="text-md" />
                   </div>
-                </td>
+                </th>
+                <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+                  <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                    Asset Type
+                    <IoFilterOutline className="text-md" />
+                  </div>
+                </th>
+                <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+                  <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                    Date
+                    <IoFilterOutline className="text-md" />
+                  </div>
+                </th>
+                <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+                  <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                    Status
+                    <IoFilterOutline className="text-md" />
+                  </div>
+                </th>
+                <th class="p-4 border border-gray-300 border-t-0 border-l-0 border-r-0">
+                  <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                    Residual Value
+                    <IoFilterOutline className="text-md" />
+                  </div>
+                </th>
+                <th class="p-4 border border-gray-300 border-t-0 border-l-0 border-r-0">
+                  <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                    Health
+                    <IoFilterOutline className="text-md" />
+                  </div>
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {assets.map((asset, index) => (
+                <tr class={`${asset?.color}`}>
+                  <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
+                    {asset.projectId}
+                  </td>
+                  <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
+                    {asset.assetType}
+                  </td>
+                  <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
+                    {asset.date}
+                  </td>
+                  <td
+                    class={`p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] ${asset?.status?.color}`}
+                  >
+                    {asset?.status?.value}
+                  </td>
+                  <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
+                    ${asset?.residualValue}
+                  </td>
+                  <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 border-r-0 font-normal text-sm leading-[171%] text-[#343a40]">
+                    {asset.health}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div className="mt-[500px] dashboard-container max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg">
