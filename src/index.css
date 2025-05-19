@@ -94,7 +94,7 @@ html {
 
 /* Checked state */
 .custom-checkbox .ant-checkbox-checked .ant-checkbox-inner {
-  background-color:  var(--primary);
+  background-color: var(--primary);
   border-color: var(--primary);
 }
 
@@ -108,7 +108,7 @@ html {
 
 /* Hover state when NOT checked */
 .custom-checkbox:hover:not(.ant-checkbox-checked) .ant-checkbox-inner {
-  background-color: var(--primary) !important; 
+  background-color: var(--primary) !important;
 }
 /* Optional: cursor pointer */
 .custom-checkbox:hover {
@@ -124,4 +124,33 @@ html {
 .custom-checkbox.ant-checkbox-focused:not(.ant-checkbox-checked)
   .ant-checkbox-inner {
   background-color: var(--primary) !important;
+}
+
+/* akash */
+/* ✅ Checked state stays red */
+.custom-red-checkbox .ant-checkbox-checked .ant-checkbox-inner {
+  background-color: var(--primary2); /* Tailwind red-500 */
+  border-color: var(--primary2);
+}
+
+/* ✅ Focus stays red */
+.custom-red-checkbox .ant-checkbox-input:focus + .ant-checkbox-inner {
+  border-color: var(--primary2);
+}
+
+/* ✅ Red outline around checkmark */
+.custom-red-checkbox .ant-checkbox-checked::after {
+  border: 1px solid var(--primary2);
+}
+
+/* 🚫 Completely disable hover if checkbox is checked */
+.custom-red-checkbox .ant-checkbox-checked:hover .ant-checkbox-inner {
+  background-color: var(--primary2) !important;
+  border-color: var(--primary2) !important;
+  box-shadow: none !important;
+}
+
+/* Optional: Still allow hover effect when **not checked** */
+.custom-red-checkbox:not(.ant-checkbox-checked):hover .ant-checkbox-inner {
+  border-color: #3b82f6; /* Tailwind blue-500 or any hover color */
 }
