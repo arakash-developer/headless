@@ -74,6 +74,12 @@ const Sidebar = () => {
                       <FaAngleRight />
                     </div>
                   </NavLink>
+                  <ul className="dropdown">
+                    <li>Home</li>
+                    <li>Home</li>
+                    <li>Home</li>
+                    <li>Home</li>
+                  </ul>
                 </li>
                 <li>
                   <NavLink
