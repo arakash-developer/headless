@@ -26,7 +26,7 @@ const Navbar = () => {
                 // onChange={onChange}
                 // onBlur={onBlur}
                 placeholder="Search"
-                className="w-[372px] h-[50px] py-3 px-[40px] bg-[var(--secondary)] border border-[var(--neutral-400)] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm cursor-pointer text-[#919191]"
+                className="w-[372px] h-[40px] py-2 px-[40px] bg-[var(--secondary)] border border-[var(--neutral-400)] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm cursor-pointer text-[#919191] font-normal text-sm leading-[171%] text-[var(--text-disabled)]"
               />
               <div className="absolute left-[12px] top-1/2 -translate-y-1/2 pointer-events-none">
                 <svg

@@ -159,13 +159,13 @@ const Dashboard = () => {
     console.log(`checked = ${e.target.checked}`);
   };
   return (
-    <div className="mr-[40px]">
+    <div className="mr-10">
       <div className="mt-5">
         <h2 className="text-[var(--primary2)] font-semibold text-4xl leading-[125%] text-[#343a40]">
           Dashboard
         </h2>
-        <p className="font-normal text-base leading-[150%] text-[var(--text-secondary)] mt-2">
-          Good Morning, Michael. Here's your overview.
+        <p className="font-normal text-base leading-[150%] text-[var(--text-secondary)] mt-2 capitalize">
+          Good Morning, {user?.first_name}. Here's your overview.
           <span className="text-[#343a40;]"> All Residual Analysis</span>
         </p>
       </div>

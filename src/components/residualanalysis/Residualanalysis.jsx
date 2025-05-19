@@ -197,7 +197,7 @@ const Residualanalysis = () => {
   ];
 
   return (
-    <div>
+    <div className="mr-10">
       <div className="mt-5">
         <h1 className="text-[var(--text-normal)]  font-semibold text-4xl leading-[125%] text-var(--primary2)">
           All Residual Analysis
@@ -253,7 +253,7 @@ const Residualanalysis = () => {
           option={ClearFilter}
         />
       </div>
-      <div class="mt-8">
+      <div class="mt-8 p-4 bg-[var(--secondary)] servicecard rounded-[8px]">
         <table class="table-auto w-full border-collapse">
           <thead>
             <tr class="text-left bg-[var(--secondary)]">
