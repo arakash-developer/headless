@@ -152,5 +152,5 @@ html {
 
 /* Optional: Still allow hover effect when **not checked** */
 .custom-red-checkbox:not(.ant-checkbox-checked):hover .ant-checkbox-inner {
-  border-color: #3b82f6; /* Tailwind blue-500 or any hover color */
+  border-color: var(--primary2); /* Tailwind blue-500 or any hover color */
 }

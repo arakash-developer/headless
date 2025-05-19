@@ -173,7 +173,7 @@ const Login = () => {
                 <div className="flex items-center gap-2 cursor-pointer">
                   <Checkbox
                     onChange={onChange}
-                    className="custom-checkbox "
+                    className="custom-red-checkbox"
                   ></Checkbox>
 
                   <p className="text-[var(--text-secondary)] font-normal text-xs leading-[135%] text-var(--primary2)">
