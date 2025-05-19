@@ -3,6 +3,7 @@ import ResidualanalysisIcon from "@/assets/ResidualanalysisIcon";
 import HomeIcon from "@assets/HomeIcon";
 import ServiceIcon from "@assets/ServiceIcon";
 import Logo from "@public/logo.png";
+import { FaAngleRight } from "react-icons/fa6";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -61,7 +62,7 @@ const Sidebar = () => {
                     <p className="py-1">Dashboard</p>
                   </NavLink>
                 </li>
-                <li>
+                <li className="">
                   <NavLink
                     className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
                     to="/services"
@@ -69,6 +70,9 @@ const Sidebar = () => {
                   >
                     <ServiceIcon />
                     <p className="py-1">Services</p>
+                    <div className="w-full flex justify-end pr-1">
+                      <FaAngleRight />
+                    </div>
                   </NavLink>
                 </li>
                 <li>
@@ -88,7 +92,7 @@ const Sidebar = () => {
                     activeClassName="active"
                   >
                     <ResidualanalysisIcon />
-                    <p className="py-1">Residual Analysis</p>
+                    <p className="py-1">Analysis and Reports</p>
                   </NavLink>
                 </li>
                 {/* <li>
