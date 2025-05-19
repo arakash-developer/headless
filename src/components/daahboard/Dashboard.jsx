@@ -7,9 +7,9 @@ import Graph1 from "@public/graph1.png";
 import Graph2 from "@public/graph2.png";
 import { Button, Select, Tooltip } from "antd";
 import { useEffect, useState } from "react";
-import { FaPlus } from "react-icons/fa6";
+import { FaAngleRight, FaPlus } from "react-icons/fa6";
 import { IoFilterOutline } from "react-icons/io5";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CustomSort from "../residualanalysis/layers/CustomSort";
@@ -349,6 +349,10 @@ const Dashboard = () => {
           </table>
         </div>
       </div>
+      <Link to="/analyses" className="mt-3 mb-6 flex justify-end items-center gap-x-2 font-medium text-sm leading-[171%] text-[var(--primary)] text-right">
+        View All Analyses
+        <FaAngleRight />
+      </Link>
       <div className="w-full mt-[60px] flex items-center gap-x-6">
         <div className="w-1/2 h-[449px] bg-[var(--secondary)] rounded-[8px] dashboard-box p-6 overflow-hidden">
           <img className="w-full h-full" src={Graph1} alt="" />
