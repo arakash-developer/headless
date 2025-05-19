@@ -19,6 +19,7 @@ const AssetManager = () => {
                   Asset Manager
                 </label>
                 <Input
+                  disabled
                   className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="Bill Banfield"
                 />
@@ -32,6 +33,7 @@ const AssetManager = () => {
                 </label>
 
                 <Input
+                  disabled
                   className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="banfield@4ami.com"
                 />
@@ -45,6 +47,7 @@ const AssetManager = () => {
                 </label>
 
                 <Input
+                  disabled
                   className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="281-751-7548"
                 />
@@ -58,6 +61,7 @@ const AssetManager = () => {
                 </label>
 
                 <Input
+                  disabled
                   className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="908-751-4911"
                 />
