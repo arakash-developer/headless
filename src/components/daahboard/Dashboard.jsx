@@ -3,6 +3,8 @@ import FilterIcon from "@/assets/FilterIcon";
 import InProgress from "@/assets/InProgress";
 import SearchDas from "@/assets/SearchDas";
 import Shopimg from "@/assets/Shopimg";
+import Graph1 from "@public/graph1.png";
+import Graph2 from "@public/graph2.png";
 import { Button, Select, Tooltip } from "antd";
 import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa6";
@@ -345,6 +347,15 @@ const Dashboard = () => {
               ))}
             </tbody>
           </table>
+        </div>
+      </div>
+
+      <div className="mt-[60px] flex items-center gap-x-6">
+        <div className="w-[557px] h-[449px] bg-[var(--secondary)] rounded-[8px] dashboard-box p-6 overflow-hidden">
+          <img className="w-full h-full" src={Graph1} alt="" />
+        </div>
+        <div className="w-[557px] h-[449px] bg-[var(--secondary)] rounded-[8px] dashboard-box p-6">
+          <img className="w-full h-full" src={Graph2} alt="" />
         </div>
       </div>
 
