@@ -92,40 +92,6 @@ html {
   transition: all 0.3s ease;
 }
 
-/* Checked state */
-.custom-checkbox .ant-checkbox-checked .ant-checkbox-inner {
-  background-color: var(--primary);
-  border-color: var(--primary);
-}
-
-/* Checked checkmark */
-.custom-checkbox .ant-checkbox-checked .ant-checkbox-inner::after {
-  border-color: #fff;
-  width: 6px;
-  height: 12px;
-  border-width: 2px;
-}
-
-/* Hover state when NOT checked */
-.custom-checkbox:hover:not(.ant-checkbox-checked) .ant-checkbox-inner {
-  background-color: var(--primary) !important;
-}
-/* Optional: cursor pointer */
-.custom-checkbox:hover {
-  cursor: pointer;
-}
-/* Override AntD default blue hover background */
-.custom-checkbox:hover:not(.ant-checkbox-checked) .ant-checkbox-inner {
-  background-color: transparent !important;
-  border-color: var(--primary) !important;
-}
-
-/* Also override AntD focus/active styles */
-.custom-checkbox.ant-checkbox-focused:not(.ant-checkbox-checked)
-  .ant-checkbox-inner {
-  background-color: var(--primary) !important;
-}
-
 /* akash */
 /* ✅ Checked state stays red */
 .custom-red-checkbox .ant-checkbox-checked .ant-checkbox-inner {
@@ -153,4 +119,9 @@ html {
 /* Optional: Still allow hover effect when **not checked** */
 .custom-red-checkbox:not(.ant-checkbox-checked):hover .ant-checkbox-inner {
   border-color: var(--primary2); /* Tailwind blue-500 or any hover color */
+}
+
+.dashboard-box {
+  box-shadow: 0 6px 25px 0 rgba(219, 220, 222, 0.2);
+  background: var(--secondary);
 }
