@@ -1,3 +1,6 @@
+import { Button, Select, Tooltip } from "antd";
+import { IoFilterOutline } from "react-icons/io5";
+import FilterIcon from "./../../assets/FilterIcon";
 import CustomSort from "./layers/CustomSort";
 
 const Residualanalysis = () => {
@@ -17,6 +20,24 @@ const Residualanalysis = () => {
     { value: "Clear Filter", label: "Clear Filter" },
     { value: "Clear Filter2", label: "Clear Filter 2" },
   ];
+  const usageType = [
+    { value: "Add Filter", label: "Add Filter", description: "Add Filter" },
+    {
+      value: "Add Filter2",
+      label: "Add Filter 2",
+      description: "Add Filter 2",
+    },
+    {
+      value: "Add Filter3",
+      label: "Add Filter 3",
+      description: "Add Filter 3",
+    },
+  ];
+
+  const handleUsageTypeChange = (option) => {
+    setSelected(option);
+    setUsageTypeselected(option);
+  };
   return (
     <>
       <div className="mt-5">
@@ -32,7 +53,136 @@ const Residualanalysis = () => {
         <CustomSort defaultValue="Project ID All" option={structureType} />
         <CustomSort defaultValue="Asset Type All" option={AssetTypeAll} />
         <CustomSort defaultValue="Status All" option={StatusAll} />
-        <CustomSort defaultValue="Clear Filter" option={ClearFilter} />
+
+        <div className="min-w-[125px] flex flex-col gap-y-[2px]">
+          <Select
+            defaultValue="Add Filter"
+            style={{ height: "40px" }}
+            onChange={handleUsageTypeChange}
+            className="w-full"
+            dropdownMatchSelectWidth={false}
+          >
+            {usageType.map((option) => (
+              <Select.Option key={option.value} value={option.value}>
+                <div className="flex items-center gap-x-2">
+                  <Tooltip title={option.description}>
+                    <Button
+                      style={{
+                        backgroundColor: "transparent",
+                        borderRadius: "0",
+                        border: "none",
+                        padding: "0",
+                        fontSize: "16px",
+                        transition: "background-color 0.3s ease",
+                      }}
+                    >
+                      <div className="text-[var(--primary)]">
+                        <FilterIcon />
+                      </div>
+                    </Button>
+                  </Tooltip>
+                  <p className="font-normal text-xs leading-[135%] text-[var(--primary)]">
+                    {option.label}
+                  </p>
+                </div>
+              </Select.Option>
+            ))}
+          </Select>
+        </div>
+        <CustomSort
+          defaultValue="Clear Filter"
+          color="red"
+          option={ClearFilter}
+        />
+      </div>
+      <div class="overflow-x-auto">
+        <table class="table-auto w-full border-collapse">
+          <thead>
+            <tr class="text-left bg-[var(--secondary)]">
+              <th class="p-4 border border-gray-300 border-t-0 border-l-0 font-medium text-xs text-[var(--text-secondary)]">
+                -
+              </th>
+              <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+                <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                  Project ID
+                  <IoFilterOutline className="text-md" />
+                </div>
+              </th>
+              <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+                <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                  Asset Type
+                  <IoFilterOutline className="text-md" />
+                </div>
+              </th>
+              <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+                <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                  Date
+                  <IoFilterOutline className="text-md" />
+                </div>
+              </th>
+              <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+                <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                  Status
+                  <IoFilterOutline className="text-md" />
+                </div>
+              </th>
+              <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+                <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                  Health
+                  <IoFilterOutline className="text-md" />
+                </div>
+              </th>
+              <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+                <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                  Action
+                  <IoFilterOutline className="text-md" />
+                </div>
+              </th>
+              <th class="p-4 border border-gray-300 border-t-0 border-l-0 font-medium text-xs text-[var(--text-secondary)]">
+                -
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-[var(--neutral-100)]">
+              <td class="p-4 border border-gray-300 border-t-0 border-l-0">
+                -
+              </td>
+              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
+                P1231
+              </td>
+              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
+                Water Truck
+              </td>
+              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
+                10 May, 2025
+              </td>
+              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
+                Pending
+              </td>
+              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
+                -
+              </td>
+              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
+                -
+              </td>
+              <td class="p-4 border border-gray-300 border-t-0 border-l-0">
+                -
+              </td>
+            </tr>
+            <tr class="bg-white">
+              <td class="p-4 border border-gray-300 border-t-0 border-l-0">
+                -
+              </td>
+              <td class="p-4 border border-gray-300 border-t-0 border-l-0">
+                -
+              </td>
+              <td class="p-4 border border-gray-300 border-t-0 border-l-0">
+                -
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </>
   );

@@ -1,6 +1,6 @@
 import { Select } from "antd";
 
-const CustomSort = ({ option, defaultValue }) => {
+const CustomSort = ({ option, defaultValue,color }) => {
   const handleChange = (option) => {
     setSelected(option);
     console.log("Selected:", option);
