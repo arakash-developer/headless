@@ -10,6 +10,7 @@ import Register2 from "@components/registers/Register2";
 import RegistrationSuccess from "@components/registers/RegistrationSuccess";
 import Residualanalysis from "@components/residualanalysis/Residualanalysis";
 import Services from "@components/services/Services";
+import Profiles from "@/components/profile/Profiles";
 export const routes = [
   // public routes
   { path: "/register2", component: Register2, access: "public" },
@@ -23,6 +24,7 @@ export const routes = [
   { path: "/dashboard", component: Dashboard, access: "private" },
   { path: "/services", component: Services, access: "private" },
   { path: "/companydata", component: CompanyRegSuc, access: "private" },
+  { path: "/profiles", component: Profiles, access: "private" },
   {
     path: "/companyregistration",
     component: CompanyRegistration,

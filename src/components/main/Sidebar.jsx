@@ -73,7 +73,7 @@ const Sidebar = () => {
                 <li>
                   <NavLink
                     className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
-                    to="/profiles"
+                    to="/Profiles"
                     activeClassName="active"
                   >
                     <ResidualanalysisIcon />
