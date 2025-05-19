@@ -1,6 +1,6 @@
 import { Select } from "antd";
 
-const CustomSort = ({ option, defaultValue,color }) => {
+const CustomSort = ({ option, defaultValue, color }) => {
   const handleChange = (option) => {
     setSelected(option);
     console.log("Selected:", option);
@@ -9,7 +9,6 @@ const CustomSort = ({ option, defaultValue,color }) => {
     <div className="w-[125px] flex flex-col gap-y-[2px] ">
       <Select
         defaultValue={defaultValue}
-        style={{ height: "40px" }}
         onChange={handleChange}
         className="w-full font-normal text-xs leading-[135%] text-[#343a40]"
         dropdownMatchSelectWidth={false}

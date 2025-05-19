@@ -354,7 +354,6 @@ const Dashboard = () => {
           <div className="min-w-[125px] flex flex-col gap-y-[2px]">
             <Select
               defaultValue="Add Filter"
-              style={{ height: "40px" }}
               onChange={handleUsageTypeChange}
               className="w-full"
               dropdownMatchSelectWidth={false}
