@@ -299,7 +299,7 @@ const Residualanalysis = () => {
                   <IoFilterOutline className="text-md" />
                 </div>
               </th>
-              <th class="p-4 border border-gray-300 border-t-0 border-l-0 font-medium text-xs text-[var(--text-secondary)]">
+              <th class="p-4 border border-gray-300 border-t-0 border-l-0 border-r-0 font-medium text-xs text-[var(--text-secondary)]">
                 -
               </th>
             </tr>
@@ -335,7 +335,7 @@ const Residualanalysis = () => {
                 >
                   {asset?.action?.value}
                 </td>
-                <td class="p-4 border border-gray-300 border-t-0 border-l-0">
+                <td class="p-4 border border-gray-300 border-t-0 border-l-0 border-r-0">
                   <div className="rounded-[8px] w-10 h-10 flex items-center justify-center border-2 border-[var(--neutral-400)] bg-[var(--secondary)] cursor-pointer">
                     <Draft />
                   </div>
