@@ -1,15 +1,17 @@
 import Credit from "@/assets/Credit";
 import Draft from "@/assets/Draft";
+import FilterIcon from "@/assets/FilterIcon";
 import InProgress from "@/assets/InProgress";
 import SearchDas from "@/assets/SearchDas";
 import Shopimg from "@/assets/Shopimg";
-import { Checkbox } from "antd";
+import { Button, Checkbox, Select, Tooltip } from "antd";
 import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 import { IoFilterOutline } from "react-icons/io5";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CustomSort from "../residualanalysis/layers/CustomSort";
 
 const toastStyle = {
   position: "bottom-left",
@@ -233,7 +235,39 @@ const Dashboard = () => {
       color: "bg-[var(--secondary)]",
     },
   ];
-
+  const structureType = [
+    { value: "Project ID All", label: "Project ID All" },
+    { value: "Project ID All2", label: "Project ID All 2" },
+  ];
+  const AssetTypeAll = [
+    { value: "Asset Type All", label: "Asset Type All" },
+    { value: "Asset Type All2", label: "Asset Type All 2" },
+  ];
+  const StatusAll = [
+    { value: "Status All", label: "Status All" },
+    { value: "Status All2", label: "Status All 2" },
+  ];
+  const ClearFilter = [
+    { value: "Clear Filter", label: "Clear Filter" },
+    { value: "Clear Filter2", label: "Clear Filter 2" },
+  ];
+  const usageType = [
+    { value: "Add Filter", label: "Add Filter", description: "Add Filter" },
+    {
+      value: "Add Filter2",
+      label: "Add Filter 2",
+      description: "Add Filter 2",
+    },
+    {
+      value: "Add Filter3",
+      label: "Add Filter 3",
+      description: "Add Filter 3",
+    },
+  ];
+  const handleUsageTypeChange = (option) => {
+    setSelected(option);
+    setUsageTypeselected(option);
+  };
   const onChange = (e) => {
     console.log(`checked = ${e.target.checked}`);
   };
@@ -309,6 +343,55 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="mt-6">
+        <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
+          Residual Analysis
+        </h2>
+        <div className="mt-5 mb-3 flex gap-x-3 items-center">
+          <CustomSort defaultValue="Project ID All" option={structureType} />
+          <CustomSort defaultValue="Asset Type All" option={AssetTypeAll} />
+          <CustomSort defaultValue="Status All" option={StatusAll} />
+
+          <div className="min-w-[125px] flex flex-col gap-y-[2px]">
+            <Select
+              defaultValue="Add Filter"
+              style={{ height: "40px" }}
+              onChange={handleUsageTypeChange}
+              className="w-full"
+              dropdownMatchSelectWidth={false}
+            >
+              {usageType.map((option) => (
+                <Select.Option key={option.value} value={option.value}>
+                  <div className="flex items-center gap-x-2">
+                    <Tooltip title={option.description}>
+                      <Button
+                        style={{
+                          backgroundColor: "transparent",
+                          borderRadius: "0",
+                          border: "none",
+                          padding: "0",
+                          fontSize: "16px",
+                          transition: "background-color 0.3s ease",
+                        }}
+                      >
+                        <div className="text-[var(--primary)]">
+                          <FilterIcon />
+                        </div>
+                      </Button>
+                    </Tooltip>
+                    <p className="font-normal text-xs leading-[135%] text-[var(--primary)]">
+                      {option.label}
+                    </p>
+                  </div>
+                </Select.Option>
+              ))}
+            </Select>
+          </div>
+          <CustomSort
+            defaultValue="Clear Filter"
+            color="red"
+            option={ClearFilter}
+          />
+        </div>
         <table class="table-auto w-full border-collapse">
           <thead>
             <tr class="text-left bg-[var(--secondary)]">
