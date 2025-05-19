@@ -74,22 +74,31 @@ const Sidebar = () => {
                       <FaAngleRight />
                     </div>
                   </NavLink>
-                  <ul className="dropdown">
+                  {/* <ul className="dropdown ml-10 p-5 bg-[var(--primary2)] text-[#fff]">
                     <li>Home</li>
                     <li>Home</li>
                     <li>Home</li>
                     <li>Home</li>
-                  </ul>
+                  </ul> */}
                 </li>
-                <li>
+                <li className="">
                   <NavLink
                     className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
-                    to="/Profiles"
+                    to="/profiles"
                     activeClassName="active"
                   >
-                    <ProfilesIcon />
+                    <ProfilesIcon className="flex-shrink-0" />
                     <p className="py-1">Profiles</p>
+                    <div className="w-full flex justify-end mr-1">
+                      <FaAngleRight />
+                    </div>
                   </NavLink>
+                  {/* <ul className="dropdown ml-10 p-5 bg-[var(--primary2)] text-[#fff]">
+                    <li>Home</li>
+                    <li>Home</li>
+                    <li>Home</li>
+                    <li>Home</li>
+                  </ul> */}
                 </li>
                 <li>
                   <NavLink
@@ -101,16 +110,6 @@ const Sidebar = () => {
                     <p className="py-1">Analysis and Reports</p>
                   </NavLink>
                 </li>
-                {/* <li>
-                  <NavLink
-                    className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
-                    to="/inviteuser"
-                    activeClassName="active"
-                  >
-                    <FaPlus />
-                    <p className="py-1">Invite a User</p>
-                  </NavLink>
-                </li> */}
               </>
             )}
           </ul>
