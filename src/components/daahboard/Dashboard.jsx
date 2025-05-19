@@ -229,7 +229,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <div className="mt-6">
+      <div className="mt-6 w-full">
         <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
           Residual Analysis
         </h2>
@@ -349,12 +349,11 @@ const Dashboard = () => {
           </table>
         </div>
       </div>
-
-      <div className="mt-[60px] flex items-center gap-x-6">
-        <div className="w-[557px] h-[449px] bg-[var(--secondary)] rounded-[8px] dashboard-box p-6 overflow-hidden">
+      <div className="w-full mt-[60px] flex items-center gap-x-6">
+        <div className="w-1/2 h-[449px] bg-[var(--secondary)] rounded-[8px] dashboard-box p-6 overflow-hidden">
           <img className="w-full h-full" src={Graph1} alt="" />
         </div>
-        <div className="w-[557px] h-[449px] bg-[var(--secondary)] rounded-[8px] dashboard-box p-6">
+        <div className="w-1/2 h-[449px] bg-[var(--secondary)] rounded-[8px] dashboard-box p-6">
           <img className="w-full h-full" src={Graph2} alt="" />
         </div>
       </div>
