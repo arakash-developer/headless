@@ -1,4 +1,5 @@
 // src/routes.js
+import Profiles from "@/components/profile/Profiles";
 import CompanyRegistration from "@components/company/CompanyRegistration";
 import CompanyRegSuc from "@components/company/CompanyRegSuc";
 import Dashboard from "@components/daahboard/Dashboard";
@@ -10,7 +11,6 @@ import Register2 from "@components/registers/Register2";
 import RegistrationSuccess from "@components/registers/RegistrationSuccess";
 import Residualanalysis from "@components/residualanalysis/Residualanalysis";
 import Services from "@components/services/Services";
-import Profiles from "@/components/profile/Profiles";
 export const routes = [
   // public routes
   { path: "/register2", component: Register2, access: "public" },
