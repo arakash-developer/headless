@@ -34,7 +34,7 @@ const Sidebar = () => {
             <img className="cursor-pointer" src={Logo} alt={Logo} />
           </NavLink>
         </div>
-        <div className="mt-[111px] w-[230px] h-full flex flex-col justify-between">
+        <div className="mt-[111px] w-[230px] h-full flex flex-col justify-between relative">
           <ul className="flex flex-col gap-y-[18px]">
             {/* <li>
             <NavLink
@@ -94,7 +94,7 @@ const Sidebar = () => {
               </>
             )}
           </ul>
-          <div className="mb-[237px] w-full flex justify-center items-center">
+          <div className="absolute bottom-[180px] w-full flex justify-center items-center">
             {token && (
               <div className="flex w-56 h-[72px] py-3  px-[10px]  items-center gap-3 bg-[var(--primary2)] rounded-[8px] justify-between">
                 <div className="flex items-center gap-3">
