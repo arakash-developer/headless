@@ -159,7 +159,7 @@ const Dashboard = () => {
     console.log(`checked = ${e.target.checked}`);
   };
   return (
-    <div className="mr-[106px] max-w-[1300px]">
+    <div className="mr-[40px]">
       <div className="mt-5">
         <h2 className="text-[var(--primary2)] font-semibold text-4xl leading-[125%] text-[#343a40]">
           Dashboard
@@ -176,7 +176,7 @@ const Dashboard = () => {
         </button>
       </div>
       <div className="flex justify-between items-center mb-6 gap-x-6">
-        <div className="dashboard-box w-[250px] p-5 flex gap-x-[35px] justify-between items-start bg-[var(--secondary)] rounded-[8px]">
+        <div className="dashboard-box w-[250px] xl:w-1/2 p-5 flex gap-x-[35px] justify-between items-start bg-[var(--secondary)] rounded-[8px]">
           <div className="flex flex-col gap-y-[8px]">
             <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">
               Total Residuals
@@ -189,7 +189,7 @@ const Dashboard = () => {
             <SearchDas />
           </div>
         </div>
-        <div className="dashboard-box w-[250px] p-5 flex gap-x-[35px] justify-between items-start bg-[var(--secondary)] rounded-[8px]">
+        <div className="dashboard-box w-[250px] xl:w-1/2 p-5 flex gap-x-[35px] justify-between items-start bg-[var(--secondary)] rounded-[8px]">
           <div className="flex flex-col gap-y-[8px]">
             <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">
               In Progress
@@ -202,7 +202,7 @@ const Dashboard = () => {
             <InProgress />
           </div>
         </div>
-        <div className="dashboard-box w-[250px] p-5 flex gap-x-[35px] justify-between items-start bg-[var(--secondary)] rounded-[8px]">
+        <div className="dashboard-box w-[250px] xl:w-1/2 p-5 flex gap-x-[35px] justify-between items-start bg-[var(--secondary)] rounded-[8px]">
           <div className="flex flex-col gap-y-[8px]">
             <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">
               My Listings
@@ -215,7 +215,7 @@ const Dashboard = () => {
             <Shopimg />
           </div>
         </div>
-        <div className="dashboard-box w-[250px] p-5 flex gap-x-[35px] justify-between items-start bg-[var(--secondary)] rounded-[8px]">
+        <div className="dashboard-box w-[250px] xl:w-1/2 p-5 flex gap-x-[35px] justify-between items-start bg-[var(--secondary)] rounded-[8px]">
           <div className="flex flex-col gap-y-[8px]">
             <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">
               Credits Left
