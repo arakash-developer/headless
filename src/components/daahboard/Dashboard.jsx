@@ -91,7 +91,7 @@ const Dashboard = () => {
         </p>
       </div>
       <div className="w-full mt-6 mb-5 flex justify-end items-center">
-        <button className="p-4 bg-[var(--primary)] rounded-[8px] font-medium text-sm leading-[171%] text-[var(--secondary)] flex items-center gap-x-2">
+        <button className="py-2 px-8 bg-[var(--primary)] rounded-[8px] font-medium text-sm leading-[171%] text-[var(--secondary)] flex items-center gap-x-2">
           <FaPlus />
           Create New
         </button>
