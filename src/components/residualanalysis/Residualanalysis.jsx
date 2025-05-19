@@ -196,7 +196,7 @@ const Residualanalysis = () => {
   ];
 
   return (
-    <>
+    <div>
       <div className="mt-5">
         <h1 className="text-[var(--text-normal)]  font-semibold text-4xl leading-[125%] text-var(--primary2)">
           All Residual Analysis
@@ -252,7 +252,7 @@ const Residualanalysis = () => {
           option={ClearFilter}
         />
       </div>
-      <div class="overflow-x-auto">
+      <div class="mt-8">
         <table class="table-auto w-full border-collapse">
           <thead>
             <tr class="text-left bg-[var(--secondary)]">
@@ -304,62 +304,6 @@ const Residualanalysis = () => {
             </tr>
           </thead>
           <tbody>
-            {/* <tr class="bg-[var(--neutral-100)]">
-              <td class="p-4 border border-gray-300 border-t-0 border-l-0">
-                <Checkbox
-                  className="custom-red-checkbox"
-                  onChange={onChange}
-                ></Checkbox>
-              </td>
-              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                P1231
-              </td>
-              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                Water Truck
-              </td>
-              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                10 May, 2025
-              </td>
-              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                Pending
-              </td>
-              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                -
-              </td>
-              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                -
-              </td>
-              <td class="p-4 border border-gray-300 border-t-0 border-l-0">
-                -
-              </td>
-            </tr>
-            <tr class="bg-[var(--secondary)]">
-              <td class="p-4 border border-gray-300 border-t-0 border-l-0">
-                -
-              </td>
-              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                P1001
-              </td>
-              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                Dump Truck
-              </td>
-              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                18 April, 2025
-              </td>
-              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                Pending
-              </td>
-              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                -
-              </td>
-              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                -
-              </td>
-              <td class="p-4 border border-gray-300 border-t-0 border-l-0">
-                -
-              </td>
-            </tr> */}
-
             {assets.map((asset, index) => (
               <tr class={`${asset?.color}`}>
                 <td class="p-4 border border-gray-300 border-t-0 border-l-0">
@@ -398,7 +342,10 @@ const Residualanalysis = () => {
           </tbody>
         </table>
       </div>
-    </>
+      <div className="mt-4 mb-[88px]">
+        <p className="font-normal text-sm leading-[171%] text-[var(--gray)]">1-10 of 120 items</p>
+      </div>
+    </div>
   );
 };
 
