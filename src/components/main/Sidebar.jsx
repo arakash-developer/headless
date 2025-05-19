@@ -1,3 +1,4 @@
+import ProfilesIcon from "@/assets/ProfilesIcon";
 import ResidualanalysisIcon from "@/assets/ResidualanalysisIcon";
 import HomeIcon from "@assets/HomeIcon";
 import ServiceIcon from "@assets/ServiceIcon";
@@ -76,7 +77,7 @@ const Sidebar = () => {
                     to="/Profiles"
                     activeClassName="active"
                   >
-                    <ResidualanalysisIcon />
+                    <ProfilesIcon />
                     <p className="py-1">Profiles</p>
                   </NavLink>
                 </li>
