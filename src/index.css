@@ -130,21 +130,15 @@ html {
 .custom-tabs .ant-tabs-ink-bar {
   background-color: #ef4444 !important; /* Tailwind red-500 */
 }
-ul.companyProfile li a.active{
+ul.companyProfile li a.active {
   color: red !important;
 }
-
-
-
-
-
-
-
 
 /* 🔴 Custom Red Focus */
 .custom-red-input .ant-input:focus,
 .custom-red-input .ant-input-focused {
   border-color: var(--primary2) !important;
+  box-shadow: none;
 }
 
 /* ❌ Disable Hover Border Change */
