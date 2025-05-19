@@ -133,3 +133,22 @@ html {
 ul.companyProfile li a.active{
   color: red !important;
 }
+
+
+
+
+
+
+
+
+/* 🔴 Custom Red Focus */
+.custom-red-input .ant-input:focus,
+.custom-red-input .ant-input-focused {
+  border-color: var(--primary2) !important;
+}
+
+/* ❌ Disable Hover Border Change */
+.custom-red-input .ant-input:hover {
+  border-color: var(--primary2) !important; /* neutral gray */
+  box-shadow: none !important;
+}
