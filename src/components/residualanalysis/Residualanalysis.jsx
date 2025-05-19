@@ -170,11 +170,26 @@ const Residualanalysis = () => {
                 -
               </td>
             </tr>
-            <tr class="bg-white">
+            <tr class="bg-[var(--secondary)]">
               <td class="p-4 border border-gray-300 border-t-0 border-l-0">
                 -
               </td>
-              <td class="p-4 border border-gray-300 border-t-0 border-l-0">
+              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
+                P1001
+              </td>
+              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
+                Dump Truck
+              </td>
+              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
+             18 April, 2025
+              </td>
+              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
+                Pending
+              </td>
+              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
+                -
+              </td>
+              <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
                 -
               </td>
               <td class="p-4 border border-gray-300 border-t-0 border-l-0">
