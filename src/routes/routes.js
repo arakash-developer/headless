@@ -1,5 +1,6 @@
 // src/routes.js
 import Profiles from "@/components/profile/Profiles";
+import Error from "@/error/Error";
 import CompanyRegistration from "@components/company/CompanyRegistration";
 import CompanyRegSuc from "@components/company/CompanyRegSuc";
 import Dashboard from "@components/daahboard/Dashboard";
@@ -13,12 +14,14 @@ import Residualanalysis from "@components/residualanalysis/Residualanalysis";
 import Services from "@components/services/Services";
 export const routes = [
   // public routes
-  { path: "/forget", component: Forget, access: "public" },
+  // { path: "*", component: Error, access: "public" },
+
   // guest routes
   { path: "/", component: Login, access: "guest" },
   { path: "/register2", component: Register2, access: "guest" },
   { path: "/signup", component: Register, access: "guest" },
   { path: "/inviteuser", component: InviteUser, access: "guest" },
+  { path: "/forget", component: Forget, access: "guest" },
   { path: "/login", component: Login, access: "guest" },
   // private routes
   { path: "/companyregSuc", component: CompanyRegSuc, access: "private" },
@@ -33,4 +36,6 @@ export const routes = [
   },
   { path: "/regsuccess", component: RegistrationSuccess, access: "private" },
   { path: "/residualanalysis", component: Residualanalysis, access: "private" },
+  // wildcard 404 route — must be last
+  { path: "*", component: Error, access: "public" },
 ];

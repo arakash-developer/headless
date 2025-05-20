@@ -183,7 +183,7 @@ const Login = () => {
                     Remember Password
                   </p>
                 </div>
-                <Link className="font-normal text-xs leading-[135%] text-[var(--primary)]">
+                <Link to="/forget" className="font-normal text-xs leading-[135%] text-[var(--primary)]">
                   Forgot Password?
                 </Link>
               </div>

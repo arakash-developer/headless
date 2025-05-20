@@ -12,7 +12,6 @@ import {
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
-      <Route path="*" element={<Error />} />
 
       {routes.map(({ path, component: Component, access }) => {
         let element;
