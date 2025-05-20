@@ -142,7 +142,6 @@ ul.companyProfile li a.active {
   border-color: var(--primary2) !important;
   box-shadow: none;
 }
-
 /* ❌ Disable Hover Border Change */
 .custom-black-input .ant-input:hover {
   border-color: var(--neutral-400) !important; /* neutral gray */
@@ -152,16 +151,12 @@ ul.companyProfile li a.active {
   border-color: var(--primary2) !important; /* neutral gray */
   box-shadow: none !important;
 }
-
-
-
 /*  Custom Black Focus */
 .custom-black-input.ant-input:focus,
 .custom-black-input .ant-input-focused {
   border-color: var(--primary2) !important;
   box-shadow: none;
 }
-
 /* ❌ Disable Hover Border Change */
 .custom-black-input.ant-input:hover {
   border-color: var(--neutral-400) !important; /* neutral gray */
@@ -171,19 +166,17 @@ ul.companyProfile li a.active {
   border-color: var(--primary2) !important; /* neutral gray */
   box-shadow: none !important;
 }
-
-
 /* Red placeholder text */
 .custom-black-input.ant-input::placeholder {
-  color: red;
+  color: var(--text-disabled);
 }
 
 /* Input text color black */
 .custom-black-input.ant-input {
-  color: black;
+  color:var(--text-normal);
 }
 
 /* Optional: If you want the input text to remain black only when there's text */
 .custom-black-input.ant-input:not(:placeholder-shown) {
-  color: black;
+  color: var(--text-normal);
 }
