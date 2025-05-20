@@ -12,14 +12,14 @@ const ForgetDesign = () => {
     setCurrent(current - 1);
   };
   return (
-    <>
+    <div>
       <h2 className="font-semibold text-[32px] leading-[125%] text-[var(--primary2)]">
         Forgot Password?
       </h2>
       <p className="font-normal text-base leading-[150%] text-[var(--text-secondary)] mt-2 mb-[28px]">
         Enter your registered email address to receive a password reset link
       </p>
-    </>
+    </div>
   );
 };
 
@@ -27,10 +27,17 @@ const steps = [
   {
     title: "First",
     content: <ForgetDesign />,
+    nav: "Send Code",
   },
   {
     title: "Second",
     content: "Second-content",
+    nav: "Verify",
+  },
+  {
+    title: "Last",
+    content: "Last-content",
+    nav: "Reset Password",
   },
   {
     title: "Last",
@@ -81,27 +88,25 @@ const Forget = () => {
     <>
       {/* <Steps current={current} items={items} /> */}
       <div className="flex justify-between items-start loginBox mt-10 rounded-[8px] pt-5 pb-5 pr-4 max-w-[1099px] xl:mr-[80px] mb-[171px] bg-[var(--secondary)]">
-        <div className="pl-[55px] py-[104px] w-[415px]">
+        <div className="akash h-[474px] flex flex-col justify-between pl-[55px] py-[104px] w-[415px]">
+          {steps[current].content}
           <div>
-            {steps[current].content}
-            <div className="">
-              <label
-                htmlFor=""
-                className="font-medium text-sm leading-[171%] text-[var(--text-normal)]"
-              >
-                Email
-              </label>
-              <Input className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]" />
-              {current < steps.length - 1 && (
-                <input
-                  onClick={() => next()}
-                  className="mt-8 cursor-pointer font-medium text-sm leading-[200%] text-[var(--secondary)] bg-[var(--primary)] py-2 px-8 rounded-[8px]"
-                  type="submit"
-                  value="Send Code"
-                />
-              )}
-            </div>
+            <label
+              htmlFor=""
+              className="font-medium text-sm leading-[171%] text-[var(--text-normal)]"
+            >
+              Email
+            </label>
+            <Input className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]" />
           </div>
+          {current < steps.length - 1 && (
+            <input
+              onClick={() => next()}
+              className="mt-8 cursor-pointer font-medium text-sm leading-[200%] text-[var(--secondary)] bg-[var(--primary)] py-2 px-8 rounded-[8px] max-w-[172px]"
+              type="submit"
+              value={steps[current].nav}
+            />
+          )}
         </div>
         <div className="px-8">
           <img className="w-[475px] h-[408px]" src={ForgetIcon} alt="forget" />
