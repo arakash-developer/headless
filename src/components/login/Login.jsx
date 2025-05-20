@@ -172,7 +172,7 @@ const Login = () => {
             <div className="mt-2 mb-6">
               <div className="w-full flex justify-between items-center">
                 <div className="flex items-center gap-2 cursor-pointer">
-                  <div className="">
+                  <div className="flex items-center">
                     <Checkbox
                       onChange={onChange}
                       className="custom-red-checkbox"
