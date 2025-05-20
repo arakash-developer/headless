@@ -79,12 +79,7 @@ const Navbar = () => {
                 {routeName === "" ? "New to 4AMI?" : "Alredy have an account?"}
 
                 <span className="ml-1 not-italic font-semibold text-lg leading-[156%] text-[var(--primary)]">
-                  {/* {routeName === "/"
-                    ? "Sign Up"
-                    : routeName === "/"
-                    ? "Log In"
-                    : ""} */}
-                  {routeName === "" ? "Sign Up" : "Log In"}
+                  {routeName === '/forget'? "Sign In": routeName === "" ? "Sign Up" : "Sign In"}
                 </span>
               </p>
             </Link>
