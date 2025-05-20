@@ -136,7 +136,6 @@ const Login = () => {
                 </label>
 
                 <Input
-                  id="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
