@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Contex } from "../../context/User";
@@ -34,6 +34,12 @@ const Register = () => {
     },
   };
 
+  useEffect(() => {
+    const token = localStorage.getItem("logintoken");
+    if (token) {
+      navigate("/dashboard", { replace: true });
+    }
+  }, []);
   const registerCheck = (e) => {
     e.preventDefault();
 

@@ -13,8 +13,9 @@ const Register2 = () => {
   let { invitation, setInvitation } = useContext(Contex);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-
   let navigate = useNavigate();
+
+
 
   const handleCaptchaChange = (token) => {
     console.log("reCAPTCHA token:", token);
