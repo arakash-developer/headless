@@ -1,5 +1,6 @@
 import DownArrow from "@/assets/DownArrow";
 import NotifyIcon from "@/assets/NotifyIcon";
+import { Input } from "antd";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -21,12 +22,12 @@ const Navbar = () => {
         {token && (
           <>
             <div className="ml-8 flex items-center relative">
-              <input
+              <Input
                 type="text"
                 // onChange={onChange}
                 // onBlur={onBlur}
                 placeholder="Search"
-                className="w-[372px] h-[40px] py-2 px-[40px] bg-[var(--secondary)] border border-[var(--neutral-400)] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm cursor-pointer text-[#919191] font-normal text-sm leading-[171%] text-[var(--text-disabled)]"
+                className="custom-black-input w-[372px] h-[40px] py-2 px-[40px] bg-[var(--secondary)] border border-[var(--neutral-400)] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm cursor-pointer text-[#919191] font-normal text-sm leading-[171%] text-[var(--text-disabled)]"
               />
               <div className="absolute left-[12px] top-1/2 -translate-y-1/2 pointer-events-none">
                 <svg
