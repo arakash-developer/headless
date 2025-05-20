@@ -2,11 +2,10 @@ import EyeIcon from "@/assets/EyeIcon";
 import Hiddeneye from "@/assets/Hiddeneye";
 import { Contex } from "@context/User";
 import Loginbanner from "@public/logIn.png";
-import { Checkbox } from "antd";
+import { Checkbox, Input } from "antd";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Input } from 'antd';
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -128,14 +127,14 @@ const Login = () => {
           </p>
           <form onSubmit={handleLogin}>
             <div className="flex flex-col gap-y-[20px]">
-              <div className="flex flex-col gap-y-2 custom-red-input">
+              <div className="flex flex-col gap-y-2 custom-black-input">
                 <label
                   htmlFor="email"
                   className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
                 >
                   Email
                 </label>
-                
+
                 <Input
                   id="email"
                   type="email"
@@ -145,7 +144,7 @@ const Login = () => {
                   required
                 />
               </div>
-              <div className="flex flex-col gap-y-2 custom-red-input">
+              <div className="flex flex-col gap-y-2 custom-black-input">
                 <label
                   htmlFor="email"
                   className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"

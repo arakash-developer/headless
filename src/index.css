@@ -134,15 +134,19 @@ ul.companyProfile li a.active {
   color: red !important;
 }
 
-/* 🔴 Custom Red Focus */
-.custom-red-input .ant-input:focus,
-.custom-red-input .ant-input-focused {
+/*  Custom Black Focus */
+.custom-black-input .ant-input:focus,
+.custom-black-input .ant-input-focused {
   border-color: var(--primary2) !important;
   box-shadow: none;
 }
 
 /* ❌ Disable Hover Border Change */
-.custom-red-input .ant-input:hover {
+.custom-black-input .ant-input:hover {
+  border-color: var(--neutral-400) !important; /* neutral gray */
+  box-shadow: none !important;
+}
+.custom-black-input .ant-input:focus:hover {
   border-color: var(--primary2) !important; /* neutral gray */
   box-shadow: none !important;
 }
