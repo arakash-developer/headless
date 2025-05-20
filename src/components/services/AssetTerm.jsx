@@ -320,7 +320,7 @@ const AssetTerm = () => {
                   Proposed HPY / MPY
                 </label>
                 <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="2500"
                 />
               </div>
