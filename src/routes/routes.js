@@ -1,6 +1,6 @@
 // src/routes.js
+import Error from "@/components/error/Error";
 import Profiles from "@/components/profile/Profiles";
-import Error from "@/error/Error";
 import CompanyRegistration from "@components/company/CompanyRegistration";
 import CompanyRegSuc from "@components/company/CompanyRegSuc";
 import Dashboard from "@components/daahboard/Dashboard";
@@ -22,7 +22,6 @@ export const routes = [
   { path: "/signup", component: Register, access: "guest" },
   { path: "/inviteuser", component: InviteUser, access: "guest" },
   { path: "/forget", component: Forget, access: "guest" },
-  { path: "/login", component: Login, access: "guest" },
   // private routes
   { path: "/companyregSuc", component: CompanyRegSuc, access: "private" },
   { path: "/dashboard", component: Dashboard, access: "private" },

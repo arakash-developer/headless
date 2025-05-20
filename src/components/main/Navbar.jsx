@@ -70,26 +70,21 @@ const Navbar = () => {
           </>
         )}
         {!token && (
-          <div className="flex justify-end w-full
-           items-center">
-            
-            <Link
-              to={routeName === "login" ? "/signup" : "/login"}
-              className=""
-            >
+          <div
+            className="flex justify-end w-full
+           items-center"
+          >
+            <Link to={routeName === "" ? "/signup" : "/"} className="">
               <p className="font-normal text-base leading-[150%] text-right text-var(--primary2)">
-                {routeName === "login"
-                  ? "New to 4AMI?"
-                  : routeName === "signup"
-                  ? "Alredy have an account?"
-                  : ""}
+                {routeName === "" ? "New to 4AMI?" : "Alredy have an account?"}
 
                 <span className="ml-1 not-italic font-semibold text-lg leading-[156%] text-[var(--primary)]">
-                  {routeName === "login"
+                  {/* {routeName === "/"
                     ? "Sign Up"
-                    : routeName === "signup"
+                    : routeName === "/"
                     ? "Log In"
-                    : ""}
+                    : ""} */}
+                  {routeName === "" ? "Sign Up" : "Log In"}
                 </span>
               </p>
             </Link>
