@@ -14,7 +14,7 @@
   --positive: #12b76a;
   --label-color: #9e9e9e;
   --error: #8d6e63;
-  --text-normal: #343A40;
+  --text-normal: #343a40;
   --text-secondary: #6c757d;
   --text-disabled: #adb5bd;
   --neutral-400: #ced4da;
@@ -173,10 +173,25 @@ ul.companyProfile li a.active {
 
 /* Input text color black */
 .custom-black-input.ant-input {
-  color:var(--text-normal);
+  color: var(--text-normal);
 }
-
 /* Optional: If you want the input text to remain black only when there's text */
 .custom-black-input.ant-input:not(:placeholder-shown) {
   color: var(--text-normal);
+}
+/* Custom border and background */
+/* Default: red border when no value selected */
+.custom-select .ant-select-selector {
+  border-color: var(--text-disabled) !important;
+}
+
+/* When Select has a value (using 'ant-select-selection-item' presence) */
+.custom-select.ant-select-focused .ant-select-selector,
+.custom-select .ant-select-selection-item {
+  border-color: var(--text-normal) !important;
+}
+.custom-select .ant-select-selector {
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
 }

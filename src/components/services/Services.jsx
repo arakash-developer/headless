@@ -337,7 +337,7 @@ const Services = () => {
               defaultValue="true"
               style={{ height: "40px" }}
               onChange={handleChange}
-              className="w-full "
+              className="w-full custom-select"
               dropdownMatchSelectWidth={false}
             >
               {options.map((option) => (
@@ -410,7 +410,7 @@ const Services = () => {
                   defaultValue="Dealer"
                   style={{ height: "40px" }}
                   onChange={handleChange}
-                  className="w-full"
+                  className="w-full custom-select"
                   dropdownMatchSelectWidth={false}
                 >
                   {sourceType.map((option) => (
@@ -458,7 +458,7 @@ const Services = () => {
                   defaultValue="true"
                   style={{ height: "40px" }}
                   onChange={handleChange}
-                  className="w-full"
+                  className="w-full custom-select"
                 >
                   {options.map((option) => (
                     <Select.Option key={option.value} value={option.value}>

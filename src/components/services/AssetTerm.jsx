@@ -132,7 +132,7 @@ const AssetTerm = () => {
                   defaultValue="Hours"
                   style={{ height: "40px" }}
                   onChange={handleUsageTypeChange}
-                  className="w-full"
+                  className="w-full custom-select"
                   dropdownMatchSelectWidth={false}
                 >
                   {usageType.map((option) => (
@@ -187,7 +187,7 @@ const AssetTerm = () => {
                   defaultValue="New"
                   style={{ height: "40px" }}
                   onChange={handleChange}
-                  className="w-full"
+                  className="w-full custom-select"
                   dropdownMatchSelectWidth={false}
                 >
                   {NewUsed.map((option) => (
@@ -335,7 +335,7 @@ const AssetTerm = () => {
                   defaultValue="FMV"
                   style={{ height: "40px" }}
                   onChange={handleChange}
-                  className="w-full"
+                  className="w-full custom-select"
                   dropdownMatchSelectWidth={false}
                 >
                   {structureType.map((option) => (
