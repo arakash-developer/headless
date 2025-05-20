@@ -127,7 +127,7 @@ const Login = () => {
           </p>
           <form onSubmit={handleLogin}>
             <div className="flex flex-col gap-y-[20px]">
-              <div className="flex flex-col gap-y-2 custom-black-input">
+              <div className="flex flex-col gap-y-2">
                 <label
                   htmlFor="email"
                   className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
@@ -140,11 +140,11 @@ const Login = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className=" w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+                  className="custom-black-input w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
                   required
                 />
               </div>
-              <div className="flex flex-col gap-y-2 custom-black-input">
+              <div className="flex flex-col gap-y-2">
                 <label
                   htmlFor="email"
                   className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
@@ -157,7 +157,7 @@ const Login = () => {
                     type={eyeon ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)]"
+                    className="custom-black-input w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)]"
                     required
                   />
                   <div
