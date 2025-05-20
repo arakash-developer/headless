@@ -1,4 +1,6 @@
 import emailjs from "@emailjs/browser";
+import ForgetIcon from "@public/forget.png";
+import { Input } from "antd";
 import { useRef, useState } from "react";
 
 const Forget = () => {
@@ -26,12 +28,27 @@ const Forget = () => {
 
   return (
     <>
-      <div className="loginBox mt-10 rounded-[8px] pt-5 pb-5 pr-4 max-w-[1099px] xl:mr-[80px] mb-[171px]">
-        <div className="pl-[55px] py-[104px]">
-          <h2 className="font-semibold text-[32px] leading-[125%] text-[var(--primary2)]">Forgot Password?</h2>
-          <p className="font-normal text-base leading-[150%] text-[var(--text-secondary)] max-w-[380px] mt-2 mb-[28px]">
+      <div className="flex justify-between items-start loginBox mt-10 rounded-[8px] pt-5 pb-5 pr-4 max-w-[1099px] xl:mr-[80px] mb-[171px]">
+        <div className="pl-[55px] py-[104px] max-w-[380px] pr-10">
+          <h2 className="font-semibold text-[32px] leading-[125%] text-[var(--primary2)]">
+            Forgot Password?
+          </h2>
+          <p className="font-normal text-base leading-[150%] text-[var(--text-secondary)] mt-2 mb-[28px]">
             Enter your registered email address to receive a password reset link
           </p>
+          <div className="">
+            <label
+              htmlFor=""
+              className="font-medium text-sm leading-[171%] text-[var(--text-normal)]"
+            >
+              Email
+            </label>
+            <Input className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]" />
+          </div>
+          <input className="cursor-pointer" type="submit" value="Send" />
+        </div>
+        <div className="px-8">
+          <img className="w-[475px] h-[408px]" src={ForgetIcon} alt="forget" />
         </div>
       </div>
 
