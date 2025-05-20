@@ -337,7 +337,7 @@ const Services = () => {
               defaultValue="true"
               style={{ height: "40px" }}
               onChange={handleChange}
-              className="w-full"
+              className="w-full "
               dropdownMatchSelectWidth={false}
             >
               {options.map((option) => (
@@ -382,7 +382,7 @@ const Services = () => {
                   Source No
                 </label>
                 <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="S-1002"
                 />
               </div>
@@ -395,7 +395,7 @@ const Services = () => {
                 </label>
 
                 <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="Enter source name"
                 />
               </div>
@@ -430,7 +430,7 @@ const Services = () => {
                   Contact
                 </label>
                 <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="Enter contact name"
                 />
               </div>
@@ -443,7 +443,7 @@ const Services = () => {
                 </label>
 
                 <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="Enter title"
                 />
               </div>
@@ -494,7 +494,7 @@ const Services = () => {
                   Phone Number 1
                 </label>
                 <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="Enter phone number 1"
                 />
               </div>
@@ -507,7 +507,7 @@ const Services = () => {
                 </label>
 
                 <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="Enter phone number 2"
                 />
               </div>
@@ -519,7 +519,7 @@ const Services = () => {
                   Cell
                 </label>
                 <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="Enter cell number"
                 />
               </div>
@@ -533,7 +533,7 @@ const Services = () => {
                   Email
                 </label>
                 <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="Enter email address"
                 />
               </div>
@@ -545,7 +545,7 @@ const Services = () => {
                   Website
                 </label>
                 <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="Enter website"
                 />
               </div>

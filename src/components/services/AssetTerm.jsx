@@ -76,7 +76,7 @@ const AssetTerm = () => {
                   Subject Asset Type
                 </label>
                 <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="Water Truck"
                 />
               </div>
@@ -89,7 +89,7 @@ const AssetTerm = () => {
                 </label>
 
                 <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="Volvo"
                 />
               </div>
@@ -102,7 +102,7 @@ const AssetTerm = () => {
                 </label>
 
                 <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="A40G"
                 />
               </div>
@@ -115,7 +115,7 @@ const AssetTerm = () => {
                 </label>
 
                 <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="2025"
                 />
               </div>
@@ -169,7 +169,7 @@ const AssetTerm = () => {
                 </label>
 
                 <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder={
                     `Subject Current ${usageTypesellected}` ||
                     "Subject Current Hours"
@@ -221,7 +221,7 @@ const AssetTerm = () => {
                       Application
                     </label>
                     <Input
-                      className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                      className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                       placeholder="Water Truck"
                     />
                   </div>
@@ -234,7 +234,7 @@ const AssetTerm = () => {
                     </label>
 
                     <Input
-                      className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                      className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                       placeholder="Volvo"
                     />
                   </div>

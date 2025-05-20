@@ -19,20 +19,20 @@ const AssetInformation = () => {
                   Asset Location 1
                 </label>
                 <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="Enter asset location 1"
                 />
               </div>
               <div className="w-1/2 flex flex-col gap-y-[2px]">
                 <label
                   htmlFor=""
-                  className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
+                  className="custom-black-input font-medium text-sm leading-[171%] text-[var(--text-secondary)]"
                 >
                   Asset Location 2
                 </label>
 
                 <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="Enter asset location 2"
                 />
               </div>
@@ -46,7 +46,7 @@ const AssetInformation = () => {
                   City
                 </label>
                 <Input
-                  className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="Enter city name"
                 />
               </div>
@@ -60,7 +60,7 @@ const AssetInformation = () => {
                   </label>
 
                   <Input
-                    className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                    className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                     placeholder="Enter state name"
                   />
                 </div>
@@ -73,7 +73,7 @@ const AssetInformation = () => {
                   </label>
 
                   <Input
-                    className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                    className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                     placeholder="Enter ZIP code"
                   />
                 </div>
