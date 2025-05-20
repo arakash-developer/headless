@@ -121,7 +121,7 @@ const Forget = () => {
           )}
           {current === 1 && (
             <div className="">
-              <Flex gap="middle">
+              <Flex gap="middle" className="custom-otp-input">
                 <Input.OTP
                   formatter={(str) => str.toUpperCase()}
                   {...sharedProps}
