@@ -1,23 +1,18 @@
 import emailjs from "@emailjs/browser";
 import ForgetIcon from "@public/forget.png";
-import { Input, theme } from "antd";
+import { Flex, Input, theme, Typography } from "antd";
 import { useRef, useState } from "react";
+const { Title } = Typography;
 
-const ForgetDesign = () => {
-  const [current, setCurrent] = useState(0);
-  const next = () => {
-    setCurrent(current + 1);
-  };
-  const prev = () => {
-    setCurrent(current - 1);
-  };
+const ForgetDesign = ({ title, des, mail }) => {
   return (
     <div>
       <h2 className="font-semibold text-[32px] leading-[125%] text-[var(--primary2)]">
-        Forgot Password?
+        {title}
       </h2>
       <p className="font-normal text-base leading-[150%] text-[var(--text-secondary)] mt-2 mb-[28px]">
-        Enter your registered email address to receive a password reset link
+        {des}{" "}
+        <span className="font-semibold text-[#343a40]">{mail ? mail : ""}</span>
       </p>
     </div>
   );
@@ -26,12 +21,23 @@ const ForgetDesign = () => {
 const steps = [
   {
     title: "First",
-    content: <ForgetDesign />,
+    content: (
+      <ForgetDesign
+        title="Forgot Password?"
+        des=" Enter your registered email address to receive a password reset link"
+      />
+    ),
     nav: "Send Code",
   },
   {
     title: "Second",
-    content: "Second-content",
+    content: (
+      <ForgetDesign
+        title="Please Check Your Email"
+        des="We have sent a code to"
+        mail="m.adams@gmail.com"
+      />
+    ),
     nav: "Verify",
   },
   {
@@ -84,21 +90,46 @@ const Forget = () => {
     border: `1px dashed ${token.colorBorder}`,
     marginTop: 16,
   };
+  console.log("step lenth", steps.length);
+  console.log("current", current);
+  const onChange = (text) => {
+    console.log("onChange:", text);
+  };
+  const onInput = (value) => {
+    console.log("onInput:", value);
+  };
+  const sharedProps = {
+    onChange,
+    onInput,
+  };
   return (
     <>
       {/* <Steps current={current} items={items} /> */}
       <div className="flex justify-between items-start loginBox mt-10 rounded-[8px] pt-5 pb-5 pr-4 max-w-[1099px] xl:mr-[80px] mb-[171px] bg-[var(--secondary)]">
         <div className="akash h-[474px] flex flex-col justify-between pl-[55px] py-[104px] w-[415px]">
           {steps[current].content}
-          <div>
-            <label
-              htmlFor=""
-              className="font-medium text-sm leading-[171%] text-[var(--text-normal)]"
-            >
-              Email
-            </label>
-            <Input className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]" />
-          </div>
+          {current === 0 && (
+            <div>
+              <label
+                htmlFor=""
+                className="font-medium text-sm leading-[171%] text-[var(--text-normal)]"
+              >
+                Email
+              </label>
+              <Input className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]" />
+            </div>
+          )}
+          {current === 1 && (
+            <div className="">
+              <Flex gap="middle">
+                <Input.OTP
+                  formatter={(str) => str.toUpperCase()}
+                  {...sharedProps}
+                />
+              </Flex>
+            </div>
+          )}
+
           {current < steps.length - 1 && (
             <input
               onClick={() => next()}
