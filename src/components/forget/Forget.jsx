@@ -28,7 +28,7 @@ const Forget = () => {
 
   return (
     <>
-      <div className="flex justify-between items-start loginBox mt-10 rounded-[8px] pt-5 pb-5 pr-4 max-w-[1099px] xl:mr-[80px] mb-[171px]">
+      <div className="flex justify-between items-start loginBox mt-10 rounded-[8px] pt-5 pb-5 pr-4 max-w-[1099px] xl:mr-[80px] mb-[171px] bg-[var(--secondary)]">
         <div className="pl-[55px] py-[104px] max-w-[380px] pr-10">
           <h2 className="font-semibold text-[32px] leading-[125%] text-[var(--primary2)]">
             Forgot Password?
