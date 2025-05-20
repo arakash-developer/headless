@@ -15,7 +15,7 @@ export const routes = [
   // public routes
   { path: "/forget", component: Forget, access: "public" },
   // guest routes
-  { path: "/", component: Register, access: "guest" },
+  { path: "/", component: Login, access: "guest" },
   { path: "/register2", component: Register2, access: "guest" },
   { path: "/signup", component: Register, access: "guest" },
   { path: "/inviteuser", component: InviteUser, access: "guest" },

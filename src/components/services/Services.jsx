@@ -191,7 +191,7 @@ const Services = () => {
           Project Name
         </p>
         <Input
-          className="py-2 px-3 mt-2 w-full h-[40px] bg-[var(--background)] border border-[var(--neutral-400)] rounded-[8px] text-sm leading-[171%] text-[#495057]"
+          className="custom-black-input py-2 px-3 mt-2 w-full h-[40px] bg-[var(--background)] border border-[var(--neutral-400)] rounded-[8px] text-sm leading-[171%] text-[#495057]"
           placeholder="Michael Adams"
         />
       </div>
@@ -297,7 +297,7 @@ const Services = () => {
               Lessee No
             </label>
             <Input
-              className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+              className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
               placeholder="L-1001"
             />
           </div>
@@ -310,7 +310,7 @@ const Services = () => {
             </label>
 
             <Input
-              className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+              className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
               placeholder="Apex Digital Solutions"
             />
           </div>
@@ -322,7 +322,7 @@ const Services = () => {
               Cell
             </label>
             <Input
-              className="font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+              className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
               placeholder="Michael Adams"
             />
           </div>
