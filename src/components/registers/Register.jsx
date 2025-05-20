@@ -33,13 +33,18 @@ const Register = () => {
       color: "#fff",
     },
   };
-
+  const [checking, setChecking] = useState(true);
   useEffect(() => {
     const token = localStorage.getItem("logintoken");
     if (token) {
       navigate("/dashboard", { replace: true });
+    } else {
+      setChecking(false);
     }
   }, []);
+
+  if (checking) return null;
+
   const registerCheck = (e) => {
     e.preventDefault();
 
