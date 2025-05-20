@@ -2,7 +2,7 @@ import ProfilesIcon from "@/assets/ProfilesIcon";
 import ResidualanalysisIcon from "@/assets/ResidualanalysisIcon";
 import HomeIcon from "@assets/HomeIcon";
 import ServiceIcon from "@assets/ServiceIcon";
-import Logo from "@public/logo.png";
+import Logo from "@public/logo.svg";
 import { FaAngleRight } from "react-icons/fa6";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";

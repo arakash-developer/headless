@@ -9,9 +9,7 @@ const Profile = () => {
     const onHashChange = () => {
       setActiveHash(window.location.hash);
     };
-
     window.addEventListener("hashchange", onHashChange);
-
     return () => {
       window.removeEventListener("hashchange", onHashChange);
     };
@@ -66,6 +64,9 @@ const Profile = () => {
             </a>
           </li>
         </ul>
+        <div className="">
+          sss
+        </div>
       </div>
     </>
   );
