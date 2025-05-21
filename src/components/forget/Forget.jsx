@@ -161,8 +161,8 @@ const Forget = () => {
     let genotp = await Number(genOtpstring);
     if (otpInput.length === 6) {
       let NumberotpInput = Number(otpInput.join(""));
-      console.log("otpInput", NumberotpInput, typeof NumberotpInput);
-      console.log("gentOtp", genotp, typeof genotp);
+      // console.log("otpInput", NumberotpInput, typeof NumberotpInput);
+      // console.log("gentOtp", genotp, typeof genotp);
       if (NumberotpInput === genotp) {
         console.log("OTP is correct");
         setCurrent(current + 1);
