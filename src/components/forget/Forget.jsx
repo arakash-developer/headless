@@ -65,7 +65,7 @@ const steps = [
 ];
 const Forget = () => {
   const form = useRef();
-  const [status, setStatus] = useState(""); // For showing messages
+  const [status, setStatus] = useState(""); 
   let [eyeon, seteyeon] = useState(false);
   let [eyeon2, seteyeon2] = useState(false);
   const [password, setPassword] = useState("");
