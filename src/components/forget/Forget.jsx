@@ -1,3 +1,5 @@
+import EyeIcon from "@/assets/EyeIcon";
+import Hiddeneye from "@/assets/Hiddeneye";
 import Success from "@/assets/Success";
 import emailjs from "@emailjs/browser";
 import ForgetIcon from "@public/forget.png";
@@ -64,6 +66,16 @@ const steps = [
 const Forget = () => {
   const form = useRef();
   const [status, setStatus] = useState(""); // For showing messages
+  let [eyeon, seteyeon] = useState(false);
+  let [eyeon2, seteyeon2] = useState(false);
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const handleTogglePassword = () => {
+    seteyeon(!eyeon);
+  };
+  const handleToggleConfirmPassword = () => {
+    seteyeon2(!eyeon2);
+  };
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -162,7 +174,20 @@ const Forget = () => {
                 >
                   New Password
                 </label>
-                <Input className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]" />
+                <div className="relative">
+                  <Input
+                    type={eyeon ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  />
+                  <div
+                    onClick={handleTogglePassword}
+                    className="absolute right-[16px] top-1/2 -translate-y-1/2 cursor-pointer"
+                  >
+                    {eyeon ? <EyeIcon /> : <Hiddeneye />}
+                  </div>
+                </div>
                 <p className="mt-[2px] font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
                   Password strength:
                   <span className="text-[var(--primary)]"> Strong</span>
@@ -175,7 +200,20 @@ const Forget = () => {
                 >
                   Confirm Password
                 </label>
-                <Input className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]" />
+                <div className="relative">
+                  <Input
+                    type={eyeon2 ? "text" : "password"}
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                  />
+                  <div
+                    onClick={handleToggleConfirmPassword}
+                    className="absolute right-[16px] top-1/2 -translate-y-1/2 cursor-pointer"
+                  >
+                    {eyeon2 ? <EyeIcon /> : <Hiddeneye />}
+                  </div>
+                </div>
               </div>
             </div>
           )}
