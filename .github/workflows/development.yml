@@ -19,15 +19,18 @@ jobs:
       - name: Build Project
         run: npm run build
 
+      - name: Check build output
+        run: ls -la dist
+
       - name: Upload dist folder to server using SCP
         uses: appleboy/scp-action@v0.1.4
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          source: "dist/*"
-          target: "/home/u19_4ami_client/site"
-          strip_components: 1
+          host: ${{ secrets.HOST }}          # your server IP: 140.82.5.123
+          username: ${{ secrets.USERNAME }}  # your SSH user: u19_4ami_client
+          password: ${{ secrets.PASSWORD }}  # your SSH password (stored as secret)
+          source: "dist/**"
+          target: "/var/www/4ami-client.wp1.sh"
+          overwrite: true
           debug: true
 
       - name: Run post-deploy commands on server
@@ -37,6 +40,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
-            cd /home/u19_4ami_client/site
-            ls -la
+            ls -la /var/www/4ami-client.wp1.sh
             echo "✅ Deployment successful!"
