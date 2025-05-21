@@ -26,7 +26,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           source: "dist/*"
-          target: "/home/u19_4ami_client/"
+          target: "/home/u19_4ami_client/site"
           strip_components: 1
           debug: true
 
@@ -37,6 +37,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
-            cd /home/u19_4ami_client/
+            cd /home/u19_4ami_client/site
             ls -la
             echo "✅ Deployment successful!"
