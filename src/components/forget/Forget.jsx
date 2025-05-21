@@ -56,7 +56,7 @@ const steps = [
   },
   {
     title: "Last",
-    content: "Last-content",
+    content: null,
   },
 ];
 const Forget = () => {
@@ -113,14 +113,21 @@ const Forget = () => {
   };
   return (
     <>
-      {/* <Steps current={current} items={items} /> */}
       <div
-        className={`flex justify-between items-start loginBox mt-10 rounded-[8px] pt-5 pb-5 pr-4 max-w-[1099px] xl:mr-[80px] mb-[171px] bg-[var(--secondary)]`}
+        className={` loginBox  rounded-[8px]  pr-4 ${
+          current === 3
+            ? "max-w-[885px] mt-[120px] bg-[var(--pop-up)] block"
+            : "max-w-[1099px] pt-5 pb-5 mt-10 mb-[171px] bg-[var(--secondary)] flex justify-between items-start"
+        } xl:mr-[80px]`}
       >
         <div
-          className={`akash h-[474px] flex flex-col justify-between pl-[55px] ${
-            current === 2 ? "py-[70px]" : "py-[105px]"
-          } w-[415px]`}
+          className={`akash flex flex-col justify-between pl-[55px]  ${
+            current === 3
+              ? "py-[60px] h-auto w-full"
+              : current === 2
+              ? "py-[70px] h-[474px] w-[415px]"
+              : "py-[105px] h-[474px] w-[415px]"
+          } `}
         >
           {steps[current].content}
           {current === 0 && (
@@ -170,6 +177,7 @@ const Forget = () => {
               </div>
             </div>
           )}
+          {current === 3 && <div className="bg-red-800 h-full w-full">dd</div>}
 
           {current < steps.length - 1 && (
             <>
@@ -187,35 +195,17 @@ const Forget = () => {
             </>
           )}
         </div>
-        <div className="px-8">
-          <img className="w-[475px] h-[408px]" src={ForgetIcon} alt="forget" />
-        </div>
-      </div>
-
-      <div>
-        {/* {current < steps.length - 1 && (
-          <Button type="primary" onClick={() => next()}>
-            Next
-          </Button>
-        )} */}
-        {/* {current === steps.length - 1 && (
-          <Button
-            type="primary"
-            onClick={() => message.success("Processing complete!")}
-          >
-            Done
-          </Button>
+        {!(current === 3) && (
+          <div className="px-8">
+            <img
+              className="w-[475px] h-[408px]"
+              src={ForgetIcon}
+              alt="forget"
+            />
+          </div>
         )}
-        {current > 0 && (
-          <Button style={{ margin: "0 8px" }} onClick={() => prev()}>
-            Previous
-          </Button>
-        )} */}
       </div>
-      {/* 
-
-*/}
-
+      {/* Down----- */}
       <form ref={form} onSubmit={sendEmail} className="hidden">
         <label>Name</label>
         <input
