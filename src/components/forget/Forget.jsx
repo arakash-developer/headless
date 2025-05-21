@@ -2,6 +2,7 @@ import EyeIcon from "@/assets/EyeIcon";
 import Hiddeneye from "@/assets/Hiddeneye";
 import Success from "@/assets/Success";
 import GenarateOtp from "@/lib/GenarateOtp";
+import GetOtp from "@/lib/GetOtp";
 import emailjs from "@emailjs/browser";
 import ForgetIcon from "@public/forget.png";
 import { Flex, Input, theme, Typography } from "antd";
@@ -27,43 +28,6 @@ const ForgetDesign = ({ title, des, mail }) => {
   );
 };
 
-const steps = [
-  {
-    title: "First",
-    content: (
-      <ForgetDesign
-        title="Forgot Password?"
-        des=" Enter your registered email address to receive a password reset link"
-      />
-    ),
-    nav: "Send Code",
-  },
-  {
-    title: "Second",
-    content: (
-      <ForgetDesign
-        title="Please Check Your Email"
-        des="We have sent a code to"
-        mail="m.adams@gmail.com"
-      />
-    ),
-    nav: "Verify",
-  },
-  {
-    title: "Last",
-    content: (
-      <ForgetDesign
-        title="Reset Password"
-        des="Please enter your new password below"
-      />
-    ),
-    nav: "Reset Password",
-  },
-  {
-    title: "Last",
-    content: null,
-  },
-];
 const Forget = () => {
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
@@ -75,8 +39,47 @@ const Forget = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
-  const API_BASE = "https://4amitest-bli6.wp1.sh/wp-json/otp/v1";
+  const otpRef = useRef(null);
+  const [otpInput, setOtpInput] = useState("");
 
+  const API_BASE = "https://4amitest-bli6.wp1.sh/wp-json/otp/v1";
+  const steps = [
+    {
+      title: "First",
+      content: (
+        <ForgetDesign
+          title="Forgot Password?"
+          des=" Enter your registered email address to receive a password reset link"
+        />
+      ),
+      nav: "Send Code",
+    },
+    {
+      title: "Second",
+      content: (
+        <ForgetDesign
+          title="Please Check Your Email"
+          des="We have sent a code to"
+          mail={email}
+        />
+      ),
+      nav: "Verify",
+    },
+    {
+      title: "Last",
+      content: (
+        <ForgetDesign
+          title="Reset Password"
+          des="Please enter your new password below"
+        />
+      ),
+      nav: "Reset Password",
+    },
+    {
+      title: "Last",
+      content: null,
+    },
+  ];
   const sendOtp = async () => {
     try {
       const res = await fetch(`${API_BASE}/send`, {
@@ -107,8 +110,8 @@ const Forget = () => {
     seteyeon2(!eyeon2);
   };
 
-  const sendEmail = async() => {
-     let otpcode = await GenarateOtp("akash.blinto@gmail.com");
+  const sendEmail = async () => {
+    let otpcode = await GenarateOtp("akash.blinto@gmail.com");
     if (!email) {
       console.log("Please enter your email address.");
       return;
@@ -139,13 +142,27 @@ const Forget = () => {
         }
       );
   };
+  let checkOtp = async (e) => {
+    let genOtpstring = await GetOtp(email);
+    let genotp = Number(genOtpstring);
+    if (otpInput.length === 6) {
+      let NumberotpInput = Number(otpInput.join(""));
+      console.log("otpInput", NumberotpInput, typeof NumberotpInput);
+      console.log("gentOtp", genotp, typeof genotp);
+      if (NumberotpInput === genotp) {
+        console.log("OTP is correct");
+        setCurrent(current + 1);
+      }
+    }
+  };
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
   const next = () => {
-    // setCurrent(current + 1);
     if (current === 0) {
       setCurrent(current + 1);
       sendEmail();
+    } else if (current === 1) {
+      checkOtp();
     }
   };
   const prev = () => {
@@ -167,7 +184,7 @@ const Forget = () => {
     console.log("onChange:", text);
   };
   const onInput = (value) => {
-    console.log("onInput:", value);
+    setOtpInput(value);
   };
   const sharedProps = {
     onChange,
@@ -175,7 +192,7 @@ const Forget = () => {
   };
   let akash = async (e) => {
     e.preventDefault();
-    let gen = await GenarateOtp("akash.blinto@gmail.com");
+    let gen = await GetOtp(email);
     console.log("gggg", gen);
   };
   return (
