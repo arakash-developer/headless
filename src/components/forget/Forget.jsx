@@ -114,8 +114,14 @@ const Forget = () => {
   return (
     <>
       {/* <Steps current={current} items={items} /> */}
-      <div className="flex justify-between items-start loginBox mt-10 rounded-[8px] pt-5 pb-5 pr-4 max-w-[1099px] xl:mr-[80px] mb-[171px] bg-[var(--secondary)]">
-        <div className="akash h-[474px] flex flex-col justify-between pl-[55px] py-[104px] w-[415px]">
+      <div
+        className={`flex justify-between items-start loginBox mt-10 rounded-[8px] pt-5 pb-5 pr-4 max-w-[1099px] xl:mr-[80px] mb-[171px] bg-[var(--secondary)]`}
+      >
+        <div
+          className={`akash h-[474px] flex flex-col justify-between pl-[55px] ${
+            current === 2 ? "py-[70px]" : "py-[105px]"
+          } w-[415px]`}
+        >
           {steps[current].content}
           {current === 0 && (
             <div>
