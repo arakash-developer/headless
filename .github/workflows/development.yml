@@ -13,16 +13,24 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Upload files to server using SCP
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Upload dist folder to server using SCP
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          source: "./"
+          source: "dist/*"
           target: "/home/u19_4ami_client/"
+          strip_components: 1
+          debug: true
 
-      - name: Run Commands on Server
+      - name: Run post-deploy commands on server
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST }}
