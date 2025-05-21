@@ -12,7 +12,11 @@ const ForgetDesign = ({ title, des, mail }) => {
       </h2>
       <p className="font-normal text-base leading-[150%] text-[var(--text-secondary)] mt-2 mb-[28px]">
         {des}{" "}
-        <span className="font-semibold text-[#343a40]">{mail ? mail : ""}</span>
+        {mail && (
+          <span className="font-semibold text-[#343a40]">
+            {mail ? mail : ""}
+          </span>
+        )}
       </p>
     </div>
   );
@@ -42,7 +46,12 @@ const steps = [
   },
   {
     title: "Last",
-    content: "Last-content",
+    content: (
+      <ForgetDesign
+        title="Reset Password"
+        des="Please enter your new password below"
+      />
+    ),
     nav: "Reset Password",
   },
   {
@@ -129,14 +138,47 @@ const Forget = () => {
               </Flex>
             </div>
           )}
+          {current === 2 && (
+            <div className="flex flex-col gap-y-5">
+              <div>
+                <label
+                  htmlFor=""
+                  className="font-medium text-sm leading-[171%] text-[var(--text-normal)]"
+                >
+                  New Password
+                </label>
+                <Input className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]" />
+                <p className="mt-[2px] font-normal text-xs leading-[135%] text-var[(--text-secondary)]">
+                  Password strength:
+                  <span className="text-[var(--primary)]"> Strong</span>
+                </p>
+              </div>
+              <div>
+                <label
+                  htmlFor=""
+                  className="font-medium text-sm leading-[171%] text-[var(--text-normal)]"
+                >
+                  Confirm Password
+                </label>
+                <Input className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]" />
+              </div>
+            </div>
+          )}
 
           {current < steps.length - 1 && (
-            <input
-              onClick={() => next()}
-              className="mt-8 cursor-pointer font-medium text-sm leading-[200%] text-[var(--secondary)] bg-[var(--primary)] py-2 px-8 rounded-[8px] max-w-[172px]"
-              type="submit"
-              value={steps[current].nav}
-            />
+            <>
+              <input
+                onClick={() => next()}
+                className="mt-8 cursor-pointer font-medium text-sm leading-[200%] text-[var(--secondary)] bg-[var(--primary)] py-2 px-8 rounded-[8px] max-w-[172px]"
+                type="submit"
+                value={steps[current].nav}
+              />
+              {current === 1 && (
+                <p className="mt-6 font-medium text-sm leading-[171%] text-[var(--text-disabled)]">
+                  Send code again in 00:20
+                </p>
+              )}
+            </>
           )}
         </div>
         <div className="px-8">
