@@ -12,11 +12,13 @@ import Register2 from "@components/registers/Register2";
 import RegistrationSuccess from "@components/registers/RegistrationSuccess";
 import Residualanalysis from "@components/residualanalysis/Residualanalysis";
 import Services from "@components/services/Services";
+import Demo7 from '@components/demo/Demo7';
 export const routes = [
   // public routes
   // { path: "*", component: Error, access: "public" },
 
   // guest routes
+  { path: "/demo7", component: Demo7, access: "guest" },
   { path: "/", component: Login, access: "guest" },
   { path: "/register2", component: Register2, access: "guest" },
   { path: "/signup", component: Register, access: "guest" },

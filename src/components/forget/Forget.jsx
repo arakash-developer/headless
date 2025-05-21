@@ -1,6 +1,7 @@
 import EyeIcon from "@/assets/EyeIcon";
 import Hiddeneye from "@/assets/Hiddeneye";
 import Success from "@/assets/Success";
+import GenarateOtp from "@/lib/GenarateOtp";
 import emailjs from "@emailjs/browser";
 import ForgetIcon from "@public/forget.png";
 import { Flex, Input, theme, Typography } from "antd";
@@ -64,12 +65,41 @@ const steps = [
   },
 ];
 const Forget = () => {
+  const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState("");
+  let [passcode, setPasscode] = useState("120056");
   const form = useRef();
-  const [status, setStatus] = useState(""); 
+  const [status, setStatus] = useState();
   let [eyeon, seteyeon] = useState(false);
   let [eyeon2, seteyeon2] = useState(false);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const API_BASE = "https://4amitest-bli6.wp1.sh/wp-json/otp/v1";
+
+  const sendOtp = async () => {
+    try {
+      const res = await fetch(`${API_BASE}/send`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setOtp(data.otp);
+        setMessage("OTP generated and saved.");
+      } else {
+        setMessage(data.message || "Error sending OTP");
+      }
+    } catch (err) {
+      setMessage("Request failed. Please try again.");
+    }
+  };
+
   const handleTogglePassword = () => {
     seteyeon(!eyeon);
   };
@@ -77,28 +107,46 @@ const Forget = () => {
     seteyeon2(!eyeon2);
   };
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-
+  const sendEmail = async() => {
+     let otpcode = await GenarateOtp("akash.blinto@gmail.com");
+    if (!email) {
+      console.log("Please enter your email address.");
+      return;
+    }
     emailjs
-      .sendForm("service_nhcrdwf", "template_x2ndppk", form.current, {
-        publicKey: "1Wii5-D0LrHJXSmie",
-      })
+      .send(
+        "service_nhcrdwf",
+        "template_x2ndppk",
+        {
+          email: email,
+          to_name: "Akashe",
+          passcode: otpcode,
+        },
+        {
+          publicKey: "1Wii5-D0LrHJXSmie",
+        }
+      )
       .then(
         () => {
           setStatus("Email sent successfully!");
-          form.current.reset(); // Clear form after success
+          form.current.reset();
+          setStatus(true);
         },
         (error) => {
           setStatus("Failed to send email. Please try again.");
           console.error("FAILED...", error.text);
+          setStatus(false);
         }
       );
   };
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
   const next = () => {
-    setCurrent(current + 1);
+    // setCurrent(current + 1);
+    if (current === 0) {
+      setCurrent(current + 1);
+      sendEmail();
+    }
   };
   const prev = () => {
     setCurrent(current - 1);
@@ -124,6 +172,11 @@ const Forget = () => {
   const sharedProps = {
     onChange,
     onInput,
+  };
+  let akash = async (e) => {
+    e.preventDefault();
+    let gen = await GenarateOtp("akash.blinto@gmail.com");
+    console.log("gggg", gen);
   };
   return (
     <>
@@ -152,7 +205,10 @@ const Forget = () => {
               >
                 Email
               </label>
-              <Input className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]" />
+              <Input
+                onChange={(e) => setEmail(e.target.value)}
+                className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+              />
             </div>
           )}
           {current === 1 && (
@@ -264,34 +320,33 @@ const Forget = () => {
         )}
       </div>
       {/* Down----- */}
-      <form ref={form} onSubmit={sendEmail} className="hidden">
+      <form ref={form} onSubmit={akash} className="">
         <label>Name</label>
         <input
           className="capitalize"
           type="text"
           name="to_name"
           placeholder="NAME"
-          required
         />
 
         <label>Email</label>
-        <input type="email" name="email" required />
+        <input type="email" name="email" />
 
         <label>Passcode</label>
-        <input type="text" name="passcode" required />
+        <input type="text" name="passcode" />
 
         <input className="cursor-pointer" type="submit" value="Send" />
       </form>
 
-      {status && (
+      {/* {status && (
         <p
           className={`mt-4 ${
-            status.includes("successfully") ? "text-green-600" : "text-red-600"
+            // status.includes("successfully") ? "text-green-600" : "text-red-600"
           }`}
         >
           {status}
         </p>
-      )}
+      )} */}
     </>
   );
 };

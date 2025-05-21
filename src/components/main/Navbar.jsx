@@ -9,7 +9,6 @@ const Navbar = () => {
   const [routeName, setRouteName] = useState("");
   let token = localStorage.getItem("logintoken");
   let userData = JSON.parse(localStorage.getItem("user_data"));
-  console.log(userData);
 
   useEffect(() => {
     // Get the first part of the path after "/"
