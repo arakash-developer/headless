@@ -159,7 +159,7 @@ const Forget = () => {
   };
   let checkOtp = async (e) => {
     let genOtpstring = await GetOtp(email);
-    let genotp = Number(genOtpstring);
+    let genotp = await Number(genOtpstring);
     if (otpInput.length === 6) {
       let NumberotpInput = Number(otpInput.join(""));
       console.log("otpInput", NumberotpInput, typeof NumberotpInput);
@@ -361,34 +361,6 @@ const Forget = () => {
           </div>
         )}
       </div>
-      {/* Down----- */}
-      <form ref={form} onSubmit={akash} className="">
-        <label>Name</label>
-        <input
-          className="capitalize"
-          type="text"
-          name="to_name"
-          placeholder="NAME"
-        />
-
-        <label>Email</label>
-        <input type="email" name="email" />
-
-        <label>Passcode</label>
-        <input type="text" name="passcode" />
-
-        <input className="cursor-pointer" type="submit" value="Send" />
-      </form>
-
-      {/* {status && (
-        <p
-          className={`mt-4 ${
-            // status.includes("successfully") ? "text-green-600" : "text-red-600"
-          }`}
-        >
-          {status}
-        </p>
-      )} */}
     </>
   );
 };
