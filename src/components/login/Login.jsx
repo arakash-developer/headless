@@ -134,15 +134,13 @@ const Login = () => {
                 >
                   Email
                 </label>
-
                 <Input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="custom-black-input w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)]"
+                  className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%]border-[var(--neutral-400)] akash custom-black-input w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
                   required
                 />
-                
               </div>
               <div className="flex flex-col gap-y-2">
                 <label
@@ -157,7 +155,7 @@ const Login = () => {
                     type={eyeon ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="custom-black-input w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)]"
+                    className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%]border-[var(--neutral-400)] akash custom-black-input w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
                     required
                   />
                   <div
@@ -183,7 +181,10 @@ const Login = () => {
                     Remember Password
                   </p>
                 </div>
-                <Link to="/forget" className="font-normal text-xs leading-[135%] text-[var(--primary)]">
+                <Link
+                  to="/forget"
+                  className="font-normal text-xs leading-[135%] text-[var(--primary)]"
+                >
                   Forgot Password?
                 </Link>
               </div>
