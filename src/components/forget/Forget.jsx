@@ -32,7 +32,7 @@ const ForgetDesign = ({ title, des, mail }) => {
 const Forget = () => {
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
-  let [passcode, setPasscode] = useState("120056");
+  let [passcode, setPasscode] = useState("");
   const form = useRef();
   const [status, setStatus] = useState();
   let [eyeon, seteyeon] = useState(false);
@@ -42,7 +42,6 @@ const Forget = () => {
   const [message, setMessage] = useState("");
   const otpRef = useRef(null);
   const [otpInput, setOtpInput] = useState("");
-
   const API_BASE = "https://4amitest-bli6.wp1.sh/wp-json/otp/v1";
   const steps = [
     {
@@ -123,7 +122,7 @@ const Forget = () => {
         "template_x2ndppk",
         {
           email: email,
-          to_name: "Akashe",
+          to_name: "Dear",
           passcode: otpcode,
         },
         {
