@@ -168,18 +168,24 @@ const Forget = () => {
         console.log("OTP is correct");
         setCurrent(current + 1);
       } else {
-          toast.error("Invalid OTP", toastStyle);
+        toast.error("Invalid OTP", toastStyle);
       }
-    }else{
-        toast.error("Enter 6 digit OTP", toastStyle);
+    } else {
+      toast.error("Enter 6 digit OTP", toastStyle);
     }
   };
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
   const next = () => {
     if (current === 0) {
-      setCurrent(current + 1);
-      sendEmail();
+      if (!email) {
+        toast.error("Email is required", toastStyle);
+      } else if (!email.includes("@")) {
+        toast.error("Please enter a valid email address", toastStyle);
+      } else {
+        setCurrent(current + 1);
+        sendEmail();
+      }
     } else if (current === 1) {
       checkOtp();
     }
