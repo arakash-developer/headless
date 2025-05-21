@@ -1,7 +1,9 @@
+import Success from "@/assets/Success";
 import emailjs from "@emailjs/browser";
 import ForgetIcon from "@public/forget.png";
 import { Flex, Input, theme, Typography } from "antd";
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 const { Title } = Typography;
 
 const ForgetDesign = ({ title, des, mail }) => {
@@ -177,7 +179,25 @@ const Forget = () => {
               </div>
             </div>
           )}
-          {current === 3 && <div className="bg-red-800 h-full w-full">dd</div>}
+          {current === 3 && (
+            <div className=" text-center h-full w-full">
+              <div className="flex justify-center items-start">
+                <Success />
+              </div>
+              <h2 className="font-semibold text-[32px] leading-[125%] text-[var(--primary2)] mt-6">
+                Password Updated Successfully!
+              </h2>
+              <p className="font-normal text-base leading-[150%] text-center text-[var(--text-secondary)] mt-4 mb-6">
+                Return to sign in and sign in with your new password
+              </p>
+              <Link
+                to="/"
+                className="font-medium text-sm leading-[200%] text-[var(--secondary)] py-2 px-8 rounded-[8px] bg-[var(--primary)] cursor-pointer inline-block"
+              >
+                Back to Sign In
+              </Link>
+            </div>
+          )}
 
           {current < steps.length - 1 && (
             <>
