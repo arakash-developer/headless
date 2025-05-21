@@ -148,7 +148,7 @@ const Forget = () => {
                   New Password
                 </label>
                 <Input className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]" />
-                <p className="mt-[2px] font-normal text-xs leading-[135%] text-var[(--text-secondary)]">
+                <p className="mt-[2px] font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
                   Password strength:
                   <span className="text-[var(--primary)]"> Strong</span>
                 </p>
