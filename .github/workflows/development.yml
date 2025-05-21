@@ -20,7 +20,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           source: "./"
-          target: "/home/u19_4ami_client/site"
+          target: "/home/u19_4ami_client/"
 
       - name: Run Commands on Server
         uses: appleboy/ssh-action@v1.0.3
@@ -29,6 +29,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
-            cd /home/u19_4ami_client/site
+            cd /home/u19_4ami_client/
             ls -la
             echo "✅ Deployment successful!"
