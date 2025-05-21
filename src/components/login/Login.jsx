@@ -12,106 +12,116 @@ const Login = () => {
   const [error, setError] = useState("");
   let navigate = useNavigate();
   let { setIsLogin, islogin } = useContext(Contex);
-  const handleLogin = async (e) => {
-    e.preventDefault();
-
-    const loginData = { username: email, password };
-
-    try {
-      const response = await fetch(
-        "https://4amitest-bli6.wp1.sh/wp-json/custom/v1/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(loginData),
-        }
-      );
-
-      if (!response.ok) {
-        const toastStyle = {
-          position: "bottom-left",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-          style: {
-            background: "var(--primary2)",
-            color: "#fff",
-          },
-        };
-        toast.error("Invalid credentials", toastStyle);
-        throw new Error("Invalid credentials");
-      }
-
-      const data = await response.json();
-
-      // Store the JWT token and user data in localStorage for future requests
-      localStorage.setItem("auth_token", data.token);
-      localStorage.setItem("user_data", JSON.stringify(data.user)); // Store user data
-
-      // Now check if the company email exists
-      const companyDataResponse = await fetch(
-        "https://4amitest-bli6.wp1.sh/wp-json/custom/v1/company-data",
-        {
-          headers: {
-            Authorization: `Bearer ${data.token}`,
-          },
-        }
-      );
-
-      const companyData = await companyDataResponse.json();
-
-      if (companyData.status === "success") {
-        const companyEmails = companyData.data.map(
-          (company) => company.businessEmail
-        );
-        if (companyEmails.includes(email)) {
-          localStorage.setItem("logintoken", "akash@123");
-          localStorage.setItem("com_auth_token", "akash");
-          setIsLogin(true);
-          navigate("/dashboard", { state: { user: data.user } });
-        } else {
-          setIsLogin(true);
-          localStorage.setItem("logintoken", "akash@123");
-          navigate("/companyregistration", { state: { useremail: email } });
-        }
-      } else {
-        toast.error(
-          companyData.message || "Failed to load company data.",
-          toastStyle
-        );
-      }
-
-      const toastStyle = {
-        position: "bottom-left",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        style: {
-          background: "var(--primary)",
-          color: "#fff",
-        },
-      };
-      toast.success("Login Successful!", toastStyle);
-    } catch (error) {
-      setError(error.message); // Show error if credentials are invalid
-    }
-  };
   let [eyeon, seteyeon] = useState(false);
   const handleTogglePassword = () => {
     seteyeon(!eyeon);
   };
   const onChange = (e) => {
     console.log(`checked = ${e.target.checked}`);
+  };
+
+  const toastStyle = {
+    position: "bottom-left",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    style: {
+      background: "var(--primary2)",
+      color: "#fff",
+    },
+  };
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    if (!email) {
+      toast.error("Email is required", toastStyle);
+    } else if (!password) {
+      toast.error("Password is required", toastStyle);
+    } else {
+      const loginData = { username: email, password };
+      try {
+        const response = await fetch(
+          "https://4amitest-bli6.wp1.sh/wp-json/custom/v1/login",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(loginData),
+          }
+        );
+
+        if (response.ok) {
+          toast.success("Login Successful!", {
+            ...toastStyle,
+            style: { background: "var(--primary)", color: "#fff" },
+          });
+        }
+        if (!response.ok) {
+          const toastStyle = {
+            position: "bottom-left",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            style: {
+              background: "var(--primary2)",
+              color: "#fff",
+            },
+          };
+          toast.error("Invalid credentials", toastStyle);
+          throw new Error("Invalid credentials");
+        }
+
+        const data = await response.json();
+
+        // Store the JWT token and user data in localStorage for future requests
+        localStorage.setItem("auth_token", data.token);
+        localStorage.setItem("user_data", JSON.stringify(data.user)); // Store user data
+
+        // Now check if the company email exists
+        const companyDataResponse = await fetch(
+          "https://4amitest-bli6.wp1.sh/wp-json/custom/v1/company-data",
+          {
+            headers: {
+              Authorization: `Bearer ${data.token}`,
+            },
+          }
+        );
+
+        const companyData = await companyDataResponse.json();
+
+        if (companyData.status === "success") {
+          const companyEmails = companyData.data.map(
+            (company) => company.businessEmail
+          );
+          if (companyEmails.includes(email)) {
+            localStorage.setItem("logintoken", "akash@123");
+            localStorage.setItem("com_auth_token", "akash");
+            setIsLogin(true);
+            navigate("/dashboard", { state: { user: data.user } });
+          } else {
+            setIsLogin(true);
+            localStorage.setItem("logintoken", "akash@123");
+            navigate("/companyregistration", { state: { useremail: email } });
+          }
+        } else {
+          toast.error(
+            companyData.message || "Failed to load company data.",
+            toastStyle
+          );
+        }
+      } catch (error) {
+        setError(error.message); // Show error if credentials are invalid
+      }
+    }
   };
 
   return (
@@ -125,7 +135,7 @@ const Login = () => {
             Good to see you again! Enter your details to continue using the
             dashboard
           </p>
-          <form onSubmit={handleLogin}>
+          <form>
             <div className="flex flex-col gap-y-[20px]">
               <div className="flex flex-col gap-y-2">
                 <label
@@ -139,7 +149,6 @@ const Login = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%]border-[var(--neutral-400)] akash custom-black-input w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
-                  required
                 />
               </div>
               <div className="flex flex-col gap-y-2">
@@ -156,7 +165,6 @@ const Login = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%]border-[var(--neutral-400)] akash custom-black-input w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
-                    required
                   />
                   <div
                     onClick={handleTogglePassword}
@@ -191,6 +199,7 @@ const Login = () => {
             </div>
             <button
               type="submit"
+              onClick={handleLogin}
               className="py-[8px] px-8 bg-[var(--primary)] rounded-[5px] text-white max-w-[192px] cursor-pointer font-medium text-sm leading-[200%] text-var(--secondary)"
             >
               Sign In
