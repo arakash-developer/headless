@@ -30,6 +30,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}  # your SSH password (stored as secret)
           source: "dist/**"
           target: "/var/www/4ami-client.wp1.sh"
+          strip_components: 1
           overwrite: true
           debug: true
 
