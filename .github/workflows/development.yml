@@ -28,7 +28,7 @@ jobs:
           host: ${{ secrets.HOST }}          # your server IP: 140.82.5.123
           username: ${{ secrets.USERNAME }}  # your SSH user: u19_4ami_client
           password: ${{ secrets.PASSWORD }}  # your SSH password (stored as secret)
-          source: "dist/**"
+          source: "dist/*"
           target: "/var/www/4ami-client.wp1.sh"
           strip_components: 1
           overwrite: true
