@@ -8,6 +8,7 @@ import ForgetIcon from "@public/forget.png";
 import { Flex, Input, theme, Typography } from "antd";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 const { Title } = Typography;
 
 const ForgetDesign = ({ title, des, mail }) => {
@@ -142,6 +143,20 @@ const Forget = () => {
         }
       );
   };
+  const toastStyle = {
+    position: "bottom-left",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    style: {
+      background: "var(--primary2)",
+      color: "#fff",
+    },
+  };
   let checkOtp = async (e) => {
     let genOtpstring = await GetOtp(email);
     let genotp = Number(genOtpstring);
@@ -152,7 +167,11 @@ const Forget = () => {
       if (NumberotpInput === genotp) {
         console.log("OTP is correct");
         setCurrent(current + 1);
+      } else {
+          toast.error("Invalid OTP", toastStyle);
       }
+    }else{
+        toast.error("Enter 6 digit OTP", toastStyle);
     }
   };
   const { token } = theme.useToken();
