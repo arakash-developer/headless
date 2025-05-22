@@ -17,7 +17,7 @@ const RegistrationSuccess = () => {
         </p>
         <div className="w-full flex justify-center">
           <Link
-            to="/login"
+            to="/"
             className="bg-[var(--primary)] py-[18px] px-[60px] text-[#fff] text-[16px] not-italic text-center rounded-[5px]  font-semibold leading-7"
           >
             Go to Log In

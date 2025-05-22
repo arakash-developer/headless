@@ -14,17 +14,12 @@ const Register2 = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   let navigate = useNavigate();
-
-
-
   const handleCaptchaChange = (token) => {
     console.log("reCAPTCHA token:", token);
     setCaptchaToken(token);
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (!captchaToken) {
       alert("Please verify reCAPTCHA");
       return;

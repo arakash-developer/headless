@@ -35,7 +35,7 @@ export const routes = [
     component: CompanyRegistration,
     access: "private",
   },
-  { path: "/regsuccess", component: RegistrationSuccess, access: "private" },
+  { path: "/regsuccess", component: RegistrationSuccess, access: "guest" },
   { path: "/residualanalysis", component: Residualanalysis, access: "private" },
   // wildcard 404 route — must be last
   { path: "*", component: Error, access: "public" },
