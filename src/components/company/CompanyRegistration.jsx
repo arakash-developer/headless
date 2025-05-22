@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import DownArrow from "@public/icons/down.svg";
+import { Input } from "antd";
 
 // Toast style config
 const toastStyle = {
@@ -28,19 +29,19 @@ const FormField = ({
   name,
   type = "text",
   placeholder,
-  wrapperClass = "flex flex-col gap-y-2",
+  wrapperClass = "flex flex-col gap-y-[2px]",
 }) => (
   <div className={wrapperClass}>
-    <label className="text-[var(--primary2)] text-base font-medium">
+    <label className="text-[var(--text-normal)] font-medium text-sm leading-[171%]">
       {label}
     </label>
-    <input
+    <Input
       type={type}
       name={name}
       value={value}
       placeholder={placeholder}
       onChange={onChange}
-      className="w-full h-[50px] py-3 px-4 bg-[#F4F5F9] border border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm cursor-pointer"
+      className="custom-black-input w-full h-[40px] py-2 px-3 bg-[#F4F5F9] border border-[#DBDCDE] rounded-[8px]  placeholder:text-[#919191] placeholder:text-sm cursor-pointer"
     />
   </div>
 );
@@ -167,16 +168,16 @@ const CompanyRegistration = () => {
 
   return (
     <div>
-      <h2 className="text-[var(--primary2)] text-[28px] leading-8 not-italic font-semibold">
+      <h2 className="text-[var(--primary2)] text-[28px]  not-italic font-semibold text-4xl leading-[125%]">
         Register Your Company
       </h2>
-      <p className="text-[#919191] text-base not-italic font-normal leading-6 mt-3 mb-6">
+      <p className="text-[#919191] text-base not-italic font-normal leading-6 mt-3">
         Add your company details to start using your dashboard and invite team
         members
       </p>
 
-      <div className="max-w-[793px] py-[43px] px-[50px] bg-[#FFF] rounded-[5px] companyregform">
-        <form className="flex flex-col gap-y-6" onSubmit={handleSubmit}>
+      <div className="mt-8 max-w-[795px] py-[20px] px-8 bg-[#FFF] rounded-[5px] companyregform">
+        <form className="flex flex-col gap-y-4" onSubmit={handleSubmit}>
           <FormField
             label="Company Name"
             name="companyName"
@@ -215,7 +216,7 @@ const CompanyRegistration = () => {
 
           <div className="flex gap-x-[42px]">
             <div className="w-full">
-              <label className="text-[var(--primary2)] text-base font-medium">
+              <label className="text-[var(--text-normal)] font-medium text-sm leading-[171%] ">
                 Company Size
               </label>
               <div className="relative cursor-pointer">
@@ -223,7 +224,7 @@ const CompanyRegistration = () => {
                   name="companySize"
                   value={formData.companySize}
                   onChange={handleChange}
-                  className="w-full h-[50px] py-3 px-4 border bg-[#F4F5F9] border-[#DBDCDE] rounded-[8px] appearance-none cursor-pointer"
+                  className="w-full h-[40px] py-2 px-3 border bg-[#F4F5F9] border-[#DBDCDE] rounded-[8px] appearance-none cursor-pointer font-normal text-sm leading-[171%] text-[var(--text-disabled)]"
                 >
                   <option value="">Select One</option>
                   <option value="1-10">1-10</option>
@@ -239,7 +240,7 @@ const CompanyRegistration = () => {
             </div>
 
             <div className="w-full">
-              <label className="text-[var(--primary2)] text-base font-medium">
+              <label className="text-[var(--text-normal)] font-medium text-sm leading-[171%]">
                 Industry
               </label>
               <div className="relative cursor-pointer">
@@ -247,7 +248,7 @@ const CompanyRegistration = () => {
                   name="industry"
                   value={formData.industry}
                   onChange={handleChange}
-                  className="w-full h-[50px] py-3 px-4 border bg-[#F4F5F9] border-[#DBDCDE] rounded-[8px] appearance-none cursor-pointer"
+                  className="w-full h-[40px] py-2 px-3 border bg-[#F4F5F9] border-[#DBDCDE] rounded-[8px] appearance-none cursor-pointer font-normal text-sm leading-[171%] text-[var(--text-disabled)]"
                 >
                   <option value="">Select One</option>
                   <option value="Tech">Tech</option>
@@ -270,11 +271,11 @@ const CompanyRegistration = () => {
             onChange={handleChange}
           />
 
-          <div className="flex gap-[42px] items-center">
+          <div className="flex gap-x-6 items-center">
             <button
               type="submit"
               disabled={loading}
-              className="py-[18px] px-[60px] bg-[var(--primary)] border border-[var(--primary)] rounded-[5px] text-white text-base font-bold cursor-pointer"
+              className="py-2 px-3 h-[44px] bg-[var(--primary)] border border-[var(--primary)] rounded-[5px] text-white  cursor-pointer  font-medium text-sm leading-[200%] text-center text-[var(--secondary)]"
             >
               {loading ? (
                 <div className="spinner-border" role="status">
@@ -287,7 +288,7 @@ const CompanyRegistration = () => {
             <button
               type="button"
               onClick={handleClear}
-              className="py-[18px] px-[60px] bg-[#FFF] text-[var(--primary2)] border border-[#919191] rounded-[5px] cursor-pointer overflow-hidden text-center text-ellipsis text-base not-italic font-semibold leading-[1.31rem]"
+              className="py-2 px-3  h-[44px] bg-[#FFF] text-[var(--primary2)] border border-[#919191] rounded-[5px] cursor-pointer overflow-hidden text-ellipsis  not-italic font-medium text-sm leading-[200%] text-center text-[#343a40]"
             >
               Clear Form
             </button>
