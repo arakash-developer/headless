@@ -1,5 +1,5 @@
 import DownArrow from "@public/icons/down.svg";
-import { Input } from "antd";
+import { Input, Select } from "antd";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -165,15 +165,36 @@ const CompanyRegistration = () => {
       });
     }
   }, [loading, userEmail]);
+  const [selected, setSelected] = useState();
+  const handleIndustryChange = (option) => {
+    setSelected(option);
+  };
+  const [selectedCompany, setSelectedCompany] = useState();
+  const handleCompanyChange = (option) => {
+    setSelectedCompany(option);
+  };
+  const industryOptions = [
+    { value: "tech", label: "Tech" },
+    { value: "healthcare", label: "Healthcare" },
+    { value: "finance", label: "Finance" },
+  ];
+
+const companySize = [
+  { value: "1-10", label: "1-10" },
+  { value: "11-50", label: "11-50" },
+  { value: "51+", label: "51+" },
+];
 
   return (
     <div>
       <h2 className="text-[var(--primary2)] text-[28px]  not-italic font-semibold text-4xl leading-[125%]">
         Register Your Company
       </h2>
-      <p className="text-[#919191] text-base not-italic font-normal leading-6 mt-3">
-        Add your company details to start using your dashboard and invite team
-        members
+      <p className="text-[#919191] not-italic mt-3 max-w-[795px] font-normal text-sm leading-[171%] text-var(--text-secondary)">
+        Use this form to invite a business colleague or client to register and
+        use the AMI website. Upon completion, a unique Invitation Code will be
+        sent to your invitee. After they register, you will receive a
+        notification email
       </p>
 
       <div className="mt-8 max-w-[795px] py-8 px-8 bg-[#FFF] rounded-[5px] companyregform">
@@ -220,17 +241,19 @@ const CompanyRegistration = () => {
                 Company Size
               </label>
               <div className="relative cursor-pointer">
-                <select
-                  name="companySize"
-                  value={formData.companySize}
-                  onChange={handleChange}
-                  className="w-full h-[40px] py-2 px-3 border bg-[var(--background)] border-[var(--neutral-400)] rounded-[8px] appearance-none cursor-pointer font-normal text-sm leading-[171%] text-[var(--text-disabled)]"
+                <Select
+                  defaultValue="Select One"
+                  style={{ height: "40px" }}
+                  onChange={handleCompanyChange}
+                  className="w-full custom-select"
+                  dropdownMatchSelectWidth={false}
                 >
-                  <option value="">Select One</option>
-                  <option value="1-10">1-10</option>
-                  <option value="11-50">11-50</option>
-                  <option value="51+">51+</option>
-                </select>
+                  {companySize.map((option) => (
+                    <Select.Option key={option.value} value={option.value}>
+                      <p>{option.label}</p>
+                    </Select.Option>
+                  ))}
+                </Select>
                 <img
                   className="absolute top-1/2 -translate-y-1/2 right-[16px]"
                   src={DownArrow}
@@ -244,17 +267,19 @@ const CompanyRegistration = () => {
                 Industry
               </label>
               <div className="relative cursor-pointer">
-                <select
-                  name="industry"
-                  value={formData.industry}
-                  onChange={handleChange}
-                  className="w-full h-[40px] py-2 px-3 bg-[var(--background)] border border-[var(--neutral-400)] rounded-[8px] appearance-none cursor-pointer font-normal text-sm leading-[171%] text-[var(--text-disabled)]"
+                <Select
+                  defaultValue="Select One"
+                  style={{ height: "40px" }}
+                  onChange={handleIndustryChange}
+                  className="w-full custom-select"
+                  dropdownMatchSelectWidth={false}
                 >
-                  <option value="">Select One</option>
-                  <option value="Tech">Tech</option>
-                  <option value="Healthcare">Healthcare</option>
-                  <option value="Finance">Finance</option>
-                </select>
+                  {industryOptions.map((option) => (
+                    <Select.Option key={option.value} value={option.value}>
+                      <p>{option.label}</p>
+                    </Select.Option>
+                  ))}
+                </Select>
                 <img
                   className="absolute top-1/2 -translate-y-1/2 right-[16px]"
                   src={DownArrow}
