@@ -41,7 +41,7 @@ const FormField = ({
       value={value}
       placeholder={placeholder}
       onChange={onChange}
-      className="custom-black-input w-full h-[40px] py-2 px-3 bg-[#F4F5F9] border border-[#DBDCDE] rounded-[8px]  placeholder:text-[#919191] placeholder:text-sm cursor-pointer"
+      className="custom-black-input w-full h-[40px] py-2 px-3 bg-[var(--background)] border border-[#DBDCDE] rounded-[8px]  placeholder:text-[#919191] placeholder:text-sm cursor-pointer"
     />
   </div>
 );
