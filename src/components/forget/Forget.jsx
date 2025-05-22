@@ -7,11 +7,10 @@ import PasswordReset from "@/lib/PasswordReset";
 import emailjs from "@emailjs/browser";
 import ForgetIcon from "@public/forget.png";
 import { Flex, Input, theme, Typography } from "antd";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 const { Title } = Typography;
-
 const ForgetDesign = ({ title, des, mail }) => {
   return (
     <div>
@@ -158,13 +157,13 @@ const Forget = () => {
     },
   };
   let checkOtp = async (e) => {
-    let genOtpstring = await GetOtp(email);
-    let genotp = await Number(genOtpstring);
-    if (otpInput.length === 6) {
-      let NumberotpInput = Number(otpInput.join(""));
-      console.log("otpInput", NumberotpInput, typeof NumberotpInput);
-      console.log("gentOtp", genotp, typeof genotp);
-      if (NumberotpInput === genotp) {
+    let genOtpString = await GetOtp(email); 
+    const enteredOtp = otpInput.join(""); 
+    console.log("genOtpString", genOtpString);
+    console.log("enteredOtp", enteredOtp);
+
+    if (enteredOtp.length === 6) {
+      if (enteredOtp === genOtpString) {
         console.log("OTP is correct");
         setCurrent(current + 1);
         return true;
@@ -176,6 +175,7 @@ const Forget = () => {
       toast.error("Enter 6 digit OTP", toastStyle);
     }
   };
+
   let updateUserPassword = async () => {
     if (!password) {
       toast.error("Password is required", toastStyle);
@@ -193,6 +193,7 @@ const Forget = () => {
   };
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
+
   const next = () => {
     if (current === 0) {
       if (!email) {
@@ -202,6 +203,7 @@ const Forget = () => {
       } else {
         setCurrent(current + 1);
         sendEmail();
+        CountDownTimer();
       }
     } else if (current === 1) {
       let otp = checkOtp();
@@ -245,6 +247,17 @@ const Forget = () => {
     let gen = await GetOtp(email);
     console.log("gggg", gen);
   };
+
+  const [timeLeft, setTimeLeft] = useState(20);
+  function CountDownTimer() {
+    useEffect(() => {
+      if (timeLeft <= 0) return;
+      const timerId = setTimeout(() => {
+        setTimeLeft(timeLeft - 1);
+      }, 1000);
+    }, [timeLeft]);
+  }
+
   return (
     <>
       <div
@@ -370,7 +383,7 @@ const Forget = () => {
               />
               {current === 1 && (
                 <p className="mt-6 font-medium text-sm leading-[171%] text-[var(--text-disabled)]">
-                  Send code again in 00:20
+                  Send code again in 00:{timeLeft}
                 </p>
               )}
             </>
