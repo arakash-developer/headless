@@ -191,7 +191,7 @@ const CompanyRegistration = () => {
       <h2 className="text-[var(--primary2)] text-[28px]  not-italic font-semibold text-4xl leading-[125%]">
         Register Your Company
       </h2>
-      <p className="text-[#919191] not-italic mt-3 max-w-[795px] font-normal text-sm leading-[171%] text-var(--text-secondary)">
+      <p className="text-[#919191] not-italic mt-3 max-w-[795px] font-normal text-base leading-[150%] text-[var(--text-secondary)]">
         Use this form to invite a business colleague or client to register and
         use the AMI website. Upon completion, a unique Invitation Code will be
         sent to your invitee. After they register, you will receive a
