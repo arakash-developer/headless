@@ -157,8 +157,8 @@ const Forget = () => {
     },
   };
   let checkOtp = async (e) => {
-    let genOtpString = await GetOtp(email); 
-    const enteredOtp = otpInput.join(""); 
+    let genOtpString = await GetOtp(email);
+    const enteredOtp = otpInput.join("");
     console.log("genOtpString", genOtpString);
     console.log("enteredOtp", enteredOtp);
 
