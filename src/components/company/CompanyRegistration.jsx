@@ -1,8 +1,8 @@
+import DownArrow from "@public/icons/down.svg";
+import { Input } from "antd";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import DownArrow from "@public/icons/down.svg";
-import { Input } from "antd";
 
 // Toast style config
 const toastStyle = {
@@ -290,7 +290,7 @@ const CompanyRegistration = () => {
               onClick={handleClear}
               className="py-2 px-8 h-[44px] bg-[#FFF] text-[var(--primary2)] border border-[#919191] rounded-[5px] cursor-pointer overflow-hidden text-ellipsis  not-italic font-medium text-sm leading-[200%] text-center text-[#343a40]"
             >
-              Clear Form
+              Discard Changes
             </button>
           </div>
         </form>
