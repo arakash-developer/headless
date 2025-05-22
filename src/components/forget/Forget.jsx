@@ -187,6 +187,7 @@ const Forget = () => {
       }
     } else if (current === 1) {
       checkOtp();
+      setCurrent(current + 1);
     }
   };
   const prev = () => {
