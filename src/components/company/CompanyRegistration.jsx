@@ -41,7 +41,7 @@ const FormField = ({
       value={value}
       placeholder={placeholder}
       onChange={onChange}
-      className="custom-black-input w-full h-[40px] py-2 px-3 bg-[var(--background)] border border-[#DBDCDE] rounded-[8px]  placeholder:text-[#919191] placeholder:text-sm cursor-pointer"
+      className="custom-black-input w-full h-[40px] py-2 px-3 bg-[var(--background)] border border-[var(--neutral-400)] rounded-[8px]  placeholder:text-[#919191] placeholder:text-sm cursor-pointer"
     />
   </div>
 );
@@ -224,7 +224,7 @@ const CompanyRegistration = () => {
                   name="companySize"
                   value={formData.companySize}
                   onChange={handleChange}
-                  className="w-full h-[40px] py-2 px-3 border bg-[#F4F5F9] border-[#DBDCDE] rounded-[8px] appearance-none cursor-pointer font-normal text-sm leading-[171%] text-[var(--text-disabled)]"
+                  className="w-full h-[40px] py-2 px-3 border bg-[var(--background)] border-[var(--neutral-400)] rounded-[8px] appearance-none cursor-pointer font-normal text-sm leading-[171%] text-[var(--text-disabled)]"
                 >
                   <option value="">Select One</option>
                   <option value="1-10">1-10</option>
@@ -248,7 +248,7 @@ const CompanyRegistration = () => {
                   name="industry"
                   value={formData.industry}
                   onChange={handleChange}
-                  className="w-full h-[40px] py-2 px-3 border bg-[#F4F5F9] border-[#DBDCDE] rounded-[8px] appearance-none cursor-pointer font-normal text-sm leading-[171%] text-[var(--text-disabled)]"
+                  className="w-full h-[40px] py-2 px-3 bg-[var(--background)] border border-[var(--neutral-400)] rounded-[8px] appearance-none cursor-pointer font-normal text-sm leading-[171%] text-[var(--text-disabled)]"
                 >
                   <option value="">Select One</option>
                   <option value="Tech">Tech</option>
