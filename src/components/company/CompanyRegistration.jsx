@@ -245,7 +245,7 @@ const CompanyRegistration = () => {
                   defaultValue="Select One"
                   style={{ height: "40px" }}
                   onChange={handleCompanyChange}
-                  className="w-full custom-select"
+                  className="w-full custom-select no-arrow-select"
                   dropdownMatchSelectWidth={false}
                 >
                   {companySize.map((option) => (
@@ -254,7 +254,7 @@ const CompanyRegistration = () => {
                     </Select.Option>
                   ))}
                 </Select>
-                <div className="absolute top-1/2 -translate-y-1/2 right-[16px]">
+                <div className="absolute top-1/2 -translate-y-1/2 right-[16px] pointer-events-none">
                   <DownArrow color='var(--text-secondary)' />
                 </div>
               </div>
@@ -269,7 +269,7 @@ const CompanyRegistration = () => {
                   defaultValue="Select One"
                   style={{ height: "40px" }}
                   onChange={handleIndustryChange}
-                  className="w-full custom-select"
+                  className="w-full custom-select no-arrow-select"
                   dropdownMatchSelectWidth={false}
                 >
                   {industryOptions.map((option) => (
@@ -278,7 +278,7 @@ const CompanyRegistration = () => {
                     </Select.Option>
                   ))}
                 </Select>
-                <div className="absolute top-1/2 -translate-y-1/2 right-[16px]">
+                <div className="absolute top-1/2 -translate-y-1/2 right-[16px] pointer-events-none">
                   <DownArrow color='var(--text-secondary)' />
                 </div>
               </div>

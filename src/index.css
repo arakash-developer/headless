@@ -223,3 +223,8 @@ ul.companyProfile li a.active {
   text-align: center;
   padding: 0.5rem;
 }
+
+
+.no-arrow-select .ant-select-arrow {
+  display: none !important;
+}
