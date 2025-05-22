@@ -176,8 +176,8 @@ const CompanyRegistration = () => {
         members
       </p>
 
-      <div className="mt-8 max-w-[795px] py-[20px] px-8 bg-[#FFF] rounded-[5px] companyregform">
-        <form className="flex flex-col gap-y-4" onSubmit={handleSubmit}>
+      <div className="mt-8 max-w-[795px] py-8 px-8 bg-[#FFF] rounded-[5px] companyregform">
+        <form className="flex flex-col gap-y-5" onSubmit={handleSubmit}>
           <FormField
             label="Company Name"
             name="companyName"
@@ -271,7 +271,7 @@ const CompanyRegistration = () => {
             onChange={handleChange}
           />
 
-          <div className="flex gap-x-6 items-center">
+          <div className="mt-1 flex gap-x-6 items-center">
             <button
               type="submit"
               disabled={loading}
