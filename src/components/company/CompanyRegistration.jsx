@@ -275,7 +275,7 @@ const CompanyRegistration = () => {
             <button
               type="submit"
               disabled={loading}
-              className="py-2 px-3 h-[44px] bg-[var(--primary)] border border-[var(--primary)] rounded-[5px] text-white  cursor-pointer  font-medium text-sm leading-[200%] text-center text-[var(--secondary)]"
+              className="py-2 px-8 h-[44px] bg-[var(--primary)] border border-[var(--primary)] rounded-[5px] text-white  cursor-pointer  font-medium text-sm leading-[200%] text-center text-[var(--secondary)]"
             >
               {loading ? (
                 <div className="spinner-border" role="status">
@@ -288,7 +288,7 @@ const CompanyRegistration = () => {
             <button
               type="button"
               onClick={handleClear}
-              className="py-2 px-3  h-[44px] bg-[#FFF] text-[var(--primary2)] border border-[#919191] rounded-[5px] cursor-pointer overflow-hidden text-ellipsis  not-italic font-medium text-sm leading-[200%] text-center text-[#343a40]"
+              className="py-2 px-8 h-[44px] bg-[#FFF] text-[var(--primary2)] border border-[#919191] rounded-[5px] cursor-pointer overflow-hidden text-ellipsis  not-italic font-medium text-sm leading-[200%] text-center text-[#343a40]"
             >
               Clear Form
             </button>
