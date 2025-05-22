@@ -3,6 +3,7 @@ import Hiddeneye from "@/assets/Hiddeneye";
 import Success from "@/assets/Success";
 import GenarateOtp from "@/lib/GenarateOtp";
 import GetOtp from "@/lib/GetOtp";
+import PasswordReset from "@/lib/PasswordReset";
 import emailjs from "@emailjs/browser";
 import ForgetIcon from "@public/forget.png";
 import { Flex, Input, theme, Typography } from "antd";
@@ -166,11 +167,28 @@ const Forget = () => {
       if (NumberotpInput === genotp) {
         console.log("OTP is correct");
         setCurrent(current + 1);
+        return true;
       } else {
         toast.error("Invalid OTP", toastStyle);
+        throw new Error("Invalid OTP");
       }
     } else {
       toast.error("Enter 6 digit OTP", toastStyle);
+    }
+  };
+  let updateUserPassword = async () => {
+    if (!password) {
+      toast.error("Password is required", toastStyle);
+    } else if (!confirmPassword) {
+      toast.error("Confirm Password is required", toastStyle);
+    } else if (password !== confirmPassword) {
+      toast.error("Password does not match", toastStyle);
+    } else {
+      let reset = await PasswordReset(email, password);
+      if (reset === true) {
+        toast.success("Password Updated Successfully", toastStyle);
+        setCurrent(current + 1);
+      }
     }
   };
   const { token } = theme.useToken();
@@ -186,9 +204,16 @@ const Forget = () => {
         sendEmail();
       }
     } else if (current === 1) {
-      checkOtp();
-      setCurrent(current + 1);
+      let otp = checkOtp();
+      if (otp === true) {
+        setCurrent(current + 1);
+      }
+    } else if (current === 2) {
+      if (updateUserPassword() === true) {
+        setCurrent(current + 1);
+      }
     }
+    // setCurrent(current + 1);
   };
   const prev = () => {
     setCurrent(current - 1);
