@@ -5,6 +5,7 @@ import Loginbanner from "@public/logIn.png";
 import { Checkbox, Input } from "antd";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ScaleLoader } from "react-spinners";
 import { toast } from "react-toastify";
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -17,6 +18,7 @@ const Login = () => {
     seteyeon(!eyeon);
   };
   const [checked, setChecked] = useState(false);
+  let [loading, setLoading] = useState(false);
 
   const handleRemember = (e) => {
     setChecked(!checked);
@@ -38,7 +40,7 @@ const Login = () => {
   };
   const handleLogin = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     if (!email) {
       toast.error("Email is required", toastStyle);
     } else if (!password) {
@@ -205,9 +207,13 @@ const Login = () => {
             <button
               type="submit"
               onClick={handleLogin}
-              className="py-[8px] px-8 bg-[var(--primary)] rounded-[5px] text-white max-w-[192px] cursor-pointer font-medium text-sm leading-[200%] text-var(--secondary)"
+              className="h-[44px] w-[110px] flex justify-center items-center py-[8px] px-8 bg-[var(--primary)] rounded-[5px] text-white max-w-[192px] cursor-pointer font-medium text-sm leading-[200%] text-var(--secondary)"
             >
-              Sign In
+              {loading ? (
+                <ScaleLoader height="15px" width="2px" color="#fff" />
+              ) : (
+                "Sign In "
+              )}
             </button>
           </form>
         </div>
