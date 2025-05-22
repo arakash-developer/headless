@@ -1,4 +1,4 @@
-import DownArrow from "@public/icons/down.svg";
+import DownArrow from "@assets/DownArrow";
 import { Input, Select } from "antd";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -179,11 +179,11 @@ const CompanyRegistration = () => {
     { value: "finance", label: "Finance" },
   ];
 
-const companySize = [
-  { value: "1-10", label: "1-10" },
-  { value: "11-50", label: "11-50" },
-  { value: "51+", label: "51+" },
-];
+  const companySize = [
+    { value: "1-10", label: "1-10" },
+    { value: "11-50", label: "11-50" },
+    { value: "51+", label: "51+" },
+  ];
 
   return (
     <div>
@@ -254,11 +254,9 @@ const companySize = [
                     </Select.Option>
                   ))}
                 </Select>
-                <img
-                  className="absolute top-1/2 -translate-y-1/2 right-[16px]"
-                  src={DownArrow}
-                  alt="down-arrow"
-                />
+                <div className="absolute top-1/2 -translate-y-1/2 right-[16px]">
+                  <DownArrow color='var(--text-secondary)' />
+                </div>
               </div>
             </div>
 
@@ -280,11 +278,9 @@ const companySize = [
                     </Select.Option>
                   ))}
                 </Select>
-                <img
-                  className="absolute top-1/2 -translate-y-1/2 right-[16px]"
-                  src={DownArrow}
-                  alt="down-arrow"
-                />
+                <div className="absolute top-1/2 -translate-y-1/2 right-[16px]">
+                  <DownArrow color='var(--text-secondary)' />
+                </div>
               </div>
             </div>
           </div>
