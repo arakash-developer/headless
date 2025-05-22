@@ -16,8 +16,10 @@ const Login = () => {
   const handleTogglePassword = () => {
     seteyeon(!eyeon);
   };
-  const onChange = (e) => {
-    console.log(`checked = ${e.target.checked}`);
+  const [checked, setChecked] = useState(false);
+
+  const handleRemember = (e) => {
+    setChecked(!checked);
   };
 
   const toastStyle = {
@@ -177,10 +179,13 @@ const Login = () => {
             </div>
             <div className="mt-2 mb-6">
               <div className="w-full flex justify-between items-center">
-                <div className="flex items-center gap-2 cursor-pointer">
+                <div
+                  onClick={handleRemember}
+                  className="flex items-center gap-2 cursor-pointer"
+                >
                   <div className="flex items-center">
                     <Checkbox
-                      onChange={onChange}
+                      checked={checked}
                       className="custom-red-checkbox"
                     ></Checkbox>
                   </div>
