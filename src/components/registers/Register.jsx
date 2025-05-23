@@ -1,4 +1,5 @@
 import DownArrow2 from "@/assets/DownArrow2";
+import postRegistration from "@/lib/postRegistration";
 import SignupIllustration from "@public/signupillustration.jpg";
 import { Button, Checkbox, Input, Select, theme } from "antd";
 import { useContext, useState } from "react";
@@ -54,29 +55,6 @@ const Register = () => {
       color: "#fff",
     },
   };
-  const registerCheck = (e) => {
-    e.preventDefault();
-
-    const { email, firstName, lastName, title, company, phone, extension } =
-      formData;
-
-    if (!email) return showError("Email is required");
-    if (!firstName) return showError("First Name is required");
-    if (!lastName) return showError("Last Name is required");
-    if (!title) return showError("Title is required");
-    if (!company) return showError("Company is required");
-    if (!phone) return showError("Phone number is required");
-    if (!extension) return showError("Extension is required");
-    if (!agree)
-      return showError("Please agree to the Terms and Privacy Policy");
-
-    toast.success("Next Step!", {
-      ...toastStyle,
-      style: { background: "var(--primary)", color: "#fff" },
-    });
-    setInvitation(formData);
-    navigate("/register2");
-  };
 
   const showError = (msg) => {
     setToastError(msg);
@@ -102,7 +80,7 @@ const Register = () => {
     if (!formData.email) return toast.error("Email is required", toastStyle);
     setCurrent(current + 1);
   };
-  let handleuserSubmitstep1 = () => {
+  let handleuserSubmitstep1 = async () => {
     if (!formData.userName)
       return toast.error("Username is required", toastStyle);
     if (!formData.password)
@@ -111,7 +89,29 @@ const Register = () => {
       return toast.error("Confirm Password is required", toastStyle);
     if (formData.password !== formData.confirmPassword)
       return toast.error("Password does not match", toastStyle);
-    setCurrent(current + 1);
+    else {
+      let datas = {
+        username: formData.userName,
+        password: formData.password,
+        email: formData.email,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        title: formData.title,
+        company: formData.company,
+        phone: formData.phone,
+        extension: formData.extension,
+        code: formData.code,
+      };
+      let response = await postRegistration(datas);
+      if (response?.login) {
+        navigate("/regsuccess");
+        toast.success(response.message, {
+          ...toastStyle,
+          style: { background: "var(--primary)", color: "#fff" },
+        });
+      }
+      toast.error(response, toastStyle);
+    }
   };
   const next = () => {
     if (current === 0) {
@@ -119,7 +119,6 @@ const Register = () => {
     }
     if (current === 1) {
       handleuserSubmitstep1();
-      console.log("formData", formData);
     }
   };
   const prev = () => {
@@ -157,41 +156,29 @@ const Register = () => {
     setChecked(!checked);
   };
 
-  let handleSubmitform = async (e) => {
-    e.preventDefault();
-    if (!userName) return toast.error("Username is required", toastStyle);
-    if (!password) return toast.error("Password is required", toastStyle);
-    if (!confirmpassword)
-      return toast.error("Confirm Password is required", toastStyle);
-    if (password !== confirmpassword) {
-      toast.error("Password does not match", toastStyle);
-    } else {
-      setInvitation({ ...invitation, ...formData });
-      let datas = {
-        username: userName,
-        password: password,
-        email: email,
-        firstName: firstName,
-        lastName: lastName,
-        title: title,
-        company: company,
-        phone: phone,
-        extension: extension,
-        code: code,
-      };
-      // console.log(datas);
-      let response = await postRegistration(datas);
-      // console.log(response);
-      if (response?.login) {
-        navigate("/regsuccess");
-        toast.success(response.message, {
-          ...toastStyle,
-          style: { background: "var(--primary)", color: "#fff" },
-        });
-      }
-      toast.error(response, toastStyle);
-    }
-  };
+  // let handleSubmitform = async () => {
+  //   let datas = {
+  //     username: userName,
+  //     password: password,
+  //     email: email,
+  //     firstName: firstName,
+  //     lastName: lastName,
+  //     title: title,
+  //     company: company,
+  //     phone: phone,
+  //     extension: extension,
+  //     code: code,
+  //   };
+  //   let response = await postRegistration(datas);
+  //   if (response?.login) {
+  //     navigate("/regsuccess");
+  //     toast.success(response.message, {
+  //       ...toastStyle,
+  //       style: { background: "var(--primary)", color: "#fff" },
+  //     });
+  //   }
+  //   toast.error(response, toastStyle);
+  // };
   return (
     <>
       {current < 2 && (
@@ -247,7 +234,7 @@ const Register = () => {
                               onChange={(val) =>
                                 setFormData({ ...formData, firstName: val })
                               }
-                              type="email"
+                              type="text"
                               placeholder=""
                               wrapperClass=""
                             />
@@ -299,7 +286,7 @@ const Register = () => {
                               onChange={(val) =>
                                 setFormData({ ...formData, phone: val })
                               }
-                              type="text"
+                              type="number"
                               placeholder=""
                               wrapperClass=""
                             />
@@ -324,7 +311,7 @@ const Register = () => {
                             onChange={(val) =>
                               setFormData({ ...formData, mobile: val })
                             }
-                            type="text"
+                            type="number"
                             placeholder=""
                             wrapperClass=""
                           />
@@ -391,7 +378,7 @@ const Register = () => {
                             onChange={(val) =>
                               setFormData({ ...formData, email: val })
                             }
-                            type="text"
+                            type="email"
                             placeholder=""
                             wrapperClass=""
                           />
@@ -512,10 +499,7 @@ const Register = () => {
                 Create Account
               </p>
             </div>
-            <form
-              className="flex flex-col gap-y-6 pt-[58px]"
-              onSubmit={registerCheck}
-            >
+            <form className="flex flex-col gap-y-6 pt-[58px]">
               {/* Invitation Code */}
               <FormField
                 label="Invitation Code (Optional)"
