@@ -178,7 +178,7 @@ const Register = () => {
                     <div className="">
                       <div className="form mt-[28px] flex flex-col gap-y-5">
                         <div className="w-full">
-                          <label
+                          {/* <label
                             htmlFor=""
                             className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]"
                           >
@@ -187,6 +187,16 @@ const Register = () => {
                           <Input
                             onChange={(e) => setEmail(e.target.value)}
                             className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
+                          /> */}
+                          <FormField
+                            label="Invitation Code (Optional)"
+                            value={formData.extension}
+                            onChange={(val) =>
+                              setFormData({ ...formData, extension: val })
+                            }
+                            type="text"
+                            placeholder="Enter your invitation code"
+                            wrapperClass=""
                           />
                         </div>
                         <div className="w-full flex gap-x-6">
@@ -605,18 +615,18 @@ const FormField = ({
   onChange,
   type = "text",
   placeholder,
-  wrapperClass = "flex flex-col gap-y-2",
+  wrapperClass = "",
 }) => (
   <div className={wrapperClass}>
-    <label className="text-[var(--primary2)] text-base font-medium">
+    <label className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]">
       {label}
     </label>
-    <input
+    <Input
       type={type}
       value={value}
       placeholder={placeholder}
       onChange={(e) => onChange(e.target.value)}
-      className="w-full h-[50px] py-3 px-4 border border-[#DBDCDE] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm cursor-pointer"
+      className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
     />
   </div>
 );
