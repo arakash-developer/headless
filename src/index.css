@@ -194,7 +194,9 @@ ul.companyProfile li a.active {
   background: var(--background) !important;
   border-color: var(--text-disabled) !important;
 }
-
+.custom-select .ant-select-selector.active {
+  background: var(--primary) !important;
+}
 /* When Select has a value (using 'ant-select-selection-item' presence) */
 .custom-select.ant-select-focused .ant-select-selector,
 .custom-select .ant-select-selection-item {

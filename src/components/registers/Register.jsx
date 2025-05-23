@@ -353,7 +353,7 @@ const Register = () => {
                                 defaultValue="Select One"
                                 style={{ height: "40px" }}
                                 onChange={handleCategoryChange}
-                                className="w-full custom-select no-arrow-select bg-[var(--background)]"
+                                className="w-full custom-select no-arrow-select bg-[var(--background)] "
                                 dropdownMatchSelectWidth={false}
                               >
                                 {categoryOptions.map((option) => (
