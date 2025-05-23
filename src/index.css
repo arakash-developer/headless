@@ -7,7 +7,7 @@
   --primary2: #080607;
   --secondary: #fff;
   --background: #fbfbfb;
-  --pop-up: #E9E9E9;
+  --pop-up: #e9e9e9;
   --gray: #6f7482;
   --field-color: #f4f5f9;
   --neutral: #e9ecef;
@@ -29,7 +29,9 @@
   font-family: "Inter", sans-serif;
   box-sizing: border-box;
 }
-
+input::placeholder {
+  font-family: "Inter", sans-serif !important;
+}
 html,
 body {
   height: 100%;
@@ -137,10 +139,14 @@ ul.companyProfile li a.active {
 }
 
 /*  Custom Black Focus */
+.custom-black-input .ant-input {
+  font-family: "Inter", sans-serif !important;
+}
 .custom-black-input .ant-input:focus,
 .custom-black-input .ant-input-focused {
   border-color: var(--primary2) !important;
   box-shadow: none;
+  font-family: "Inter", sans-serif !important;
 }
 /* ❌ Disable Hover Border Change */
 .custom-black-input .ant-input:hover {
@@ -223,7 +229,6 @@ ul.companyProfile li a.active {
   text-align: center;
   padding: 0.5rem;
 }
-
 
 .no-arrow-select .ant-select-arrow {
   display: none !important;

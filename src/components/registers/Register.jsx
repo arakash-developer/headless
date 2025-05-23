@@ -32,6 +32,9 @@ const Register = () => {
     company: "",
     phone: "",
     extension: "",
+    password: "",
+    userName: "",
+    mobile: "",
   });
 
   const toastStyle = {
@@ -178,16 +181,6 @@ const Register = () => {
                     <div className="">
                       <div className="form mt-[28px] flex flex-col gap-y-5">
                         <div className="w-full">
-                          {/* <label
-                            htmlFor=""
-                            className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]"
-                          >
-                            Invitation Code (Optional)
-                          </label>
-                          <Input
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
-                          /> */}
                           <FormField
                             label="Invitation Code (Optional)"
                             value={formData.extension}
@@ -195,100 +188,98 @@ const Register = () => {
                               setFormData({ ...formData, extension: val })
                             }
                             type="text"
-                            placeholder="Enter your invitation code"
+                            placeholder=""
                             wrapperClass=""
                           />
                         </div>
                         <div className="w-full flex gap-x-6">
                           <div className="w-1/2">
-                            <label
-                              htmlFor=""
-                              className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]"
-                            >
-                              First Name
-                            </label>
-                            <Input
-                              onChange={(e) => setEmail(e.target.value)}
-                              className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
+                            <FormField
+                              label="First Name"
+                              value={formData.firstName}
+                              onChange={(val) =>
+                                setFormData({ ...formData, firstName: val })
+                              }
+                              type="email"
+                              placeholder=""
+                              wrapperClass=""
                             />
                           </div>
                           <div className="w-1/2">
-                            <label
-                              htmlFor=""
-                              className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]"
-                            >
-                              Last Name
-                            </label>
-                            <Input
-                              onChange={(e) => setEmail(e.target.value)}
-                              className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
-                            />
-                          </div>
-                        </div>
-                        <div className="w-full flex gap-x-6">
-                          <div className="w-1/2">
-                            <label
-                              htmlFor=""
-                              className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]"
-                            >
-                              Title
-                            </label>
-                            <Input
-                              onChange={(e) => setEmail(e.target.value)}
-                              className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
-                            />
-                          </div>
-                          <div className="w-1/2">
-                            <label
-                              htmlFor=""
-                              className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]"
-                            >
-                              Company
-                            </label>
-                            <Input
-                              onChange={(e) => setEmail(e.target.value)}
-                              className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
+                            <FormField
+                              label="Last Name"
+                              value={formData.lastName}
+                              onChange={(val) =>
+                                setFormData({ ...formData, lastName: val })
+                              }
+                              type="text"
+                              placeholder=""
+                              wrapperClass=""
                             />
                           </div>
                         </div>
                         <div className="w-full flex gap-x-6">
                           <div className="w-1/2">
-                            <label
-                              htmlFor=""
-                              className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]"
-                            >
-                              Phone
-                            </label>
-                            <Input
-                              type="number"
-                              onChange={(e) => setEmail(e.target.value)}
-                              className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
+                            <FormField
+                              label="Title"
+                              value={formData.title}
+                              onChange={(val) =>
+                                setFormData({ ...formData, title: val })
+                              }
+                              type="text"
+                              placeholder=""
+                              wrapperClass=""
                             />
                           </div>
                           <div className="w-1/2">
-                            <label
-                              htmlFor=""
-                              className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]"
-                            >
-                              Extension
-                            </label>
-                            <Input
-                              onChange={(e) => setEmail(e.target.value)}
-                              className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
+                            <FormField
+                              label="Company"
+                              value={formData.company}
+                              onChange={(val) =>
+                                setFormData({ ...formData, company: val })
+                              }
+                              type="text"
+                              placeholder=""
+                              wrapperClass=""
+                            />
+                          </div>
+                        </div>
+                        <div className="w-full flex gap-x-6">
+                          <div className="w-1/2">
+                            <FormField
+                              label="Phone"
+                              value={formData.phone}
+                              onChange={(val) =>
+                                setFormData({ ...formData, phone: val })
+                              }
+                              type="text"
+                              placeholder=""
+                              wrapperClass=""
+                            />
+                          </div>
+                          <div className="w-1/2">
+                            <FormField
+                              label="Extension"
+                              value={formData.extension}
+                              onChange={(val) =>
+                                setFormData({ ...formData, extension: val })
+                              }
+                              type="text"
+                              placeholder=""
+                              wrapperClass=""
                             />
                           </div>
                         </div>
                         <div className="w-full">
-                          <label
-                            htmlFor=""
-                            className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]"
-                          >
-                            Mobile
-                          </label>
-                          <Input
-                            type="number"
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
+                          <FormField
+                            label="Mobile"
+                            value={formData.mobile}
+                            onChange={(val) =>
+                              setFormData({ ...formData, mobile: val })
+                            }
+                            type="text"
+                            placeholder=""
+                            wrapperClass=""
                           />
                         </div>
                         <div className="w-full flex gap-x-6">
@@ -336,16 +327,15 @@ const Register = () => {
                           </div>
                         </div>
                         <div className="w-full">
-                          <label
-                            htmlFor=""
-                            className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]"
-                          >
-                            Email
-                          </label>
-                          <Input
-                            type="email"
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
+                          <FormField
+                            label="Email"
+                            value={formData.email}
+                            onChange={(val) =>
+                              setFormData({ ...formData, email: val })
+                            }
+                            type="text"
+                            placeholder=""
+                            wrapperClass=""
                           />
                         </div>
                       </div>
