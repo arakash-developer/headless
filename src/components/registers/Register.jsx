@@ -524,14 +524,24 @@ const Register = () => {
         </div>
       )}
       {current === 2 && (
-        <div className="mt-[138px] py-10 px-[100px] rounded-lg bg-[var(--secondary)]">
-          <h2>Thank You for Registering!</h2>
-          <h3>Check Your Email to Activate Your Account</h3>
-          <p>
+        <div className="mt-[138px] py-10 px-[100px] rounded-lg bg-[var(--secondary)] text-center ">
+          <h2 className="font-semibold text-[32px] leading-[125%] text-[var(--primary2)]">
+            Thank You for Registering!
+          </h2>
+          <h3 className="font-semibold text-lg leading-[156%] text-[#343a40] mt-5 mb-6">
+            Check Your Email to Activate Your Account
+          </h3>
+          <p className="font-normal text-base leading-[150%] text-center text-[var(--text-secondary)] pb-6 max-w-[818px] mx-auto">
             To complete your registration, please check your email and follow
-            the confirmation link we just sent to [john@gmail.com]. Your
+            the confirmation link we just sent to [
+            <span className="text-[var(--primary)]">john@gmail.com</span>]. Your
             response is required to activate your account. If you don’t see the
-            email within a few minutes, please check your spam or junk folder.
+            email within a few minutes, please check your{" "}
+            <span className="font-semibold text-[var(--primary2)]"> spam</span>
+            or
+            <span className="font-semibold text-[var(--primary2)]">
+              junk folder.
+            </span>
           </p>
           <Link to="/confirmemail">Confirm Email</Link>
           <div className="">
