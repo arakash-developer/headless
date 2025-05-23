@@ -106,6 +106,42 @@ const Register = () => {
   const handleRemember = (e) => {
     setChecked(!checked);
   };
+
+  let handleSubmitform = async (e) => {
+    e.preventDefault();
+    if (!userName) return toast.error("Username is required", toastStyle);
+    if (!password) return toast.error("Password is required", toastStyle);
+    if (!confirmpassword)
+      return toast.error("Confirm Password is required", toastStyle);
+    if (password !== confirmpassword) {
+      toast.error("Password does not match", toastStyle);
+    } else {
+      setInvitation({ ...invitation, ...formData });
+      let datas = {
+        username: userName,
+        password: password,
+        email: invitation.email,
+        firstName: invitation.firstName,
+        lastName: invitation.lastName,
+        title: invitation.title,
+        company: invitation.company,
+        phone: invitation.phone,
+        extension: invitation.extension,
+        code: invitation.code,
+      };
+      // console.log(datas);
+      let response = await postRegistration(datas);
+      // console.log(response);
+      if (response?.login) {
+        navigate("/regsuccess");
+        toast.success(response.message, {
+          ...toastStyle,
+          style: { background: "var(--primary)", color: "#fff" },
+        });
+      }
+      toast.error(response, toastStyle);
+    }
+  };
   return (
     <>
       {current < 2 && (
@@ -400,7 +436,7 @@ const Register = () => {
                 </div>
               </div>
             </div>
-            <div className="py-[70px]">
+            <div className="mt-[103px]">
               <img src={SignupIllustration} alt={SignupIllustration} />
             </div>
           </div>
