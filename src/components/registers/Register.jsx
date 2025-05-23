@@ -100,7 +100,7 @@ const Register = () => {
          <div className="">
           <div className="max-w-[540px]">
             <h2 className="text-[32px] not-italic font-semibold text-4xl leading-[125%] text-[var(--primary2)]">
-              Create your Account
+              Create your Account5
             </h2>
             <p className="mt-2 font-normal text-base leading-[150%] text-[var(--text-secondary)]">
               Please provide your details below to set up your new account. This
