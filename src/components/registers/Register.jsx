@@ -326,7 +326,7 @@ const Register = () => {
                                 defaultValue="Select One"
                                 style={{ height: "40px" }}
                                 onChange={handleSourceChange}
-                                className="w-full custom-select no-arrow-select"
+                                className="w-full custom-select no-arrow-select bg-[var(--background)]"
                                 dropdownMatchSelectWidth={false}
                               >
                                 {sourceOptions.map((option) => (
@@ -353,7 +353,7 @@ const Register = () => {
                                 defaultValue="Select One"
                                 style={{ height: "40px" }}
                                 onChange={handleCategoryChange}
-                                className="w-full custom-select no-arrow-select"
+                                className="w-full custom-select no-arrow-select bg-[var(--background)]"
                                 dropdownMatchSelectWidth={false}
                               >
                                 {categoryOptions.map((option) => (
