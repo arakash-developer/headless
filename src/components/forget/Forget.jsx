@@ -207,8 +207,8 @@ const Forget = () => {
       }
     } else if (current === 1) {
       let otp = checkOtp();
+      setCurrent(current + 1);
       if (otp === true) {
-        setCurrent(current + 1);
       }
     } else if (current === 2) {
       if (updateUserPassword() === true) {
@@ -315,7 +315,7 @@ const Forget = () => {
                     type={eyeon ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                    className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] bg-[var(--background)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   />
                   <div
                     onClick={handleTogglePassword}
@@ -341,7 +341,7 @@ const Forget = () => {
                     type={eyeon2 ? "text" : "password"}
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                    className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   />
                   <div
                     onClick={handleToggleConfirmPassword}
@@ -377,7 +377,7 @@ const Forget = () => {
             <>
               <input
                 onClick={() => next()}
-                className="mt-8 cursor-pointer font-medium text-sm leading-[200%] text-[var(--secondary)] bg-[var(--primary)] py-2 px-8 rounded-[8px] max-w-[172px]"
+                className="mt-6 cursor-pointer font-medium text-sm leading-[200%] text-[var(--secondary)] bg-[var(--primary)] py-2 px-8 rounded-[8px] max-w-[172px]"
                 type="submit"
                 value={steps[current].nav}
               />
