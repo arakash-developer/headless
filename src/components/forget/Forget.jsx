@@ -202,13 +202,13 @@ const Forget = () => {
         toast.error("Please enter a valid email address", toastStyle);
       } else {
         setCurrent(current + 1);
-        // sendEmail();
+        sendEmail();
         CountDownTimer();
       }
     } else if (current === 1) {
       let otp = checkOtp();
-      setCurrent(current + 1);
       if (otp === true) {
+        setCurrent(current + 1);
       }
     } else if (current === 2) {
       if (updateUserPassword() === true) {
