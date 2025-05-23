@@ -1,9 +1,10 @@
-import { Button, Input, Steps, theme } from "antd";
+import DownArrow2 from "@/assets/DownArrow2";
+import SignupIllustration from "@public/signupillustration.jpg";
+import { Button, Input, Select, theme } from "antd";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Contex } from "../../context/User";
-import SignupIllustration from '@public/signupillustration.jpg'
 const steps = [
   {
     title: "",
@@ -20,6 +21,7 @@ const Register = () => {
   const [toastError, setToastError] = useState("Error");
   const [agree, setAgree] = useState(false);
   let { invitation, setInvitation } = useContext(Contex);
+  const [selected, setSelected] = useState();
   const [formData, setFormData] = useState({
     code: "",
     email: "",
@@ -92,68 +94,243 @@ const Register = () => {
     border: `1px dashed ${token.colorBorder}`,
     marginTop: 16,
   };
-
+  const handleIndustryChange = (option) => {
+    setSelected(option);
+  };
+  const industryOptions = [
+    { value: "tech", label: "Tech" },
+    { value: "healthcare", label: "Healthcare" },
+    { value: "finance", label: "Finance" },
+  ];
   return (
     <>
       <div className="mt-10 max-w-[1098px] pl-[55px] pt-[45px] pb-[29px] bg-[#fff] rounded-[5px] formboxshadow">
-       <div className="flex justify-between items-start">
-         <div className="">
-          <div className="max-w-[540px]">
-            <h2 className="text-[32px] not-italic font-semibold text-4xl leading-[125%] text-[var(--primary2)]">
-              Create your Account
-            </h2>
-            <p className="mt-2 font-normal text-base leading-[150%] text-[var(--text-secondary)]">
-              Please provide your details below to set up your new account. This
-              will allow you to access all features and manage your profile
-              securely
-            </p>
-          </div>
-          <div className="mt-[28px] max-w-[492px]">
-            <div className="steps bg-[var(--neutral)]">
-              <div className="w-[50%] h-3 rounded-[20px] bg-[var(--primary)]"></div>
+        <div className="flex justify-between items-start">
+          <div className="">
+            <div className="max-w-[540px]">
+              <h2 className="text-[32px] not-italic font-semibold text-4xl leading-[125%] text-[var(--primary2)]">
+                Create your Account
+              </h2>
+              <p className="mt-2 font-normal text-base leading-[150%] text-[var(--text-secondary)]">
+                Please provide your details below to set up your new account.
+                This will allow you to access all features and manage your
+                profile securely
+              </p>
             </div>
-            {/* <Steps current={current} items={items} /> */}
-            {/* <div style={contentStyle}>{steps[current].content}</div> */}
-            {current === 0 && (
-              <div>
-                <label
-                  htmlFor=""
-                  className="font-medium text-sm leading-[171%] text-[var(--text-normal)]"
-                >
-                  Email
-                </label>
-                <Input
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
-                />
+            <div className="mt-[28px] max-w-[492px]">
+              <div className="steps  flex flex-col justify-start items-end">
+                <div className="font-medium text-xs text-right text-[var(--primary)]">
+                  Step 1 <span className="text-[var(--gray)]"> of 2</span>
+                </div>
+                <div className="mt-3 w-full h-3 rounded-[20px] bg-[var(--neutral)] overflow-hidden">
+                  <div
+                    className={`bg-[var(--primary)] h-full ${
+                      current === 0 ? "w-[50%]" : "w-[100%]"
+                    } rounded-[20px]`}
+                  ></div>
+                </div>
               </div>
-            )}
-            <div style={{ marginTop: 24 }}>
-              {current < steps.length - 1 && (
-                <Button type="primary" onClick={() => next()}>
-                  Next
-                </Button>
+              {/* <Steps current={current} items={items} /> */}
+              {/* <div style={contentStyle}>{steps[current].content}</div> */}
+              {current === 0 && (
+                <div className="">
+                  <div className="form mt-[28px] flex flex-col gap-y-5">
+                    <div className="w-full">
+                      <label
+                        htmlFor=""
+                        className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]"
+                      >
+                        Invitation Code (Optional)
+                      </label>
+                      <Input
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
+                      />
+                    </div>
+                    <div className="w-full flex gap-x-6">
+                      <div className="w-1/2">
+                        <label
+                          htmlFor=""
+                          className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]"
+                        >
+                          First Name
+                        </label>
+                        <Input
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
+                        />
+                      </div>
+                      <div className="w-1/2">
+                        <label
+                          htmlFor=""
+                          className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]"
+                        >
+                          Last Name
+                        </label>
+                        <Input
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
+                        />
+                      </div>
+                    </div>
+                    <div className="w-full flex gap-x-6">
+                      <div className="w-1/2">
+                        <label
+                          htmlFor=""
+                          className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]"
+                        >
+                          Title
+                        </label>
+                        <Input
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
+                        />
+                      </div>
+                      <div className="w-1/2">
+                        <label
+                          htmlFor=""
+                          className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]"
+                        >
+                          Company
+                        </label>
+                        <Input
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
+                        />
+                      </div>
+                    </div>
+                    <div className="w-full flex gap-x-6">
+                      <div className="w-1/2">
+                        <label
+                          htmlFor=""
+                          className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]"
+                        >
+                          Phone
+                        </label>
+                        <Input
+                          type="number"
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
+                        />
+                      </div>
+                      <div className="w-1/2">
+                        <label
+                          htmlFor=""
+                          className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]"
+                        >
+                          Extension
+                        </label>
+                        <Input
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
+                        />
+                      </div>
+                    </div>
+                    <div className="w-full">
+                      <label
+                        htmlFor=""
+                        className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]"
+                      >
+                        Mobile
+                      </label>
+                      <Input
+                        type="number"
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
+                      />
+                    </div>
+                    <div className="w-full flex gap-x-6">
+                      <div className="w-1/2 relative cursor-pointer">
+                        <Select
+                          defaultValue="Select One"
+                          style={{ height: "40px" }}
+                          onChange={handleIndustryChange}
+                          className="w-full custom-select no-arrow-select"
+                          dropdownMatchSelectWidth={false}
+                        >
+                          {industryOptions.map((option) => (
+                            <Select.Option
+                              key={option.value}
+                              value={option.value}
+                            >
+                              <p>{option.label}</p>
+                            </Select.Option>
+                          ))}
+                        </Select>
+                        <div className="absolute top-1/2 -translate-y-1/2 right-[16px] pointer-events-none">
+                          <DownArrow2 color="var(--text-secondary)" />
+                        </div>
+                      </div>
+                      <div className="w-1/2 relative cursor-pointer">
+                        <Select
+                          defaultValue="Select One"
+                          style={{ height: "40px" }}
+                          onChange={handleIndustryChange}
+                          className="w-full custom-select no-arrow-select"
+                          dropdownMatchSelectWidth={false}
+                        >
+                          {industryOptions.map((option) => (
+                            <Select.Option
+                              key={option.value}
+                              value={option.value}
+                            >
+                              <p>{option.label}</p>
+                            </Select.Option>
+                          ))}
+                        </Select>
+                        <div className="absolute top-1/2 -translate-y-1/2 right-[16px] pointer-events-none">
+                          <DownArrow2 color="var(--text-secondary)" />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="w-full">
+                      <label
+                        htmlFor=""
+                        className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]"
+                      >
+                        Email
+                      </label>
+                      <Input
+                        type="email"
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
+                      />
+                    </div>
+                  </div>
+                  <div className="mt-3">
+                    <p className="font-normal text-xs leading-[135%] text-[var(--text-disabled)]">
+                      I acknowledge that I have read and agree to the Terms of
+                      Use and Privacy Policy
+                    </p>
+                  </div>
+                </div>
               )}
-              {current === steps.length - 1 && (
-                <Button
-                  type="primary"
-                  onClick={() => message.success("Processing complete!")}
-                >
-                  Done
-                </Button>
-              )}
-              {current > 0 && (
-                <Button style={{ margin: "0 8px" }} onClick={() => prev()}>
-                  Previous
-                </Button>
-              )}
+              <div style={{ marginTop: 24 }}>
+                {current < steps.length - 1 && (
+                  <Button type="primary" onClick={() => next()}>
+                    Next
+                  </Button>
+                )}
+                {current === steps.length - 1 && (
+                  <Button
+                    type="primary"
+                    onClick={() => message.success("Processing complete!")}
+                  >
+                    Done
+                  </Button>
+                )}
+                {current > 0 && (
+                  <Button style={{ margin: "0 8px" }} onClick={() => prev()}>
+                    Previous
+                  </Button>
+                )}
+              </div>
             </div>
           </div>
+          <div className="py-[70px]">
+            <img src={SignupIllustration} alt={SignupIllustration} />
+          </div>
         </div>
-        <div className="py-[70px]">
-          <img src={SignupIllustration} alt={SignupIllustration} />
-        </div>
-       </div>
 
         <div className="max-w-[280px] mx-auto flex justify-between items-center relative">
           <div className="bg-[var(--primary)] w-[22px] h-[22px] rounded-full border-[1px] border-[var(--primary)] relative z-[2] flex justify-center items-center text-[12px]">
