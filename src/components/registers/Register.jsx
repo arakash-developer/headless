@@ -550,7 +550,7 @@ const Register = () => {
             Confirm Email
           </Link>
           <div className="mt-[88px]">
-            <p className="font-normal text-base leading-[150%] text-center text-[var(--text-secondary)]">
+            <p className="font-normal text-base leading-[150%] text-center text-[var(--text-secondary)] pt-3 border-t border-[var(--neutral-400)] max-w-[815px] mx-auto">
               Still having trouble? Contact
               <span className="text-[var(--primary)]"> Support</span> for
               assistance. (
