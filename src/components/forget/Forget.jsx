@@ -287,7 +287,7 @@ const Forget = () => {
               </label>
               <Input
                 onChange={(e) => setEmail(e.target.value)}
-                className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
               />
             </div>
           )}

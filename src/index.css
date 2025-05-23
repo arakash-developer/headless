@@ -167,7 +167,7 @@ ul.companyProfile li a.active {
 .custom-black-input.ant-input:hover {
   border-color: var(--neutral-400) !important; /* neutral gray */
   box-shadow: none !important;
-  background: transparent !important;
+  background: var(--background) !important;
   font-family: "Inter", sans-serif !important;
 }
 .custom-black-input.ant-input:focus:hover {
