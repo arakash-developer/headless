@@ -1,8 +1,20 @@
+import { Button, Input, Steps, theme } from "antd";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Contex } from "../../context/User";
-
+import SignupIllustration from '@public/SignupIllustration.jpg'
+const steps = [
+  {
+    title: "",
+  },
+  {
+    title: "",
+  },
+  {
+    title: "",
+  },
+];
 const Register = () => {
   const navigate = useNavigate();
   const [toastError, setToastError] = useState("Error");
@@ -62,12 +74,87 @@ const Register = () => {
     toast.error(msg, toastStyle);
   };
 
+  const { token } = theme.useToken();
+  const [current, setCurrent] = useState(0);
+  const next = () => {
+    setCurrent(current + 1);
+  };
+  const prev = () => {
+    setCurrent(current - 1);
+  };
+  const items = steps.map((item) => ({ key: item.title, title: item.title }));
+  const contentStyle = {
+    lineHeight: "260px",
+    textAlign: "center",
+    color: token.colorTextTertiary,
+    backgroundColor: token.colorFillAlter,
+    borderRadius: token.borderRadiusLG,
+    border: `1px dashed ${token.colorBorder}`,
+    marginTop: 16,
+  };
+
   return (
     <>
-      <h2 className="text-[var(--primary2)] pb-5 text-[32px] not-italic font-semibold leading-[normal]">
-        Create your Account
-      </h2>
-      <div className="max-w-[855px] px-[65px] py-[37px] bg-[#fff] rounded-[5px] formboxshadow">
+      <div className="mt-10 max-w-[1098px] pl-[55px] pt-[45px] pb-[29px] bg-[#fff] rounded-[5px] formboxshadow">
+       <div className="flex justify-between items-start">
+         <div className="">
+          <div className="max-w-[540px]">
+            <h2 className="text-[32px] not-italic font-semibold text-4xl leading-[125%] text-[var(--primary2)]">
+              Create your Account
+            </h2>
+            <p className="mt-2 font-normal text-base leading-[150%] text-[var(--text-secondary)]">
+              Please provide your details below to set up your new account. This
+              will allow you to access all features and manage your profile
+              securely
+            </p>
+          </div>
+          <div className="mt-[28px] max-w-[492px]">
+            <div className="steps bg-[var(--neutral)]">
+              <div className="w-[50%] h-3 rounded-[20px] bg-[var(--primary)]"></div>
+            </div>
+            {/* <Steps current={current} items={items} /> */}
+            {/* <div style={contentStyle}>{steps[current].content}</div> */}
+            {current === 0 && (
+              <div>
+                <label
+                  htmlFor=""
+                  className="font-medium text-sm leading-[171%] text-[var(--text-normal)]"
+                >
+                  Email
+                </label>
+                <Input
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
+                />
+              </div>
+            )}
+            <div style={{ marginTop: 24 }}>
+              {current < steps.length - 1 && (
+                <Button type="primary" onClick={() => next()}>
+                  Next
+                </Button>
+              )}
+              {current === steps.length - 1 && (
+                <Button
+                  type="primary"
+                  onClick={() => message.success("Processing complete!")}
+                >
+                  Done
+                </Button>
+              )}
+              {current > 0 && (
+                <Button style={{ margin: "0 8px" }} onClick={() => prev()}>
+                  Previous
+                </Button>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="py-[70px]">
+          <img src={SignupIllustration} alt={SignupIllustration} />
+        </div>
+       </div>
+
         <div className="max-w-[280px] mx-auto flex justify-between items-center relative">
           <div className="bg-[var(--primary)] w-[22px] h-[22px] rounded-full border-[1px] border-[var(--primary)] relative z-[2] flex justify-center items-center text-[12px]">
             {/* <FaCheck className="text-[#fff]" /> */}
