@@ -35,6 +35,8 @@ const Register = () => {
     password: "",
     userName: "",
     mobile: "",
+    source: "",
+    category: "",
   });
 
   const toastStyle = {
@@ -117,10 +119,20 @@ const Register = () => {
     border: `1px dashed ${token.colorBorder}`,
     marginTop: 16,
   };
-  const handleIndustryChange = (option) => {
+  const handleSourceChange = (option) => {
     setSelected(option);
+    setFormData({ ...formData, source: option });
   };
-  const industryOptions = [
+  const handleCategoryChange = (option) => {
+    setSelected(option);
+    setFormData({ ...formData, category: option });
+  };
+  const sourceOptions = [
+    { value: "tech", label: "Tech" },
+    { value: "healthcare", label: "Healthcare" },
+    { value: "finance", label: "Finance" },
+  ];
+  const categoryOptions = [
     { value: "tech", label: "Tech" },
     { value: "healthcare", label: "Healthcare" },
     { value: "finance", label: "Finance" },
@@ -310,11 +322,11 @@ const Register = () => {
                               <Select
                                 defaultValue="Select One"
                                 style={{ height: "40px" }}
-                                onChange={handleIndustryChange}
+                                onChange={handleSourceChange}
                                 className="w-full custom-select no-arrow-select"
                                 dropdownMatchSelectWidth={false}
                               >
-                                {industryOptions.map((option) => (
+                                {sourceOptions.map((option) => (
                                   <Select.Option
                                     key={option.value}
                                     value={option.value}
@@ -337,11 +349,11 @@ const Register = () => {
                               <Select
                                 defaultValue="Select One"
                                 style={{ height: "40px" }}
-                                onChange={handleIndustryChange}
+                                onChange={handleCategoryChange}
                                 className="w-full custom-select no-arrow-select"
                                 dropdownMatchSelectWidth={false}
                               >
-                                {industryOptions.map((option) => (
+                                {categoryOptions.map((option) => (
                                   <Select.Option
                                     key={option.value}
                                     value={option.value}
@@ -633,7 +645,7 @@ const FormField = ({
   onChange,
   type = "text",
   placeholder,
-  wrapperClass = "",
+  wrapperClass = "flex flex-col gap-y-[2px]",
 }) => (
   <div className={wrapperClass}>
     <label className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]">
