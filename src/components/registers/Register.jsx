@@ -122,7 +122,7 @@ const Register = () => {
                   profile securely
                 </p>
               </div>
-              <div className="mt-[28px] max-w-[492px]">
+              <div className="mt-[28px] max-w-[540px]">
                 <div className="steps  flex flex-col justify-start items-end">
                   <div className="font-medium text-xs text-right text-[var(--primary)]">
                     Step {current === 0 ? "1" : "2"}{" "}
