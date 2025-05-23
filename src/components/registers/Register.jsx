@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Contex } from "../../context/User";
-import SignupIllustration from '@public/SignupIllustration.jpg'
+import SignupIllustration from '@public/signupillustration.jpg'
 const steps = [
   {
     title: "",
