@@ -202,7 +202,7 @@ const Forget = () => {
         toast.error("Please enter a valid email address", toastStyle);
       } else {
         setCurrent(current + 1);
-        sendEmail();
+        // sendEmail();
         CountDownTimer();
       }
     } else if (current === 1) {
@@ -272,8 +272,8 @@ const Forget = () => {
             current === 3
               ? "py-[60px] h-auto w-full"
               : current === 2
-              ? "py-[70px] h-[474px] w-[415px]"
-              : "py-[105px] h-[474px] w-[415px]"
+              ? "py-[70px] h-[474px] w-[500px]"
+              : "py-[105px] h-[474px] w-[500px]"
           } `}
         >
           {steps[current].content}
@@ -382,9 +382,12 @@ const Forget = () => {
                 value={steps[current].nav}
               />
               {current === 1 && (
-                <p className="mt-6 font-medium text-sm leading-[171%] text-[var(--text-disabled)]">
-                  Send code again in 00:{timeLeft}
-                </p>
+                <div className="flex gap-x-1 items-center">
+                  <p className="mt-6 font-medium text-sm leading-[171%] text-[var(--text-disabled)]">
+                    Send code again in 00:{timeLeft}
+                  </p>
+                  <div className="mt-6 font-medium text-sm leading-[171%] text-[var(--text-disabled)] underline cursor-pointer">send code</div>
+                </div>
               )}
             </>
           )}
