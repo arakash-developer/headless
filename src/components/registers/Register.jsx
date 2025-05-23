@@ -37,6 +37,7 @@ const Register = () => {
     mobile: "",
     source: "",
     category: "",
+    confirmPassword: "",
   });
 
   const toastStyle = {
@@ -84,7 +85,7 @@ const Register = () => {
 
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
-  let handleuserSubmitstep1 = () => {
+  let handleuserSubmitstep0 = () => {
     if (!formData.firstName)
       return toast.error("First Name is required", toastStyle);
     if (!formData.lastName)
@@ -101,9 +102,24 @@ const Register = () => {
     if (!formData.email) return toast.error("Email is required", toastStyle);
     setCurrent(current + 1);
   };
+  let handleuserSubmitstep1 = () => {
+    if (!formData.userName)
+      return toast.error("Username is required", toastStyle);
+    if (!formData.password)
+      return toast.error("Password is required", toastStyle);
+    if (!formData.confirmPassword)
+      return toast.error("Confirm Password is required", toastStyle);
+    if (formData.password !== formData.confirmPassword)
+      return toast.error("Password does not match", toastStyle);
+    setCurrent(current + 1);
+  };
   const next = () => {
     if (current === 0) {
+      handleuserSubmitstep0();
+    }
+    if (current === 1) {
       handleuserSubmitstep1();
+      console.log("formData", formData);
     }
   };
   const prev = () => {
@@ -216,7 +232,7 @@ const Register = () => {
                             label="Invitation Code (Optional)"
                             value={formData.extension}
                             onChange={(val) =>
-                              setFormData({ ...formData, extension: val })
+                              setFormData({ ...formData, code: val })
                             }
                             type="text"
                             placeholder=""
@@ -431,16 +447,15 @@ const Register = () => {
                         </p>
                       </div>
                       <div className="w-full">
-                        <label
-                          htmlFor=""
-                          className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]"
-                        >
-                          Confirm Password
-                        </label>
-                        <Input
-                          type="password"
-                          onChange={(e) => setEmail(e.target.value)}
-                          className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
+                        <FormField
+                          label="  Confirm Password"
+                          value={formData.confirmPassword}
+                          onChange={(val) =>
+                            setFormData({ ...formData, confirmPassword: val })
+                          }
+                          type="text"
+                          placeholder=""
+                          wrapperClass=""
                         />
                       </div>
                     </div>
@@ -504,7 +519,7 @@ const Register = () => {
               {/* Invitation Code */}
               <FormField
                 label="Invitation Code (Optional)"
-                value={formData.code || invitation.code}
+                value={formData.code}
                 onChange={(val) => setFormData({ ...formData, code: val })}
               />
 
@@ -513,7 +528,7 @@ const Register = () => {
                 label="Email"
                 type="email"
                 required
-                value={formData.email || invitation.email}
+                value={formData.email}
                 onChange={(val) => setFormData({ ...formData, email: val })}
               />
 
