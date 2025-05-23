@@ -163,7 +163,7 @@ ul.companyProfile li a.active {
   border-color: var(--primary2) !important;
   box-shadow: none;
 }
-/* ❌ Disable Hover Border Change */
+/* ❌ Disable Hover Border Change --*/
 .custom-black-input.ant-input:hover {
   border-color: var(--neutral-400) !important; /* neutral gray */
   box-shadow: none !important;
