@@ -141,9 +141,11 @@ ul.companyProfile li a.active {
 /*  Custom Black Focus */
 .custom-black-input .ant-input {
   font-family: "Inter", sans-serif !important;
+  background: var(--background) !important;
 }
 .custom-black-input .ant-input:focus,
 .custom-black-input .ant-input-focused {
+  background: var(--background) !important;
   border-color: var(--primary2) !important;
   box-shadow: none;
   font-family: "Inter", sans-serif !important;
@@ -189,6 +191,7 @@ ul.companyProfile li a.active {
 /* Custom border and background */
 /* Default: red border when no value selected */
 .custom-select .ant-select-selector {
+  background: var(--background) !important;
   border-color: var(--text-disabled) !important;
 }
 
