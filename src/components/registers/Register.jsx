@@ -359,29 +359,27 @@ const Register = () => {
                   {current === 1 && (
                     <div className="mt-[28px] flex flex-col gap-y-5">
                       <div className="w-full">
-                        <label
-                          htmlFor=""
-                          className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]"
-                        >
-                          Username
-                        </label>
-                        <Input
-                          onChange={(e) => setEmail(e.target.value)}
-                          className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
+                        <FormField
+                          label="Username"
+                          value={formData.userName}
+                          onChange={(val) =>
+                            setFormData({ ...formData, userName: val })
+                          }
+                          type="text"
+                          placeholder=""
+                          wrapperClass=""
                         />
                       </div>
                       <div className="w-full">
-                        <label
-                          htmlFor=""
-                          className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]"
-                        >
-                          Password
-                        </label>
-
-                        <Input
-                          type="password"
-                          onChange={(e) => setEmail(e.target.value)}
-                          className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
+                        <FormField
+                          label="Password"
+                          value={formData.password}
+                          onChange={(val) =>
+                            setFormData({ ...formData, password: val })
+                          }
+                          type="text"
+                          placeholder=""
+                          wrapperClass=""
                         />
                         <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
                           Password strength:{" "}
