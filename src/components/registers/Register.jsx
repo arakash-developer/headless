@@ -105,7 +105,6 @@ const Register = () => {
       let response = await postRegistration(datas);
       if (response?.login) {
         setCurrent(current + 1);
-        // navigate("/regsuccess");
         toast.success(response.message, {
           ...toastStyle,
           style: { background: "var(--primary)", color: "#fff" },
@@ -483,120 +482,6 @@ const Register = () => {
               <img src={SignupIllustration} alt={SignupIllustration} />
             </div>
           </div>
-
-          <div className="hidden">
-            <div className="  max-w-[280px] mx-auto flex justify-between items-center relative">
-              <div className="bg-[var(--primary)] w-[22px] h-[22px] rounded-full border-[1px] border-[var(--primary)] relative z-[2] flex justify-center items-center text-[12px]">
-                {/* <FaCheck className="text-[#fff]" /> */}
-              </div>
-              <div className="w-full border-[1px] border-[var(--primary)] absolute z-[1]"></div>
-              <div className="bg-[var(--primary)] w-[32px] h-[32px] rounded-full border-[1px] border-[var(--primary)] relative z-[2]"></div>
-            </div>
-            <div className="pt-[25px] max-w-[346px] mx-auto flex justify-between items-center ">
-              <p className="text-[var(--primary2)] text-base not-italic font-semibold leading-[normal]">
-                User Info
-              </p>
-              <p className="text-[#919191] text-base not-italic font-medium leading-[normal]">
-                Create Account
-              </p>
-            </div>
-            <form className="flex flex-col gap-y-6 pt-[58px]">
-              {/* Invitation Code */}
-              <FormField
-                label="Invitation Code (Optional)"
-                value={formData.code}
-                onChange={(val) => setFormData({ ...formData, code: val })}
-              />
-
-              {/* Email */}
-              <FormField
-                label="Email"
-                type="email"
-                required
-                value={formData.email}
-                onChange={(val) => setFormData({ ...formData, email: val })}
-              />
-
-              {/* First & Last Name */}
-              <div className="flex gap-x-[41px]">
-                <FormField
-                  label="First Name"
-                  value={formData.firstName || invitation.firstName}
-                  onChange={(val) =>
-                    setFormData({ ...formData, firstName: val })
-                  }
-                  wrapperClass="w-1/2"
-                />
-                <FormField
-                  label="Last Name"
-                  value={formData.lastName || invitation.lastName}
-                  onChange={(val) =>
-                    setFormData({ ...formData, lastName: val })
-                  }
-                  wrapperClass="w-1/2"
-                />
-              </div>
-
-              {/* Title & Company */}
-              <div className="flex gap-x-[41px]">
-                <FormField
-                  label="Title"
-                  value={formData.title || invitation.title}
-                  onChange={(val) => setFormData({ ...formData, title: val })}
-                  wrapperClass="w-1/2"
-                />
-                <FormField
-                  label="Company"
-                  value={formData.company || invitation.company}
-                  onChange={(val) => setFormData({ ...formData, company: val })}
-                  wrapperClass="w-1/2"
-                />
-              </div>
-
-              {/* Phone & Extension */}
-              <div className="flex gap-x-[41px]">
-                <FormField
-                  label="Phone"
-                  placeholder="(123) 4567890"
-                  type="number"
-                  value={formData.phone || invitation.phone}
-                  onChange={(val) => setFormData({ ...formData, phone: val })}
-                  wrapperClass="w-1/2"
-                />
-                <FormField
-                  label="Extension"
-                  placeholder="123"
-                  value={formData.extension || invitation.extension}
-                  onChange={(val) =>
-                    setFormData({ ...formData, extension: val })
-                  }
-                  wrapperClass="w-1/2"
-                />
-              </div>
-
-              {/* Terms Checkbox */}
-              <div className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
-                  className="w-5 h-5 rounded"
-                  checked={agree}
-                  onChange={(e) => setAgree(e.target.checked)}
-                />
-                <p className="text-[#919191] text-sm font-normal">
-                  I acknowledge that I have read and agree to the Terms of Use
-                  and Privacy Policy.
-                </p>
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                className="py-[18px] px-[60px] bg-[var(--primary)] rounded-[5px] text-white text-base font-bold max-w-[192px] cursor-pointer"
-              >
-                Continue
-              </button>
-            </form>
-          </div>
         </div>
       )}
       {current === 2 && (
@@ -620,7 +505,7 @@ const Register = () => {
             </span>
           </p>
           <Link
-            to="/confirmemail"
+            to="https://mail.google.com/mail/u/0/#inbox"
             className="font-medium text-sm leading-[200%] text-[var(--secondary)] inline-block rounded py-2  px-8 bg-[var(--primary)]"
           >
             Confirm Email
