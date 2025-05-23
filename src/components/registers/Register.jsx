@@ -82,8 +82,27 @@ const Register = () => {
 
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
-  const next = () => {
+  let handleuserSubmitstep1 = () => {
+    if (!formData.firstName)
+      return toast.error("First Name is required", toastStyle);
+    if (!formData.lastName)
+      return toast.error("Last Name is required", toastStyle);
+    if (!formData.title) return toast.error("Title is required", toastStyle);
+    if (!formData.company)
+      return toast.error("Company name is required", toastStyle);
+    if (!formData.phone)
+      return toast.error("Phone number is required", toastStyle);
+    if (!formData.extension)
+      return toast.error("Extension number is required", toastStyle);
+    if (!formData.mobile)
+      return toast.error("Mobile number is required", toastStyle);
+    if (!formData.email) return toast.error("Email is required", toastStyle);
     setCurrent(current + 1);
+  };
+  const next = () => {
+    if (current === 0) {
+      handleuserSubmitstep1();
+    }
   };
   const prev = () => {
     setCurrent(current - 1);
@@ -123,14 +142,14 @@ const Register = () => {
       let datas = {
         username: userName,
         password: password,
-        email: invitation.email,
-        firstName: invitation.firstName,
-        lastName: invitation.lastName,
-        title: invitation.title,
-        company: invitation.company,
-        phone: invitation.phone,
-        extension: invitation.extension,
-        code: invitation.code,
+        email: email,
+        firstName: firstName,
+        lastName: lastName,
+        title: title,
+        company: company,
+        phone: phone,
+        extension: extension,
+        code: code,
       };
       // console.log(datas);
       let response = await postRegistration(datas);
@@ -283,46 +302,57 @@ const Register = () => {
                           />
                         </div>
                         <div className="w-full flex gap-x-6">
-                          <div className="w-1/2 relative cursor-pointer">
-                            <Select
-                              defaultValue="Select One"
-                              style={{ height: "40px" }}
-                              onChange={handleIndustryChange}
-                              className="w-full custom-select no-arrow-select"
-                              dropdownMatchSelectWidth={false}
-                            >
-                              {industryOptions.map((option) => (
-                                <Select.Option
-                                  key={option.value}
-                                  value={option.value}
-                                >
-                                  <p>{option.label}</p>
-                                </Select.Option>
-                              ))}
-                            </Select>
-                            <div className="absolute top-1/2 -translate-y-1/2 right-[16px] pointer-events-none">
-                              <DownArrow2 color="var(--text-secondary)" />
+                          <div className="w-1/2">
+                            <label className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]">
+                              Source
+                            </label>
+                            <div className="relative cursor-pointer">
+                              <Select
+                                defaultValue="Select One"
+                                style={{ height: "40px" }}
+                                onChange={handleIndustryChange}
+                                className="w-full custom-select no-arrow-select"
+                                dropdownMatchSelectWidth={false}
+                              >
+                                {industryOptions.map((option) => (
+                                  <Select.Option
+                                    key={option.value}
+                                    value={option.value}
+                                  >
+                                    <p>{option.label}</p>
+                                  </Select.Option>
+                                ))}
+                              </Select>
+                              <div className="absolute top-1/2 -translate-y-1/2 right-[16px] pointer-events-none">
+                                <DownArrow2 color="var(--text-secondary)" />
+                              </div>
                             </div>
                           </div>
-                          <div className="w-1/2 relative cursor-pointer">
-                            <Select
-                              defaultValue="Select One"
-                              style={{ height: "40px" }}
-                              onChange={handleIndustryChange}
-                              className="w-full custom-select no-arrow-select"
-                              dropdownMatchSelectWidth={false}
-                            >
-                              {industryOptions.map((option) => (
-                                <Select.Option
-                                  key={option.value}
-                                  value={option.value}
-                                >
-                                  <p>{option.label}</p>
-                                </Select.Option>
-                              ))}
-                            </Select>
-                            <div className="absolute top-1/2 -translate-y-1/2 right-[16px] pointer-events-none">
-                              <DownArrow2 color="var(--text-secondary)" />
+
+                          <div className="w-1/2 ">
+                            <label className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]">
+                              Category
+                            </label>
+                            <div className="relative cursor-pointer">
+                              <Select
+                                defaultValue="Select One"
+                                style={{ height: "40px" }}
+                                onChange={handleIndustryChange}
+                                className="w-full custom-select no-arrow-select"
+                                dropdownMatchSelectWidth={false}
+                              >
+                                {industryOptions.map((option) => (
+                                  <Select.Option
+                                    key={option.value}
+                                    value={option.value}
+                                  >
+                                    <p>{option.label}</p>
+                                  </Select.Option>
+                                ))}
+                              </Select>
+                              <div className="absolute top-1/2 -translate-y-1/2 right-[16px] pointer-events-none">
+                                <DownArrow2 color="var(--text-secondary)" />
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -434,7 +464,7 @@ const Register = () => {
                 </div>
               </div>
             </div>
-            <div className="mt-[103px]">
+            <div className="mt-[97px]">
               <img src={SignupIllustration} alt={SignupIllustration} />
             </div>
           </div>
