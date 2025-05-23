@@ -543,11 +543,18 @@ const Register = () => {
               junk folder.
             </span>
           </p>
-          <Link to="/confirmemail">Confirm Email</Link>
-          <div className="">
-            <p>
-              Still having trouble? Contact Support for assistance.
-              (Support@4ami.com)
+          <Link
+            to="/confirmemail"
+            className="font-medium text-sm leading-[200%] text-[var(--secondary)] inline-block rounded py-2  px-8 bg-[var(--primary)]"
+          >
+            Confirm Email
+          </Link>
+          <div className="mt-[88px]">
+            <p className="font-normal text-base leading-[150%] text-center text-[var(--text-secondary)]">
+              Still having trouble? Contact
+              <span className="text-[var(--primary)]"> Support</span> for
+              assistance. (
+              <span className="text-[var(--primary)]"> Support@4ami.com</span>)
             </p>
           </div>
         </div>
