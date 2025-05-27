@@ -179,7 +179,7 @@ const Login = () => {
                 </div>
               </div>
             </div>
-            <div className="mt-2 mb-6">
+            <div className="mt-1 mb-6">
               <div className="w-full flex justify-between items-center">
                 <div
                   onClick={handleRemember}
