@@ -1,6 +1,4 @@
 import InfoIcon from "@assets/InfoIcon";
-import TimeIcon from "@assets/TimeIcon";
-import Token from "@assets/Token";
 import AssetDoccuments from "@components/services/AssetDoccuments";
 import AssetTerm from "@components/services/AssetTerm";
 import { Contex } from "@context/User";
@@ -68,6 +66,31 @@ const FileUploadForm = ({ index, onChange }) => {
 
 const Services = () => {
   const [activeButton, setActiveButton] = useState(null); // Track the active button
+  let [formdata, setFormdata] = useState({
+    projectName: "",
+    LesseeNo: "",
+    Lessee: "",
+    Cell: "",
+    Communication: "",
+    SourceNo: "",
+    SourceName: "",
+    SourceType: "",
+    Contact: "",
+    Title: "",
+    SourceCommunication: "",
+    PhoneNumber1: "",
+    PhoneNumber2: "",
+    CellSource: "",
+    Email: "",
+    Website: "",
+    assetType: "",
+    assetMake: "",
+    assetmodel: "",
+    assetYear: "",
+    assetUsagesType: "",
+    assetSubject: "",
+    assetNewUsed: "",
+  });
   const [services, setServices] = useState([
     { id: 1, name: "Residual Analysis", tokens: 3, hourly: 20, selected: true },
     {
@@ -172,6 +195,9 @@ const Services = () => {
   const handleCancelAsset = () => {
     setCancel(!cancel);
   };
+  let handleSubmitAsset = () => {
+    console.log("akash formdata", formdata);
+  };
   return (
     <div className="mr-10">
       <div className="mt-5">
@@ -193,6 +219,9 @@ const Services = () => {
         <Input
           className="custom-black-input py-2 px-3 mt-2 w-full h-[40px] bg-[var(--background)] border border-[var(--neutral-400)] rounded-[8px] text-sm leading-[171%] text-[#495057]"
           placeholder="Michael Adams"
+          onChange={(e) =>
+            setFormdata({ ...formdata, projectName: e.target.value })
+          }
         />
       </div>
       <div className="pt-3 pb-[33px] px-5 mt-6 bg-[var(--secondary)] servicecard rounded-[8px]">
@@ -504,7 +533,10 @@ const Services = () => {
       <AssetInformation />
       <AssetManager />
       <div className="flex gap-x-2 items-center mt-6 mb-[62px]">
-        <button className="bg-[var(--neutral)] font-medium text-sm leading-[171%] text-[var(--text-disabled)] py-3 px-4 rounded-[8px] border border-[var(--neutral)]">
+        <button
+          onClick={handleSubmitAsset}
+          className="bg-[var(--neutral)] font-medium text-sm leading-[171%] text-[var(--text-disabled)] py-3 px-4 rounded-[8px] border border-[var(--neutral)]"
+        >
           Submit
         </button>
         <button
