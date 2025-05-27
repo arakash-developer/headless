@@ -23,9 +23,9 @@
 
 // export default ConfirmEmail;
 
-
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const ConfirmEmail = () => {
   const { email } = useParams(); // Get email from URL
@@ -34,6 +34,20 @@ const ConfirmEmail = () => {
   const [status, setStatus] = useState("Confirming...");
 
   const API_URL = "https://4amitest-bli6.wp1.sh/wp-json/users/v1/confirm-email";
+  const toastStyle = {
+    position: "bottom-left",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    style: {
+      background: "var(--primary2)",
+      color: "#fff",
+    },
+  };
 
   useEffect(() => {
     const confirmEmail = async () => {
@@ -47,38 +61,26 @@ const ConfirmEmail = () => {
         const result = await res.json();
 
         if (res.ok && result.success) {
-          setStatus("Email confirmed! Redirecting to dashboard...");
-          
-          setTimeout(() => navigate("/dashboard"), 2000);
+          navigate("/dashboard");
+          toast.success("Email confirmed successfully!", toastStyle);
         } else {
-          setStatus(result.error || "Confirmation failed.");
+          toast.error(result.error || "Confirmation failed.", toastStyle);
         }
       } catch (error) {
-        console.error("Error confirming email:", error);
-        setStatus("Something went wrong.");
+        toast.error("Something went wrong", toastStyle);
       } finally {
-        setLoading(false);
+        // toast.error("Please try again later.", toastStyle);
       }
     };
 
     if (email) {
       confirmEmail();
     } else {
-      setStatus("No email provided.");
-      setLoading(false);
+      toast.error("No email provided.", toastStyle);
     }
   }, [email, navigate]);
 
-  return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-50">
-      <div className="bg-white p-8 rounded shadow-md text-center max-w-md w-full">
-        <h1 className="text-xl font-semibold mb-4">Confirming your email...</h1>
-        <p className="text-gray-700">{status}</p>
-        {loading && <div className="mt-4 text-sm text-gray-500">Please wait...</div>}
-      </div>
-    </div>
-  );
+  return null;
 };
 
 export default ConfirmEmail;
-
