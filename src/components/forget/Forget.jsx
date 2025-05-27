@@ -80,7 +80,7 @@ const Forget = () => {
       content: null,
     },
   ];
-  const sendOtp = async () => {
+  const sendOtp = async (callback) => {
     try {
       const res = await fetch(`${API_BASE}/send`, {
         method: "POST",
@@ -95,7 +95,7 @@ const Forget = () => {
       if (res.ok) {
         setOtp(data.otp);
         console.log("OTP generated and saved.", data.otp);
-        
+
         setMessage("OTP generated and saved.");
       } else {
         setMessage(data.message || "Error sending OTP");
@@ -103,6 +103,7 @@ const Forget = () => {
     } catch (err) {
       setMessage("Request failed. Please try again.");
     }
+    callback();
   };
 
   const handleTogglePassword = () => {
@@ -203,9 +204,9 @@ const Forget = () => {
       } else if (!email.includes("@")) {
         toast.error("Please enter a valid email address", toastStyle);
       } else {
-        sendOtp();
+        sendOtp(sendEmail);
         setCurrent(current + 1);
-        sendEmail();
+
         CountDownTimer();
       }
     } else if (current === 1) {
