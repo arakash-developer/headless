@@ -66,6 +66,15 @@ const FileUploadForm = ({ index, onChange }) => {
 
 const Services = () => {
   const [activeButton, setActiveButton] = useState(null); // Track the active button
+  let leaseTermsBox = [
+    {
+      leaseApplication: "",
+      leaseEnvironment: "",
+      leaseProposedHPY: "",
+      leaseTerms: "",
+      leaseNewUsed: "",
+    },
+  ];
   let [formdata, setFormdata] = useState({
     projectName: "",
     LesseeNo: "",
@@ -90,15 +99,7 @@ const Services = () => {
     assetUsagesType: "",
     assetSubject: "",
     assetNewUsed: "",
-    leaseTerms=[
-      {
-        leaseApplication: "",
-        leaseEnvironment: "",
-        leaseProposedHPY: "",
-        leaseTerms : "",
-        leaseNewUsed: "",
-      }
-    ]
+    leaseTermsBox,
   });
   const [services, setServices] = useState([
     { id: 1, name: "Residual Analysis", tokens: 3, hourly: 20, selected: true },
@@ -246,6 +247,9 @@ const Services = () => {
               Lessee No
             </label>
             <Input
+              onChange={(e) =>
+                setFormdata({ ...formdata, lesseeNo: e.target.value })
+              }
               className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
               placeholder="L-1001"
             />
@@ -259,6 +263,9 @@ const Services = () => {
             </label>
 
             <Input
+              onChange={(e) =>
+                setFormdata({ ...formdata, lessee: e.target.value })
+              }
               className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
               placeholder="Apex Digital Solutions"
             />
@@ -271,6 +278,9 @@ const Services = () => {
               Cell
             </label>
             <Input
+              onChange={(e) =>
+                setFormdata({ ...formdata, cell: e.target.value })
+              }
               className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
               placeholder="Michael Adams"
             />
@@ -331,6 +341,9 @@ const Services = () => {
                   Source No
                 </label>
                 <Input
+                  onChange={(e) =>
+                    setFormdata({ ...formdata, sourceNo: e.target.value })
+                  }
                   className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="S-1002"
                 />
@@ -344,6 +357,10 @@ const Services = () => {
                 </label>
 
                 <Input
+
+                  onChange={(e) =>
+                    setFormdata({ ...formdata, sourceName: e.target.value })
+                  }
                   className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="Enter source name"
                 />
@@ -379,6 +396,9 @@ const Services = () => {
                   Contact
                 </label>
                 <Input
+                  onChange={(e) =>
+                    setFormdata({ ...formdata, contact: e.target.value })
+                  }
                   className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="Enter contact name"
                 />
@@ -392,6 +412,9 @@ const Services = () => {
                 </label>
 
                 <Input
+                  onChange={(e) =>
+                    setFormdata({ ...formdata, title: e.target.value })
+                  }
                   className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="Enter title"
                 />
@@ -443,6 +466,9 @@ const Services = () => {
                   Phone Number 1
                 </label>
                 <Input
+                  onChange={(e) =>
+                    setFormdata({ ...formdata, phoneNumber1: e.target.value })
+                  }
                   className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="Enter phone number 1"
                 />
@@ -456,6 +482,9 @@ const Services = () => {
                 </label>
 
                 <Input
+                  onChange={(e) =>
+                    setFormdata({ ...formdata, phoneNumber2: e.target.value })
+                  }
                   className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="Enter phone number 2"
                 />
@@ -468,6 +497,9 @@ const Services = () => {
                   Cell
                 </label>
                 <Input
+                  onChange={(e) =>
+                    setFormdata({ ...formdata, cellSource: e.target.value })
+                  }
                   className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="Enter cell number"
                 />
@@ -482,6 +514,9 @@ const Services = () => {
                   Email
                 </label>
                 <Input
+                  onChange={(e) =>
+                    setFormdata({ ...formdata, email: e.target.value })
+                  }
                   className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="Enter email address"
                 />
@@ -494,6 +529,9 @@ const Services = () => {
                   Website
                 </label>
                 <Input
+                  onChange={(e) =>
+                    setFormdata({ ...formdata, website: e.target.value })
+                  }
                   className="custom-black-input font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-[8px]"
                   placeholder="Enter website"
                 />
