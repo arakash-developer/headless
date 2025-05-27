@@ -31,7 +31,7 @@ export const routes = [
   { path: "/signup", component: Register, access: "guest" },
   { path: "/inviteuser", component: InviteUser, access: "guest" },
   { path: "/forget", component: Forget, access: "guest" },
-  { path: "/confirmemail", component: ConfirmEmail, access: "guest" },
+  { path: "/confirmemail/:email", component: ConfirmEmail, access: "guest" },
   // demo routes
   { path: "/alluser", component: Alluser, access: "guest" },
   { path: "/demo", component: Demo, access: "guest" },

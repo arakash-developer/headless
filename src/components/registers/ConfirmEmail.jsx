@@ -1,9 +1,9 @@
-import React from 'react'
-
 const ConfirmEmail = () => {
-  return (
-    <div>ConfirmEmail</div>
-  )
-}
+  const [formData, setFormData] = useState({});
+  const API_URL = "https://4amitest-bli6.wp1.sh/wp-json/users/v1";
 
-export default ConfirmEmail
+
+  return <div>ConfirmEmail</div>;
+};
+
+export default ConfirmEmail;

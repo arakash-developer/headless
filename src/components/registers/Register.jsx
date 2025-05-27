@@ -1,5 +1,6 @@
 import DownArrow2 from "@/assets/DownArrow2";
 import postRegistration from "@/lib/postRegistration";
+import emailjs from "@emailjs/browser";
 import SignupIllustration from "@public/signupillustration.jpg";
 import { Button, Checkbox, Input, Select, theme } from "antd";
 import { useContext, useState } from "react";
@@ -80,7 +81,7 @@ const Register = () => {
     if (!formData.email) return toast.error("Email is required", toastStyle);
     setCurrent(current + 1);
   };
-  let handleuserSubmitstep1 = async () => {
+  let handleuserSubmitstep1 = async (callback) => {
     if (!formData.userName)
       return toast.error("Username is required", toastStyle);
     if (!formData.password)
@@ -105,6 +106,7 @@ const Register = () => {
       let response = await postRegistration(datas);
       if (response?.login) {
         setCurrent(current + 1);
+        callback();
         toast.success(response.message, {
           ...toastStyle,
           style: { background: "var(--primary)", color: "#fff" },
@@ -118,7 +120,7 @@ const Register = () => {
       handleuserSubmitstep0();
     }
     if (current === 1) {
-      handleuserSubmitstep1();
+      handleuserSubmitstep1(sendEmail);
     }
   };
   const prev = () => {
@@ -179,6 +181,38 @@ const Register = () => {
   //   }
   //   toast.error(response, toastStyle);
   // };
+
+  const sendEmail = async () => {
+    if (!formData.email) {
+      console.log("Please enter your email address.");
+      return;
+    }
+    console.log(formData.email);
+
+    emailjs
+      .send(
+        "service_nhcrdwf",
+        "template_x2ndppk",
+        {
+          email: formData.email,
+          to_name: "Dear",
+          passcode: formData.email,
+        },
+        {
+          publicKey: "1Wii5-D0LrHJXSmie",
+        }
+      )
+      .then(
+        () => {
+          console.log("SUCCESS!");
+          toast.success("Email sent successfully!", toastStyle);
+        },
+        (error) => {
+          console.error("FAILED...", error.text);
+          toast.error("Failed to send email. Please try again.", toastStyle);
+        }
+      );
+  };
   return (
     <>
       {current < 2 && (
