@@ -207,7 +207,7 @@ const Login = () => {
             <button
               type="submit"
               onClick={handleLogin}
-              className="h-[40px] w-[110px] flex justify-center items-center py-[8px] px-8 bg-[var(--primary)] rounded-[5px] text-white max-w-[192px] cursor-pointer font-medium text-sm leading-y-[28px] text-var(--secondary)"
+              className="h-[44px] w-[110px] flex justify-center items-center py-[8px] px-8 bg-[var(--primary)] rounded-[8px] text-white max-w-[192px] cursor-pointer font-medium text-sm leading-y-[28px] text-var(--secondary)"
             >
               {loading ? (
                 <ScaleLoader height="15px" width="2px" color="#fff" />
