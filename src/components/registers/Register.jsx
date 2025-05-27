@@ -324,7 +324,7 @@ const Register = () => {
                             <div className="relative cursor-pointer">
                               <Select
                                 defaultValue="Select One"
-                                style={{ height: "40px" }}
+                                style={{ height: "40px", color: "red" }}
                                 onChange={handleSourceChange}
                                 className="w-full custom-select no-arrow-select bg-[var(--background)]"
                                 dropdownMatchSelectWidth={false}

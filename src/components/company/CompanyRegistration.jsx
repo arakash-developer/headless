@@ -1,5 +1,4 @@
 import DownArrow2 from "@/assets/DownArrow2";
-import DownArrow from "@assets/DownArrow";
 import { Input, Select } from "antd";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -168,11 +167,11 @@ const CompanyRegistration = () => {
   }, [loading, userEmail]);
   const [selected, setSelected] = useState();
   const handleIndustryChange = (option) => {
-    setSelected(option);
+    formData.industry = option;
   };
   const [selectedCompany, setSelectedCompany] = useState();
   const handleCompanyChange = (option) => {
-    setSelectedCompany(option);
+    formData.companySize = option;
   };
   const industryOptions = [
     { value: "tech", label: "Tech" },
@@ -256,7 +255,7 @@ const CompanyRegistration = () => {
                   ))}
                 </Select>
                 <div className="absolute top-1/2 -translate-y-1/2 right-[16px] pointer-events-none">
-                  <DownArrow2 color='var(--text-secondary)' />
+                  <DownArrow2 color="var(--text-secondary)" />
                 </div>
               </div>
             </div>
@@ -280,7 +279,7 @@ const CompanyRegistration = () => {
                   ))}
                 </Select>
                 <div className="absolute top-1/2 -translate-y-1/2 right-[16px] pointer-events-none">
-                  <DownArrow2 color='var(--text-secondary)' />
+                  <DownArrow2 color="var(--text-secondary)" />
                 </div>
               </div>
             </div>
