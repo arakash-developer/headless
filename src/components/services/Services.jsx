@@ -90,6 +90,15 @@ const Services = () => {
     assetUsagesType: "",
     assetSubject: "",
     assetNewUsed: "",
+    leaseTerms=[
+      {
+        leaseApplication: "",
+        leaseEnvironment: "",
+        leaseProposedHPY: "",
+        leaseTerms : "",
+        leaseNewUsed: "",
+      }
+    ]
   });
   const [services, setServices] = useState([
     { id: 1, name: "Residual Analysis", tokens: 3, hourly: 20, selected: true },
