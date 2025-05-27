@@ -135,12 +135,12 @@ const Login = () => {
           <h3 className="not-italic font-semibold text-[32px] leading-[125%] text-[var(--primary2)]">
             Sign In
           </h3>
-          <p className="text-[#919191] not-italic mt-[8px] mb-[28px] font-normal text-base leading-[150%] text-[var(--text-secondary)]">
+          <p className="text-[#919191] not-italic mt-[8px] mb-[24px] font-normal text-base leading-[150%] text-[var(--text-secondary)]">
             Good to see you again! Enter your details to continue using the
             dashboard
           </p>
           <form>
-            <div className="flex flex-col gap-y-[20px]">
+            <div className="flex flex-col gap-y-[16px]">
               <div className="flex flex-col gap-y-[2px]">
                 <label
                   htmlFor="email"
