@@ -17,7 +17,7 @@ const Navbar = () => {
   }, [location.pathname]);
   return (
     <>
-      <nav className="mt-[35px] mb-6 mr-[80px] flex justify-between items-center">
+      <nav className="mt-[32px] mb-6 mr-[80px] flex justify-between items-center">
         {token && (
           <>
             <div className="ml-8 flex items-center relative">
