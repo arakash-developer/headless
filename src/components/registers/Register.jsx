@@ -196,7 +196,7 @@ const Register = () => {
         {
           email: formData.email,
           to_name: "Dear",
-          passcode: formData.email,
+          passcode: `http://localhost:5173/confirmemail/${emailformData.email}`,
         },
         {
           publicKey: "1Wii5-D0LrHJXSmie",
