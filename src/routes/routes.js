@@ -13,6 +13,7 @@ import RegistrationSuccess from "@components/registers/RegistrationSuccess";
 import Residualanalysis from "@components/residualanalysis/Residualanalysis";
 import Services from "@components/services/Services";
 import Demo7 from '@components/demo/Demo7';
+import Alluser from '@components/demo/Alluser';
 export const routes = [
   // public routes
   // { path: "*", component: Error, access: "public" },
@@ -24,6 +25,7 @@ export const routes = [
   { path: "/signup", component: Register, access: "guest" },
   { path: "/inviteuser", component: InviteUser, access: "guest" },
   { path: "/forget", component: Forget, access: "guest" },
+  { path: "/alluser", component: Alluser, access: "guest" },
   // private routes
   { path: "/companyregSuc", component: CompanyRegSuc, access: "private" },
   { path: "/dashboard", component: Dashboard, access: "private" },
