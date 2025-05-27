@@ -377,7 +377,7 @@ const Forget = () => {
             <>
               <input
                 onClick={() => next()}
-                className="mt-6 cursor-pointer font-medium text-sm leading-[28px] text-[var(--secondary)] bg-[var(--primary)] py-2 px-8 rounded-[5px] max-w-[138px] h-[40px] w-full inline-block"
+                className="mt-6 cursor-pointer font-medium text-sm leading-y-[28px] text-[var(--secondary)] bg-[var(--primary)] py-2 px-8 rounded-[5px] max-w-[138px] h-[40px] w-full inline-block"
                 type="submit"
                 value={steps[current].nav}
               />
