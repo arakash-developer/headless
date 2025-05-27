@@ -4,6 +4,8 @@ export default function UserManagement() {
   const [users, setUsers] = useState([]);
   const [editingUser, setEditingUser] = useState(null);
   const [formData, setFormData] = useState({});
+  const [selectedUsers, setSelectedUsers] = useState([]);
+  const [selectAll, setSelectAll] = useState(false);
 
   const API_URL = 'https://4amitest-bli6.wp1.sh/wp-json/users/v1';
 
@@ -15,6 +17,8 @@ export default function UserManagement() {
     const response = await fetch(`${API_URL}/all`);
     const data = await response.json();
     setUsers(data);
+    setSelectedUsers([]);
+    setSelectAll(false);
   };
 
   const handleDelete = async (id) => {
@@ -61,10 +65,40 @@ export default function UserManagement() {
     fetchUsers();
   };
 
+  const handleSelectUser = (id) => {
+    setSelectedUsers(prev =>
+      prev.includes(id) ? prev.filter(uid => uid !== id) : [...prev, id]
+    );
+  };
+
+  const handleSelectAll = () => {
+    if (selectAll) {
+      setSelectedUsers([]);
+    } else {
+      const allIds = users.map(user => user.ID);
+      setSelectedUsers(allIds);
+    }
+    setSelectAll(!selectAll);
+  };
+
+  const handleBulkDelete = async () => {
+    if (selectedUsers.length === 0) return;
+    if (!window.confirm(`Delete ${selectedUsers.length} selected users?`)) return;
+
+    for (const id of selectedUsers) {
+      await fetch(`${API_URL}/delete/${id}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+    fetchUsers();
+  };
+
   return (
     <div className="p-4">
       <h1 className="text-xl font-bold mb-4">User Management</h1>
-            {editingUser && (
+
+      {editingUser && (
         <form onSubmit={handleSubmit} className="mt-6 p-4 border rounded">
           <h2 className="text-lg font-semibold mb-2">Edit User ID: {editingUser}</h2>
           <input name="email" placeholder="Email" value={formData.email} onChange={handleChange} className="block mb-2 w-full p-2 border" />
@@ -94,9 +128,27 @@ export default function UserManagement() {
           <button type="submit" className="bg-blue-600 text-white px-4 py-2">Save Changes</button>
         </form>
       )}
+
+      <div className="mb-2">
+        <button
+          onClick={handleBulkDelete}
+          className="bg-red-600 text-white px-4 py-2 rounded disabled:opacity-50"
+          disabled={selectedUsers.length === 0}
+        >
+          Delete Selected ({selectedUsers.length})
+        </button>
+      </div>
+
       <table className="w-full border">
         <thead>
           <tr>
+            <th>
+              <input
+                type="checkbox"
+                checked={selectAll}
+                onChange={handleSelectAll}
+              />
+            </th>
             <th>ID</th>
             <th>Username</th>
             <th>Email</th>
@@ -111,6 +163,13 @@ export default function UserManagement() {
         <tbody>
           {users.map(user => (
             <tr key={user.ID} className="border-t">
+              <td>
+                <input
+                  type="checkbox"
+                  checked={selectedUsers.includes(user.ID)}
+                  onChange={() => handleSelectUser(user.ID)}
+                />
+              </td>
               <td>{user.ID}</td>
               <td>{user.username}</td>
               <td>{user.email}</td>
@@ -127,8 +186,6 @@ export default function UserManagement() {
           ))}
         </tbody>
       </table>
-
-
     </div>
   );
 }
