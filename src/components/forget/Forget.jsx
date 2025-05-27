@@ -94,6 +94,8 @@ const Forget = () => {
 
       if (res.ok) {
         setOtp(data.otp);
+        console.log("OTP generated and saved.", data.otp);
+        
         setMessage("OTP generated and saved.");
       } else {
         setMessage(data.message || "Error sending OTP");
@@ -201,6 +203,7 @@ const Forget = () => {
       } else if (!email.includes("@")) {
         toast.error("Please enter a valid email address", toastStyle);
       } else {
+        sendOtp();
         setCurrent(current + 1);
         sendEmail();
         CountDownTimer();
@@ -386,7 +389,9 @@ const Forget = () => {
                   <p className="mt-6 font-medium text-sm leading-[171%] text-[var(--text-disabled)]">
                     Send code again in 00:{timeLeft}
                   </p>
-                  <div className="mt-6 font-medium text-sm leading-[171%] text-[var(--text-disabled)] underline cursor-pointer">send code</div>
+                  <div className="mt-6 font-medium text-sm leading-[171%] text-[var(--text-disabled)] underline cursor-pointer">
+                    send code
+                  </div>
                 </div>
               )}
             </>
