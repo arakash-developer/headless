@@ -196,7 +196,7 @@ const Register = () => {
         {
           email: formData.email,
           to_name: "Dear",
-          passcode: `http://localhost:5173/confirmemail/${emailformData.email}`,
+          passcode: `http://localhost:5173/confirmemail/${formData.email}`,
         },
         {
           publicKey: "1Wii5-D0LrHJXSmie",
@@ -540,6 +540,8 @@ const Register = () => {
           </p>
           <Link
             to="https://mail.google.com/mail/u/0/#inbox"
+            target="_blank"
+            rel="noopener noreferrer"
             className="font-medium text-sm leading-[200%] text-[var(--secondary)] inline-block rounded py-2  px-8 bg-[var(--primary)]"
           >
             Confirm Email
