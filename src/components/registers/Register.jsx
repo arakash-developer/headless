@@ -159,40 +159,11 @@ const Register = () => {
   const handleRemember = (e) => {
     setChecked(!checked);
   };
-
-  // let handleSubmitform = async () => {
-  //   let datas = {
-  //     username: userName,
-  //     password: password,
-  //     email: email,
-  //     firstName: firstName,
-  //     lastName: lastName,
-  //     title: title,
-  //     company: company,
-  //     phone: phone,
-  //     extension: extension,
-  //     code: code,
-  //   };
-  //   let response = await postRegistration(datas);
-  //   if (response?.login) {
-  //     navigate("/regsuccess");
-  //     toast.success(response.message, {
-  //       ...toastStyle,
-  //       style: { background: "var(--primary)", color: "#fff" },
-  //     });
-  //   }
-  //   toast.error(response, toastStyle);
-  // };
-
   const sendEmail = async () => {
     if (!formData.email) {
       console.log("Please enter your email address.");
       return;
     }
-    const password = "my_secret_salt";
-    const originalText = formData.email;
-    const encrypted = await encryptText(originalText, password);
-
     emailjs
       .send(
         "service_nhcrdwf",
@@ -200,7 +171,7 @@ const Register = () => {
         {
           email: formData.email,
           to_name: "Dear",
-          passcode: `https://4ami-client.wp1.sh/confirmemail/${encrypted}`,
+          passcode: `https://4ami-client.wp1.sh/confirmemail/${formData.email}`,
         },
         {
           publicKey: "1Wii5-D0LrHJXSmie",
