@@ -1,4 +1,5 @@
 // cryptoUtils.js
+
 export async function encryptText(text, password) {
   const enc = new TextEncoder();
   const salt = crypto.getRandomValues(new Uint8Array(16));
@@ -17,12 +18,17 @@ export async function encryptText(text, password) {
   combined.set(iv, salt.length);
   combined.set(new Uint8Array(encrypted), salt.length + iv.length);
 
-  return btoa(String.fromCharCode(...combined)); // base64
+  const base64 = btoa(String.fromCharCode(...combined));
+
+  // Optionally strip slashes or special chars (for URLs)
+  return base64.replace(/\//g, "_").replace(/\+/g, "-").replace(/=+$/, "");
 }
 
 export async function decryptText(encryptedBase64, password) {
-  const binaryStr = atob(encryptedBase64);
-  const data = new Uint8Array([...binaryStr].map(char => char.charCodeAt(0)));
+  // Restore base64 (if URL-safe modified above)
+  const restoredBase64 = encryptedBase64.replace(/_/g, "/").replace(/-/g, "+");
+  const binaryStr = atob(restoredBase64);
+  const data = new Uint8Array([...binaryStr].map(c => c.charCodeAt(0)));
 
   const salt = data.slice(0, 16);
   const iv = data.slice(16, 28);
