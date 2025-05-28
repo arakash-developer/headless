@@ -12,6 +12,7 @@
       "@layouts/*": ["src/layouts/*"],
       "@context/*": ["src/context/*"],
       "@routes/*": ["src/routes/*"],
+      "@lib/*": ["src/lib/*"],
     }
   },
   "include": ["src", "public"]

@@ -27,13 +27,10 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const ConfirmEmail = () => {
+const ConfirmEmail = async () => {
   const { email } = useParams();
-  const salt = "my_secret_salt";
-  const decryptText = (email, salt) => {
-    const bytes = CryptoJS.AES.decrypt(email, salt);
-    return bytes.toString(CryptoJS.enc.Utf8);
-  };
+  const password = "my_secret_salt";
+  const decrypted = await decryptText(email, password);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState("Confirming...");
@@ -60,7 +57,7 @@ const ConfirmEmail = () => {
         const res = await fetch(API_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ decryptText }),
+          body: JSON.stringify({ decrypted }),
         });
 
         const result = await res.json();

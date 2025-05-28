@@ -1,9 +1,20 @@
-import React from 'react'
+import { useEffect } from "react";
+import { decryptText, encryptText } from "@lib/cryptoUtils";
 
 const Demo4 = () => {
-  return (
-    <div>Demo4</div>
-  )
-}
+  useEffect(() => {
+    (async () => {
+      const password = "my_secret_salt";
+      const original = "Hello Akash!";
+      const encrypted = await encryptText(original, password);
+      const decrypted = await decryptText(encrypted, password);
 
-export default Demo4
+      console.log("Encrypted:", encrypted);
+      console.log("Decrypted:", decrypted);
+    })();
+  }, []);
+
+  return null; // No UI
+};
+
+export default Demo4;
