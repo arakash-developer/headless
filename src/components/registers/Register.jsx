@@ -1,14 +1,13 @@
 import DownArrow2 from "@/assets/DownArrow2";
+import { encryptText } from "@/lib/cryptoUtils";
 import postRegistration from "@/lib/postRegistration";
 import emailjs from "@emailjs/browser";
 import SignupIllustration from "@public/signupillustration.jpg";
 import { Button, Checkbox, Input, Select, theme } from "antd";
-import CryptoJS from "crypto-js";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Contex } from "../../context/User";
-import { encryptText } from "@/lib/cryptoUtils";
 const steps = [
   {
     title: "",
@@ -160,6 +159,8 @@ const Register = () => {
     setChecked(!checked);
   };
   const sendEmail = async () => {
+    const password = "myStrongSalt123";
+    const encrypted = await encryptText(formData.email, password);
     if (!formData.email) {
       console.log("Please enter your email address.");
       return;
@@ -171,7 +172,8 @@ const Register = () => {
         {
           email: formData.email,
           to_name: "Dear",
-          passcode: `https://4ami-client.wp1.sh/confirmemail/${formData.email}`,
+          passcode: `https://4ami-client.wp1.sh/confirmemail/${encrypted}`,
+          // passcode: `http://localhost:5173/confirmemail/${encrypted}`,
         },
         {
           publicKey: "1Wii5-D0LrHJXSmie",

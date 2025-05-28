@@ -1,13 +1,14 @@
+import { decryptText } from "@/lib/cryptoUtils";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const ConfirmEmail =  () => {
+const ConfirmEmail = () => {
   const { email } = useParams();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState("Confirming...");
-
+  const password = "myStrongSalt123";
   const API_URL = "https://4amitest-bli6.wp1.sh/wp-json/users/v1/confirm-email";
   const toastStyle = {
     position: "bottom-left",
@@ -27,10 +28,11 @@ const ConfirmEmail =  () => {
   useEffect(() => {
     const confirmEmail = async () => {
       try {
+        const decrypted = await decryptText(email, password);
         const res = await fetch(API_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email }),
+          body: JSON.stringify({ email: decrypted }),
         });
 
         const result = await res.json();
