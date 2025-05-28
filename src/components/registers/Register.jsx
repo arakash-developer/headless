@@ -3,6 +3,7 @@ import postRegistration from "@/lib/postRegistration";
 import emailjs from "@emailjs/browser";
 import SignupIllustration from "@public/signupillustration.jpg";
 import { Button, Checkbox, Input, Select, theme } from "antd";
+import CryptoJS from "crypto-js";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -189,7 +190,10 @@ const Register = () => {
     }
     const salt = "my_secret_salt";
     const originalText = formData.email;
-    const encrypted = encryptText(originalText, salt);
+    const encryptText = (text, salt) => {
+      return CryptoJS.AES.encrypt(text, salt).toString();
+    };
+
     emailjs
       .send(
         "service_nhcrdwf",
@@ -197,7 +201,7 @@ const Register = () => {
         {
           email: formData.email,
           to_name: "Dear",
-          passcode: `https://4ami-client.wp1.sh/confirmemail/${encrypted}`,
+          passcode: `https://4ami-client.wp1.sh/confirmemail/${encryptText}`,
         },
         {
           publicKey: "1Wii5-D0LrHJXSmie",
