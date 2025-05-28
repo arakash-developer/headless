@@ -49,7 +49,7 @@ const Forget = () => {
       content: (
         <ForgetDesign
           title="Forgot Password?"
-          des=" Enter your registered email address to receive a password reset link"
+          des="Enter your sign-up email address to receive a password reset link"
         />
       ),
       nav: "Send Code",
