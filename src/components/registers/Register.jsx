@@ -107,7 +107,6 @@ const Register = () => {
       let response = await postRegistration(datas);
       if (response?.login) {
         setCurrent(current + 1);
-        localStorage.setItem("user_data", JSON.stringify(datas));
         callback();
         toast.success(response.message, {
           ...toastStyle,
