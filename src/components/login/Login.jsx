@@ -1,7 +1,7 @@
 import EyeIcon from "@/assets/EyeIcon";
 import Hiddeneye from "@/assets/Hiddeneye";
-import { Contex } from "@context/User";
 import Loginbanner from "@assets/logIn.svg";
+import { Contex } from "@context/User";
 import { Checkbox, Input } from "antd";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
