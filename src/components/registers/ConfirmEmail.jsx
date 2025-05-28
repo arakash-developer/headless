@@ -1,4 +1,3 @@
-import { decryptText } from "@/lib/cryptoUtils";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -24,10 +23,29 @@ const ConfirmEmail = () => {
       color: "#fff",
     },
   };
+  const jsonData = localStorage.getItem("registerData");
+  const parsedData = JSON.parse(jsonData);
+  console.log("parsedData", parsedData);
 
   useEffect(() => {
     const confirmEmail = async () => {
       try {
+        const response = await fetch(
+          "https://4amitest-bli6.wp1.sh/wp-json/custom/v1/login",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              username: parsedData.email,
+              password: parsedData.password,
+            }),
+          }
+        );
+        const data = await response.json();
+        localStorage.setItem("user_data", JSON.stringify(data.user));
+
         const res = await fetch(API_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },

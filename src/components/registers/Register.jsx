@@ -112,8 +112,15 @@ const Register = () => {
           ...toastStyle,
           style: { background: "var(--primary)", color: "#fff" },
         });
+        localStorage.setItem(
+          "registerData",
+          JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+          })
+        );
       }
-      toast.error(response, toastStyle);
+      toast.error(response.message, toastStyle);
     }
   };
   const next = () => {
