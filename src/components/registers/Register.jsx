@@ -187,8 +187,9 @@ const Register = () => {
       console.log("Please enter your email address.");
       return;
     }
-    console.log(formData.email);
-
+    const salt = "my_secret_salt";
+    const originalText = formData.email;
+    const encrypted = encryptText(originalText, salt);
     emailjs
       .send(
         "service_nhcrdwf",
@@ -196,7 +197,7 @@ const Register = () => {
         {
           email: formData.email,
           to_name: "Dear",
-          passcode: `https://4ami-client.wp1.sh/confirmemail/${formData.email}`,
+          passcode: `https://4ami-client.wp1.sh/confirmemail/${encrypted}`,
         },
         {
           publicKey: "1Wii5-D0LrHJXSmie",
