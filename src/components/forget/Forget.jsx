@@ -330,7 +330,10 @@ const Forget = () => {
                 </div>
                 <p className="mt-[2px] font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
                   Password strength:
-                  <span className="text-[var(--primary)]"> Strong</span>
+                  <span className="text-[var(--primary)]">
+                    {" "}
+                    {checkPasswordStrength(password)}
+                  </span>
                 </p>
               </div>
               <div>
@@ -381,7 +384,13 @@ const Forget = () => {
             <>
               <input
                 onClick={() => next()}
-                className={`mt-6 cursor-pointer font-medium text-sm leading-y-[28px] text-[var(--secondary)] bg-[var(--primary)] py-2 px-8 rounded-[8px] h-[44px] inline-block ${current === 0 ?'max-w-[138px]': current ===1 ?'max-w-[104px]': 'max-w-[172px]'}`}
+                className={`mt-6 cursor-pointer font-medium text-sm leading-y-[28px] text-[var(--secondary)] bg-[var(--primary)] py-2 px-8 rounded-[8px] h-[44px] inline-block ${
+                  current === 0
+                    ? "max-w-[138px]"
+                    : current === 1
+                    ? "max-w-[104px]"
+                    : "max-w-[172px]"
+                }`}
                 type="submit"
                 value={steps[current].nav}
               />
@@ -411,5 +420,24 @@ const Forget = () => {
     </>
   );
 };
+function checkPasswordStrength(password) {
+  const hasLower = /[a-z]/.test(password);
+  const hasUpper = /[A-Z]/.test(password);
+  const hasNumber = /\d/.test(password);
+  const hasSymbol = /[^a-zA-Z0-9]/.test(password);
+
+  const length = password.length;
+
+  if (length < 6) return "Low";
+
+  const strengthScore = [hasLower, hasUpper, hasNumber, hasSymbol].filter(
+    Boolean
+  ).length;
+
+  if (length >= 8 && strengthScore >= 3) return "High";
+  if (length >= 6 && strengthScore >= 2) return "Medium";
+
+  return "Low";
+}
 
 export default Forget;
