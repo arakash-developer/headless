@@ -17,7 +17,7 @@ const ForgetDesign = ({ title, des, mail }) => {
       <h2 className="font-semibold text-[32px] leading-[125%] text-[var(--primary2)]">
         {title}
       </h2>
-      <p className="font-normal text-base leading-[150%] text-[var(--text-secondary)] mt-2 mb-[28px]">
+      <p className="font-normal text-base leading-[150%] text-[var(--text-secondary)] mt-2 mb-[24px]">
         {des}{" "}
         {mail && (
           <span className="font-semibold text-[#343a40]">
