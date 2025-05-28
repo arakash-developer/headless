@@ -28,11 +28,10 @@ const ConfirmEmail = () => {
   useEffect(() => {
     const confirmEmail = async () => {
       try {
-        const decrypted = await decryptText(email, password);
         const res = await fetch(API_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: decrypted }),
+          body: JSON.stringify({ email }),
         });
 
         const result = await res.json();

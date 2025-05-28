@@ -173,8 +173,7 @@ const Register = () => {
         {
           email: formData.email,
           to_name: "Dear",
-          passcode: `https://4ami-client.wp1.sh/confirmemail/${encrypted}`,
-          // passcode: `http://localhost:5173/confirmemail/${encrypted}`,
+          passcode: `https://4ami-client.wp1.sh/confirmemail/${formData.email}`,
         },
         {
           publicKey: "1Wii5-D0LrHJXSmie",
