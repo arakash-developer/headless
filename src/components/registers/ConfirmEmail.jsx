@@ -28,7 +28,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const ConfirmEmail = () => {
-  const { email } = useParams(); // Get email from URL
+  const { email } = useParams();
+  const salt = "my_secret_salt";
+  const decrypted = decryptText(email, salt);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState("Confirming...");
@@ -55,7 +57,7 @@ const ConfirmEmail = () => {
         const res = await fetch(API_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email }),
+          body: JSON.stringify({ decrypted }),
         });
 
         const result = await res.json();
