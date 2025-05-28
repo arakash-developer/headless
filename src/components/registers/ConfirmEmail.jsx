@@ -61,6 +61,7 @@ const ConfirmEmail = () => {
         const result = await res.json();
 
         if (res.ok && result.success) {
+          localStorage.setItem("logintoken", "akash123");
           navigate("/dashboard");
           toast.success("Email confirmed successfully!", toastStyle);
         } else {
