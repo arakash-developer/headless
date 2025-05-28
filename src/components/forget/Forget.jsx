@@ -267,7 +267,7 @@ const Forget = () => {
       <div
         className={` loginBox  rounded-[8px]  pr-4 ${
           current === 3
-            ? "max-w-[885px] mt-[120px] bg-[var(--pop-up)] block"
+            ? "max-w-[1036px] mt-[120px] bg-[var(--secondary)] block"
             : "max-w-[1099px] pt-5 pb-5 mt-10 mb-[171px] bg-[var(--secondary)] flex justify-between items-start"
         } xl:mr-[80px]`}
       >
@@ -369,13 +369,13 @@ const Forget = () => {
                 Password Updated Successfully!
               </h2>
               <p className="font-normal text-base leading-[150%] text-center text-[var(--text-secondary)] mt-4 mb-6">
-                Return to sign in and sign in with your new password
+                Return to sign in and Log in with your new password
               </p>
               <Link
                 to="/"
                 className="font-medium text-sm leading-[200%] text-[var(--secondary)] py-2 px-8 rounded-[8px] bg-[var(--primary)] cursor-pointer inline-block"
               >
-                Back to Sign In
+                Back to Log In
               </Link>
             </div>
           )}
@@ -434,7 +434,7 @@ function checkPasswordStrength(password) {
     Boolean
   ).length;
 
-  if (length >= 8 && strengthScore >= 3) return "High";
+  if (length >= 8 && strengthScore >= 3) return "Strong";
   if (length >= 6 && strengthScore >= 2) return "Medium";
 
   return "Low";
