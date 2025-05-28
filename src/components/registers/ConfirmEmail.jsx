@@ -30,22 +30,6 @@ const ConfirmEmail = () => {
   useEffect(() => {
     const confirmEmail = async () => {
       try {
-        const response = await fetch(
-          "https://4amitest-bli6.wp1.sh/wp-json/custom/v1/login",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              username: parsedData.email,
-              password: parsedData.password,
-            }),
-          }
-        );
-        const data = await response.json();
-        localStorage.setItem("user_data", JSON.stringify(data.user));
-
         const res = await fetch(API_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -53,7 +37,7 @@ const ConfirmEmail = () => {
         });
 
         const result = await res.json();
-
+        localStorage.setItem("user_data", JSON.stringify(result.user));
         if (res.ok && result.success) {
           localStorage.setItem("logintoken", "akash123");
           navigate("/dashboard");
