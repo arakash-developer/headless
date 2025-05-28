@@ -70,14 +70,13 @@ const ConfirmEmail = () => {
       } catch (error) {
         toast.error("Something went wrong", toastStyle);
       } finally {
-        // toast.error("Please try again later.", toastStyle);
       }
     };
 
     if (email) {
       confirmEmail();
     } else {
-      toast.error("No email provided.", toastStyle);
+      toast.error("No email provided to confirm.", toastStyle);
     }
   }, [email, navigate]);
 
