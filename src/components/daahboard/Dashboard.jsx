@@ -29,24 +29,11 @@ const Dashboard = () => {
   const [company, setCompany] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Fetch company data based on the user's email
+  // Fetch company data without using an auth token
   const fetchCompanyData = async () => {
-    const token = localStorage.getItem("auth_token");
-
-    if (!token) {
-      toast.error("Authentication token missing.", toastStyle);
-      setLoading(false);
-      return;
-    }
-
     try {
       const response = await fetch(
-        "https://4amitest-bli6.wp1.sh/wp-json/custom/v1/company-data",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        "https://4amitest-bli6.wp1.sh/wp-json/custom/v1/company-data"
       );
 
       const data = await response.json();
@@ -349,7 +336,10 @@ const Dashboard = () => {
           </table>
         </div>
       </div>
-      <Link to="/analyses" className="mt-3 mb-6 flex justify-end items-center gap-x-2 font-medium text-sm leading-[171%] text-[var(--primary)] text-right">
+      <Link
+        to="/analyses"
+        className="mt-3 mb-6 flex justify-end items-center gap-x-2 font-medium text-sm leading-[171%] text-[var(--primary)] text-right"
+      >
         View All Analyses
         <FaAngleRight />
       </Link>
