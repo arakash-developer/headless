@@ -1,7 +1,7 @@
 import EyeIcon from "@/assets/EyeIcon";
 import Hiddeneye from "@/assets/Hiddeneye";
 import { Contex } from "@context/User";
-import Loginbanner from "@assets/logIn.svg";
+import Loginbanner from "@public/logIn.png";
 import { Checkbox, Input } from "antd";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -88,8 +88,8 @@ const Login = () => {
 
         // Store the JWT token and user data in localStorage for future requests
         localStorage.setItem("auth_token", data.token);
-        localStorage.setItem("user_data", JSON.stringify(data.user));
-        localStorage.setItem("logintoken", "akash123");
+        localStorage.setItem("user_data", JSON.stringify(data.user)); 
+        localStorage.setItem("logintoken",'akash123'); 
 
         // Now check if the company email exists
         const companyDataResponse = await fetch(
@@ -134,11 +134,11 @@ const Login = () => {
       <div className="mt-[40px] loginBox bg-[#fff] max-w-[1099px] xl:mr-[80px] mb-[171px] rounded-[8px] pl-[125px] pr-[20px] py-5 grid grid-cols-2 gap-[80px] h-full items-center">
         <div className="max-w-[380px] py-[47px]">
           <h3 className="not-italic font-semibold text-[32px] leading-[125%] text-[var(--primary2)]">
-            Log In
+            Sign In
           </h3>
           <p className="text-[#919191] not-italic mt-[8px] mb-[24px] font-normal text-base leading-[150%] text-[var(--text-secondary)]">
-            Good to see you! Enter your details to continue running residual
-            analyses on your equipment
+            Good to see you again! Enter your details to continue using the
+            dashboard
           </p>
           <form>
             <div className="flex flex-col gap-y-[16px]">
@@ -213,7 +213,7 @@ const Login = () => {
               {loading ? (
                 <ScaleLoader height="15px" width="2px" color="#fff" />
               ) : (
-                "Log In "
+                "Sign In "
               )}
             </button>
           </form>
