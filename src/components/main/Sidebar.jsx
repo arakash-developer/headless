@@ -24,6 +24,7 @@ const Sidebar = () => {
     localStorage.removeItem("auth_token");
     localStorage.removeItem("logintoken");
     localStorage.removeItem("com_auth_token");
+    localStorage.removeItem("user_data");
     navigate("/");
     toast.success("Logged out successfully", toastStyle);
   };
