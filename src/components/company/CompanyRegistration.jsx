@@ -119,7 +119,7 @@ const CompanyRegistration = () => {
       setLoading(false);
 
       if (data.status === "success") {
-        navigate("/dashboard");
+        navigate("/companydata");
         toast.success(
           data.message || "Company registered successfully!",
           toastStyle

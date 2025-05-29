@@ -1,13 +1,14 @@
 import EyeIcon from "@/assets/EyeIcon";
 import Hiddeneye from "@/assets/Hiddeneye";
 import Success from "@/assets/Success";
+import { Contex } from "@/context/User";
 import GenarateOtp from "@/lib/GenarateOtp";
 import GetOtp from "@/lib/GetOtp";
 import PasswordReset from "@/lib/PasswordReset";
 import emailjs from "@emailjs/browser";
 import ForgetIcon from "@public/forget.png";
 import { Flex, Input, theme, Typography } from "antd";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 const { Title } = Typography;
@@ -43,6 +44,7 @@ const Forget = () => {
   const otpRef = useRef(null);
   const [otpInput, setOtpInput] = useState("");
   const API_BASE = "https://4amitest-bli6.wp1.sh/wp-json/otp/v1";
+  let { setForgetHide, forgetHide } = useContext(Contex);
   const steps = [
     {
       title: "First",
@@ -217,6 +219,7 @@ const Forget = () => {
     } else if (current === 2) {
       if (updateUserPassword() === true) {
         setCurrent(current + 1);
+        setForgetHide(true);
       }
     }
     // setCurrent(current + 1);
