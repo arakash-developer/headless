@@ -412,7 +412,7 @@ const Register = () => {
                     </div>
                   )}
                   {current === 1 && (
-                    <div className="mt-[28px] flex flex-col gap-y-5">
+                    <div className="mt-[28px] flex flex-col gap-y-4">
                       <div className="w-full">
                         <FormField
                           label="Username"
