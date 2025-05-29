@@ -190,14 +190,12 @@ const CompanyRegistration = () => {
       <h2 className="text-[var(--primary2)] text-[28px]  not-italic font-semibold text-4xl leading-[125%]">
         Register Your Company
       </h2>
-      <p className="text-[#919191] not-italic mt-3 max-w-[795px] font-normal text-base leading-[150%] text-[var(--text-secondary)]">
-        Use this form to invite a business colleague or client to register and
-        use the AMI website. Upon completion, a unique Invitation Code will be
-        sent to your invitee. After they register, you will receive a
-        notification email
+      <p className="text-[#919191] not-italic mt-2 max-w-[795px] font-normal text-base leading-[150%] text-[var(--text-secondary)]">
+        Add your company details to start using your dashboard and invite team
+        members
       </p>
 
-      <div className="mt-8 max-w-[795px] py-8 px-8 bg-[#FFF] rounded-[5px] companyregform">
+      <div className="mt-6 max-w-[795px] py-8 px-8 bg-[#FFF] rounded-[5px] companyregform mb-[116px]">
         <form className="flex flex-col gap-y-5" onSubmit={handleSubmit}>
           <FormField
             label="Company Name"
@@ -228,6 +226,13 @@ const CompanyRegistration = () => {
               wrapperClass="w-1/2"
             />
           </div>
+          <FormField
+            label="Mobile"
+            name="mobile"
+            type="text"
+            value={formData.businessEmail} // Use formData.businessEmail here
+            readOnly // Make the field read-only
+          />
           <FormField
             label="Company Address"
             name="address"
