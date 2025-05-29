@@ -1,4 +1,5 @@
 import Credit from "@/assets/Credit";
+import DataRepresent from "@/assets/DataRepresent";
 import FilterIcon from "@/assets/FilterIcon";
 import InProgress from "@/assets/InProgress";
 import ResPlus from "@/assets/ResPlus";
@@ -376,8 +377,30 @@ const Dashboard = () => {
           </div>
         </>
       )}
-
-      
+      <div className="w-full h-[450px] mt-6 flex justify-between items-center gap-x-6">
+        <div className="h-full w-full bg-[var(--secondary)] rounded-[8px] dasboard-box px-6 pt-5 pb-[105px] flex flex-col items-start  justify-between">
+          <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
+            Data Representation
+          </h2>
+          <div className="w-full flex justify-center flex-col items-center">
+            <DataRepresent />
+            <p className="mt-8 font-medium text-sm leading-[171%] text-[var(--text-disabled)]">
+              Data Representation chart will appear here
+            </p>
+          </div>
+        </div>
+        <div className="h-full w-full bg-[var(--secondary)] rounded-[8px] dasboard-box px-6 pt-5 pb-[105px] flex flex-col items-start  justify-between">
+          <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
+            Popular Equipment Categories
+          </h2>
+          <div className="w-full flex justify-center flex-col items-center">
+            <DataRepresent />
+            <p className="mt-8 font-medium text-sm leading-[171%] text-[var(--text-disabled)]">
+              Category distribution chart will appear here
+            </p>
+          </div>
+        </div>
+      </div>
 
       <div className="mt-[500px] dashboard-container max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg">
         <ToastContainer />
