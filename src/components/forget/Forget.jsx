@@ -369,7 +369,7 @@ const Forget = () => {
                 Password Updated Successfully!
               </h2>
               <p className="font-normal text-base leading-[150%] text-center text-[var(--text-secondary)] mt-4 mb-6">
-                Return to sign in and Log in with your new password
+                Return to log in and log in with your new password
               </p>
               <Link
                 to="/"
