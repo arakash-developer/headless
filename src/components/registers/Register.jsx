@@ -499,7 +499,7 @@ const Register = () => {
           <h2 className="font-semibold text-[32px] leading-[125%] text-[var(--primary2)]">
             Thank You for Signing Up!
           </h2>
-          <h3 className="font-semibold text-lg leading-[156%] text-[#343a40] mt-5 mb-6">
+          <h3 className="font-semibold text-lg leading-[156%] text-[var(--text-normal)] mt-5 mb-6">
             Check Your Email to Activate Your Account
           </h3>
           <p className="font-normal text-base leading-[150%] text-center text-[var(--text-secondary)] pb-6 max-w-[818px] mx-auto">
@@ -507,10 +507,14 @@ const Register = () => {
             the confirmation link we just sent to [
             <span className="text-[var(--primary)]">john@gmail.com</span>]. Your
             response is required to activate your account. If you don’t see the
-            email within a few minutes, please check your{" "}
-            <span className="font-semibold text-[var(--primary2)]"> spam</span>
+            email within a few minutes, please check your <span></span>
+            <span className="font-semibold text-[var(--primary2)]">
+              {" "}
+              spam
+            </span>{" "}
             or
             <span className="font-semibold text-[var(--primary2)]">
+              {" "}
               junk folder.
             </span>
           </p>
