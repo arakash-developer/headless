@@ -296,7 +296,7 @@ const Register = () => {
                               onChange={(val) =>
                                 setFormData({ ...formData, phone: val })
                               }
-                              type="number"
+                              type="text"
                               placeholder=""
                               wrapperClass=""
                             />
@@ -321,7 +321,7 @@ const Register = () => {
                             onChange={(val) =>
                               setFormData({ ...formData, mobile: val })
                             }
-                            type="number"
+                            type="text"
                             placeholder=""
                             wrapperClass=""
                           />
