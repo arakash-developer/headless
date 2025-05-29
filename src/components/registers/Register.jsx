@@ -165,29 +165,29 @@ const Register = () => {
       console.log("Please enter your email address.");
       return;
     }
-    emailjs
-      .send(
-        "service_nhcrdwf",
-        "template_x2ndppk",
-        {
-          email: formData.email,
-          to_name: "Dear",
-          passcode: `https://4ami-client.wp1.sh/confirmemail/${formData.email}`,
-        },
-        {
-          publicKey: "1Wii5-D0LrHJXSmie",
-        }
-      )
-      .then(
-        () => {
-          console.log("SUCCESS!");
-          toast.success("Email sent successfully!", toastStyle);
-        },
-        (error) => {
-          console.error("FAILED...", error.text);
-          toast.error("Failed to send email. Please try again.", toastStyle);
-        }
-      );
+    // emailjs
+    //   .send(
+    //     "service_nhcrdwf",
+    //     "template_x2ndppk",
+    //     {
+    //       email: formData.email,
+    //       to_name: "Dear",
+    //       passcode: `https://4ami-client.wp1.sh/confirmemail/${formData.email}`,
+    //     },
+    //     {
+    //       publicKey: "1Wii5-D0LrHJXSmie",
+    //     }
+    //   )
+    //   .then(
+    //     () => {
+    //       console.log("SUCCESS!");
+    //       toast.success("Email sent successfully!", toastStyle);
+    //     },
+    //     (error) => {
+    //       console.error("FAILED...", error.text);
+    //       toast.error("Failed to send email. Please try again.", toastStyle);
+    //     }
+    //   );
   };
   return (
     <>
