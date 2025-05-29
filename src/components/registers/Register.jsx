@@ -201,7 +201,7 @@ const Register = () => {
                 </h2>
                 <p className="mt-2 font-normal text-base leading-[150%] text-[var(--text-secondary)]">
                   Please provide your details below to set up your new account.
-                  This will allow you to access all features and manage your
+                  This will allow you to access all services and manage your
                   profile securely
                 </p>
               </div>
