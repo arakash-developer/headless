@@ -29,7 +29,13 @@ const Dashboard = () => {
     location.state?.user || JSON.parse(localStorage.getItem("user_data"));
   const [company, setCompany] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const [dashboardAnlytics, setDashboardAnlytics] = useState({
+    totalResidual: 0,
+    inProgress: 0,
+    myListings: 0,
+    creditLeft: 0,
+  });
+  const [data, setData] = useState(false);
   // Fetch company data without using an auth token
   const fetchCompanyData = async () => {
     try {
@@ -170,7 +176,7 @@ const Dashboard = () => {
               Total Residuals
             </p>
             <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
-              52
+              {dashboardAnlytics?.totalResidual}
             </h2>
           </div>
           <div className="flex justify-center items-center p-2 rounded-[8px] bg-[#CFE3FF]">
@@ -183,7 +189,7 @@ const Dashboard = () => {
               In Progress
             </p>
             <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
-              03
+              {dashboardAnlytics?.inProgress}
             </h2>
           </div>
           <div className="flex justify-center items-center p-2 rounded-[8px] bg-[#FFF3D5]">
@@ -196,7 +202,7 @@ const Dashboard = () => {
               My Listings
             </p>
             <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
-              03
+              {dashboardAnlytics?.myListings}
             </h2>
           </div>
           <div className="flex justify-center items-center p-2 rounded-[8px] bg-[#CAF8FF]">
@@ -209,7 +215,7 @@ const Dashboard = () => {
               Credits Left
             </p>
             <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
-              28
+              {dashboardAnlytics?.creditLeft}
             </h2>
           </div>
           <div className="flex justify-center items-center p-2 rounded-[8px] bg-[#DEF9FF]">
@@ -223,144 +229,155 @@ const Dashboard = () => {
         </h2>
         <div className="mt-3 bg-[var(--secondary)] h-[236px] text-center flex flex-col justify-center items-center dashboard-box gap-y-[18px]">
           <ResPlus />
-          <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">Start by creating your first residual analysis</p>
+          <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">
+            Start by creating your first residual analysis
+          </p>
         </div>
       </div>
-      <div className="mt-6 w-full">
-        <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
-          Residual Analysis
-        </h2>
-        <div className="mt-5 mb-3 flex gap-x-3 items-center">
-          <CustomSort defaultValue="Project ID All" option={structureType} />
-          <CustomSort defaultValue="Asset Type All" option={AssetTypeAll} />
-          <CustomSort defaultValue="Status All" option={StatusAll} />
+      {data && (
+        <>
+          <div className="mt-6 w-full">
+            <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
+              Residual Analysis
+            </h2>
+            <div className="mt-5 mb-3 flex gap-x-3 items-center">
+              <CustomSort
+                defaultValue="Project ID All"
+                option={structureType}
+              />
+              <CustomSort defaultValue="Asset Type All" option={AssetTypeAll} />
+              <CustomSort defaultValue="Status All" option={StatusAll} />
 
-          <div className="min-w-[125px] flex flex-col gap-y-[2px]">
-            <Select
-              defaultValue="Add Filter"
-              onChange={handleUsageTypeChange}
-              className="w-full"
-              dropdownMatchSelectWidth={false}
-            >
-              {usageType.map((option) => (
-                <Select.Option key={option.value} value={option.value}>
-                  <div className="flex items-center gap-x-2">
-                    <Tooltip title={option.description}>
-                      <Button
-                        style={{
-                          backgroundColor: "transparent",
-                          borderRadius: "0",
-                          border: "none",
-                          padding: "0",
-                          fontSize: "16px",
-                          transition: "background-color 0.3s ease",
-                        }}
+              <div className="min-w-[125px] flex flex-col gap-y-[2px]">
+                <Select
+                  defaultValue="Add Filter"
+                  onChange={handleUsageTypeChange}
+                  className="w-full"
+                  dropdownMatchSelectWidth={false}
+                >
+                  {usageType.map((option) => (
+                    <Select.Option key={option.value} value={option.value}>
+                      <div className="flex items-center gap-x-2">
+                        <Tooltip title={option.description}>
+                          <Button
+                            style={{
+                              backgroundColor: "transparent",
+                              borderRadius: "0",
+                              border: "none",
+                              padding: "0",
+                              fontSize: "16px",
+                              transition: "background-color 0.3s ease",
+                            }}
+                          >
+                            <div className="text-[var(--primary)]">
+                              <FilterIcon />
+                            </div>
+                          </Button>
+                        </Tooltip>
+                        <p className="font-normal text-xs leading-[135%] text-[var(--primary)]">
+                          {option.label}
+                        </p>
+                      </div>
+                    </Select.Option>
+                  ))}
+                </Select>
+              </div>
+              <CustomSort
+                defaultValue="Clear Filter"
+                color="red"
+                option={ClearFilter}
+              />
+            </div>
+            <div className="py-[14px] px-5 bg-[var(--secondary)] rounded-[8px] dashboard-box">
+              <table class="table-auto w-full border-collapse">
+                <thead>
+                  <tr class="text-left bg-[var(--secondary)]">
+                    <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+                      <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                        Project ID
+                        <IoFilterOutline className="text-md" />
+                      </div>
+                    </th>
+                    <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+                      <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                        Asset Type
+                        <IoFilterOutline className="text-md" />
+                      </div>
+                    </th>
+                    <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+                      <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                        Date
+                        <IoFilterOutline className="text-md" />
+                      </div>
+                    </th>
+                    <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+                      <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                        Status
+                        <IoFilterOutline className="text-md" />
+                      </div>
+                    </th>
+                    <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+                      <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                        Residual Value
+                        <IoFilterOutline className="text-md" />
+                      </div>
+                    </th>
+                    <th class="p-4 border border-gray-300 border-t-0 border-l-0 border-r-0">
+                      <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                        Health
+                        <IoFilterOutline className="text-md" />
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {assets.map((asset, index) => (
+                    <tr class={`${asset?.color}`}>
+                      <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
+                        {asset.projectId}
+                      </td>
+                      <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
+                        {asset.assetType}
+                      </td>
+                      <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
+                        {asset.date}
+                      </td>
+                      <td
+                        class={`p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] ${asset?.status?.color}`}
                       >
-                        <div className="text-[var(--primary)]">
-                          <FilterIcon />
-                        </div>
-                      </Button>
-                    </Tooltip>
-                    <p className="font-normal text-xs leading-[135%] text-[var(--primary)]">
-                      {option.label}
-                    </p>
-                  </div>
-                </Select.Option>
-              ))}
-            </Select>
+                        {asset?.status?.value}
+                      </td>
+                      <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
+                        ${asset?.residualValue}
+                      </td>
+                      <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 border-r-0 font-normal text-sm leading-[171%] text-[#343a40]">
+                        {asset.health}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
-          <CustomSort
-            defaultValue="Clear Filter"
-            color="red"
-            option={ClearFilter}
-          />
-        </div>
-        <div className="py-[14px] px-5 bg-[var(--secondary)] rounded-[8px] dashboard-box">
-          <table class="table-auto w-full border-collapse">
-            <thead>
-              <tr class="text-left bg-[var(--secondary)]">
-                <th class="p-4 border border-gray-300 border-t-0 border-l-0">
-                  <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                    Project ID
-                    <IoFilterOutline className="text-md" />
-                  </div>
-                </th>
-                <th class="p-4 border border-gray-300 border-t-0 border-l-0">
-                  <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                    Asset Type
-                    <IoFilterOutline className="text-md" />
-                  </div>
-                </th>
-                <th class="p-4 border border-gray-300 border-t-0 border-l-0">
-                  <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                    Date
-                    <IoFilterOutline className="text-md" />
-                  </div>
-                </th>
-                <th class="p-4 border border-gray-300 border-t-0 border-l-0">
-                  <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                    Status
-                    <IoFilterOutline className="text-md" />
-                  </div>
-                </th>
-                <th class="p-4 border border-gray-300 border-t-0 border-l-0">
-                  <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                    Residual Value
-                    <IoFilterOutline className="text-md" />
-                  </div>
-                </th>
-                <th class="p-4 border border-gray-300 border-t-0 border-l-0 border-r-0">
-                  <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                    Health
-                    <IoFilterOutline className="text-md" />
-                  </div>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {assets.map((asset, index) => (
-                <tr class={`${asset?.color}`}>
-                  <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                    {asset.projectId}
-                  </td>
-                  <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                    {asset.assetType}
-                  </td>
-                  <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                    {asset.date}
-                  </td>
-                  <td
-                    class={`p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] ${asset?.status?.color}`}
-                  >
-                    {asset?.status?.value}
-                  </td>
-                  <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                    ${asset?.residualValue}
-                  </td>
-                  <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 border-r-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                    {asset.health}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <Link
-        to="/analyses"
-        className="mt-3 mb-6 flex justify-end items-center gap-x-2 font-medium text-sm leading-[171%] text-[var(--primary)] text-right"
-      >
-        View All Analyses
-        <FaAngleRight />
-      </Link>
-      <div className="w-full mt-[60px] flex items-center gap-x-6">
-        <div className="w-1/2 h-[449px] bg-[var(--secondary)] rounded-[8px] dashboard-box p-6 overflow-hidden">
-          <img className="w-full h-full" src={Graph1} alt="" />
-        </div>
-        <div className="w-1/2 h-[449px] bg-[var(--secondary)] rounded-[8px] dashboard-box p-6">
-          <img className="w-full h-full" src={Graph2} alt="" />
-        </div>
-      </div>
+          <Link
+            to="/analyses"
+            className="mt-3 mb-6 flex justify-end items-center gap-x-2 font-medium text-sm leading-[171%] text-[var(--primary)] text-right"
+          >
+            View All Analyses
+            <FaAngleRight />
+          </Link>
+          <div className="w-full mt-[60px] flex items-center gap-x-6">
+            <div className="w-1/2 h-[449px] bg-[var(--secondary)] rounded-[8px] dashboard-box p-6 overflow-hidden">
+              <img className="w-full h-full" src={Graph1} alt="" />
+            </div>
+            <div className="w-1/2 h-[449px] bg-[var(--secondary)] rounded-[8px] dashboard-box p-6">
+              <img className="w-full h-full" src={Graph2} alt="" />
+            </div>
+          </div>
+        </>
+      )}
+
+      
 
       <div className="mt-[500px] dashboard-container max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg">
         <ToastContainer />
