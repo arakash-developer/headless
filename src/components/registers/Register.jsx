@@ -474,7 +474,7 @@ const Register = () => {
                       type="primary"
                       onClick={() => next()}
                     >
-                      Next Step
+                      {current === 1 ? "Sign Up" : "Next Step"}
                     </button>
                   )}
                   {current === steps.length - 1 && (
