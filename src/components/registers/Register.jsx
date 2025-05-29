@@ -495,9 +495,9 @@ const Register = () => {
         </div>
       )}
       {current === 2 && (
-        <div className="mt-[138px] py-10 px-[100px] rounded-lg bg-[var(--secondary)] text-center ">
+        <div className="mt-[138px] py-10 px-[100px] rounded-lg bg-[var(--secondary)] text-center max-w-[1036px] mx-auto">
           <h2 className="font-semibold text-[32px] leading-[125%] text-[var(--primary2)]">
-            Thank You for Registering!
+            Thank You for Signing Up!
           </h2>
           <h3 className="font-semibold text-lg leading-[156%] text-[#343a40] mt-5 mb-6">
             Check Your Email to Activate Your Account
