@@ -503,7 +503,7 @@ const Register = () => {
             Check Your Email to Activate Your Account
           </h3>
           <p className="font-normal text-base leading-[150%] text-center text-[var(--text-secondary)] pb-6 max-w-[818px] mx-auto">
-            To complete your registration, please check your email and follow
+            To complete your sign-up, please check your email and follow
             the confirmation link we just sent to [
             <span className="text-[var(--primary)]">john@gmail.com</span>]. Your
             response is required to activate your account. If you don’t see the
