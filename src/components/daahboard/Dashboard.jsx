@@ -1,6 +1,7 @@
 import Credit from "@/assets/Credit";
 import FilterIcon from "@/assets/FilterIcon";
 import InProgress from "@/assets/InProgress";
+import ResPlus from "@/assets/ResPlus";
 import SearchDas from "@/assets/SearchDas";
 import Shopimg from "@/assets/Shopimg";
 import Graph1 from "@public/graph1.png";
@@ -214,6 +215,15 @@ const Dashboard = () => {
           <div className="flex justify-center items-center p-2 rounded-[8px] bg-[#DEF9FF]">
             <Credit />
           </div>
+        </div>
+      </div>
+      <div className="mt-6 w-full">
+        <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
+          Residual Analysis
+        </h2>
+        <div className="mt-3 bg-[var(--secondary)] h-[236px] text-center flex flex-col justify-center items-center dashboard-box gap-y-[18px]">
+          <ResPlus />
+          <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">Start by creating your first residual analysis</p>
         </div>
       </div>
       <div className="mt-6 w-full">
