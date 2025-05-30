@@ -76,16 +76,27 @@ const Register = () => {
       return toast.error("Company name is required", toastStyle);
     if (!formData.phone)
       return toast.error("Phone number is required", toastStyle);
+    if (!/^\+?\(?\d{3}\)?[-\s\.]?\d{3}[-\s\.]?\d{4,6}$/.test(formData.phone))
+      return toast.error("Enter a valid phone number", toastStyle);
     if (!formData.extension)
       return toast.error("Extension number is required", toastStyle);
     if (!formData.mobile)
       return toast.error("Mobile number is required", toastStyle);
+    if (!/^\+?\(?\d{3}\)?[-\s\.]?\d{3}[-\s\.]?\d{4,6}$/.test(formData.mobile))
+      return toast.error("Enter a valid mobile number", toastStyle);
     if (!formData.email) return toast.error("Email is required", toastStyle);
+    if (!/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(formData.email))
+      return toast.error("Enter a valid email address", toastStyle);
     setCurrent(current + 1);
   };
   let handleuserSubmitstep1 = async (callback) => {
     if (!formData.userName)
       return toast.error("Username is required", toastStyle);
+    if (!/^[a-z0-9_-]{3,15}$/.test(formData.userName))
+      return toast.error(
+        "Username should be between 3 to 15 characters, alphanumeric, hyphens and underscores only",
+        toastStyle
+      );
     if (!formData.password)
       return toast.error("Password is required", toastStyle);
     if (!formData.confirmPassword)
