@@ -130,7 +130,9 @@ const Login = () => {
           );
         }
       } catch (error) {
-        setError(error.message); // Show error if credentials are invalid
+        toast.error(error.message, toastStyle);
+        setLoading(false);
+        setError(error.message); 
       }
     }
   };
