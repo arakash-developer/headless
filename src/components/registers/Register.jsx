@@ -349,7 +349,12 @@ const Register = () => {
                             </label>
                             <div className="relative cursor-pointer">
                               <Select
-                                defaultValue="Select One"
+                                // defaultValue={<span style={{ color: "gray" }}>Select One</span>}
+                                placeholder={
+                                  <span style={{ color: "#ADB5BD" }}>
+                                    Select One
+                                  </span>
+                                }
                                 style={{ height: "40px", color: "red" }}
                                 onChange={handleSourceChange}
                                 className="w-full custom-select no-arrow-select bg-[var(--background)]"
@@ -376,10 +381,15 @@ const Register = () => {
                             </label>
                             <div className="relative cursor-pointer">
                               <Select
-                                defaultValue="Select One"
+                                // defaultValue="Select One"
+                                placeholder={
+                                  <span style={{ color: "#ADB5BD" }}>
+                                    Select One
+                                  </span>
+                                }
                                 style={{ height: "40px" }}
                                 onChange={handleCategoryChange}
-                                className="w-full custom-select no-arrow-select bg-[var(--background)] "
+                                className="w-full custom-select no-arrow-select bg-[var(--background)] inline-block"
                                 dropdownMatchSelectWidth={false}
                               >
                                 {categoryOptions.map((option) => (
