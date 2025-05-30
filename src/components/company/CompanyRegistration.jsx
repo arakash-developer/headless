@@ -247,7 +247,9 @@ const CompanyRegistration = () => {
               </label>
               <div className="relative cursor-pointer">
                 <Select
-                  defaultValue="Select One"
+                  placeholder={
+                    <span style={{ color: "#ADB5BD" }}>Select One</span>
+                  }
                   style={{ height: "40px" }}
                   onChange={handleCompanyChange}
                   className="w-full custom-select no-arrow-select"
@@ -271,7 +273,9 @@ const CompanyRegistration = () => {
               </label>
               <div className="relative cursor-pointer">
                 <Select
-                  defaultValue="Select One"
+                  placeholder={
+                    <span style={{ color: "#ADB5BD" }}>Select One</span>
+                  }
                   style={{ height: "40px" }}
                   onChange={handleIndustryChange}
                   className="w-full custom-select no-arrow-select"
