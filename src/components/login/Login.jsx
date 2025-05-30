@@ -40,12 +40,15 @@ const Login = () => {
   };
   const handleLogin = async (e) => {
     e.preventDefault();
-    setLoading(true);
+
     if (!email) {
       toast.error("Email is required", toastStyle);
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      toast.error("Please enter a valid email address", toastStyle);
     } else if (!password) {
       toast.error("Password is required", toastStyle);
     } else {
+      setLoading(true);
       const loginData = { username: email, password };
       try {
         const response = await fetch(
@@ -60,12 +63,14 @@ const Login = () => {
         );
 
         if (response.ok) {
+          setLoading(false);
           toast.success("Login Successful!", {
             ...toastStyle,
             style: { background: "var(--primary)", color: "#fff" },
           });
         }
         if (!response.ok) {
+          setLoading(false);
           const toastStyle = {
             position: "bottom-left",
             autoClose: 2000,
