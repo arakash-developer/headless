@@ -21,6 +21,7 @@ const steps = [
 ];
 const Register = () => {
   const navigate = useNavigate();
+  let { setForgetHide, forgetHide } = useContext(Contex);
   const [toastError, setToastError] = useState("Error");
   const [agree, setAgree] = useState(false);
   let { invitation, setInvitation } = useContext(Contex);
@@ -122,7 +123,22 @@ const Register = () => {
     }
     if (current === 1) {
       handleuserSubmitstep1(sendEmail);
+      setForgetHide(true);
     }
+  };
+  // const next = () => {
+  //   if (current === 0) {
+  //     setCurrent(current + 1);
+  //   }
+  //   if (current === 1) {
+  //     setCurrent(current + 1);
+  //     setForgetHide(true);
+  //   }
+  // };
+  let confirmmailbtn = (e) => {
+    e.preventDefault();
+    setForgetHide(false);
+    window.open("https://mail.google.com/mail/u/0/#inbox", "_blank");
   };
   const prev = () => {
     setCurrent(current - 1);
@@ -519,6 +535,7 @@ const Register = () => {
             </span>
           </p>
           <Link
+            onClick={confirmmailbtn}
             to="https://mail.google.com/mail/u/0/#inbox"
             target="_blank"
             rel="noopener noreferrer"
