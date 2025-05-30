@@ -67,6 +67,9 @@ const Register = () => {
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
   let handleuserSubmitstep0 = () => {
+    if(!formData.code) return toast.error("Invitation is required", toastStyle);
+    if (!/^[A-Za-z0-9-]+$/.test(formData.code))
+      return toast.error("Invitation should be alphanumeric and hyphens only", toastStyle);
     if (!formData.firstName)
       return toast.error("First Name is required", toastStyle);
     if (!formData.lastName)
@@ -254,7 +257,7 @@ const Register = () => {
                         <div className="w-full">
                           <FormField
                             label="Invitation Code (Optional)"
-                            value={formData.extension}
+                            value={formData.code}
                             onChange={(val) =>
                               setFormData({ ...formData, code: val })
                             }

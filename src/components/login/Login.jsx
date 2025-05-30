@@ -48,8 +48,8 @@ const Login = () => {
     } else if (!password) {
       toast.error("Password is required", toastStyle);
     } else {
-      setLoading(true);
       const loginData = { username: email, password };
+      setLoading(true);
       try {
         const response = await fetch(
           "https://4amitest-bli6.wp1.sh/wp-json/custom/v1/login",
@@ -63,7 +63,6 @@ const Login = () => {
         );
 
         if (response.ok) {
-          setLoading(false);
           toast.success("Login Successful!", {
             ...toastStyle,
             style: { background: "var(--primary)", color: "#fff" },
@@ -117,10 +116,12 @@ const Login = () => {
             localStorage.setItem("com_auth_token", "akash");
             setIsLogin(true);
             navigate("/dashboard", { state: { user: data.user } });
+            setLoading(false);
           } else {
             setIsLogin(true);
             localStorage.setItem("logintoken", "akash@123");
             navigate("/companyregistration", { state: { useremail: email } });
+            setLoading(false);
           }
         } else {
           toast.error(
