@@ -192,7 +192,7 @@ const Register = () => {
   return (
     <>
       {current < 2 && (
-        <div className="max-w-[1098px] pl-[55px] pt-[45px] pb-[29px] bg-[#fff] rounded-[5px] formboxshadow">
+        <div className="max-w-[1098px] pl-[55px] pt-[45px] pb-[29px] bg-[#fff] rounded-[5px] formboxshadow mb-[105px]">
           <div className="flex justify-between items-start">
             <div className="">
               <div className="max-w-[540px]">
