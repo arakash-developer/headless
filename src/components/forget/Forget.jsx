@@ -9,7 +9,7 @@ import emailjs from "@emailjs/browser";
 import ForgetIcon from "@public/forget.png";
 import { Flex, Input, theme, Typography } from "antd";
 import { useContext, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 const { Title } = Typography;
 const ForgetDesign = ({ title, des, mail }) => {
@@ -45,6 +45,7 @@ const Forget = () => {
   const [otpInput, setOtpInput] = useState("");
   const API_BASE = "https://4amitest-bli6.wp1.sh/wp-json/otp/v1";
   let { setForgetHide, forgetHide } = useContext(Contex);
+  let nevigate = useNavigate();
   const steps = [
     {
       title: "First",
@@ -217,13 +218,17 @@ const Forget = () => {
         setCurrent(current + 1);
       }
     } else if (current === 2) {
+      setForgetHide(true);
       if (updateUserPassword() === true) {
         setCurrent(current + 1);
-        setForgetHide(true);
       }
     }
     // setCurrent(current + 1);
   };
+  // const next = () => {
+  //   setCurrent(current + 1);
+  //   setForgetHide(true);
+  // };
   const prev = () => {
     setCurrent(current - 1);
   };
@@ -264,7 +269,11 @@ const Forget = () => {
       }, 1000);
     }, [timeLeft]);
   }
-
+  let handlerLogin = (e) => {
+    e.preventDefault();
+    setForgetHide(false);
+    nevigate("/");
+  };
   return (
     <>
       <div
@@ -376,6 +385,7 @@ const Forget = () => {
               </p>
               <Link
                 to="/"
+                onClick={handlerLogin}
                 className="font-medium text-sm leading-[200%] text-[var(--secondary)] py-2 px-8 rounded-[8px] bg-[var(--primary)] cursor-pointer inline-block"
               >
                 Back to Log In
