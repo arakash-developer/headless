@@ -1,7 +1,8 @@
 import DownArrow from "@/assets/DownArrow";
 import NotifyIcon from "@/assets/NotifyIcon";
+import { Contex } from "@/context/User";
 import { Input } from "antd";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
@@ -9,7 +10,7 @@ const Navbar = () => {
   const [routeName, setRouteName] = useState("");
   let token = localStorage.getItem("logintoken");
   let userData = JSON.parse(localStorage.getItem("user_data"));
-
+  let { setForgetHide, forgetHide } = useContext(Contex);
   useEffect(() => {
     // Get the first part of the path after "/"
     const currentRoute = window.location.pathname.split("/")[1];
@@ -73,15 +74,25 @@ const Navbar = () => {
             className="flex justify-end w-full
            items-center"
           >
-            <Link to={routeName === "" ? "/signup" : "/"} className="">
-              <p className="font-normal text-base leading-[150%] text-right text-var(--primary2)">
-                {routeName === 'forget' ? 'Remember Password?': routeName === "" ? "New to 4AMI?" : "Already have an account?"}
+            {!forgetHide && (
+              <Link to={routeName === "" ? "/signup" : "/"} className="">
+                <p className="font-normal text-base leading-[150%] text-right text-var(--primary2)">
+                  {routeName === "forget"
+                    ? "Remember Password?"
+                    : routeName === ""
+                    ? "New to 4AMI?"
+                    : "Already have an account?"}
 
-                <span className="ml-1 not-italic font-semibold text-lg leading-[156%] text-[var(--primary)]">
-                  {routeName === 'forget'? "Log In": routeName === "" ? "Sign Up" : "Log In"}
-                </span>
-              </p>
-            </Link>
+                  <span className="ml-1 not-italic font-semibold text-lg leading-[156%] text-[var(--primary)]">
+                    {routeName === "forget"
+                      ? "Log In"
+                      : routeName === ""
+                      ? "Sign Up"
+                      : "Log In"}
+                  </span>
+                </p>
+              </Link>
+            )}
           </div>
         )}
       </nav>
