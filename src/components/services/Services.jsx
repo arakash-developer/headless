@@ -221,8 +221,56 @@ const Services = () => {
     },
   };
   let handleSubmitAsset = () => {
-    if (!formdata.projectName) return toast.error("Please enter project name");
-    if (!formdata.lesseeNo) return toast.error("Please enter lessee number");
+    if (!formdata.projectName)
+      return toast.error("Please enter project name", toastStyle);
+    if (!formdata.lesseeNo)
+      return toast.error("Please enter lessee number", toastStyle);
+    if (!formdata.lessee) return toast.error("Please enter lessee", toastStyle);
+    if (!formdata.cell)
+      return toast.error("Please enter cell number", toastStyle);
+    if (!formdata.Communication)
+      return toast.error("Please select communication", toastStyle);
+    if (!formdata.sourceNo)
+      return toast.error("Please enter source number", toastStyle);
+    if (!formdata.sourceName)
+      return toast.error("Please enter source name", toastStyle);
+    if (!formdata.sourceType)
+      return toast.error("Please select source type", toastStyle);
+    if (!formdata.contact)
+      return toast.error("Please enter contact name", toastStyle);
+    if (!formdata.title) return toast.error("Please enter title", toastStyle);
+    if (!formdata.sourceCommunication)
+      return toast.error("Please select source communication", toastStyle);
+    if (!formdata.phoneNumber1)
+      return toast.error("Please enter phone number 1", toastStyle);
+    if (!formdata.phoneNumber2)
+      return toast.error("Please enter phone number 2", toastStyle);
+    if (!formdata.cellSource)
+      return toast.error("Please enter cell number", toastStyle);
+    if (!formdata.email)
+      return toast.error("Please enter email address", toastStyle);
+    if (!formdata.website)
+      return toast.error("Please enter website", toastStyle);
+    if (!formdata.assetType)
+      return toast.error("Please select asset type", toastStyle);
+
+    if (!formdata.assetMake)
+      return toast.error("Please enter asset make", toastStyle);
+    if (!formdata.assetmodel)
+      return toast.error("Please enter asset model", toastStyle);
+    if (!formdata.assetYear)
+      return toast.error("Please enter asset year", toastStyle);
+    if (!formdata.assetUsagesType)
+      return toast.error("Please select asset usage type", toastStyle);
+    if (!formdata.assetSubject)
+      return toast.error("Please enter asset subject", toastStyle);
+    if (!formdata.assetNewUsed)
+      return toast.error("Please select asset new or used", toastStyle);
+    if (!formdata.leaseTermsBox)
+      return toast.error("Please select lease terms", toastStyle);
+    if (!formdata.leaseTermsBox)
+      return toast.error("Please select lease terms", toastStyle);
+    toast.success("Asset submitted successfully", toastStyle);
     console.log("akash formdata", formdata);
   };
   return (
