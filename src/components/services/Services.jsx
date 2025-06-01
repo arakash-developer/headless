@@ -67,41 +67,6 @@ const FileUploadForm = ({ index, onChange }) => {
 
 const Services = () => {
   const [activeButton, setActiveButton] = useState(null); // Track the active button
-  let leaseTermsBox = [
-    {
-      leaseApplication: "",
-      leaseEnvironment: "",
-      leaseProposedHPY: "",
-      leaseTerms: "",
-      leaseNewUsed: "",
-    },
-  ];
-  let [formdata, setFormdata] = useState({
-    projectName: "",
-    LesseeNo: "",
-    Lessee: "",
-    Cell: "",
-    Communication: "",
-    SourceNo: "",
-    SourceName: "",
-    SourceType: "",
-    Contact: "",
-    Title: "",
-    SourceCommunication: "",
-    PhoneNumber1: "",
-    PhoneNumber2: "",
-    CellSource: "",
-    Email: "",
-    Website: "",
-    assetType: "",
-    assetMake: "",
-    assetmodel: "",
-    assetYear: "",
-    assetUsagesType: "",
-    assetSubject: "",
-    assetNewUsed: "",
-    leaseTermsBox,
-  });
   const [services, setServices] = useState([
     { id: 1, name: "Residual Analysis", tokens: 3, hourly: 20, selected: true },
     {
@@ -167,7 +132,12 @@ const Services = () => {
 
   const handleChange = (option) => {
     setSelected(option);
-    console.log("Selected:", option);
+    console.log("Selected option:", option);
+    setFormdata({ ...formdata, Communication: option.value });
+  };
+  const handleSourceChange = (option) => {
+    setSelected(option);
+    setFormdata({ ...formdata, Communication: option.value });
   };
   const handleUsageTypeChange = (option) => {
     setSelected(option);
@@ -220,6 +190,41 @@ const Services = () => {
       color: "#fff",
     },
   };
+  let leaseTermsBox = [
+    {
+      leaseApplication: "",
+      leaseEnvironment: "",
+      leaseProposedHPY: "",
+      leaseTerms: "",
+      leaseNewUsed: "",
+    },
+  ];
+  let [formdata, setFormdata] = useState({
+    projectName: "",
+    LesseeNo: "",
+    Lessee: "",
+    Cell: "",
+    Communication: true,
+    SourceNo: "",
+    SourceName: "",
+    SourceType: "",
+    Contact: "",
+    Title: "",
+    SourceCommunication: "",
+    PhoneNumber1: "",
+    PhoneNumber2: "",
+    CellSource: "",
+    Email: "",
+    Website: "",
+    assetType: "",
+    assetMake: "",
+    assetmodel: "",
+    assetYear: "",
+    assetUsagesType: "",
+    assetSubject: "",
+    assetNewUsed: "",
+    leaseTermsBox,
+  });
   let handleSubmitAsset = () => {
     if (!formdata.projectName)
       return toast.error("Please enter project name", toastStyle);
@@ -439,7 +444,7 @@ const Services = () => {
                 <Select
                   defaultValue="Dealer"
                   style={{ height: "40px" }}
-                  onChange={handleChange}
+                  onChange={handleSourceChange}
                   className="w-full custom-select"
                   dropdownMatchSelectWidth={false}
                 >
@@ -646,7 +651,7 @@ const Services = () => {
       <div className="flex gap-x-2 items-center mt-6 mb-[62px]">
         <button
           onClick={handleSubmitAsset}
-          className="bg-[var(--neutral)] font-medium text-sm leading-[171%] text-[var(--text-disabled)] py-3 px-4 rounded-[8px] border border-[var(--neutral)]"
+          className="bg-[var(--neutral)] font-medium text-sm leading-[171%] text-[var(--text-disabled)] py-3 px-4 rounded-[8px] border border-[var(--neutral)] fixed left-5 bottom-5"
         >
           Submit
         </button>
