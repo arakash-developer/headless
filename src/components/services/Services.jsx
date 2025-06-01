@@ -6,6 +6,7 @@ import { Button, Input, Select, Tooltip } from "antd";
 import { useContext, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
+import { toast } from "react-toastify";
 import AssetInformation from "./layers/AssetInformation";
 import AssetManager from "./layers/AssetManager";
 
@@ -205,7 +206,23 @@ const Services = () => {
   const handleCancelAsset = () => {
     setCancel(!cancel);
   };
+  const toastStyle = {
+    position: "bottom-left",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    style: {
+      background: "var(--primary2)",
+      color: "#fff",
+    },
+  };
   let handleSubmitAsset = () => {
+    if (!formdata.projectName) return toast.error("Please enter project name");
+    if (!formdata.lesseeNo) return toast.error("Please enter lessee number");
     console.log("akash formdata", formdata);
   };
   return (
@@ -357,7 +374,6 @@ const Services = () => {
                 </label>
 
                 <Input
-
                   onChange={(e) =>
                     setFormdata({ ...formdata, sourceName: e.target.value })
                   }
