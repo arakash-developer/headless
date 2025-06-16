@@ -154,6 +154,134 @@ const Administrator = () => {
   const onChange = (e) => {
     console.log(`checked = ${e.target.checked}`);
   };
+
+  const tabData = [
+    {
+      id: 1,
+      label: (
+        <div className="w-full flex gap-x-[35px] justify-between items-start">
+          <div className="flex flex-col gap-y-[8px]">
+            <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">
+              Total Residuals
+            </p>
+            <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
+              {dashboardAnlytics?.totalResidual}
+            </h2>
+          </div>
+          <div className="flex justify-center items-center p-2 rounded-[8px] bg-[#CFE3FF]">
+            <SearchDas />
+          </div>
+        </div>
+      ),
+      content: (
+        <>
+          <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
+            Residual Analysis 1
+          </h2>
+          <div className="mt-3 bg-[var(--secondary)] h-[236px] text-center flex flex-col justify-center items-center dashboard-box gap-y-[18px]">
+            <ResPlus />
+            <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">
+              Start by creating your first residual analysis
+            </p>
+          </div>
+        </>
+      ),
+    },
+    {
+      id: 2,
+      label: (
+        <div className="w-full flex gap-x-[35px] justify-between items-start">
+          <div className="flex flex-col gap-y-[8px]">
+            <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">
+              In Progress
+            </p>
+            <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
+              {dashboardAnlytics?.inProgress}
+            </h2>
+          </div>
+          <div className="flex justify-center items-center p-2 rounded-[8px] bg-[#FFF3D5]">
+            <InProgress />
+          </div>
+        </div>
+      ),
+      content: (
+        <>
+          <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
+            Residual Analysis 2
+          </h2>
+          <div className="mt-3 bg-[var(--secondary)] h-[236px] text-center flex flex-col justify-center items-center dashboard-box gap-y-[18px]">
+            <ResPlus />
+            <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">
+              Start by creating your first residual analysis
+            </p>
+          </div>
+        </>
+      ),
+    },
+    {
+      id: 3,
+      label: (
+        <div className="w-full flex gap-x-[35px] justify-between items-start">
+          <div className="flex flex-col gap-y-[8px]">
+            <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">
+              My Listings
+            </p>
+            <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
+              {dashboardAnlytics?.myListings}
+            </h2>
+          </div>
+          <div className="flex justify-center items-center p-2 rounded-[8px] bg-[#CAF8FF]">
+            <Shopimg />
+          </div>
+        </div>
+      ),
+      content: (
+        <>
+          <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
+            Residual Analysis 3
+          </h2>
+          <div className="mt-3 bg-[var(--secondary)] h-[236px] text-center flex flex-col justify-center items-center dashboard-box gap-y-[18px]">
+            <ResPlus />
+            <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">
+              Start by creating your first residual analysis
+            </p>
+          </div>
+        </>
+      ),
+    },
+    {
+      id: 4,
+      label: (
+        <div className="w-full flex gap-x-[35px] justify-between items-start">
+          <div className="flex flex-col gap-y-[8px]">
+            <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">
+              Credits Left
+            </p>
+            <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
+              {dashboardAnlytics?.creditLeft}
+            </h2>
+          </div>
+          <div className="flex justify-center items-center p-2 rounded-[8px] bg-[#DEF9FF]">
+            <Credit />
+          </div>
+        </div>
+      ),
+      content: (
+        <>
+          <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
+            Residual Analysis 4
+          </h2>
+          <div className="mt-3 bg-[var(--secondary)] h-[236px] text-center flex flex-col justify-center items-center dashboard-box gap-y-[18px]">
+            <ResPlus />
+            <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">
+              Start by creating your first residual analysis
+            </p>
+          </div>
+        </>
+      ),
+    },
+  ];
+  const [activeTab, setActiveTab] = useState(tabData[0]?.id);
   return (
     <div className="mr-10">
       <div className="mt-5">
@@ -171,7 +299,24 @@ const Administrator = () => {
           Create New
         </button>
       </div>
-      <div className="flex justify-between items-center mb-6 gap-x-6">
+
+      <div className="akash w-full flex justify-between items-center mb-6 gap-x-6">
+        {tabData.map((tab) => (
+          <div
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className="dashboard-box w-[250px] xl:w-1/2 p-5 bg-[var(--secondary)] rounded-[8px] cursor-pointer"
+            // className={`px-4 py-2 text-sm font-medium border-b-2 ${
+            //   activeTab === tab.label
+            //     ? "border-blue-500 text-blue-600"
+            //     : "border-transparent text-gray-veT hover:text-blue-600"
+            // }`}
+          >
+            {tab.label}
+          </div>
+        ))}
+      </div>
+      {/* <div className="flex justify-between items-center mb-6 gap-x-6">
         <div className="dashboard-box w-[250px] xl:w-1/2 p-5 flex gap-x-[35px] justify-between items-start bg-[var(--secondary)] rounded-[8px]">
           <div className="flex flex-col gap-y-[8px]">
             <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">
@@ -224,8 +369,18 @@ const Administrator = () => {
             <Credit />
           </div>
         </div>
+      </div> */}
+      <div className="akash mt-6 w-full">
+        {tabData.map(
+          (tab) =>
+            activeTab === tab.id && (
+              <div key={tab.id} className="">
+                {tab.content}
+              </div>
+            )
+        )}
       </div>
-      <div className="mt-6 w-full">
+      {/* <div className="mt-6 w-full">
         <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
           Residual Analysis
         </h2>
@@ -235,7 +390,7 @@ const Administrator = () => {
             Start by creating your first residual analysis
           </p>
         </div>
-      </div>
+      </div> */}
       {data && (
         <>
           <div className="mt-6 w-full">
