@@ -56,7 +56,7 @@ export const routes = [
   {
     path: "/administrator",
     component: Administrator,
-    access: "private",
+    access: "administrator",
   },
   { path: "/regsuccess", component: RegistrationSuccess, access: "guest" },
   { path: "/residualanalysis", component: Residualanalysis, access: "private" },

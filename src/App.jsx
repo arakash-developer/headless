@@ -1,7 +1,7 @@
 import RootLayout from "./components/main/RootLayout";
 // React Router dom........
 import { routes } from "@/routes/routes";
-import { GuestRoute, PrivateRoute, PublicRoute } from "@routes/RouteWrappers";
+import { AdministratorRoute, GuestRoute, PrivateRoute, PublicRoute } from "@routes/RouteWrappers";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -12,11 +12,15 @@ import {
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
-
       {routes.map(({ path, component: Component, access }) => {
         let element;
-
-        if (access === "private") {
+        if (access === "administrator") {
+          element = (
+            <AdministratorRoute>
+              <Component />
+            </AdministratorRoute>
+          );
+        } else if (access === "private") {
           element = (
             <PrivateRoute>
               <Component />

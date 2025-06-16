@@ -1,20 +1,6 @@
-import { useEffect } from "react";
-import { decryptText, encryptText } from "@lib/cryptoUtils";
-
 const Demo4 = () => {
-  useEffect(() => {
-    (async () => {
-      const password = "my_secret_salt";
-      const original = "Hello Akash!";
-      const encrypted = await encryptText(original, password);
-      const decrypted = await decryptText(encrypted, password);
-
-      console.log("Encrypted:", encrypted);
-      console.log("Decrypted:", decrypted);
-    })();
-  }, []);
-
-  return null; // No UI
+  localStorage.setItem("administrator", "akash@123");
+  return <div>Demo4</div>;
 };
 
 export default Demo4;
