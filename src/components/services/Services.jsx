@@ -6,6 +6,7 @@ import { Button, Input, Select, Tooltip } from "antd";
 import { useContext, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
+import { toast } from "react-toastify";
 import AssetInformation from "./layers/AssetInformation";
 import AssetManager from "./layers/AssetManager";
 
@@ -66,41 +67,6 @@ const FileUploadForm = ({ index, onChange }) => {
 
 const Services = () => {
   const [activeButton, setActiveButton] = useState(null); // Track the active button
-  let leaseTermsBox = [
-    {
-      leaseApplication: "",
-      leaseEnvironment: "",
-      leaseProposedHPY: "",
-      leaseTerms: "",
-      leaseNewUsed: "",
-    },
-  ];
-  let [formdata, setFormdata] = useState({
-    projectName: "",
-    LesseeNo: "",
-    Lessee: "",
-    Cell: "",
-    Communication: "",
-    SourceNo: "",
-    SourceName: "",
-    SourceType: "",
-    Contact: "",
-    Title: "",
-    SourceCommunication: "",
-    PhoneNumber1: "",
-    PhoneNumber2: "",
-    CellSource: "",
-    Email: "",
-    Website: "",
-    assetType: "",
-    assetMake: "",
-    assetmodel: "",
-    assetYear: "",
-    assetUsagesType: "",
-    assetSubject: "",
-    assetNewUsed: "",
-    leaseTermsBox,
-  });
   const [services, setServices] = useState([
     { id: 1, name: "Residual Analysis", tokens: 3, hourly: 20, selected: true },
     {
@@ -166,7 +132,12 @@ const Services = () => {
 
   const handleChange = (option) => {
     setSelected(option);
-    console.log("Selected:", option);
+    console.log("Selected option:", option);
+    setFormdata({ ...formdata, Communication: option.value });
+  };
+  const handleSourceChange = (option) => {
+    setSelected(option);
+    setFormdata({ ...formdata, Communication: option.value });
   };
   const handleUsageTypeChange = (option) => {
     setSelected(option);
@@ -205,7 +176,106 @@ const Services = () => {
   const handleCancelAsset = () => {
     setCancel(!cancel);
   };
+  const toastStyle = {
+    position: "bottom-left",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    style: {
+      background: "var(--primary2)",
+      color: "#fff",
+    },
+  };
+  let leaseTermsBox = [
+    {
+      leaseApplication: "",
+      leaseEnvironment: "",
+      leaseProposedHPY: "",
+      leaseTerms: "",
+      leaseNewUsed: "",
+    },
+  ];
+  let [formdata, setFormdata] = useState({
+    projectName: "",
+    LesseeNo: "",
+    Lessee: "",
+    Cell: "",
+    Communication: true,
+    SourceNo: "",
+    SourceName: "",
+    SourceType: "",
+    contact: "",
+    title: "",
+    SourceCommunication: "",
+    PhoneNumber1: "",
+    PhoneNumber2: "",
+    CellSource: "",
+    Email: "",
+    Website: "",
+    assetType: "",
+    assetMake: "",
+    assetmodel: "",
+    assetYear: "",
+    assetUsagesType: "",
+    assetSubject: "",
+    assetNewUsed: "",
+    leaseTermsBox,
+  });
   let handleSubmitAsset = () => {
+    if (!formdata.projectName)
+      return toast.error("Please enter project name", toastStyle);
+    if (!formdata.lesseeNo)
+      return toast.error("Please enter lessee number", toastStyle);
+    if (!formdata.lessee) return toast.error("Please enter lessee", toastStyle);
+    if (!formdata.cell)
+      return toast.error("Please enter cell number", toastStyle);
+    if (!formdata.Communication)
+      return toast.error("Please select communication", toastStyle);
+    if (!formdata.sourceNo)
+      return toast.error("Please enter source number", toastStyle);
+    if (!formdata.sourceName)
+      return toast.error("Please enter source name", toastStyle);
+    if (!formdata.sourceType)
+      return toast.error("Please select source type", toastStyle);
+    if (!formdata.contact)
+      return toast.error("Please enter contact name", toastStyle);
+    if (!formdata.title) return toast.error("Please enter title", toastStyle);
+    if (!formdata.sourceCommunication)
+      return toast.error("Please select source communication", toastStyle);
+    if (!formdata.phoneNumber1)
+      return toast.error("Please enter phone number 1", toastStyle);
+    if (!formdata.phoneNumber2)
+      return toast.error("Please enter phone number 2", toastStyle);
+    if (!formdata.cellSource)
+      return toast.error("Please enter cell number", toastStyle);
+    if (!formdata.email)
+      return toast.error("Please enter email address", toastStyle);
+    if (!formdata.website)
+      return toast.error("Please enter website", toastStyle);
+    if (!formdata.assetType)
+      return toast.error("Please select asset type", toastStyle);
+
+    if (!formdata.assetMake)
+      return toast.error("Please enter asset make", toastStyle);
+    if (!formdata.assetmodel)
+      return toast.error("Please enter asset model", toastStyle);
+    if (!formdata.assetYear)
+      return toast.error("Please enter asset year", toastStyle);
+    if (!formdata.assetUsagesType)
+      return toast.error("Please select asset usage type", toastStyle);
+    if (!formdata.assetSubject)
+      return toast.error("Please enter asset subject", toastStyle);
+    if (!formdata.assetNewUsed)
+      return toast.error("Please select asset new or used", toastStyle);
+    if (!formdata.leaseTermsBox)
+      return toast.error("Please select lease terms", toastStyle);
+    if (!formdata.leaseTermsBox)
+      return toast.error("Please select lease terms", toastStyle);
+    toast.success("Asset submitted successfully", toastStyle);
     console.log("akash formdata", formdata);
   };
   return (
@@ -357,7 +427,6 @@ const Services = () => {
                 </label>
 
                 <Input
-
                   onChange={(e) =>
                     setFormdata({ ...formdata, sourceName: e.target.value })
                   }
@@ -375,7 +444,7 @@ const Services = () => {
                 <Select
                   defaultValue="Dealer"
                   style={{ height: "40px" }}
-                  onChange={handleChange}
+                  onChange={handleSourceChange}
                   className="w-full custom-select"
                   dropdownMatchSelectWidth={false}
                 >
@@ -582,7 +651,7 @@ const Services = () => {
       <div className="flex gap-x-2 items-center mt-6 mb-[62px]">
         <button
           onClick={handleSubmitAsset}
-          className="bg-[var(--neutral)] font-medium text-sm leading-[171%] text-[var(--text-disabled)] py-3 px-4 rounded-[8px] border border-[var(--neutral)]"
+          className="bg-[var(--neutral)] font-medium text-sm leading-[171%] text-[var(--text-disabled)] py-3 px-4 rounded-[8px] border border-[var(--neutral)] fixed left-5 bottom-5"
         >
           Submit
         </button>
