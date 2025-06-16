@@ -1,6 +1,16 @@
-const Demo4 = () => {
-  localStorage.setItem("administrator", "akash@123");
-  return <div>Demo4</div>;
+import { notify } from "@/util/notify";
+
+const DemoToast = () => {
+  return (
+    <div className="p-6">
+      <button
+        onClick={() => notify("success", "Asset Added", "Your new asset is now listed.")}
+        className="py-2 px-4 bg-[var(--primary)] text-white rounded-md"
+      >
+        Show Success Toast
+      </button>
+    </div>
+  );
 };
 
-export default Demo4;
+export default DemoToast;
