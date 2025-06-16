@@ -62,11 +62,20 @@ const Login = () => {
           }
         );
 
+        const data = await response.json();
         if (response.ok) {
           toast.success("Login Successful!", {
             ...toastStyle,
             style: { background: "var(--primary)", color: "#fff" },
           });
+          console.log("Login successful:", data.user.roles[0]);
+          if (data.user.roles[0] === "administrator") {
+            localStorage.setItem("administrator", "akash@123");
+            navigate("/administrator", {
+              state: { user: data.user },
+            });
+            return;
+          }
         }
         if (!response.ok) {
           setLoading(false);
@@ -88,7 +97,7 @@ const Login = () => {
           throw new Error("Invalid credentials");
         }
 
-        const data = await response.json();
+        // const data = await response.json();
 
         // Store the JWT token and user data in localStorage for future requests
         localStorage.setItem("auth_token", data.token);
@@ -132,7 +141,7 @@ const Login = () => {
       } catch (error) {
         toast.error(error.message, toastStyle);
         setLoading(false);
-        setError(error.message); 
+        setError(error.message);
       }
     }
   };
