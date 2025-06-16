@@ -1,4 +1,3 @@
-import Credit from "@/assets/Credit";
 import DataRepresent from "@/assets/DataRepresent";
 import FilterIcon from "@/assets/FilterIcon";
 import Pending from "@/assets/Pending";
@@ -266,21 +265,25 @@ const Administrator = () => {
         <div className="w-full flex gap-x-[35px] justify-between items-start">
           <div className="flex flex-col gap-y-[8px]">
             <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">
-              Credits Left
+              Active Users
             </p>
             <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
-              {dashboardAnlytics?.creditLeft}
+              {dashboardAnlytics?.inProgress}
             </h2>
+            <p className="mt-[5px] font-normal text-xs leading-[135%] text-[#01af76] flex items-center gap-x-1">
+              <FaLongArrowAltUp />
+              12.5% from last month
+            </p>
           </div>
-          <div className="flex justify-center items-center p-2 rounded-[8px] bg-[#DEF9FF]">
-            <Credit />
+          <div className="flex justify-center items-center p-2 rounded-[8px] bg-[#CFE3FF]">
+            <Pending />
           </div>
         </div>
       ),
       content: (
         <>
           <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
-            Residual Analysis 4
+            Active Users
           </h2>
           <div className="mt-3 bg-[var(--secondary)] h-[236px] text-center flex flex-col justify-center items-center dashboard-box gap-y-[18px]">
             <ResPlus />
