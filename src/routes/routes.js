@@ -12,6 +12,7 @@ import RegistrationSuccess from "@components/registers/RegistrationSuccess";
 import Residualanalysis from "@components/residualanalysis/Residualanalysis";
 import Services from "@components/services/Services";
 
+import Administrator from "@/components/administrator/Administrator";
 import Demo from "@/components/demo/Demo";
 import Demo2 from "@/components/demo/Demo2";
 import Demo3 from "@/components/demo/Demo3";
@@ -50,6 +51,11 @@ export const routes = [
   {
     path: "/companyregistration",
     component: CompanyRegistration,
+    access: "private",
+  },
+  {
+    path: "/administrator",
+    component: Administrator,
     access: "private",
   },
   { path: "/regsuccess", component: RegistrationSuccess, access: "guest" },
