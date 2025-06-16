@@ -1,7 +1,7 @@
 import Credit from "@/assets/Credit";
 import DataRepresent from "@/assets/DataRepresent";
 import FilterIcon from "@/assets/FilterIcon";
-import InProgress from "@/assets/InProgress";
+import Pending from "@/assets/Pending";
 import PopularEquipment from "@/assets/PopularEquipment";
 import ResPlus from "@/assets/ResPlus";
 import SearchDas from "@/assets/SearchDas";
@@ -10,6 +10,7 @@ import Graph1 from "@public/graph1.png";
 import Graph2 from "@public/graph2.png";
 import { Button, Select, Tooltip } from "antd";
 import { useEffect, useState } from "react";
+import { FaLongArrowAltUp } from "react-icons/fa";
 import { FaAngleRight, FaPlus } from "react-icons/fa6";
 import { IoFilterOutline } from "react-icons/io5";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -32,10 +33,11 @@ const Administrator = () => {
   const [company, setCompany] = useState(null);
   const [loading, setLoading] = useState(true);
   const [dashboardAnlytics, setDashboardAnlytics] = useState({
-    totalResidual: 0,
-    inProgress: 0,
+    inProgress: 10,
+    totalResidual: 52,
     myListings: 0,
     creditLeft: 0,
+    activeUser: 300,
   });
   const [data, setData] = useState(false);
   // Fetch company data without using an auth token
@@ -162,14 +164,17 @@ const Administrator = () => {
         <div className="w-full flex gap-x-[35px] justify-between items-start">
           <div className="flex flex-col gap-y-[8px]">
             <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">
-              Total Residuals
+              Pending Requests
             </p>
             <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
-              {dashboardAnlytics?.totalResidual}
+              {dashboardAnlytics?.inProgress}
             </h2>
+            <p className="mt-[5px] font-normal text-xs leading-[135%] text-[#daae00]">
+              Requests awaiting approval
+            </p>
           </div>
           <div className="flex justify-center items-center p-2 rounded-[8px] bg-[#CFE3FF]">
-            <SearchDas />
+            <Pending />
           </div>
         </div>
       ),
@@ -193,14 +198,18 @@ const Administrator = () => {
         <div className="w-full flex gap-x-[35px] justify-between items-start">
           <div className="flex flex-col gap-y-[8px]">
             <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">
-              In Progress
+              Total Residuals
             </p>
             <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
-              {dashboardAnlytics?.inProgress}
+              {dashboardAnlytics?.totalResidual}
             </h2>
+            <p className="mt-[5px] font-normal text-xs leading-[135%] text-[#01af76] flex items-center gap-x-1">
+              <FaLongArrowAltUp />
+              12.5% from last month
+            </p>
           </div>
-          <div className="flex justify-center items-center p-2 rounded-[8px] bg-[#FFF3D5]">
-            <InProgress />
+          <div className="flex justify-center items-center p-2 rounded-[8px] bg-[#FFE1AA]">
+            <SearchDas />
           </div>
         </div>
       ),
@@ -305,7 +314,7 @@ const Administrator = () => {
           <div
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className="dashboard-box w-[250px] xl:w-1/2 p-5 bg-[var(--secondary)] rounded-[8px] cursor-pointer"
+            className="dashboard-box w-[281px] xl:w-1/2 pt-3 px-[18px] pb-[21px] bg-[var(--secondary)] rounded-[8px] cursor-pointer"
             // className={`px-4 py-2 text-sm font-medium border-b-2 ${
             //   activeTab === tab.label
             //     ? "border-blue-500 text-blue-600"
