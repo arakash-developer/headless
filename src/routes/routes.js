@@ -30,7 +30,7 @@ export const routes = [
   { path: "/demo7", component: Demo7, access: "guest" },
   { path: "/", component: Login, access: "guest" },
   { path: "/signup", component: Register, access: "guest" },
-  { path: "/inviteuser", component: InviteUser, access: "guest" },
+  { path: "/inviteuser", component: InviteUser, access: "administrator" },
   { path: "/forget", component: Forget, access: "guest" },
   { path: "/confirmemail/:email", component: ConfirmEmail, access: "guest" },
   // demo routes

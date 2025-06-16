@@ -127,6 +127,16 @@ const Sidebar = () => {
                     <p className="py-1">Dashboard</p>
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink
+                    className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
+                    to="/inviteuser"
+                    activeClassName="active"
+                  >
+                    <ResidualanalysisIcon />
+                    <p className="py-1">Inviteuser</p>
+                  </NavLink>
+                </li>
                 <li className="">
                   <NavLink
                     className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
@@ -164,16 +174,6 @@ const Sidebar = () => {
                     <li>Home</li>
                     <li>Home</li>
                   </ul> */}
-                </li>
-                <li>
-                  <NavLink
-                    className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
-                    to="/residualanalysis"
-                    activeClassName="active"
-                  >
-                    <ResidualanalysisIcon />
-                    <p className="py-1">Analysis and Reports</p>
-                  </NavLink>
                 </li>
               </>
             )}
