@@ -3,7 +3,7 @@ import CustomToast from "@/util/CustomToast";
 import Succ from "@assets/Success.svg";
 
 export const notify = (type, title, message = "", icon = "✅") => {
-  const content = <CustomToast title={title} message={message} icon={Succ} />;
+  const content = <CustomToast title={title} message={message} icon={icon} />;
 
   switch (type) {
     case "success":
