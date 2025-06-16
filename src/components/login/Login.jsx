@@ -68,12 +68,10 @@ const Login = () => {
             ...toastStyle,
             style: { background: "var(--primary)", color: "#fff" },
           });
-          console.log("Login successful:", data.user.roles[0]);
+          localStorage.setItem("user_data", JSON.stringify(data.user));
           if (data.user.roles[0] === "administrator") {
             localStorage.setItem("administrator", "akash@123");
-            navigate("/administrator", {
-              state: { user: data.user },
-            });
+            navigate("/administrator", { state: { user: data.user } });
             return;
           }
         }
@@ -101,7 +99,7 @@ const Login = () => {
 
         // Store the JWT token and user data in localStorage for future requests
         localStorage.setItem("auth_token", data.token);
-        localStorage.setItem("user_data", JSON.stringify(data.user));
+
         localStorage.setItem("logintoken", "akash123");
 
         // Now check if the company email exists
