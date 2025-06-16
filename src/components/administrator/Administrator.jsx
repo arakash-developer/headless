@@ -5,7 +5,6 @@ import Pending from "@/assets/Pending";
 import PopularEquipment from "@/assets/PopularEquipment";
 import ResPlus from "@/assets/ResPlus";
 import SearchDas from "@/assets/SearchDas";
-import Shopimg from "@/assets/Shopimg";
 import Graph1 from "@public/graph1.png";
 import Graph2 from "@public/graph2.png";
 import { Button, Select, Tooltip } from "antd";
@@ -181,7 +180,7 @@ const Administrator = () => {
       content: (
         <>
           <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
-            Residual Analysis 1
+            Pending Requests
           </h2>
           <div className="mt-3 bg-[var(--secondary)] h-[236px] text-center flex flex-col justify-center items-center dashboard-box gap-y-[18px]">
             <ResPlus />
@@ -216,7 +215,7 @@ const Administrator = () => {
       content: (
         <>
           <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
-            Residual Analysis 2
+            Residual Analysis
           </h2>
           <div className="mt-3 bg-[var(--secondary)] h-[236px] text-center flex flex-col justify-center items-center dashboard-box gap-y-[18px]">
             <ResPlus />
@@ -233,21 +232,24 @@ const Administrator = () => {
         <div className="w-full flex gap-x-[35px] justify-between items-start">
           <div className="flex flex-col gap-y-[8px]">
             <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">
-              My Listings
+              Active Services
             </p>
             <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
-              {dashboardAnlytics?.myListings}
+              {dashboardAnlytics?.inProgress}
             </h2>
+            <p className="mt-[5px] font-normal text-xs leading-[135%] text-[#6F7482]">
+              Services currently enabled
+            </p>
           </div>
-          <div className="flex justify-center items-center p-2 rounded-[8px] bg-[#CAF8FF]">
-            <Shopimg />
+          <div className="flex justify-center items-center p-2 rounded-[8px] bg-[#CFE3FF]">
+            <Pending />
           </div>
         </div>
       ),
       content: (
         <>
           <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
-            Residual Analysis 3
+            Active Services
           </h2>
           <div className="mt-3 bg-[var(--secondary)] h-[236px] text-center flex flex-col justify-center items-center dashboard-box gap-y-[18px]">
             <ResPlus />
