@@ -55,7 +55,7 @@ const Administrator = () => {
         if (companyData) {
           setCompany(companyData);
         } else {
-          toast.error("No company data found for this user.", toastStyle);
+          // toast.error("No company data found for this user.", toastStyle);
         }
       } else {
         toast.error(data.message || "Failed to load company data.", toastStyle);

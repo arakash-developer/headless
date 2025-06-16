@@ -71,8 +71,7 @@ const Login = () => {
           localStorage.setItem("user_data", JSON.stringify(data.user));
           if (data.user.roles[0] === "administrator") {
             localStorage.setItem("administrator", "akash@123");
-            navigate("/administrator", { state: { user: data.user } });
-            return;
+            return navigate("/administrator", { state: { user: data.user } });
           }
         }
         if (!response.ok) {
@@ -114,27 +113,29 @@ const Login = () => {
 
         const companyData = await companyDataResponse.json();
 
-        if (companyData.status === "success") {
-          const companyEmails = companyData.data.map(
-            (company) => company.businessEmail
-          );
-          if (companyEmails.includes(email)) {
-            localStorage.setItem("logintoken", "akash@123");
-            localStorage.setItem("com_auth_token", "akash");
-            setIsLogin(true);
-            navigate("/dashboard", { state: { user: data.user } });
-            setLoading(false);
+        if (data.user.roles[0] !== "administrator") {
+          if (companyData.status === "success") {
+            const companyEmails = companyData.data.map(
+              (company) => company.businessEmail
+            );
+            if (companyEmails.includes(email)) {
+              localStorage.setItem("logintoken", "akash@123");
+              localStorage.setItem("com_auth_token", "akash");
+              setIsLogin(true);
+              navigate("/dashboard", { state: { user: data.user } });
+              setLoading(false);
+            } else {
+              setIsLogin(true);
+              localStorage.setItem("logintoken", "akash@123");
+              navigate("/companyregistration", { state: { useremail: email } });
+              setLoading(false);
+            }
           } else {
-            setIsLogin(true);
-            localStorage.setItem("logintoken", "akash@123");
-            navigate("/companyregistration", { state: { useremail: email } });
-            setLoading(false);
+            toast.error(
+              companyData.message || "Failed to load company data.",
+              toastStyle
+            );
           }
-        } else {
-          toast.error(
-            companyData.message || "Failed to load company data.",
-            toastStyle
-          );
         }
       } catch (error) {
         toast.error(error.message, toastStyle);
