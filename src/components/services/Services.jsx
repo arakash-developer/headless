@@ -651,7 +651,7 @@ const Services = () => {
       <div className="flex gap-x-2 items-center mt-6 mb-[62px]">
         <button
           onClick={handleSubmitAsset}
-          className="bg-[var(--neutral)] font-medium text-sm leading-[171%] text-[var(--text-disabled)] py-3 px-4 rounded-[8px] border border-[var(--neutral)] fixed left-5 bottom-5"
+          className="bg-[var(--neutral)] font-medium text-sm leading-[171%] text-[var(--text-disabled)] py-3 px-4 rounded-[8px] border border-[var(--neutral)]  left-5 bottom-5"
         >
           Submit
         </button>
