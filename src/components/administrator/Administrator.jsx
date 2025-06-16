@@ -275,7 +275,7 @@ const Administrator = () => {
               12.5% from last month
             </p>
           </div>
-          <div className="flex justify-center items-center p-2 rounded-[8px] bg-[#CFE3FF]">
+          <div className="flex justify-center items-center p-2 rounded-[8px] bg-[#B5FFAE]">
             <Pending />
           </div>
         </div>
