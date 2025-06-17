@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 const InviteUser = () => {
   const navigate = useNavigate();
   const [toastError, setToastError] = useState("");
-  const [selected, setSelected] = useState(""); // Add this missing state
+  const [selected, setSelected] = useState("");
 
   const [formData, setFormData] = useState({
     code: "",
@@ -43,6 +43,29 @@ const InviteUser = () => {
     toast.error(msg, toastStyle);
   };
 
+  // Function to generate a random code
+  const generateInvitationCode = () => {
+    // Generate a random alphanumeric code
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let result = "";
+    const length = 6; // Code length
+
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(
+        Math.floor(Math.random() * characters.length)
+      );
+    }
+
+    // Update formData with the generated code
+    setFormData({ ...formData, code: result });
+
+    // Show success message
+    toast.success("Invitation code generated!", {
+      ...toastStyle,
+      style: { background: "var(--primary)", color: "#fff" },
+    });
+  };
+
   const registerCheck = (e) => {
     e.preventDefault();
 
@@ -56,6 +79,8 @@ const InviteUser = () => {
       extension,
       source,
       category,
+      mobile,
+      code,
     } = formData;
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -74,6 +99,11 @@ const InviteUser = () => {
     if (!emailRegex.test(email)) return showError("Enter a valid email");
     if (!source) return showError("Please select a Source");
     if (!category) return showError("Please select a Category");
+    if (!mobile) return showError("Mobile number is required");
+    if (!code) return showError("Invitation code is required");
+
+    // Log all form data for verification
+    console.log("Form Data Submitted:", formData);
 
     toast.success("Next Step!", {
       ...toastStyle,
@@ -229,14 +259,17 @@ const InviteUser = () => {
                   Invitation Code
                 </label>
                 <div className="cursor-pointer">
-                  <p className="text-[var(--primary2)] font-medium text-sm leading-[200%] text-center text-[#343a40] rounded-[5px] py-2 px-8 border border-[var(--text-secondary)] inline-block">
+                  <p
+                    className="text-[var(--primary2)] font-medium text-sm leading-[200%] text-center text-[#343a40] rounded-[5px] py-2 px-8 border border-[var(--text-secondary)] inline-block"
+                    onClick={generateInvitationCode}
+                  >
                     Generate Code
                   </p>
                 </div>
               </div>
 
               <div className="w-full py-[10px] px-3 border border-[var(--neutral-400)] rounded-[8px] bg-[var(--background)] text-[var(--primary2)] font-normal text-sm leading-[171%] text-[#343a40]">
-                AXCD
+                {formData.code || "No code generated yet"}
               </div>
             </div>
 
