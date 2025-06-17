@@ -4,7 +4,6 @@ import { Input, Select } from "antd";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import Key from "../../public/key.svg";
 const InviteUser = () => {
   const navigate = useNavigate();
   const [toastError, setToastError] = useState("");
@@ -226,16 +225,20 @@ const InviteUser = () => {
             </div>
 
             {/* Code Display */}
-            <p className="pb-2 text-[var(--primary2)] text-base font-medium">
-              Unique Invitation Code
-            </p>
-            <div className="rounded-[5px] py-5 px-4 flex gap-x-[9px] items-center border border-[#DBDCDE] cursor-pointer max-w-[167px]">
-              <p className="overflow-hidden text-[var(--primary2)] text-sm font-semibold">
-                Generate Code
-              </p>
-              <img src={Key} alt="key icon" />
+            <div className="">
+              <label className="text-[var(--primary2)] font-medium text-sm leading-[171%] text-[#343a40]">
+                Invitation Code
+              </label>
+              <div className="cursor-pointer">
+                <p className="text-[var(--primary2)] font-medium text-sm leading-[200%] text-center text-[#343a40] rounded-[5px] py-2 px-8 border border-[#DBDCDE] inline-block">
+                  Generate Code
+                </p>
+              </div>
             </div>
 
+            <div className="py-2 px-3 border border-[var(--neutral-400)] rounded-[8px] bg-[var(--background)] text-[var(--primary2)] font-normal text-sm leading-[171%] text-[#343a40]">
+              AXCD
+            </div>
             {/* Submit & Clear */}
             <div className="flex gap-x-[42px] items-center">
               <button
