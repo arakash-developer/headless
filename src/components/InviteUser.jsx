@@ -240,10 +240,10 @@ const InviteUser = () => {
               AXCD
             </div>
             {/* Submit & Clear */}
-            <div className="flex gap-x-[42px] items-center">
+            <div className="flex gap-x-[42px] items-center mt-2">
               <button
                 type="submit"
-                className="py-[18px] px-[60px] bg-[var(--primary)] rounded-[5px] text-white text-base font-bold max-w-[275px] cursor-pointer"
+                className="py-2 px-4 bg-[var(--primary)] rounded-[5px] text-white  max-w-[275px] cursor-pointer font-medium text-sm leading-[200%] text-center text-[var(--secondary)] inline-block"
               >
                 Send Invitation
               </button>
