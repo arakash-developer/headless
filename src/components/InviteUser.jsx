@@ -4,10 +4,13 @@ import { Input, Select } from "antd";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+
 const InviteUser = () => {
   const navigate = useNavigate();
   const [toastError, setToastError] = useState("");
   const [selected, setSelected] = useState("");
+  const [isLoading, setIsLoading] = useState(false); // For displaying loading state
+  const [errorMessage, setErrorMessage] = useState(""); // For displaying error message
 
   const [formData, setFormData] = useState({
     code: "",
@@ -66,9 +69,10 @@ const InviteUser = () => {
     });
   };
 
-  const registerCheck = (e) => {
+  const registerCheck = async (e) => {
     e.preventDefault();
 
+    // Existing validation code
     const {
       email,
       firstName,
@@ -142,15 +146,74 @@ const InviteUser = () => {
     if (code.length < 4)
       return showError("Invalid invitation code. Please generate a new one.");
 
-    // Log all form data for verification
-    console.log("Form Data Submitted:", formData);
+    // If no code exists, generate one
+    let submissionCode = code;
+    if (!submissionCode) {
+      submissionCode = generateInvitationCode();
+      setFormData({ ...formData, code: submissionCode });
+    }
 
-    toast.success("Next Step!", {
-      ...toastStyle,
-      style: { background: "var(--primary)", color: "#fff" },
-    });
+    setIsLoading(true); // Set loading state to true
+    setErrorMessage(""); // Clear any previous error message
 
-    navigate("/register2");
+    try {
+      // Send form data to the backend using fetch
+      const response = await fetch(
+        "https://4amitest-bli6.wp1.sh/wp-json/headless-form/v1/submit",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ...formData, code: submissionCode }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Handle success
+        console.log("Form data successfully submitted:", data);
+
+        // Show success toast
+        toast.success(`Invitation sent successfully!`, {
+          ...toastStyle,
+          style: { background: "var(--primary)", color: "#fff" },
+        });
+
+        // Reset form
+        setFormData({
+          code: "",
+          mobile: "",
+          email: "",
+          firstName: "",
+          lastName: "",
+          title: "",
+          company: "",
+          phone: "",
+          extension: "",
+          source: "",
+          category: "",
+        });
+
+        // Navigate to next page
+        navigate("/register2");
+      } else {
+        // Handle error response from server
+        setErrorMessage(
+          data.message || "Something went wrong. Please try again later."
+        );
+        showError(
+          data.message || "Something went wrong. Please try again later."
+        );
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setErrorMessage("Error submitting form. Please try again later.");
+      showError("Error submitting form. Please try again later.");
+    } finally {
+      setIsLoading(false); // Set loading state to false when the request is done
+    }
   };
   // categoryOptions;
   const handleSourceChange = (option) => {
@@ -173,6 +236,13 @@ const InviteUser = () => {
       <div className="mt-5"></div>
       <div className="max-w-[1098px] pt-[45px] pb-5 pl-[55px] pr-[22px] bg-[#fff] rounded-[5px] formboxshadow flex justify-between items-start gap-x-10 mb-[26px]">
         <div className="">
+          {/* Show error message if exists */}
+          {errorMessage && (
+            <div className="mb-4 p-4 bg-red-100 text-red-800 rounded-md">
+              {errorMessage}
+            </div>
+          )}
+
           <div className="">
             <h2 className="text-[var(--primary2)] text-[24px] font-medium text-2xl leading-[117%]">
               Send an Invitation
@@ -317,12 +387,16 @@ const InviteUser = () => {
             <div className="flex gap-x-6 items-center mt-2">
               <button
                 type="submit"
-                className="py-2 px-8 bg-[var(--primary)] rounded-[5px] text-white  cursor-pointer font-medium text-sm text-center text-[var(--secondary)] block  border border-[var(--secondary)] leading-[28px]"
+                disabled={isLoading}
+                className={`py-2 px-8 bg-[var(--primary)] rounded-[5px] text-white cursor-pointer font-medium text-sm text-center text-[var(--secondary)] block border border-[var(--secondary)] leading-[28px] ${
+                  isLoading ? "opacity-70 cursor-not-allowed" : ""
+                }`}
               >
-                Send Invitation
+                {isLoading ? "Sending..." : "Send Invitation"}
               </button>
               <button
                 type="button"
+                disabled={isLoading}
                 onClick={() => {
                   setFormData({
                     code: "",
@@ -338,8 +412,11 @@ const InviteUser = () => {
                     category: "",
                   });
                   setToastError("");
+                  setErrorMessage("");
                 }}
-                className="py-2 px-8 border border-[#919191] rounded-[5px] text-[var(--primary2)80] cursor-pointer font-medium text-sm text-center text-[#343a40] leading-[28px]"
+                className={`py-2 px-8 border border-[#919191] rounded-[5px] text-[var(--primary2)80] cursor-pointer font-medium text-sm text-center text-[#343a40] leading-[28px] ${
+                  isLoading ? "opacity-70 cursor-not-allowed" : ""
+                }`}
               >
                 Discard Changes
               </button>
