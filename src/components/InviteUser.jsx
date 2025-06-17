@@ -2,7 +2,7 @@ import DownArrow2 from "@/assets/DownArrow2";
 import InviteImage from "@public/invitebanner.svg";
 import { Input, Select } from "antd";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 const InviteUser = () => {
   const navigate = useNavigate();
@@ -101,8 +101,7 @@ const InviteUser = () => {
   return (
     <div>
       <div className="mt-5"></div>
-
-      <div className="max-w-[1098px] pt-[45px] pb-5 pl-[55px] pr-[22px] bg-[#fff] rounded-[5px] formboxshadow flex justify-between items-start gap-x-10">
+      <div className="max-w-[1098px] pt-[45px] pb-5 pl-[55px] pr-[22px] bg-[#fff] rounded-[5px] formboxshadow flex justify-between items-start gap-x-10 mb-[26px]">
         <div className="">
           <div className="">
             <h2 className="text-[var(--primary2)] text-[24px] font-medium text-2xl leading-[117%]">
@@ -280,6 +279,32 @@ const InviteUser = () => {
             src={InviteImage}
             alt={"invite image"}
           />
+          <div className="pt-[45px] flex justify-end items-center gap-x-4">
+            <Link
+              to="/"
+              className="font-normal text-xs text-[var(--primary2)] underline"
+            >
+              Terms of Use
+            </Link>
+            <Link
+              to="/"
+              className="font-normal text-xs text-[var(--primary2)] underline"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              to="/"
+              className="font-normal text-xs text-[var(--primary2)] underline"
+            >
+              Cookie Policy
+            </Link>
+            <Link
+              to="/"
+              className="font-normal text-xs text-[var(--primary2)] underline"
+            >
+              Anti Bribery Policy
+            </Link>
+          </div>
         </div>
       </div>
     </div>
