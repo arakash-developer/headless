@@ -1,4 +1,4 @@
-import { notify } from "@/util/notify";
+import { notify } from "@/util/Notify";
 
 const DemoToast = () => {
   return (
