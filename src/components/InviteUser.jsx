@@ -1,3 +1,4 @@
+import DownArrow2 from "@/assets/DownArrow2";
 import InviteImage from "@public/invitebanner.svg";
 import { Input, Select } from "antd";
 import { useState } from "react";
@@ -181,11 +182,11 @@ const InviteUser = () => {
             <div className="flex gap-x-6">
               <div className="w-1/2">
                 <FormField
-                  label="Mobile"
+                  label="Source"
                   type="text"
                   required
-                  value={formData.mobile}
-                  onChange={(val) => setFormData({ ...formData, mobile: val })}
+                  value={formData.source}
+                  onChange={(val) => setFormData({ ...formData, source: val })}
                 />
               </div>
               {/* Category */}
@@ -193,22 +194,27 @@ const InviteUser = () => {
                 <label className="text-[var(--primary2)] font-medium text-sm leading-[171%] text-[#343a40]">
                   Category
                 </label>
-                <Select
-                  // defaultValue={<span style={{ color: "gray" }}>Select One</span>}
-                  placeholder={
-                    <span style={{ color: "#ADB5BD" }}>Select One</span>
-                  }
-                  style={{ height: "40px", color: "red" }}
-                  onChange={handleSourceChange}
-                  className="w-full custom-select no-arrow-select bg-[var(--background)]"
-                  dropdownMatchSelectWidth={false}
-                >
-                  {categoryOptions.map((option) => (
-                    <Select.Option key={option.value} value={option.value}>
-                      <p>{option.label}</p>
-                    </Select.Option>
-                  ))}
-                </Select>
+                <div className="relative cursor-pointer">
+                  <Select
+                    // defaultValue={<span style={{ color: "gray" }}>Select One</span>}
+                    placeholder={
+                      <span style={{ color: "#ADB5BD" }}>Select One</span>
+                    }
+                    style={{ height: "40px", color: "red" }}
+                    onChange={handleSourceChange}
+                    className="w-full custom-select no-arrow-select bg-[var(--background)]"
+                    dropdownMatchSelectWidth={false}
+                  >
+                    {categoryOptions.map((option) => (
+                      <Select.Option key={option.value} value={option.value}>
+                        <p>{option.label}</p>
+                      </Select.Option>
+                    ))}
+                  </Select>
+                  <div className="absolute top-1/2 -translate-y-1/2 right-[16px] pointer-events-none">
+                    <DownArrow2 color="var(--text-secondary)" />
+                  </div>
+                </div>
               </div>
             </div>
 
