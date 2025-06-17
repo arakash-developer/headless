@@ -1,15 +1,16 @@
 import InviteImage from "@public/invitebanner.svg";
+import { Input } from "antd";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Key from "../../public/key.svg";
-import { Input } from "antd";
 const InviteUser = () => {
   const navigate = useNavigate();
   const [toastError, setToastError] = useState("");
 
   const [formData, setFormData] = useState({
     code: "",
+    mobile: "",
     email: "",
     firstName: "",
     lastName: "",
@@ -150,6 +151,15 @@ const InviteUser = () => {
               />
             </div>
 
+            {/* mobile */}
+            <FormField
+              label="Mobile"
+              type="text"
+              required
+              value={formData.mobile}
+              onChange={(val) => setFormData({ ...formData, mobile: val })}
+            />
+
             {/* Email */}
             <FormField
               label="Email"
@@ -222,6 +232,7 @@ const InviteUser = () => {
                   setFormData({
                     code: "",
                     email: "",
+                    mobile: "",
                     firstName: "",
                     lastName: "",
                     title: "",
