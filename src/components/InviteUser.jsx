@@ -46,29 +46,6 @@ const InviteUser = () => {
     toast.error(msg, toastStyle);
   };
 
-  // Function to generate a random code
-  const generateInvitationCode = () => {
-    // Generate a random alphanumeric code
-    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    let result = "";
-    const length = 6; // Code length
-
-    for (let i = 0; i < length; i++) {
-      result += characters.charAt(
-        Math.floor(Math.random() * characters.length)
-      );
-    }
-
-    // Update formData with the generated code
-    setFormData({ ...formData, code: result });
-
-    // Show success message
-    toast.success("Invitation code generated!", {
-      ...toastStyle,
-      style: { background: "var(--primary)", color: "#fff" },
-    });
-  };
-
   const registerCheck = async (e) => {
     e.preventDefault();
 
@@ -120,8 +97,7 @@ const InviteUser = () => {
     if (!phoneRegex.test(phone))
       return showError("Enter a valid phone number (7-15 digits)");
 
-    if (!extension?.trim()) return showError("Extension is required");
-    if (!extRegex.test(extension))
+    if (extension && !extRegex.test(extension))
       return showError("Enter a valid extension (1-5 digits)");
 
     // Mobile validation
@@ -141,22 +117,25 @@ const InviteUser = () => {
 
     if (!category) return showError("Please select a Category");
 
-    // Code validation
-    if (!code?.trim()) return showError("Invitation code is required");
-    if (code.length < 4)
-      return showError("Invalid invitation code. Please generate a new one.");
-
     // If no code exists, generate one
     let submissionCode = code;
-    if (!submissionCode) {
-      submissionCode = generateInvitationCode();
+    if (!submissionCode?.trim()) {
+      // Generate a code if none exists
+      submissionCode = generateRandomCode();
       setFormData({ ...formData, code: submissionCode });
+      return showError("Please generate an invitation code first");
     }
 
     setIsLoading(true); // Set loading state to true
     setErrorMessage(""); // Clear any previous error message
 
     try {
+      // Log form data for debugging
+      console.log("Submitting form data:", {
+        ...formData,
+        code: submissionCode,
+      });
+
       // Send form data to the backend using fetch
       const response = await fetch(
         "https://4amitest-bli6.wp1.sh/wp-json/headless-form/v1/submit",
@@ -169,7 +148,17 @@ const InviteUser = () => {
         }
       );
 
-      const data = await response.json();
+      console.log("Response status:", response.status);
+
+      // Parse the response as JSON
+      let data;
+      try {
+        data = await response.json();
+        console.log("Response data:", data);
+      } catch (error) {
+        console.error("Error parsing response:", error);
+        throw new Error("Invalid response from server");
+      }
 
       if (response.ok) {
         // Handle success
@@ -215,7 +204,37 @@ const InviteUser = () => {
       setIsLoading(false); // Set loading state to false when the request is done
     }
   };
-  // categoryOptions;
+
+  // Helper function to generate a random code
+  const generateRandomCode = () => {
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let result = "";
+    const length = 6; // Code length
+
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(
+        Math.floor(Math.random() * characters.length)
+      );
+    }
+
+    return result;
+  };
+
+  // Function to generate a random code
+  const generateInvitationCode = () => {
+    // Generate a random alphanumeric code using the helper function
+    const result = generateRandomCode();
+
+    // Update formData with the generated code
+    setFormData({ ...formData, code: result });
+
+    // Show success message
+    toast.success("Invitation code generated!", {
+      ...toastStyle,
+      style: { background: "var(--primary)", color: "#fff" },
+    });
+  };
+
   const handleSourceChange = (option) => {
     setSelected(option);
     setFormData({ ...formData, source: option });
