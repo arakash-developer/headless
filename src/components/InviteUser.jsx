@@ -153,14 +153,12 @@ const InviteUser = () => {
               <FormField
                 label="Phone"
                 type="text"
-                placeholder="(123) 4567890"
                 value={formData.phone}
                 onChange={(val) => setFormData({ ...formData, phone: val })}
                 wrapperClass="w-1/2"
               />
               <FormField
                 label="Extension"
-                placeholder="123"
                 value={formData.extension}
                 onChange={(val) => setFormData({ ...formData, extension: val })}
                 wrapperClass="w-1/2"
