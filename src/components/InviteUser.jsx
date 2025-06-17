@@ -182,12 +182,13 @@ const InviteUser = () => {
               value={formData.email}
               onChange={(val) => setFormData({ ...formData, email: val })}
             />
-            <div className="flex gap-x-6">
+            <div className="flex items-end gap-x-6">
               <div className="w-1/2">
                 <FormField
                   label="Source"
                   type="text"
                   required
+                  description="where or how did we meet this person"
                   value={formData.source}
                   onChange={(val) => setFormData({ ...formData, source: val })}
                 />
@@ -286,14 +287,22 @@ const FormField = ({
   label,
   value,
   onChange,
+  description,
   type = "text",
   placeholder,
   wrapperClass = "flex flex-col gap-y-2",
 }) => (
   <div className={wrapperClass}>
-    <label className="text-[var(--primary2)] font-medium text-sm leading-[171%] text-[#343a40]">
-      {label}
-    </label>
+    <div className="">
+      <label className="text-[var(--primary2)] font-medium text-sm leading-[171%] text-[#343a40]">
+        {label}
+      </label>
+      {description && (
+        <p className="font-normal text-sm leading-[171%] text-[var(--text-secondary)]">
+          {description}
+        </p>
+      )}
+    </div>
     <Input
       type={type}
       value={value}
