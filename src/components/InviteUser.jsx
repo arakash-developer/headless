@@ -83,24 +83,64 @@ const InviteUser = () => {
       code,
     } = formData;
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const phoneRegex = /^[0-9]{7,15}$/;
+    const mobileRegex = /^[0-9]{10,15}$/;
     const extRegex = /^[0-9]{1,5}$/;
+    const nameRegex = /^[a-zA-Z\s'-]{2,50}$/;
 
-    if (!firstName) return showError("First Name is required");
-    if (!lastName) return showError("Last Name is required");
-    if (!title) return showError("Title is required");
-    if (!company) return showError("Company is required");
-    if (!phone) return showError("Phone number is required");
-    if (!phoneRegex.test(phone)) return showError("Enter a valid phone number");
-    if (!extension) return showError("Extension is required");
-    if (!extRegex.test(extension)) return showError("Enter a valid extension");
-    if (!email) return showError("Email is required");
-    if (!emailRegex.test(email)) return showError("Enter a valid email");
-    if (!source) return showError("Please select a Source");
+    // Name validations with more specific messages
+    if (!firstName?.trim()) return showError("First Name is required");
+    if (!nameRegex.test(firstName))
+      return showError(
+        "First Name must be 2-50 characters with only letters, spaces, hyphens, or apostrophes"
+      );
+
+    if (!lastName?.trim()) return showError("Last Name is required");
+    if (!nameRegex.test(lastName))
+      return showError(
+        "Last Name must be 2-50 characters with only letters, spaces, hyphens, or apostrophes"
+      );
+
+    // Business info validations
+    if (!title?.trim()) return showError("Title is required");
+    if (title.length < 2 || title.length > 100)
+      return showError("Title must be between 2 and 100 characters");
+
+    if (!company?.trim()) return showError("Company is required");
+    if (company.length < 2 || company.length > 100)
+      return showError("Company name must be between 2 and 100 characters");
+
+    // Phone validations
+    if (!phone?.trim()) return showError("Phone number is required");
+    if (!phoneRegex.test(phone))
+      return showError("Enter a valid phone number (7-15 digits)");
+
+    if (!extension?.trim()) return showError("Extension is required");
+    if (!extRegex.test(extension))
+      return showError("Enter a valid extension (1-5 digits)");
+
+    // Mobile validation
+    if (!mobile?.trim()) return showError("Mobile number is required");
+    if (!mobileRegex.test(mobile))
+      return showError("Enter a valid mobile number (10-15 digits)");
+
+    // Email validation
+    if (!email?.trim()) return showError("Email is required");
+    if (!emailRegex.test(email))
+      return showError("Enter a valid email address (e.g., name@example.com)");
+
+    // Source and category validations
+    if (!source?.trim()) return showError("Source is required");
+    if (source.length < 2)
+      return showError("Source must be at least 2 characters");
+
     if (!category) return showError("Please select a Category");
-    if (!mobile) return showError("Mobile number is required");
-    if (!code) return showError("Invitation code is required");
+
+    // Code validation
+    if (!code?.trim()) return showError("Invitation code is required");
+    if (code.length < 4)
+      return showError("Invalid invitation code. Please generate a new one.");
 
     // Log all form data for verification
     console.log("Form Data Submitted:", formData);
