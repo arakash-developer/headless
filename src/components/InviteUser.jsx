@@ -244,7 +244,7 @@ const InviteUser = () => {
             <div className="flex gap-x-6 items-center mt-2">
               <button
                 type="submit"
-                className="py-2 px-4 bg-[var(--primary)] rounded-[5px] text-white  cursor-pointer font-medium text-sm leading-[200%] text-center text-[var(--secondary)] inline-block  border border-[var(--secondary)]"
+                className="py-2 px-8 bg-[var(--primary)] rounded-[5px] text-white  cursor-pointer font-medium text-sm text-center text-[var(--secondary)] block  border border-[var(--secondary)] leading-[28px]"
               >
                 Send Invitation
               </button>
@@ -266,7 +266,7 @@ const InviteUser = () => {
                   });
                   setToastError("");
                 }}
-                className="py-2 px-4 border border-[#919191] rounded-[5px] text-[var(--primary2)80] cursor-pointer font-medium text-sm leading-[200%] text-center text-[#343a40]"
+                className="py-2 px-8 border border-[#919191] rounded-[5px] text-[var(--primary2)80] cursor-pointer font-medium text-sm text-center text-[#343a40] leading-[28px]"
               >
                 Discard Changes
               </button>
