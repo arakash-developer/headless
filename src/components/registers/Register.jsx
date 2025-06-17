@@ -67,9 +67,16 @@ const Register = () => {
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
   let handleuserSubmitstep0 = () => {
-    if(!formData.code) return toast.error("Invitation is required", toastStyle);
-    if (!/^[A-Za-z0-9-]+$/.test(formData.code))
-      return toast.error("Invitation should be alphanumeric and hyphens only", toastStyle);
+    // Validate the required checkbox for terms and conditions
+
+    // Validate invitation code if provided
+    if (formData.code && !/^[A-Za-z0-9-]+$/.test(formData.code))
+      return toast.error(
+        "Invitation should be alphanumeric and hyphens only",
+        toastStyle
+      );
+
+    // Validate required fields
     if (!formData.firstName)
       return toast.error("First Name is required", toastStyle);
     if (!formData.lastName)
@@ -90,9 +97,18 @@ const Register = () => {
     if (!formData.email) return toast.error("Email is required", toastStyle);
     if (!/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(formData.email))
       return toast.error("Enter a valid email address", toastStyle);
+    // If all validations pass, proceed to next step
+    if (!checked) {
+      return toast.error(
+        "Please agree to the Terms and Privacy Policy",
+        toastStyle
+      );
+    }
     setCurrent(current + 1);
   };
+
   let handleuserSubmitstep1 = async (callback) => {
+    // Validate username
     if (!formData.userName)
       return toast.error("Username is required", toastStyle);
     if (!/^[a-z0-9_-]{3,15}$/.test(formData.userName))
@@ -100,25 +116,34 @@ const Register = () => {
         "Username should be between 3 to 15 characters, alphanumeric, hyphens and underscores only",
         toastStyle
       );
+
+    // Validate password
     if (!formData.password)
       return toast.error("Password is required", toastStyle);
+    if (formData.password.length < 8)
+      return toast.error("Password must be at least 8 characters", toastStyle);
+
+    // Validate password confirmation
     if (!formData.confirmPassword)
       return toast.error("Confirm Password is required", toastStyle);
     if (formData.password !== formData.confirmPassword)
       return toast.error("Password does not match", toastStyle);
-    else {
-      let datas = {
-        username: formData.userName,
-        password: formData.password,
-        email: formData.email,
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        title: formData.title,
-        company: formData.company,
-        phone: formData.phone,
-        extension: formData.extension,
-        code: formData.code,
-      };
+
+    // If all validations pass, proceed with registration
+    let datas = {
+      username: formData.userName,
+      password: formData.password,
+      email: formData.email,
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      title: formData.title,
+      company: formData.company,
+      phone: formData.phone,
+      extension: formData.extension,
+      code: formData.code,
+    };
+
+    try {
       let response = await postRegistration(datas);
       if (response?.login) {
         setCurrent(current + 1);
@@ -127,8 +152,15 @@ const Register = () => {
           ...toastStyle,
           style: { background: "var(--primary)", color: "#fff" },
         });
+      } else {
+        toast.error(response.message || "Registration failed", toastStyle);
       }
-      toast.error(response.message, toastStyle);
+    } catch (error) {
+      toast.error(
+        "An error occurred during registration. Please try again.",
+        toastStyle
+      );
+      console.error("Registration error:", error);
     }
   };
   const next = () => {
@@ -478,8 +510,18 @@ const Register = () => {
                         />
                         <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
                           Password strength:{" "}
-                          <span className="text-[var(--primary)] mt-1">
-                            Strong
+                          <span
+                            className={`mt-1 ${
+                              formData.password && formData.password.length >= 8
+                                ? "text-[var(--primary)]"
+                                : "text-[var(--text-secondary)]"
+                            }`}
+                          >
+                            {!formData.password
+                              ? "Not set"
+                              : formData.password.length >= 8
+                              ? "Strong"
+                              : "Weak"}
                           </span>
                         </p>
                       </div>
@@ -588,6 +630,7 @@ const FormField = ({
   type = "text",
   placeholder,
   wrapperClass = "flex flex-col gap-y-[2px]",
+  isValid,
 }) => (
   <div className={wrapperClass}>
     <label className="text-[var(--text-normal)] font-medium text-sm leading-[171%] text-[#343a40]">
@@ -598,7 +641,12 @@ const FormField = ({
       value={value}
       placeholder={placeholder}
       onChange={(e) => onChange(e.target.value)}
-      className="custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border border-[var(--neutral-400)] rounded-lg h-10"
+      className={`custom-black-input bg-[var(--background)] font-normal text-sm leading-[171%] text-[var(--text-disabled)] py-2 px-3 border ${
+        isValid === false
+          ? "border-[var(--primary)]"
+          : "border-[var(--neutral-400)]"
+      } rounded-lg h-10`}
+      status={isValid === false ? "error" : ""}
     />
   </div>
 );
