@@ -8,6 +8,7 @@ import Key from "../../public/key.svg";
 const InviteUser = () => {
   const navigate = useNavigate();
   const [toastError, setToastError] = useState("");
+  const [selected, setSelected] = useState(""); // Add this missing state
 
   const [formData, setFormData] = useState({
     code: "",
@@ -87,6 +88,11 @@ const InviteUser = () => {
     setSelected(option);
     setFormData({ ...formData, source: option });
   };
+
+  const handleCategoryChange = (option) => {
+    setFormData({ ...formData, category: option });
+  };
+
   const categoryOptions = [
     { value: "segmentRep", label: "Segment Rep" },
     { value: "banking", label: "Banking/Lessor" },
@@ -201,7 +207,8 @@ const InviteUser = () => {
                       <span style={{ color: "#ADB5BD" }}>Select One</span>
                     }
                     style={{ height: "40px", color: "red" }}
-                    onChange={handleSourceChange}
+                    onChange={handleCategoryChange}
+                    value={formData.category || undefined}
                     className="w-full custom-select no-arrow-select bg-[var(--background)]"
                     dropdownMatchSelectWidth={false}
                   >
