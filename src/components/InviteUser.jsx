@@ -223,21 +223,24 @@ const InviteUser = () => {
               </div>
             </div>
 
-            {/* Code Display */}
-            <div className="">
-              <label className="text-[var(--primary2)] font-medium text-sm leading-[171%] text-[#343a40]">
-                Invitation Code
-              </label>
-              <div className="cursor-pointer">
-                <p className="text-[var(--primary2)] font-medium text-sm leading-[200%] text-center text-[#343a40] rounded-[5px] py-2 px-8 border border-[var(--text-secondary)] inline-block">
-                  Generate Code
-                </p>
+            <div className="flex gap-x-2 items-end">
+              {/* Code Display */}
+              <div className="w-[248px]">
+                <label className="text-[var(--primary2)] font-medium text-sm leading-[171%] text-[#343a40]">
+                  Invitation Code
+                </label>
+                <div className="cursor-pointer">
+                  <p className="text-[var(--primary2)] font-medium text-sm leading-[200%] text-center text-[#343a40] rounded-[5px] py-2 px-8 border border-[var(--text-secondary)] inline-block">
+                    Generate Code
+                  </p>
+                </div>
+              </div>
+
+              <div className="w-full py-[10px] px-3 border border-[var(--neutral-400)] rounded-[8px] bg-[var(--background)] text-[var(--primary2)] font-normal text-sm leading-[171%] text-[#343a40]">
+                AXCD
               </div>
             </div>
 
-            <div className="py-2 px-3 border border-[var(--neutral-400)] rounded-[8px] bg-[var(--background)] text-[var(--primary2)] font-normal text-sm leading-[171%] text-[#343a40]">
-              AXCD
-            </div>
             {/* Submit & Clear */}
             <div className="flex gap-x-6 items-center mt-2">
               <button
