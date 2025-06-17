@@ -388,7 +388,7 @@ const InviteUser = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className={`py-2 px-8 bg-[var(--primary)] rounded-[5px] text-white cursor-pointer font-medium text-sm text-center text-[var(--secondary)] block border border-[var(--secondary)] leading-[28px] ${
+                className={`py-2 px-8 bg-[var(--primary)] rounded-[8px] text-white cursor-pointer font-medium text-sm text-center text-[var(--secondary)] block border border-[var(--secondary)] leading-[28px] ${
                   isLoading ? "opacity-70 cursor-not-allowed" : ""
                 }`}
               >
@@ -414,7 +414,7 @@ const InviteUser = () => {
                   setToastError("");
                   setErrorMessage("");
                 }}
-                className={`py-2 px-8 border border-[#919191] rounded-[5px] text-[var(--primary2)80] cursor-pointer font-medium text-sm text-center text-[#343a40] leading-[28px] ${
+                className={`py-2 px-8 border border-[#919191] rounded-[8px] text-[var(--primary2)80] cursor-pointer font-medium text-sm text-center text-[#343a40] leading-[28px] ${
                   isLoading ? "opacity-70 cursor-not-allowed" : ""
                 }`}
               >
