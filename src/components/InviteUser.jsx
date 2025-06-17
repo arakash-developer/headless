@@ -1,5 +1,5 @@
 import InviteImage from "@public/invitebanner.svg";
-import { Input } from "antd";
+import { Input, Select } from "antd";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -81,7 +81,17 @@ const InviteUser = () => {
 
     navigate("/register2");
   };
-
+  // categoryOptions;
+  const handleSourceChange = (option) => {
+    setSelected(option);
+    setFormData({ ...formData, source: option });
+  };
+  const categoryOptions = [
+    { value: "segmentRep", label: "Segment Rep" },
+    { value: "banking", label: "Banking/Lessor" },
+    { value: "endUser", label: "End User" },
+    { value: "oemDealer", label: "OEM/Dealer" },
+  ];
   return (
     <div>
       <div className="mt-5"></div>
@@ -101,7 +111,7 @@ const InviteUser = () => {
           </div>
           <form className="flex flex-col gap-y-4" onSubmit={registerCheck}>
             {/* First & Last Name */}
-            <div className="flex gap-x-[41px]">
+            <div className="flex gap-x-6">
               <FormField
                 label="First Name"
                 value={formData.firstName}
@@ -117,7 +127,7 @@ const InviteUser = () => {
             </div>
 
             {/* Title & Company */}
-            <div className="flex gap-x-[41px]">
+            <div className="flex gap-x-6">
               <FormField
                 label="Title"
                 value={formData.title}
@@ -133,7 +143,7 @@ const InviteUser = () => {
             </div>
 
             {/* Phone & Extension */}
-            <div className="flex gap-x-[41px]">
+            <div className="flex gap-x-6">
               <FormField
                 label="Phone"
                 type="text"
@@ -168,24 +178,38 @@ const InviteUser = () => {
               value={formData.email}
               onChange={(val) => setFormData({ ...formData, email: val })}
             />
-
-            {/* Source */}
-            <div>
-              <label className="text-[var(--primary2)] text-base font-medium">
-                Source
-              </label>
-              <select
-                value={formData.source}
-                onChange={(e) =>
-                  setFormData({ ...formData, source: e.target.value })
-                }
-                className="w-full h-[50px] py-3 px-4 border border-[#DBDCDE] rounded-[8px]"
-              >
-                <option value="">Select One</option>
-                <option value="Referral">Referral</option>
-                <option value="Event">Event</option>
-                <option value="Social">Social</option>
-              </select>
+            <div className="flex gap-x-6">
+              <div className="w-1/2">
+                <FormField
+                  label="Mobile"
+                  type="text"
+                  required
+                  value={formData.mobile}
+                  onChange={(val) => setFormData({ ...formData, mobile: val })}
+                />
+              </div>
+              {/* Category */}
+              <div className="w-1/2">
+                <label className="text-[var(--primary2)] text-sm font-medium">
+                  Category
+                </label>
+                <Select
+                  // defaultValue={<span style={{ color: "gray" }}>Select One</span>}
+                  placeholder={
+                    <span style={{ color: "#ADB5BD" }}>Select One</span>
+                  }
+                  style={{ height: "40px", color: "red" }}
+                  onChange={handleSourceChange}
+                  className="w-full custom-select no-arrow-select bg-[var(--background)]"
+                  dropdownMatchSelectWidth={false}
+                >
+                  {categoryOptions.map((option) => (
+                    <Select.Option key={option.value} value={option.value}>
+                      <p>{option.label}</p>
+                    </Select.Option>
+                  ))}
+                </Select>
+              </div>
             </div>
 
             {/* Category */}
@@ -282,13 +306,6 @@ const FormField = ({
       onChange={(e) => onChange(e.target.value)}
       className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
     />
-    {/* <input
-      type={type}
-      value={value}
-      placeholder={placeholder}
-      onChange={(e) => onChange(e.target.value)}
-      className="w-full h-[50px] py-3 px-4 border border-[#DBDCDE] rounded-[8px] focus:outline-none"
-    /> */}
   </div>
 );
 
