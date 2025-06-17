@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Key from "../../public/key.svg";
+import { Input } from "antd";
 const InviteUser = () => {
   const navigate = useNavigate();
   const [toastError, setToastError] = useState("");
@@ -97,10 +98,7 @@ const InviteUser = () => {
               receive a notification email
             </p>
           </div>
-          <form
-            className="flex flex-col gap-y-6"
-            onSubmit={registerCheck}
-          >
+          <form className="flex flex-col gap-y-4" onSubmit={registerCheck}>
             {/* First & Last Name */}
             <div className="flex gap-x-[41px]">
               <FormField
@@ -263,16 +261,23 @@ const FormField = ({
   wrapperClass = "flex flex-col gap-y-2",
 }) => (
   <div className={wrapperClass}>
-    <label className="text-[var(--primary2)] text-base font-medium">
+    <label className="text-[var(--primary2)] font-medium text-sm leading-[171%] text-[#343a40]">
       {label}
     </label>
-    <input
+    <Input
+      type={type}
+      value={value}
+      placeholder={placeholder}
+      onChange={(e) => onChange(e.target.value)}
+      className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+    />
+    {/* <input
       type={type}
       value={value}
       placeholder={placeholder}
       onChange={(e) => onChange(e.target.value)}
       className="w-full h-[50px] py-3 px-4 border border-[#DBDCDE] rounded-[8px] focus:outline-none"
-    />
+    /> */}
   </div>
 );
 
