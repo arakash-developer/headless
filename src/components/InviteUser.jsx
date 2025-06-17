@@ -281,25 +281,33 @@ const InviteUser = () => {
           />
           <div className="pt-[45px] flex justify-end items-center gap-x-4">
             <Link
-              to="/"
+              to="https://4ami.com/terms-of-use-policy/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-normal text-xs text-[var(--primary2)] underline"
             >
               Terms of Use
             </Link>
             <Link
-              to="/"
+              to="https://4ami.com/privacy-policy-agreement/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-normal text-xs text-[var(--primary2)] underline"
             >
               Privacy Policy
             </Link>
             <Link
-              to="/"
+              target="_blank"
+              rel="noopener noreferrer"
+              to="https://4ami.com/cookie-policy/"
               className="font-normal text-xs text-[var(--primary2)] underline"
             >
               Cookie Policy
             </Link>
             <Link
-              to="/"
+              to="https://4ami.com/anti-bribery-policy/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-normal text-xs text-[var(--primary2)] underline"
             >
               Anti Bribery Policy
