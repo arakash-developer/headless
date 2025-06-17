@@ -189,8 +189,8 @@ const InviteUser = () => {
                 />
               </div>
               {/* Category */}
-              <div className="w-1/2">
-                <label className="text-[var(--primary2)] text-sm font-medium">
+              <div className="w-1/2 flex flex-col gap-y-2">
+                <label className="text-[var(--primary2)] font-medium text-sm leading-[171%] text-[#343a40]">
                   Category
                 </label>
                 <Select
@@ -210,25 +210,6 @@ const InviteUser = () => {
                   ))}
                 </Select>
               </div>
-            </div>
-
-            {/* Category */}
-            <div>
-              <label className="text-[var(--primary2)] text-base font-medium">
-                Category
-              </label>
-              <select
-                value={formData.category}
-                onChange={(e) =>
-                  setFormData({ ...formData, category: e.target.value })
-                }
-                className="w-full h-[50px] py-3 px-4 border border-[#DBDCDE] rounded-[8px]"
-              >
-                <option value="">Select One</option>
-                <option value="Client">Client</option>
-                <option value="Partner">Partner</option>
-                <option value="Other">Other</option>
-              </select>
             </div>
 
             {/* Code Display */}
