@@ -240,10 +240,10 @@ const InviteUser = () => {
               AXCD
             </div>
             {/* Submit & Clear */}
-            <div className="flex gap-x-[42px] items-center mt-2">
+            <div className="flex gap-x-6 items-center mt-2">
               <button
                 type="submit"
-                className="py-2 px-4 bg-[var(--primary)] rounded-[5px] text-white  max-w-[275px] cursor-pointer font-medium text-sm leading-[200%] text-center text-[var(--secondary)] inline-block"
+                className="py-2 px-4 bg-[var(--primary)] rounded-[5px] text-white  cursor-pointer font-medium text-sm leading-[200%] text-center text-[var(--secondary)] inline-block  border border-[var(--secondary)]"
               >
                 Send Invitation
               </button>
@@ -265,9 +265,9 @@ const InviteUser = () => {
                   });
                   setToastError("");
                 }}
-                className="py-[18px] px-[60px] border border-[#919191] rounded-[5px] text-[var(--primary2)80] text-base font-bold max-w-[275px] cursor-pointer"
+                className="py-2 px-4 border border-[#919191] rounded-[5px] text-[var(--primary2)80] cursor-pointer font-medium text-sm leading-[200%] text-center text-[#343a40]"
               >
-                Clear Form
+                Discard Changes
               </button>
             </div>
           </form>
