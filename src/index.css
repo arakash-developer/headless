@@ -192,7 +192,7 @@ ul.companyProfile li a.active {
 /* Default: red border when no value selected */
 .custom-select .ant-select-selector {
   background: var(--background) !important;
-  border-color: var(--text-disabled) !important;
+  border-color: var(--neutral-400) !important;
 }
 .custom-select .ant-select-selector.active {
   background: var(--primary) !important;
