@@ -370,7 +370,7 @@ const InviteUser = () => {
                 </label>
                 <div className="cursor-pointer">
                   <p
-                    className="text-[var(--primary2)] font-medium text-sm leading-[200%] text-center text-[#343a40] rounded-[5px] py-2 px-8 border border-[var(--text-secondary)] inline-block"
+                    className="text-[var(--primary2)] font-medium text-sm leading-[200%] text-center text-[#343a40] rounded-[8px] py-2 px-8 border border-[var(--text-secondary)] inline-block"
                     onClick={generateInvitationCode}
                   >
                     Generate Code
