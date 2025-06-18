@@ -1,7 +1,7 @@
 import DownArrow2 from "@/assets/DownArrow2";
 import { encryptText } from "@/lib/cryptoUtils";
 import postRegistration from "@/lib/postRegistration";
-import emailjs from "@emailjs/browser";
+import { sendConfirmationEmail } from "@/utils/emailUtils";
 import SignupIllustration from "@public/signupillustration.jpg";
 import { Button, Checkbox, Input, Select, theme } from "antd";
 import { useContext, useState } from "react";
@@ -227,29 +227,31 @@ const Register = () => {
       console.log("Please enter your email address.");
       return;
     }
-    emailjs
-      .send(
-        "service_nhcrdwf",
-        "template_x2ndppk",
-        {
-          email: formData.email,
-          to_name: "Dear",
-          passcode: `https://4ami-client.wp1.sh/confirmemail/${formData.email}`,
-        },
-        {
-          publicKey: "1Wii5-D0LrHJXSmie",
-        }
-      )
-      .then(
-        () => {
-          console.log("SUCCESS!");
-          toast.success("Email sent successfully!", toastStyle);
-        },
-        (error) => {
-          console.error("FAILED...", error.text);
-          toast.error("Failed to send email. Please try again.", toastStyle);
-        }
-      );
+    // emailjs.send(
+    //   "service_nhcrdwf",
+    //   "template_x2ndppk",
+    //   {
+    //     email: formData.email,
+    //     to_name: "Dear",
+    //     passcode: `https://4ami-client.wp1.sh/confirmemail/${formData.email}`,
+    //   },
+    //   {
+    //     publicKey: "1Wii5-D0LrHJXSmie",
+    //   }
+    // );
+    sendConfirmationEmail(
+      formData.email,
+      `https://4ami-client.wp1.sh/confirmemail/${formData.email}`
+    ).then(
+      () => {
+        console.log("SUCCESS!");
+        toast.success("Email sent successfully!", toastStyle);
+      },
+      (error) => {
+        console.error("FAILED...", error.text);
+        toast.error("Failed to send email. Please try again.", toastStyle);
+      }
+    );
   };
   return (
     <>

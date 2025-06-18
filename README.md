@@ -11,59 +11,57 @@ Currently, two official plugins are available:
 
 If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 
-
 import React, { useEffect, useState } from "react";
 // React Router dom........
 import {
-  createRoutesFromElements,
-  createBrowserRouter,
-  Route,
-  RouterProvider,
+createRoutesFromElements,
+createBrowserRouter,
+Route,
+RouterProvider,
 } from "react-router-dom";
 
-
 const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path='/' element={<RootLayout />}>
-      <Route index path='/' element={<Home />}></Route>
-      <Route index path='/home' element={<Home />}></Route>
-      <Route path='/about' element={<About />}></Route>
-      <Route path='/service' element={<Service />}></Route>
-    <Route path='*' element={<Error />}/>
-    </Route>
-  )
+createRoutesFromElements(
+<Route path='/' element={<RootLayout />}>
+<Route index path='/' element={<Home />}></Route>
+<Route index path='/home' element={<Home />}></Route>
+<Route path='/about' element={<About />}></Route>
+<Route path='/service' element={<Service />}></Route>
+<Route path='\*' element={<Error />}/>
+</Route>
+)
 );
 
 const App = () => {
-  const [postData, setPostData] = useState([]);
-  const [message, setMessage] = useState("");
-  const [formData, setFormData] = useState({
-    username: "akash1",
-    email: "arakash.developer1@gmail.com",
-    password: "akash556600",
-    role: "administrator",
-  });
+const [postData, setPostData] = useState([]);
+const [message, setMessage] = useState("");
+const [formData, setFormData] = useState({
+username: "akash1",
+email: "arakash.developer1@gmail.com",
+password: "akash556600",
+role: "administrator",
+});
 
-  // Optional: Fetch posts from WordPress (you can remove this if not needed)
-  const getdata = async () => {
-    try {
-      const res = await fetch(
-        "https://4amitest-bli6.wp1.sh/wp-json/wp/v2/posts"
-      );
-      const data = await res.json();
-      setPostData(data);
-    } catch (error) {
-      console.error("Failed to fetch posts", error);
-    }
-  };
+// Optional: Fetch posts from WordPress (you can remove this if not needed)
+const getdata = async () => {
+try {
+const res = await fetch(
+"https://4amitest-bli6.wp1.sh/wp-json/wp/v2/posts"
+);
+const data = await res.json();
+setPostData(data);
+} catch (error) {
+console.error("Failed to fetch posts", error);
+}
+};
 
-  useEffect(() => {
-    getdata();
-  }, []);
+useEffect(() => {
+getdata();
+}, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setMessage("Submitting...");
+const handleSubmit = async (e) => {
+e.preventDefault();
+setMessage("Submitting...");
 
     try {
       const res = await fetch(
@@ -85,23 +83,24 @@ const App = () => {
     } catch (error) {
       setMessage("❌ Network error: " + error.message);
     }
-  };
 
-  return (
-    <div>
-      <div className="py-10 text-center">
-        <h1 className="text-4xl font-bold mb-4">Posts</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6 bg-gray-50">
-          {postData.map((item, index) => (
-            <div key={index} className="bg-white p-5 rounded-2xl shadow">
-              <h3 className="text-xl font-semibold">{item.slug}</h3>
-              <p className="text-sm text-gray-600">
-                {item.content?.rendered?.replace(/<[^>]*>/g, "")}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
+};
+
+return (
+<div>
+<div className="py-10 text-center">
+<h1 className="text-4xl font-bold mb-4">Posts</h1>
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6 bg-gray-50">
+{postData.map((item, index) => (
+<div key={index} className="bg-white p-5 rounded-2xl shadow">
+<h3 className="text-xl font-semibold">{item.slug}</h3>
+<p className="text-sm text-gray-600">
+{item.content?.rendered?.replace(/<[^>]\*>/g, "")}
+</p>
+</div>
+))}
+</div>
+</div>
 
       <form
         onSubmit={handleSubmit}
@@ -196,16 +195,14 @@ const App = () => {
         {message && <p className="text-center mt-4">{message}</p>}
       </form>
     </div>
-  );
+
+);
 };
 
 export default App;
 nee
 
-
-
 backup
-
 
 <?php
 /**
@@ -304,5 +301,96 @@ function custom_full_register($request) {
       'line' => $e->getLine()
     ], 500);
   }
+}
+?>
+
+<?php
+/**
+ * Plugin Name: Custom Admin Register via REST
+ * Description: Registers users via REST API and assigns administrator role by default. User is inactive (`active = 0`) initially.
+ * Version: 1.0
+ * Author: Atiqur Rahman Akash
+ */
+
+// Allow CORS for frontend requests
+add_action('init', function () {
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+    header("Access-Control-Allow-Headers: Content-Type, Authorization");
+    header("Access-Control-Allow-Credentials: true");
+
+    if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+        status_header(200);
+        exit;
+    }
+});
+
+// Register REST API endpoint
+add_action('rest_api_init', function () {
+    register_rest_route('custom/v1', '/register', [
+        'methods' => 'POST',
+        'callback' => 'custom_admin_register_user',
+        'permission_callback' => '__return_true',
+    ]);
+});
+
+// Main registration function
+function custom_admin_register_user($request) {
+    try {
+        $params = $request->get_json_params();
+
+        $username = sanitize_user($params['username'] ?? '');
+        $email    = sanitize_email($params['email'] ?? '');
+        $password = $params['password'] ?? '';
+
+        if (empty($username) || empty($email) || empty($password)) {
+            return new WP_REST_Response(['success' => false, 'error' => 'Missing required fields'], 400);
+        }
+
+        if (username_exists($username) || email_exists($email)) {
+            return new WP_REST_Response(['success' => false, 'error' => 'Username or email already exists'], 409);
+        }
+
+        // Create user with no role
+        $user_id = wp_create_user($username, $password, $email);
+        if (is_wp_error($user_id)) {
+            return new WP_REST_Response(['success' => false, 'error' => $user_id->get_error_message()], 500);
+        }
+
+        // Assign administrator role
+        $user = new WP_User($user_id);
+        $user->set_role('subscriber');
+
+        // Update additional fields
+        wp_update_user([
+            'ID'         => $user_id,
+            'first_name' => sanitize_text_field($params['firstName'] ?? ''),
+            'last_name'  => sanitize_text_field($params['lastName'] ?? ''),
+        ]);
+
+        // Save custom meta fields
+        $meta_fields = ['code', 'title', 'company', 'phone', 'extension'];
+        foreach ($meta_fields as $field) {
+            if (!empty($params[$field])) {
+                update_user_meta($user_id, $field, sanitize_text_field($params[$field]));
+            }
+        }
+
+        // Set active = 0 by default
+        update_user_meta($user_id, 'active', 0);
+
+        return new WP_REST_Response([
+            'success' => true,
+            'message' => 'Administrator user registered successfully (inactive)',
+            'user_id' => $user_id
+        ], 200);
+
+    } catch (Throwable $e) {
+        return new WP_REST_Response([
+            'success' => false,
+            'error' => $e->getMessage(),
+            'line' => $e->getLine()
+        ], 500);
+    }
 }
 ?>
