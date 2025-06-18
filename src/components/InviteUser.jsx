@@ -20,7 +20,7 @@ const InviteUser = () => {
     lastName: "",
     title: "",
     company: "",
-    phone: "",
+    phone: "22",
     extension: "",
     source: "",
     category: "",
