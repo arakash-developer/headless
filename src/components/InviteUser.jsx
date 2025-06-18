@@ -176,24 +176,14 @@ const InviteUser = () => {
           source: "",
           category: "",
         });
-
-        // Navigate to next page
-        navigate("/register2");
       } else {
         console.log("Response data:", data.error);
-
-        // Handle error response from server
-        // setErrorMessage(
-        //   data.error || "Something went wrong. Please try again later."
-        // );
         showError(
           data.error || "Something went wrong. Please try again later."
         );
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      // setErrorMessage(error.message);
-      // showError(error.message.error);
     } finally {
       setIsLoading(false); // Set loading state to false when the request is done
     }
