@@ -2,12 +2,14 @@ import EyeIcon from "@/assets/EyeIcon";
 import Hiddeneye from "@/assets/Hiddeneye";
 import Loginbanner from "@assets/logIn.svg";
 import { Contex } from "@context/User";
-import { Checkbox, Input } from "antd";
+import CloseIcon from "@public/close.svg";
+import { Checkbox, Input, notification } from "antd";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ScaleLoader } from "react-spinners";
 import { toast } from "react-toastify";
 const Login = () => {
+  const [api, contextHolder] = notification.useNotification();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -42,7 +44,21 @@ const Login = () => {
     e.preventDefault();
 
     if (!email) {
-      toast.error("Email is required", toastStyle);
+      // toast.error("Email is required", toastStyle);
+      api.info({
+        message: (
+          <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40]">
+            Email is required
+          </h2>
+        ),
+        description: (
+          <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
+            The new customer’s record is created successfully.
+          </p>
+        ),
+        icon: <img src={CloseIcon} alt="close" className="w-6 h-6" />,
+        placement: "topRight",
+      });
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       toast.error("Please enter a valid email address", toastStyle);
     } else if (!password) {
@@ -147,6 +163,7 @@ const Login = () => {
 
   return (
     <>
+      {contextHolder}
       <div className="mt-[40px] loginBox bg-[#fff] max-w-[1099px] xl:mr-[80px] mb-[171px] rounded-[8px] pl-[125px] pr-[20px] py-5 grid grid-cols-2 gap-[80px] h-full items-center">
         <div className="max-w-[380px] py-[47px]">
           <h3 className="not-italic font-semibold text-[32px] leading-[125%] text-[var(--primary2)]">
