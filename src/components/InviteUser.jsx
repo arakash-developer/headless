@@ -20,7 +20,7 @@ const InviteUser = () => {
     lastName: "",
     title: "",
     company: "",
-    phone: "22",
+    phone: "",
     extension: "",
     source: "",
     category: "",
@@ -149,17 +149,8 @@ const InviteUser = () => {
         }
       );
 
-      console.log("Response status:", response.status);
-
-      // Parse the response as JSON
-      let data;
-      try {
-        data = await response.json();
-        console.log("Response data:", data);
-      } catch (error) {
-        console.error("Error parsing response:", error);
-        throw new Error("Invalid response from server");
-      }
+      // console.log("Response status:", response.status);
+      let data = await response.json();
 
       if (response.ok) {
         // Handle success
@@ -189,18 +180,20 @@ const InviteUser = () => {
         // Navigate to next page
         navigate("/register2");
       } else {
+        console.log("Response data:", data.error);
+
         // Handle error response from server
-        setErrorMessage(
-          data.message || "Something went wrong. Please try again later."
-        );
+        // setErrorMessage(
+        //   data.error || "Something went wrong. Please try again later."
+        // );
         showError(
-          data.message || "Something went wrong. Please try again later."
+          data.error || "Something went wrong. Please try again later."
         );
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      setErrorMessage("Error submitting form. Please try again later.");
-      showError("Error submitting form. Please try again later.");
+      // setErrorMessage(error.message);
+      // showError(error.message.error);
     } finally {
       setIsLoading(false); // Set loading state to false when the request is done
     }
@@ -256,13 +249,6 @@ const InviteUser = () => {
       <div className="mt-5"></div>
       <div className="max-w-[1098px] pt-[45px] pb-5 pl-[55px] pr-[22px] bg-[#fff] rounded-[5px] formboxshadow flex justify-between items-start gap-x-10 mb-[26px]">
         <div className="">
-          {/* Show error message if exists */}
-          {errorMessage && (
-            <div className="mb-4 p-4 bg-red-100 text-red-800 rounded-md">
-              {errorMessage}
-            </div>
-          )}
-
           <div className="">
             <h2 className="text-[var(--primary2)] text-[24px] font-medium text-2xl leading-[117%]">
               Send an Invitation
