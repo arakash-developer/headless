@@ -137,15 +137,15 @@ const InviteUser = () => {
       });
 
       // Send form data to the backend using fetch
-      
+
       const response = await fetch(
-        "https://4amitest-bli6.wp1.sh/wp-json/headless-form/v1/submit",
+        "https://4amitest-bli6.wp1.sh/wp-json/custom/v1/admin-register",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ ...formData, code: submissionCode }),
+          body: JSON.stringify(formData),
         }
       );
 

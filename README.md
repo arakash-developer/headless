@@ -394,3 +394,43 @@ function custom_admin_register_user($request) {
     }
 }
 ?>
+
+
+
+    try {
+      const response = await fetch(
+        "https://4amitest-bli6.wp1.sh/wp-json/custom/v1/admin-register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSuccessMessage("User registered successfully!");
+        setFormData({
+          email: "",
+          username: "",
+          password: "",
+          firstName: "",
+          lastName: "",
+          title: "",
+          company: "",
+          phone: "",
+          extension: "",
+        });
+      } else {
+        setErrorMessage(
+          result.error || "Something went wrong. Please try again."
+        );
+      }
+    } catch (error) {
+      setErrorMessage(
+        "There was an error processing the request. Please try again later."
+      );
+    }
