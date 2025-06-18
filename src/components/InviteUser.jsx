@@ -1,11 +1,18 @@
 import DownArrow2 from "@/assets/DownArrow2";
 import InviteImage from "@public/invitebanner.svg";
-import { Input, Select } from "antd";
+import Success from "@public/Success.svg";
+import { Input, notification, Select } from "antd";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+notification.config({
+  placement: "topRight",
+  top: 1000,
+  duration: 3,
+});
 
 const InviteUser = () => {
+  const [api, contextHolder] = notification.useNotification();
   const navigate = useNavigate();
   const [toastError, setToastError] = useState("");
   const [selected, setSelected] = useState("");
@@ -48,8 +55,16 @@ const InviteUser = () => {
 
   const registerCheck = async (e) => {
     e.preventDefault();
-
-    // Existing validation code
+    api.info({
+      message: <div className="">User added successfully!</div>,
+      description: (
+        <div className="flex items-center gap-x-2">
+          <span className="text-sm text-[#343a40]"> ghghgg </span>
+        </div>
+      ),
+      icon: <img src={Success} alt="success" className="w-6 h-6" />,
+      placement: "topRight",
+    });
     const {
       email,
       firstName,
@@ -128,65 +143,6 @@ const InviteUser = () => {
 
     setIsLoading(true); // Set loading state to true
     setErrorMessage(""); // Clear any previous error message
-
-    try {
-      // Log form data for debugging
-      console.log("Submitting form data:", {
-        ...formData,
-        code: submissionCode,
-      });
-
-      // Send form data to the backend using fetch
-
-      const response = await fetch(
-        "https://4amitest-bli6.wp1.sh/wp-json/custom/v1/admin-register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
-
-      // console.log("Response status:", response.status);
-      let data = await response.json();
-
-      if (response.ok) {
-        // Handle success
-        console.log("Form data successfully submitted:", data);
-
-        // Show success toast
-        toast.success(`Invitation sent successfully!`, {
-          ...toastStyle,
-          style: { background: "var(--primary)", color: "#fff" },
-        });
-
-        // Reset form
-        setFormData({
-          code: "",
-          mobile: "",
-          email: "",
-          firstName: "",
-          lastName: "",
-          title: "",
-          company: "",
-          phone: "",
-          extension: "",
-          source: "",
-          category: "",
-        });
-      } else {
-        console.log("Response data:", data.error);
-        showError(
-          data.error || "Something went wrong. Please try again later."
-        );
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-    } finally {
-      setIsLoading(false); // Set loading state to false when the request is done
-    }
   };
 
   // Helper function to generate a random code
@@ -219,8 +175,6 @@ const InviteUser = () => {
     });
   };
 
-
-
   const handleCategoryChange = (option) => {
     setFormData({ ...formData, category: option });
   };
@@ -233,6 +187,7 @@ const InviteUser = () => {
   ];
   return (
     <div>
+      {contextHolder}
       <div className="mt-5"></div>
       <div className="max-w-[1098px] pt-[45px] pb-5 pl-[55px] pr-[22px] bg-[#fff] rounded-[5px] formboxshadow flex justify-between items-start gap-x-10 mb-[26px]">
         <div className="">
@@ -247,7 +202,7 @@ const InviteUser = () => {
               receive a notification email
             </p>
           </div>
-          <form className="flex flex-col gap-y-4" onSubmit={registerCheck}>
+          <form className="flex flex-col gap-y-4">
             {/* First & Last Name */}
             <div className="flex gap-x-6">
               <FormField
@@ -379,7 +334,7 @@ const InviteUser = () => {
             {/* Submit & Clear */}
             <div className="flex gap-x-6 items-center mt-2">
               <button
-                type="submit"
+                onClick={registerCheck}
                 disabled={isLoading}
                 className={`py-2 px-8 bg-[var(--primary)] rounded-[8px] text-white cursor-pointer font-medium text-sm text-center text-[var(--secondary)] block border border-[var(--secondary)] leading-[28px] ${
                   isLoading ? "opacity-70 cursor-not-allowed" : ""
