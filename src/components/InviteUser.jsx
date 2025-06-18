@@ -229,10 +229,7 @@ const InviteUser = () => {
     });
   };
 
-  const handleSourceChange = (option) => {
-    setSelected(option);
-    setFormData({ ...formData, source: option });
-  };
+
 
   const handleCategoryChange = (option) => {
     setFormData({ ...formData, category: option });
