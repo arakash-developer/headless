@@ -56,11 +56,15 @@ const InviteUser = () => {
   const registerCheck = async (e) => {
     e.preventDefault();
     api.info({
-      message: <div className="">User added successfully!</div>,
+      message: (
+        <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40]">
+          User added successfully!
+        </h2>
+      ),
       description: (
-        <div className="flex items-center gap-x-2">
-          <span className="text-sm text-[#343a40]"> ghghgg </span>
-        </div>
+        <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
+          The new customer’s record is created successfully.
+        </p>
       ),
       icon: <img src={Success} alt="success" className="w-6 h-6" />,
       placement: "topRight",
