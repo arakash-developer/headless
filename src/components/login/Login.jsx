@@ -60,7 +60,6 @@ const Login = () => {
         placement: "topRight",
       });
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      // toast.error("Please enter a valid email address", toastStyle);
       api.info({
         message: (
           <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40]">
@@ -76,7 +75,20 @@ const Login = () => {
         placement: "topRight",
       });
     } else if (!password) {
-      toast.error("Password is required", toastStyle);
+      api.info({
+        message: (
+          <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40]">
+            Password is required
+          </h2>
+        ),
+        description: (
+          <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
+            The new customer’s record is created successfully.
+          </p>
+        ),
+        icon: <img src={CloseIcon} alt="close" className="w-6 h-6" />,
+        placement: "topRight",
+      });
     } else {
       const loginData = { username: email, password };
       setLoading(true);
