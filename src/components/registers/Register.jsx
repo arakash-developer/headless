@@ -2,7 +2,8 @@ import DownArrow2 from "@/assets/DownArrow2";
 import { encryptText } from "@/lib/cryptoUtils";
 import postRegistration from "@/lib/postRegistration";
 import { sendConfirmationEmail } from "@/utils/emailUtils";
-import SignupIllustration from "@public/signupillustration.jpg";
+// import SignupIllustration from "@public/signupillustration.jpg";
+import SignupIllustration from "@public/Illustration.svg";
 import { Button, Checkbox, Input, Select, theme } from "antd";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -256,7 +257,7 @@ const Register = () => {
   return (
     <>
       {current < 2 && (
-        <div className="max-w-[1098px] pl-[55px] pt-[45px] pb-[29px] bg-[#fff] rounded-[5px] formboxshadow mb-[105px]">
+        <div className="max-w-[1098px] pl-[55px] pt-[45px] pb-[46px] pr-[22px] bg-[#fff] rounded-[5px] formboxshadow mb-[105px]">
           <div className="flex justify-between items-start">
             <div className="">
               <div className="max-w-[540px]">
@@ -572,7 +573,7 @@ const Register = () => {
                 </div>
               </div>
             </div>
-            <div className="mt-[97px]">
+            <div className="">
               <img src={SignupIllustration} alt={SignupIllustration} />
             </div>
           </div>
