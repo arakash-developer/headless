@@ -164,12 +164,12 @@ const Login = () => {
   return (
     <>
       {contextHolder}
-      <div className="mt-[40px] loginBox bg-[#fff] max-w-[1099px] xl:mr-[80px] mb-[171px] rounded-[8px] pl-[51px] pr-[16px] py-5 grid grid-cols-2 gap-[80px] h-full items-center">
+      <div className="mt-[40px] loginBox bg-[#fff] max-w-[1099px] xl:mr-[80px] mb-[171px] rounded-[8px] pl-[51px] pr-[16px] py-5 flex justify-between gap-[80px] h-full items-center">
         <div className="max-w-[380px] py-[48px]">
           <h3 className="text-[24px] text-[var(--primary2)] font-medium text-2xl leading-[117%]">
             Log In
           </h3>
-          <p className="text-[#919191] not-italic mt-[8px] mb-[24px] text-[var(--text-secondary)]  font-normal text-base leading-[150%]">
+          <p className="text-[#919191] mt-[8px] mb-[24px] text-[var(--text-secondary)]  font-normal text-base leading-[150%]">
             Good to see you! Enter your details to continue running residual
             analyses on your equipment
           </p>
@@ -260,7 +260,7 @@ const Login = () => {
             </button>
           </form>
         </div>
-        <div className="h-full bg-red-500 rounded-[5px] w-[564px]">
+        <div className="h-full bg-red-500 rounded-[5px]">
           <img className="w-full h-full" src={Loginbanner} alt="Login Banner" />
         </div>
       </div>
