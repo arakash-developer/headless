@@ -239,8 +239,8 @@ const Dashboard = () => {
         </h2>
         <div className="mt-3 bg-[var(--secondary)] h-[236px] text-center flex flex-col justify-center items-center dashboard-box gap-y-[18px]">
           <ResPlus />
-          <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">
-            Start by creating your first residual analysis
+          <p className="text-[var(--text-secondary)] font-medium text-sm leading-[200%]">
+            Start by creating your first project
           </p>
         </div>
       </div>

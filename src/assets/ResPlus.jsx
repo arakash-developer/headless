@@ -1,16 +1,16 @@
 const ResPlus = () => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="50"
+      width="51"
       height="48"
-      viewBox="0 0 50 48"
+      viewBox="0 0 51 48"
       fill="none"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <g filter="url(#filter0_d_1596_4528)">
+      <g filter="url(#filter0_d_2115_16216)">
         <path
-          d="M10.417 23.0003H25.0003M25.0003 23.0003H39.5837M25.0003 23.0003V8.41699M25.0003 23.0003V37.5837"
-          stroke="#080607"
+          d="M10.917 23.0013H25.5003M25.5003 23.0013H40.0837M25.5003 23.0013V8.41797M25.5003 23.0013V37.5846"
+          stroke="#ED272C"
           stroke-width="3"
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -19,11 +19,11 @@ const ResPlus = () => {
       </g>
       <defs>
         <filter
-          id="filter0_d_1596_4528"
-          x="-1.08301"
-          y="0.916992"
+          id="filter0_d_2115_16216"
+          x="-0.583008"
+          y="0.917969"
           width="52.167"
-          height="52.167"
+          height="52.168"
           filterUnits="userSpaceOnUse"
           color-interpolation-filters="sRGB"
         >
@@ -44,12 +44,12 @@ const ResPlus = () => {
           <feBlend
             mode="normal"
             in2="BackgroundImageFix"
-            result="effect1_dropShadow_1596_4528"
+            result="effect1_dropShadow_2115_16216"
           />
           <feBlend
             mode="normal"
             in="SourceGraphic"
-            in2="effect1_dropShadow_1596_4528"
+            in2="effect1_dropShadow_2115_16216"
             result="shape"
           />
         </filter>
