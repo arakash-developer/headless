@@ -107,21 +107,21 @@ const Login = () => {
         const data = await response.json();
         if (response.ok) {
           localStorage.setItem("auth_token", data.token);
+          localStorage.setItem("user_data", JSON.stringify(data.user));
           api.info({
             message: (
               <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40] capitalize">
-                User added successfully!
+                Login Successful!
               </h2>
             ),
-            description: (
-              <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
-                The new customer’s record is created successfully.
-              </p>
-            ),
+            // description: (
+            //   <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
+            //     The new customer’s record is created successfully.
+            //   </p>
+            // ),
             icon: <img src={Success} alt="success" className="w-6 h-6" />,
             placement: "topRight",
           });
-          localStorage.setItem("user_data", JSON.stringify(data.user));
           if (data.user.roles[0] === "administrator") {
             localStorage.setItem("administrator", "akash@123");
             return navigate("/administrator", { state: { user: data.user } });
