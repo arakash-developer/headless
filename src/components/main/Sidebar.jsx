@@ -142,7 +142,7 @@ const Sidebar = () => {
                     <p className="py-1">Inviteuser</p>
                   </NavLink>
                 </li>
-                <li className="">
+                {/* <li className="">
                   <NavLink
                     className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
                     to="/adminservices"
@@ -154,13 +154,8 @@ const Sidebar = () => {
                       <FaAngleRight />
                     </div>
                   </NavLink>
-                  {/* <ul className="dropdown ml-10 p-5 bg-[var(--primary2)] text-[#fff]">
-                    <li>Home</li>
-                    <li>Home</li>
-                    <li>Home</li>
-                    <li>Home</li>
-                  </ul> */}
-                </li>
+      
+                </li> */}
                 <li>
                   <NavLink
                     className={`text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]`}

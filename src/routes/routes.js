@@ -21,11 +21,12 @@ import Demo4 from "@/components/demo/Demo4";
 import Demo5 from "@/components/demo/Demo5";
 import Demo6 from "@/components/demo/Demo6";
 import Demo7 from "@/components/demo/Demo7";
+import ManageAssets from "@/components/manageassets/ManageAssets";
+import ManageCustomers from "@/components/managecustomers/ManageCustomers";
 import Manageservices from "@/components/manageservices/Manageservices";
 import ManageUser from "@/components/manageuser/ManageUser";
 import ConfirmEmail from "@/components/registers/ConfirmEmail";
 import Alluser from "@components/demo/Alluser";
-import ManageCustomers from "@/components/managecustomers/ManageCustomers";
 export const routes = [
   // public routes
   // { path: "*", component: Error, access: "public" },
@@ -80,6 +81,11 @@ export const routes = [
   {
     path: "/managecustomers",
     component: ManageCustomers,
+    access: "administrator",
+  },
+  {
+    path: "/manageassets",
+    component: ManageAssets,
     access: "administrator",
   },
   { path: "/regsuccess", component: RegistrationSuccess, access: "guest" },
