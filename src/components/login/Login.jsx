@@ -47,7 +47,7 @@ const Login = () => {
     if (!email) {
       api.info({
         message: (
-          <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40]">
+          <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40] capitalize">
             Email is required
           </h2>
         ),
@@ -62,7 +62,7 @@ const Login = () => {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       api.info({
         message: (
-          <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40]">
+          <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40] capitalize">
             Please enter a valid email address
           </h2>
         ),
@@ -77,7 +77,7 @@ const Login = () => {
     } else if (!password) {
       api.info({
         message: (
-          <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40]">
+          <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40] capitalize">
             Password is required
           </h2>
         ),
@@ -106,13 +106,9 @@ const Login = () => {
 
         const data = await response.json();
         if (response.ok) {
-          // toast.success("Login Successful!", {
-          //   ...toastStyle,
-          //   style: { background: "var(--primary)", color: "#fff" },
-          // });
           api.info({
             message: (
-              <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40]">
+              <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40] capitalize">
                 User added successfully!
               </h2>
             ),
@@ -132,22 +128,22 @@ const Login = () => {
         }
         if (!response.ok) {
           setLoading(false);
-          const toastStyle = {
-            position: "bottom-left",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-            style: {
-              background: "var(--primary2)",
-              color: "#fff",
-            },
-          };
-          toast.error("Invalid credentials", toastStyle);
-          throw new Error("Invalid credentials");
+          console.log("dd");
+
+          api.info({
+            message: (
+              <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40] capitalize">
+                Invalid email or password
+              </h2>
+            ),
+            // description: (
+            //   <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
+            //     The new customer’s record is created successfully.
+            //   </p>
+            // ),
+            icon: <img src={CloseIcon} alt="close" className="w-6 h-6" />,
+            placement: "topRight",
+          });
         }
 
         // const data = await response.json();
