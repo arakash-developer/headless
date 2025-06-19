@@ -258,7 +258,7 @@ const Register = () => {
     <>
       {current < 2 && (
         <div className="max-w-[1098px] pl-[55px] pt-[45px] pb-[46px] pr-[22px] bg-[#fff] rounded-[5px] formboxshadow mb-[105px]">
-          <div className="flex justify-between items-start">
+          <div className="flex justify-between items-center">
             <div className="">
               <div className="max-w-[540px]">
                 <h2 className="text-[32px] not-italic font-semibold text-4xl leading-[125%] text-[var(--primary2)]">
