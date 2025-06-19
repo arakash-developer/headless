@@ -106,6 +106,7 @@ const Login = () => {
 
         const data = await response.json();
         if (response.ok) {
+          localStorage.setItem("auth_token", data.token);
           api.info({
             message: (
               <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40] capitalize">
@@ -147,11 +148,6 @@ const Login = () => {
         }
 
         // const data = await response.json();
-
-        // Store the JWT token and user data in localStorage for future requests
-        localStorage.setItem("auth_token", data.token);
-
-        localStorage.setItem("logintoken", "akash123");
 
         // Now check if the company email exists
         const companyDataResponse = await fetch(
