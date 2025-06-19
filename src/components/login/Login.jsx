@@ -167,7 +167,7 @@ const Login = () => {
       <div className="mt-[40px] loginBox bg-[#fff] max-w-[1099px] xl:mr-[80px] mb-[171px] rounded-[8px] pl-[51px] pr-[16px] py-5 flex justify-between gap-[80px] h-full items-center">
         <div className="max-w-[380px] py-[48px]">
           <h3 className="text-[24px] text-[var(--primary2)] font-medium text-2xl leading-[117%]">
-            Log Inv
+            Log In
           </h3>
           <p className="text-[#919191] mt-[8px] mb-[24px] text-[var(--text-secondary)]  font-normal text-base leading-[150%]">
             Good to see you! Enter your details to continue running residual
