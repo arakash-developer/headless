@@ -3,6 +3,7 @@ import Hiddeneye from "@/assets/Hiddeneye";
 import { Contex } from "@context/User";
 import CloseIcon from "@public/close.svg";
 import Loginbanner from "@public/logIn.jpg";
+import Success from "@public/Success.svg";
 import { Checkbox, Input, notification } from "antd";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -44,7 +45,6 @@ const Login = () => {
     e.preventDefault();
 
     if (!email) {
-      // toast.error("Email is required", toastStyle);
       api.info({
         message: (
           <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40]">
@@ -60,7 +60,21 @@ const Login = () => {
         placement: "topRight",
       });
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      toast.error("Please enter a valid email address", toastStyle);
+      // toast.error("Please enter a valid email address", toastStyle);
+      api.info({
+        message: (
+          <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40]">
+            Please enter a valid email address
+          </h2>
+        ),
+        description: (
+          <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
+            The new customer’s record is created successfully.
+          </p>
+        ),
+        icon: <img src={CloseIcon} alt="close" className="w-6 h-6" />,
+        placement: "topRight",
+      });
     } else if (!password) {
       toast.error("Password is required", toastStyle);
     } else {
@@ -80,9 +94,23 @@ const Login = () => {
 
         const data = await response.json();
         if (response.ok) {
-          toast.success("Login Successful!", {
-            ...toastStyle,
-            style: { background: "var(--primary)", color: "#fff" },
+          // toast.success("Login Successful!", {
+          //   ...toastStyle,
+          //   style: { background: "var(--primary)", color: "#fff" },
+          // });
+          api.info({
+            message: (
+              <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40]">
+                User added successfully!
+              </h2>
+            ),
+            description: (
+              <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
+                The new customer’s record is created successfully.
+              </p>
+            ),
+            icon: <img src={Success} alt="success" className="w-6 h-6" />,
+            placement: "topRight",
           });
           localStorage.setItem("user_data", JSON.stringify(data.user));
           if (data.user.roles[0] === "administrator") {
