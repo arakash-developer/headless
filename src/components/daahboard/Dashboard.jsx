@@ -1,11 +1,12 @@
 import Credit from "@/assets/Credit";
 import DataRepresent from "@/assets/DataRepresent";
 import FilterIcon from "@/assets/FilterIcon";
+import Hi from "@/assets/Hi";
 import InProgress from "@/assets/InProgress";
 import PopularEquipment from "@/assets/PopularEquipment";
+import PrintRepport from "@/assets/PrintRepport";
 import ResPlus from "@/assets/ResPlus";
-import SearchDas from "@/assets/SearchDas";
-import Shopimg from "@/assets/Shopimg";
+import TotalProjects from "@/assets/TotalProjects";
 import Graph1 from "@public/graph1.png";
 import Graph2 from "@public/graph2.png";
 import { Button, Select, Tooltip } from "antd";
@@ -32,9 +33,9 @@ const Dashboard = () => {
   const [company, setCompany] = useState(null);
   const [loading, setLoading] = useState(true);
   const [dashboardAnlytics, setDashboardAnlytics] = useState({
-    totalResidual: 0,
+    totalProjects: 0,
     inProgress: 0,
-    myListings: 0,
+    printReport: 0,
     creditLeft: 0,
   });
   const [data, setData] = useState(false);
@@ -157,13 +158,20 @@ const Dashboard = () => {
   return (
     <div className="mr-10">
       <div className="mt-5">
-        <h2 className="text-[var(--primary2)] font-semibold text-4xl leading-[125%] text-[#343a40]">
+        <h2 className="text-[var(--primary2)] font-medium text-[24px] leading-[117%] text-[#343a40]">
           Dashboard
         </h2>
-        <p className="font-normal text-base leading-[150%] text-[var(--text-secondary)] mt-2 capitalize">
-          Good Morning, {user?.first_name}. Here's your overview.
-          <span className="text-[#343a40;]"> All Residual Analysis</span>
-        </p>
+        <div className="flex gap-x-2 items-center mt-2">
+          <Hi />
+
+          <p className="text-[var(--text-secondary)]  capitalize font-normal text-lg leading-[133%] ">
+            Welcome to your dashboard
+            <span className="ml-1 italic">
+              {user?.first_name}, let’s get started
+            </span>
+            {/* <span className="text-[#343a40;]"> All Residual Analysis</span> */}
+          </p>
+        </div>
       </div>
       <div className="w-full mt-6 mb-5 flex justify-end items-center">
         <button className="py-2 px-8 bg-[var(--primary)] rounded-[8px] font-medium text-sm leading-[171%] text-[var(--secondary)] flex items-center gap-x-2">
@@ -175,14 +183,14 @@ const Dashboard = () => {
         <div className="dashboard-box w-[250px] xl:w-1/2 p-5 flex gap-x-[35px] justify-between items-start bg-[var(--secondary)] rounded-[8px]">
           <div className="flex flex-col gap-y-[8px]">
             <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">
-              Total Residuals
+              Total Projects
             </p>
             <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
-              {dashboardAnlytics?.totalResidual}
+              {dashboardAnlytics?.totalProjects}
             </h2>
           </div>
-          <div className="flex justify-center items-center p-2 rounded-[8px] bg-[#CFE3FF]">
-            <SearchDas />
+          <div className="flex justify-center items-center p-2 rounded-[8px] bg-[#FDEFAE]">
+            <TotalProjects />
           </div>
         </div>
         <div className="dashboard-box w-[250px] xl:w-1/2 p-5 flex gap-x-[35px] justify-between items-start bg-[var(--secondary)] rounded-[8px]">
@@ -201,14 +209,14 @@ const Dashboard = () => {
         <div className="dashboard-box w-[250px] xl:w-1/2 p-5 flex gap-x-[35px] justify-between items-start bg-[var(--secondary)] rounded-[8px]">
           <div className="flex flex-col gap-y-[8px]">
             <p className="font-medium text-sm leading-[171%] text-[var(--text-secondary)]">
-              My Listings
+              Print a Report
             </p>
             <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
-              {dashboardAnlytics?.myListings}
+              {dashboardAnlytics?.printReport}
             </h2>
           </div>
-          <div className="flex justify-center items-center p-2 rounded-[8px] bg-[#CAF8FF]">
-            <Shopimg />
+          <div className="flex justify-center items-center p-2 rounded-[8px] bg-[#CFE3FF]">
+            <PrintRepport />
           </div>
         </div>
         <div className="dashboard-box w-[250px] xl:w-1/2 p-5 flex gap-x-[35px] justify-between items-start bg-[var(--secondary)] rounded-[8px]">
@@ -226,8 +234,8 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="mt-6 w-full">
-        <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
-          Residual Analysis
+        <h2 className="font-semibold text-lg leading-[156%] text-[var(--primary2)]">
+          Projects
         </h2>
         <div className="mt-3 bg-[var(--secondary)] h-[236px] text-center flex flex-col justify-center items-center dashboard-box gap-y-[18px]">
           <ResPlus />
@@ -380,8 +388,8 @@ const Dashboard = () => {
       )}
       <div className="w-full h-[450px] mt-6 flex justify-between items-center gap-x-6">
         <div className="h-full w-full bg-[var(--secondary)] rounded-[8px] dasboard-box px-6 pt-5 pb-[105px] flex flex-col items-start  justify-between dashboard-box">
-          <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
-            Data Representation
+          <h2 className="font-semibold text-lg leading-[156%] text-[var(--primary2)]">
+            Coming Soon
           </h2>
           <div className="w-full flex justify-center flex-col items-center">
             <DataRepresent />
@@ -391,8 +399,8 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="h-full w-full bg-[var(--secondary)] rounded-[8px] dasboard-box px-6 pt-5 pb-[105px] flex flex-col items-start  justify-between dashboard-box">
-          <h2 className="font-medium text-2xl leading-[117%] text-[var(--primary2)]">
-            Popular Equipment Categories
+          <h2 className="font-semibold text-lg leading-[156%] text-[var(--primary2)]">
+            Popular Services by Category
           </h2>
           <div className="w-full flex justify-center flex-col items-center">
             <PopularEquipment />

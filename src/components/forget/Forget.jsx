@@ -5,7 +5,7 @@ import { Contex } from "@/context/User";
 import GenarateOtp from "@/lib/GenarateOtp";
 import GetOtp from "@/lib/GetOtp";
 import PasswordReset from "@/lib/PasswordReset";
-import emailjs from "@emailjs/browser";
+import { sendConfirmationEmail } from "@/utils/emailUtils";
 import ForgetIcon from "@public/forget.png";
 import { Flex, Input, theme, Typography } from "antd";
 import { useContext, useEffect, useRef, useState } from "react";
@@ -122,31 +122,31 @@ const Forget = () => {
       console.log("Please enter your email address.");
       return;
     }
-    emailjs
-      .send(
-        "service_nhcrdwf",
-        "template_x2ndppk",
-        {
-          email: email,
-          to_name: "Dear",
-          passcode: otpcode,
-        },
-        {
-          publicKey: "1Wii5-D0LrHJXSmie",
-        }
-      )
-      .then(
-        () => {
-          setStatus("Email sent successfully!");
-          form.current.reset();
-          setStatus(true);
-        },
-        (error) => {
-          setStatus("Failed to send email. Please try again.");
-          console.error("FAILED...", error.text);
-          setStatus(false);
-        }
-      );
+    // emailjs
+    //   .send(
+    //     "service_nhcrdwf",
+    //     "template_x2ndppk",
+    //     {
+    //       email: email,
+    //       to_name: "Dear",
+    //       passcode: otpcode,
+    //     },
+    //     {
+    //       publicKey: "1Wii5-D0LrHJXSmie",
+    //     }
+    //   )
+    sendConfirmationEmail(email, otpcode).then(
+      () => {
+        setStatus("Email sent successfully!");
+        form.current.reset();
+        setStatus(true);
+      },
+      (error) => {
+        setStatus("Failed to send email. Please try again.");
+        console.error("FAILED...", error.text);
+        setStatus(false);
+      }
+    );
   };
   const toastStyle = {
     position: "bottom-left",
