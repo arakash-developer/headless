@@ -1,3 +1,5 @@
+import Manageassetsicon from "@/assets/Manageassetsicon";
+import ManageCustomersIcon from "@/assets/ManageCustomersIcon";
 import ManageService from "@/assets/ManageService";
 import ManageUserIcon from "@/assets/ManageUserIcon";
 import ProfilesIcon from "@/assets/ProfilesIcon";
@@ -185,28 +187,19 @@ const Sidebar = () => {
                     activeClassName="active"
                     to="/managecustomers"
                   >
-                    <ManageUserIcon />
+                    <ManageCustomersIcon />
                     <p className="py-1">Manage Customers</p>
                   </NavLink>
                 </li>
-                <li className="">
+                <li>
                   <NavLink
-                    className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
-                    to="/profiles"
+                    className={`text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]`}
                     activeClassName="active"
+                    to="/manageassets"
                   >
-                    <ProfilesIcon className="flex-shrink-0" />
-                    <p className="py-1">Profiles</p>
-                    <div className="w-full flex justify-end mr-1">
-                      <FaAngleRight />
-                    </div>
+                    <Manageassetsicon />
+                    <p className="py-1">Manage Assets</p>
                   </NavLink>
-                  {/* <ul className="dropdown ml-10 p-5 bg-[var(--primary2)] text-[#fff]">
-                    <li>Home</li>
-                    <li>Home</li>
-                    <li>Home</li>
-                    <li>Home</li>
-                  </ul> */}
                 </li>
               </>
             )}
