@@ -258,13 +258,13 @@ const Register = () => {
     <>
       {current < 2 && (
         <div className="max-w-[1098px] pl-[55px] pt-[45px] pb-[46px] pr-[22px] bg-[#fff] rounded-[5px] formboxshadow mb-[105px]">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-start">
             <div className="">
               <div className="max-w-[540px]">
-                <h2 className="text-[32px] not-italic font-semibold text-4xl leading-[125%] text-[var(--primary2)]">
+                <h2 className="text-[24px] not-italic text-[var(--primary2)] font-medium leading-[117%] text-var(--primary2)">
                   Create your Account
                 </h2>
-                <p className="mt-2 font-normal text-base leading-[150%] text-[var(--text-secondary)]">
+                <p className="mt-2 text-[var(--text-secondary)] font-normal text-base leading-[150%]">
                   Please provide your details below to set up your new account.
                   This will allow you to access all services and manage your
                   profile securely
