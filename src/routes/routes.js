@@ -13,6 +13,7 @@ import Residualanalysis from "@components/residualanalysis/Residualanalysis";
 import Services from "@components/services/Services";
 
 import Administrator from "@/components/administrator/Administrator";
+import AdminServices from "@/components/adminservices/AdminServices";
 import Demo from "@/components/demo/Demo";
 import Demo2 from "@/components/demo/Demo2";
 import Demo3 from "@/components/demo/Demo3";
@@ -20,8 +21,11 @@ import Demo4 from "@/components/demo/Demo4";
 import Demo5 from "@/components/demo/Demo5";
 import Demo6 from "@/components/demo/Demo6";
 import Demo7 from "@/components/demo/Demo7";
+import Manageservices from "@/components/manageservices/Manageservices";
+import ManageUser from "@/components/manageuser/ManageUser";
 import ConfirmEmail from "@/components/registers/ConfirmEmail";
 import Alluser from "@components/demo/Alluser";
+import ManageCustomers from "@/components/managecustomers/ManageCustomers";
 export const routes = [
   // public routes
   // { path: "*", component: Error, access: "public" },
@@ -56,6 +60,26 @@ export const routes = [
   {
     path: "/administrator",
     component: Administrator,
+    access: "administrator",
+  },
+  {
+    path: "/manageusers",
+    component: ManageUser,
+    access: "administrator",
+  },
+  {
+    path: "/manageservices",
+    component: Manageservices,
+    access: "administrator",
+  },
+  {
+    path: "/adminservices",
+    component: AdminServices,
+    access: "administrator",
+  },
+  {
+    path: "/managecustomers",
+    component: ManageCustomers,
     access: "administrator",
   },
   { path: "/regsuccess", component: RegistrationSuccess, access: "guest" },

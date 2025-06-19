@@ -1,3 +1,5 @@
+import ManageService from "@/assets/ManageService";
+import ManageUserIcon from "@/assets/ManageUserIcon";
 import ProfilesIcon from "@/assets/ProfilesIcon";
 import ResidualanalysisIcon from "@/assets/ResidualanalysisIcon";
 import HomeIcon from "@assets/HomeIcon";
@@ -127,6 +129,7 @@ const Sidebar = () => {
                     <p className="py-1">Dashboard</p>
                   </NavLink>
                 </li>
+
                 <li>
                   <NavLink
                     className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
@@ -140,7 +143,7 @@ const Sidebar = () => {
                 <li className="">
                   <NavLink
                     className="text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]"
-                    to="/services"
+                    to="/adminservices"
                     activeClassName="active"
                   >
                     <ServiceIcon />
@@ -155,6 +158,36 @@ const Sidebar = () => {
                     <li>Home</li>
                     <li>Home</li>
                   </ul> */}
+                </li>
+                <li>
+                  <NavLink
+                    className={`text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]`}
+                    activeClassName="active"
+                    to="/manageservices"
+                  >
+                    <ManageService />
+                    <p className="py-1">Manage Services</p>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className={`text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]`}
+                    activeClassName="active"
+                    to="/manageusers"
+                  >
+                    <ManageUserIcon />
+                    <p className="py-1">Manage Users</p>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className={`text-zinc-950/[0.7] text-base not-italic font-medium leading-6 flex items-center gap-2 py-2 pl-[18px]`}
+                    activeClassName="active"
+                    to="/managecustomers"
+                  >
+                    <ManageUserIcon />
+                    <p className="py-1">Manage Customers</p>
+                  </NavLink>
                 </li>
                 <li className="">
                   <NavLink
