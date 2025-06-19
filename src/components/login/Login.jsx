@@ -1,8 +1,8 @@
 import EyeIcon from "@/assets/EyeIcon";
 import Hiddeneye from "@/assets/Hiddeneye";
-import Loginbanner from "@assets/logIn.svg";
 import { Contex } from "@context/User";
 import CloseIcon from "@public/close.svg";
+import Loginbanner from "@public/logIn.jpg";
 import { Checkbox, Input, notification } from "antd";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -164,12 +164,12 @@ const Login = () => {
   return (
     <>
       {contextHolder}
-      <div className="mt-[40px] loginBox bg-[#fff] max-w-[1099px] xl:mr-[80px] mb-[171px] rounded-[8px] pl-[125px] pr-[20px] py-5 grid grid-cols-2 gap-[80px] h-full items-center">
-        <div className="max-w-[380px] py-[47px]">
-          <h3 className="not-italic font-semibold text-[32px] leading-[125%] text-[var(--primary2)]">
+      <div className="mt-[40px] loginBox bg-[#fff] max-w-[1099px] xl:mr-[80px] mb-[171px] rounded-[8px] pl-[51px] pr-[16px] py-5 grid grid-cols-2 gap-[80px] h-full items-center">
+        <div className="max-w-[380px] py-[48px]">
+          <h3 className="text-[24px] text-[var(--primary2)] font-medium text-2xl leading-[117%]">
             Log In
           </h3>
-          <p className="text-[#919191] not-italic mt-[8px] mb-[24px] font-normal text-base leading-[150%] text-[var(--text-secondary)]">
+          <p className="text-[#919191] not-italic mt-[8px] mb-[24px] text-[var(--text-secondary)]  font-normal text-base leading-[150%]">
             Good to see you! Enter your details to continue running residual
             analyses on your equipment
           </p>
@@ -180,7 +180,7 @@ const Login = () => {
                   htmlFor="email"
                   className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
                 >
-                  Email
+                  Username
                 </label>
                 <Input
                   type="email"
@@ -188,7 +188,16 @@ const Login = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
                 />
+                <div className="flex justify-end">
+                  <Link
+                    to="/forget"
+                    className="font-normal text-xs leading-[135%] text-[var(--primary)]"
+                  >
+                    Forgot Username?
+                  </Link>
+                </div>
               </div>
+
               <div className="flex flex-col gap-y-[2px]">
                 <label
                   htmlFor="email"
@@ -251,12 +260,8 @@ const Login = () => {
             </button>
           </form>
         </div>
-        <div className="">
-          <img
-            className="bg-cover rounded-[5px]"
-            src={Loginbanner}
-            alt="Login Banner"
-          />
+        <div className="h-full bg-red-500 rounded-[5px] w-[564px]">
+          <img className="w-full h-full" src={Loginbanner} alt="Login Banner" />
         </div>
       </div>
     </>

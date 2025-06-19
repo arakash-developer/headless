@@ -5,11 +5,6 @@ import { Input, notification, Select } from "antd";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-notification.config({
-  placement: "topRight",
-  top: 1000,
-  duration: 3,
-});
 
 const InviteUser = () => {
   const [api, contextHolder] = notification.useNotification();
@@ -69,6 +64,7 @@ const InviteUser = () => {
       icon: <img src={Success} alt="success" className="w-6 h-6" />,
       placement: "topRight",
     });
+
     const {
       email,
       firstName,

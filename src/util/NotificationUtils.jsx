@@ -1,25 +1,20 @@
-// notificationUtils.jsx
+import { notification } from "antd";
 
-import CloseIcon from "@public/close.svg"; // Ensure this path is correct
-import { notification } from "antd"; // Assuming you're using antd for notifications
-
-export const NotificationUtils = ({
-  message,
-  description,
-  icon = <img src={CloseIcon} alt="close" className="w-6 h-6" />,
-}) => {
-  notification.info({
+// NotificationUtils.jsx
+const [api, contextHolder] = notification.useNotification();
+export const showNotification = () => {
+  api.info({
     message: (
       <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40]">
-        {message}
+        User added successfully!
       </h2>
     ),
     description: (
       <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
-        {description}
+        The new customer’s record is created successfully.
       </p>
     ),
-    icon: icon,
-    placement: "topRight", // Hardcoded placement
+    // icon: <img src={Success} alt="success" className="w-6 h-6" />,
+    placement: "topRight",
   });
 };
