@@ -3,6 +3,7 @@ import { Button, Checkbox, Input, Select, Tooltip } from "antd";
 import { IoFilterOutline } from "react-icons/io5";
 import FilterIcon from "./../../assets/FilterIcon";
 import CustomSort from "./layers/CustomSort";
+import EditIcon from "@/assets/EditIcon";
 
 const Manageservices = () => {
   const structureType = [
@@ -359,7 +360,7 @@ const Manageservices = () => {
                       <Draft />
                     </div>
                     <div className="rounded-[8px] w-10 h-10 flex items-center justify-center border-2 border-[var(--neutral-400)] bg-[var(--secondary)] cursor-pointer">
-                      <Draft />
+                      <EditIcon />
                     </div>
                   </div>
                 </td>
