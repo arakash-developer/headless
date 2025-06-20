@@ -12,8 +12,12 @@ import RegistrationSuccess from "@components/registers/RegistrationSuccess";
 import Residualanalysis from "@components/residualanalysis/Residualanalysis";
 import Services from "@components/services/Services";
 
-import Administrator from "@/components/administrator/Administrator";
-import AdminServices from "@/components/adminservices/AdminServices";
+import Administrator from "@/components/admin/administrator/Administrator";
+import AdminServices from "@/components/admin/adminservices/AdminServices";
+import ManageAssets from "@/components/admin/manageassets/ManageAssets";
+import ManageCustomers from "@/components/admin/managecustomers/ManageCustomers";
+import Manageservices from "@/components/admin/manageservices/Manageservices";
+import ManageUser from "@/components/admin/manageuser/ManageUser";
 import Demo from "@/components/demo/Demo";
 import Demo2 from "@/components/demo/Demo2";
 import Demo3 from "@/components/demo/Demo3";
@@ -21,10 +25,6 @@ import Demo4 from "@/components/demo/Demo4";
 import Demo5 from "@/components/demo/Demo5";
 import Demo6 from "@/components/demo/Demo6";
 import Demo7 from "@/components/demo/Demo7";
-import ManageAssets from "@/components/manageassets/ManageAssets";
-import ManageCustomers from "@/components/managecustomers/ManageCustomers";
-import Manageservices from "@/components/manageservices/Manageservices";
-import ManageUser from "@/components/manageuser/ManageUser";
 import ConfirmEmail from "@/components/registers/ConfirmEmail";
 import Alluser from "@components/demo/Alluser";
 export const routes = [

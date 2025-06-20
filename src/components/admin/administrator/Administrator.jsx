@@ -14,7 +14,7 @@ import { IoFilterOutline } from "react-icons/io5";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import CustomSort from "../residualanalysis/layers/CustomSort";
+import CustomSort from "../../residualanalysis/layers/CustomSort";
 
 const toastStyle = {
   position: "bottom-left",
