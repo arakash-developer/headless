@@ -10,7 +10,7 @@ const CustomSort = ({ option, defaultValue, color }) => {
   };
 
   return (
-    <div className="w-[125px] flex flex-col gap-y-[2px] ">
+    <div className="w-[125px] flex flex-col gap-y-[2px]">
       <Select
         value={selected}
         onChange={handleChange}
