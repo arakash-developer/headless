@@ -373,19 +373,31 @@ const ManageUser = () => {
               </th>
               <th class="p-4 border border-gray-300 border-t-0 border-l-0">
                 <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                  Service Name
+                  Username
                   <IoFilterOutline className="text-md" />
                 </div>
               </th>
               <th class="p-4 border border-gray-300 border-t-0 border-l-0">
                 <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                  Description
+                  First Name
                   <IoFilterOutline className="text-md" />
                 </div>
               </th>
               <th class="p-4 border border-gray-300 border-t-0 border-l-0">
                 <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                  Status
+                  Last Name
+                  <IoFilterOutline className="text-md" />
+                </div>
+              </th>
+              <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+                <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                  Role
+                  <IoFilterOutline className="text-md" />
+                </div>
+              </th>
+              <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+                <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                  E-Mail
                   <IoFilterOutline className="text-md" />
                 </div>
               </th>
@@ -411,12 +423,22 @@ const ManageUser = () => {
                   {user?.username}
                 </td>
                 <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                  {user?.assetType}
+                  {user?.firstName}
                 </td>
                 <td
                   class={`p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40] capitalize ${user?.status} `}
                 >
-                  {user?.value}
+                  {user?.lastName}
+                </td>
+                <td
+                  class={`p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40] capitalize ${user?.status} `}
+                >
+                  {user?.role}
+                </td>
+                <td
+                  class={`p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40] capitalize ${user?.status} `}
+                >
+                  {user?.email}
                 </td>
                 <td class="p-4 border border-gray-300 border-t-0 border-l-0 border-r-0">
                   <div className="flex items-center gap-x-3">
