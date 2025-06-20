@@ -1,8 +1,9 @@
+import DownArrow2 from "@/assets/DownArrow2";
 import Draft from "@/assets/Draft";
 import EditIcon from "@/assets/EditIcon";
-import { Button, Checkbox, Input, Select, Tooltip } from "antd";
+import { Checkbox, Input, Select } from "antd";
+import { useState } from "react";
 import { IoFilterOutline } from "react-icons/io5";
-import FilterIcon from "./../../assets/FilterIcon";
 import CustomSort from "./layers/CustomSort";
 
 const Manageservices = () => {
@@ -35,7 +36,16 @@ const Manageservices = () => {
       description: "Add Filter 3",
     },
   ];
-
+  const categoryOptions = [
+    { value: "segmentRep", label: "Segment Rep" },
+    { value: "banking", label: "Banking/Lessor" },
+    { value: "endUser", label: "End User" },
+    { value: "oemDealer", label: "OEM/Dealer" },
+  ];
+  let [category, setCategory] = useState("");
+  const handleCategoryChange = (option) => {
+    setCategory(option);
+  };
   const handleUsageTypeChange = (option) => {
     setSelected(option);
     setUsageTypeselected(option);
@@ -254,39 +264,29 @@ const Manageservices = () => {
         <CustomSort defaultValue="Asset Type All" option={AssetTypeAll} />
 
         <div className="min-w-[125px] flex flex-col gap-y-[2px]">
-          <Select
-            defaultValue="Add Filter"
-            style={{ height: "40px" }}
-            onChange={handleUsageTypeChange}
-            className="w-full"
-            dropdownMatchSelectWidth={false}
-          >
-            {usageType.map((option) => (
-              <Select.Option key={option.value} value={option.value}>
-                <div className="flex items-center gap-x-2">
-                  <Tooltip title={option.description}>
-                    <Button
-                      style={{
-                        backgroundColor: "transparent",
-                        borderRadius: "0",
-                        border: "none",
-                        padding: "0",
-                        fontSize: "16px",
-                        transition: "background-color 0.3s ease",
-                      }}
-                    >
-                      <div className="text-[var(--primary)]">
-                        <FilterIcon />
-                      </div>
-                    </Button>
-                  </Tooltip>
-                  <p className="font-normal text-xs leading-[135%] text-[var(--primary)]">
+          <div className="relative cursor-pointer">
+            <Select
+              placeholder={
+                <span className="font-normal text-xs leading-[135%] text-[#343a40]">
+                  {categoryOptions[0].label}
+                </span>
+              }
+              onChange={handleCategoryChange}
+              className="w-full custom-select no-arrow-select bg-[var(--background)] !h-8 "
+              dropdownMatchSelectWidth={false}
+            >
+              {categoryOptions.map((option) => (
+                <Select.Option key={option.value} value={option.value}>
+                  <p className="font-normal text-xs leading-[135%] text-[#343a40]">
                     {option.label}
                   </p>
-                </div>
-              </Select.Option>
-            ))}
-          </Select>
+                </Select.Option>
+              ))}
+            </Select>
+            <div className="absolute top-1/2 -translate-y-1/2 right-[16px] pointer-events-none">
+              <DownArrow2 color="var(--text-secondary)" />
+            </div>
+          </div>
         </div>
         <CustomSort
           defaultValue="Clear Filter"
