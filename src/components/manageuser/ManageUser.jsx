@@ -3,7 +3,7 @@ import DownloadIcon from "@/assets/DownloadIcon";
 import Draft from "@/assets/Draft";
 import EditIcon from "@/assets/EditIcon";
 import UploadsIcon from "@/assets/UploadsIcon";
-import { Checkbox, Input, Select } from "antd";
+import { Checkbox, Select } from "antd";
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { IoFilterOutline } from "react-icons/io5";
@@ -225,8 +225,6 @@ const ManageUser = () => {
         </p>
       </div>
 
-
-
       <div className="flex justify-end my-6">
         <div className="flex items-center gap-x-6">
           <div className="flex items-center gap-x-2 py-2 px-8 rounded-[8px] bg-[var(--primary)]  text-[var(--secondary)] cursor-pointer border border-[var(--primary)]">
@@ -287,11 +285,6 @@ const ManageUser = () => {
         />
       </div>
       <div class="mt-8 p-4 bg-[var(--secondary)] servicecard rounded-[8px]">
-        <div className="">
-          <h2 className="font-medium text-[24px] leading-[117%] text-[var(--primary2)] mb-3">
-            Services List
-          </h2>
-        </div>
         <table class="table-auto w-full border-collapse">
           <thead>
             <tr class="text-left bg-[var(--secondary)]">
