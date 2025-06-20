@@ -1,9 +1,9 @@
 import Draft from "@/assets/Draft";
+import EditIcon from "@/assets/EditIcon";
 import { Button, Checkbox, Input, Select, Tooltip } from "antd";
 import { IoFilterOutline } from "react-icons/io5";
 import FilterIcon from "./../../assets/FilterIcon";
 import CustomSort from "./layers/CustomSort";
-import EditIcon from "@/assets/EditIcon";
 
 const Manageservices = () => {
   const structureType = [
@@ -50,8 +50,8 @@ const Manageservices = () => {
       assetType: "Water Truck",
       date: "10 May, 2025",
       status: {
-        value: "Pending",
-        color: "text-[#343a40]",
+        value: "active",
+        color: "text-[var(--primary)]",
       },
       health: "-",
       action: {
@@ -65,8 +65,8 @@ const Manageservices = () => {
       assetType: "Dump Truck",
       date: "18 April, 2025",
       status: {
-        value: "Pending",
-        color: "text-[#343a40]",
+        value: "active",
+        color: "text-[var(--primary)]",
       },
       health: "-",
       action: {
@@ -80,7 +80,7 @@ const Manageservices = () => {
       assetType: "Aerial Lift",
       date: "15 April, 2025",
       status: {
-        value: "Completed",
+        value: "active",
         color: "text-[var(--primary)]",
       },
       health: "Bad",
@@ -95,7 +95,7 @@ const Manageservices = () => {
       assetType: "Bulldozer",
       date: "12 April, 2025",
       status: {
-        value: "Completed",
+        value: "active",
         color: "text-[var(--primary)]",
       },
       health: "Average",
@@ -110,7 +110,7 @@ const Manageservices = () => {
       assetType: "Forklift",
       date: "10 April, 2025",
       status: {
-        value: "Pending",
+        value: "inactive",
         color: "text-[#343a40]",
       },
       health: "-",
@@ -125,7 +125,7 @@ const Manageservices = () => {
       assetType: "Glow Lights",
       date: "10 April, 2025",
       status: {
-        value: "Completed",
+        value: "active",
         color: "text-[var(--primary)]",
       },
       health: "Good",
@@ -140,8 +140,8 @@ const Manageservices = () => {
       assetType: "Transformer",
       date: "8 April, 2025",
       status: {
-        value: "Completed",
-        color: "text-[var(--primary)]",
+        value: "inactive",
+        color: "text-[#343a40]",
       },
       health: "Bad",
       action: {
@@ -155,8 +155,8 @@ const Manageservices = () => {
       assetType: "Excavator",
       date: "5 April, 2025",
       status: {
-        value: "Completed",
-        color: "text-[var(--primary)]",
+        value: "inactive",
+        color: "text-[#343a40]",
       },
       health: "Average",
       action: {
@@ -170,7 +170,7 @@ const Manageservices = () => {
       assetType: "Forklift",
       date: "5 April, 2025",
       status: {
-        value: "Completed",
+        value: "active",
         color: "text-[var(--primary)]",
       },
       health: "Average",
@@ -185,7 +185,7 @@ const Manageservices = () => {
       assetType: "Wind Turbine",
       date: "30 March, 2025",
       status: {
-        value: "Completed",
+        value: "active",
         color: "text-[var(--primary)]",
       },
       health: "Excellent",
@@ -351,16 +351,18 @@ const Manageservices = () => {
                 <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
                   {asset.assetType}
                 </td>
-                <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                  {asset.date}
+                <td
+                  class={`p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40] capitalize ${asset.status.color} `}
+                >
+                  {asset.status.value}
                 </td>
                 <td class="p-4 border border-gray-300 border-t-0 border-l-0 border-r-0">
                   <div className="flex items-center gap-x-3">
                     <div className="rounded-[8px] w-10 h-10 flex items-center justify-center border-2 border-[var(--neutral-400)] bg-[var(--secondary)] cursor-pointer">
-                      <Draft />
+                      <EditIcon />
                     </div>
                     <div className="rounded-[8px] w-10 h-10 flex items-center justify-center border-2 border-[var(--neutral-400)] bg-[var(--secondary)] cursor-pointer">
-                      <EditIcon />
+                      <Draft />
                     </div>
                   </div>
                 </td>
