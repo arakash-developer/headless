@@ -1,13 +1,13 @@
 import Draft from "@/assets/Draft";
-import { Button, Checkbox, Select, Tooltip } from "antd";
+import { Button, Checkbox, Input, Select, Tooltip } from "antd";
 import { IoFilterOutline } from "react-icons/io5";
 import FilterIcon from "./../../assets/FilterIcon";
 import CustomSort from "./layers/CustomSort";
 
 const Manageservices = () => {
   const structureType = [
-    { value: "Project ID All", label: "Project ID All" },
-    { value: "Project ID All2", label: "Project ID All 2" },
+    { value: "Status All", label: "Status All" },
+    { value: "Status All", label: "Status All" },
   ];
   const AssetTypeAll = [
     { value: "Asset Type All", label: "Asset Type All" },
@@ -210,10 +210,47 @@ const Manageservices = () => {
           </span>
         </p>
       </div>
-      <div className="mt-6 mb-4 flex gap-x-3 items-center">
-        <CustomSort defaultValue="Project ID All" option={structureType} />
-        <CustomSort defaultValue="Asset Type All" option={AssetTypeAll} />
+
+      <div className="my-6 flex items-center relative">
+        <Input
+          type="text"
+          // onChange={onChange}
+          // onBlur={onBlur}
+          placeholder="Search"
+          className="custom-black-input w-[320px] h-[40px] py-2 px-[40px] bg-[var(--secondary)] border border-[var(--neutral-400)] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm cursor-pointer text-[#919191] font-normal text-sm leading-[171%] text-[var(--text-disabled)]"
+        />
+        <div className="absolute left-[12px] top-1/2 -translate-y-1/2 pointer-events-none">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="17"
+            height="17"
+            viewBox="0 0 17 17"
+            fill="none"
+          >
+            <g opacity="0.8">
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M9.74991 12.7796C12.6606 11.5427 14.0174 8.1805 12.7804 5.26997C11.5434 2.35945 8.18098 1.00274 5.27028 2.23968C2.35958 3.47663 1.0028 6.83882 2.23982 9.74934C3.47683 12.6599 6.83921 14.0166 9.74991 12.7796Z"
+                stroke="#919191"
+                strokeWidth="1.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M11.5586 11.5581L15.9999 15.9998"
+                stroke="#919191"
+                strokeWidth="1.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div className="mb-4 flex gap-x-3 items-center">
         <CustomSort defaultValue="Status All" option={StatusAll} />
+        <CustomSort defaultValue="Asset Type All" option={AssetTypeAll} />
 
         <div className="min-w-[125px] flex flex-col gap-y-[2px]">
           <Select
