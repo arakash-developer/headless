@@ -1,8 +1,10 @@
 import DownArrow2 from "@/assets/DownArrow2";
 import DownArrowIcon from "@/assets/DownArrowIcon";
+import DownArrowicon2 from "@/assets/DownArrowicon2";
 import DownloadIcon from "@/assets/DownloadIcon";
 import Draft from "@/assets/Draft";
 import EditIcon from "@/assets/EditIcon";
+import LeftArrow from "@/assets/LeftArrow";
 import UploadsIcon from "@/assets/UploadsIcon";
 import { Checkbox, Select } from "antd";
 import { useState } from "react";
@@ -474,6 +476,11 @@ const ManageUser = () => {
           1-10 of 120 items
         </p>
         <div className="flex gap-x-2 items-center">
+          <div className="flex items-center justify-center h-10 w-10 border border-[var(--neutral)] rounded-[8px] bg-[var(--neutral)] cursor-pointer">
+            <p className="font-normal text-sm leading-[171%] text-center text-[#343a40]">
+              <LeftArrow className="text-[#ADB5BD]" />
+            </p>
+          </div>
           <div className="flex items-center justify-center h-10 w-10 border border-[var(--primary2)] rounded-[8px] bg-[var(--secondary)] cursor-pointer">
             <p className="font-normal text-sm leading-[171%] text-center text-[#343a40]">
               1
@@ -494,11 +501,18 @@ const ManageUser = () => {
               4
             </p>
           </div>
-          <div className="flex items-center h-10 border border-[var(--neutral-400)] rounded-[8px] bg-[var(--secondary)] cursor-pointer">
+          <div className="flex items-center h-10 border border-[var(--neutral-400)] rounded-[8px] bg-[var(--secondary)] cursor-pointer px-3">
             <p className="font-normal text-sm leading-[171%] text-[#343a40] w-[90px]">
               10
             </p>
-            <div className="">cc</div>
+            <div className="text-[#6F7482]">
+              <DownArrowicon2 />
+            </div>
+          </div>
+          <div className="flex items-center justify-center h-10 w-10 border border-[var(--neutral)] rounded-[8px] bg-[var(--neutral)] cursor-pointer">
+            <p className="font-normal text-sm leading-[171%] text-center text-[#343a40]">
+              <LeftArrow className="text-[#ADB5BD]" />
+            </p>
           </div>
         </div>
       </div>
