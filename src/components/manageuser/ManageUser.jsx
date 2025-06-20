@@ -1,4 +1,5 @@
 import DownArrow2 from "@/assets/DownArrow2";
+import DownArrowIcon from "@/assets/DownArrowIcon";
 import DownloadIcon from "@/assets/DownloadIcon";
 import Draft from "@/assets/Draft";
 import EditIcon from "@/assets/EditIcon";
@@ -325,43 +326,56 @@ const ManageUser = () => {
           </div>
         </div>
       </div>
-
-      <div className="mb-4 flex gap-x-3 items-center">
-        <CustomSort defaultValue="Status All" option={StatusAll} />
-        <CustomSort defaultValue="Asset Type All" option={AssetTypeAll} />
-
-        <div className="min-w-[125px] flex flex-col gap-y-[2px]">
-          <div className="relative cursor-pointer">
-            <Select
-              placeholder={
-                <span className="font-normal text-xs leading-[135%] text-[#343a40]">
-                  {categoryOptions[0].label}
-                </span>
-              }
-              onChange={handleCategoryChange}
-              className="w-full custom-select no-arrow-select bg-[var(--background)] !h-8 "
-              dropdownMatchSelectWidth={false}
-            >
-              {categoryOptions.map((option) => (
-                <Select.Option key={option.value} value={option.value}>
-                  <p className="font-normal text-xs leading-[135%] text-[#343a40]">
-                    {option.label}
-                  </p>
-                </Select.Option>
-              ))}
-            </Select>
-            <div className="absolute top-1/2 -translate-y-1/2 right-[16px] pointer-events-none">
-              <DownArrow2 color="var(--text-secondary)" />
+      <div className="mb-4 flex justify-between items-center">
+        <div className=" flex gap-x-3 items-center">
+          <CustomSort defaultValue="Status All" option={StatusAll} />
+          <CustomSort defaultValue="Asset Type All" option={AssetTypeAll} />
+          <div className="min-w-[125px] flex flex-col gap-y-[2px]">
+            <div className="relative cursor-pointer">
+              <Select
+                placeholder={
+                  <span className="font-normal text-xs leading-[135%] text-[#343a40]">
+                    {categoryOptions[0].label}
+                  </span>
+                }
+                onChange={handleCategoryChange}
+                className="w-full custom-select no-arrow-select bg-[var(--background)] !h-8 "
+                dropdownMatchSelectWidth={false}
+              >
+                {categoryOptions.map((option) => (
+                  <Select.Option key={option.value} value={option.value}>
+                    <p className="font-normal text-xs leading-[135%] text-[#343a40]">
+                      {option.label}
+                    </p>
+                  </Select.Option>
+                ))}
+              </Select>
+              <div className="absolute top-1/2 -translate-y-1/2 right-[16px] pointer-events-none">
+                <DownArrow2 color="var(--text-secondary)" />
+              </div>
+            </div>
+          </div>
+          <CustomSort
+            defaultValue="Clear Filter"
+            color="red"
+            option={ClearFilter}
+          />
+        </div>
+        <div className="flex gap-x-2 items-center">
+          <p className="font-normal text-sm leading-[171%] text-[var(--text-secondary)]">
+            Rows per page:
+          </p>
+          <div className="p-2 border border-[var(--neutral-400)] rounded-[8px]">
+            <div className="flex gap-x-[5px] items-center">
+              <p className="font-normal text-xs leading-[135%] text-[var(--primary2)]">
+                10
+              </p>
+              <DownArrowIcon />
             </div>
           </div>
         </div>
-        <CustomSort
-          defaultValue="Clear Filter"
-          color="red"
-          option={ClearFilter}
-        />
       </div>
-      <div class="mt-8 p-4 bg-[var(--secondary)] servicecard rounded-[8px]">
+      <div class="mt-4 p-4 bg-[var(--secondary)] servicecard rounded-[8px]">
         <table class="table-auto w-full border-collapse">
           <thead>
             <tr class="text-left bg-[var(--secondary)]">
