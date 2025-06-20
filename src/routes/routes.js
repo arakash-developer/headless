@@ -114,7 +114,7 @@ export const routes = [
     path: "/addusers",
     component: AddUsers,
     access: "administrator",
-  }
+  },
   { path: "/regsuccess", component: RegistrationSuccess, access: "guest" },
   { path: "/residualanalysis", component: Residualanalysis, access: "private" },
   // wildcard 404 route — must be last
