@@ -1,10 +1,15 @@
 import DownArrow2 from "@/assets/DownArrow2";
+import DownloadIcon from "@/assets/DownloadIcon";
 import Draft from "@/assets/Draft";
 import EditIcon from "@/assets/EditIcon";
-import { Checkbox, Input, Select } from "antd";
+import UploadsIcon from "@/assets/UploadsIcon";
+import { Checkbox, Select } from "antd";
 import { useState } from "react";
+import { FaPlus } from "react-icons/fa";
 import { IoFilterOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 import CustomSort from "./layers/CustomSort";
+import DownArrowIcon from "@/assets/DownArrowIcon";
 
 const Manageservices = () => {
   const structureType = [
@@ -221,80 +226,83 @@ const Manageservices = () => {
           </span>
         </p>
       </div>
-
-      <div className="my-6 flex items-center relative">
-        <Input
-          type="text"
-          // onChange={onChange}
-          // onBlur={onBlur}
-          placeholder="Search"
-          className="custom-black-input w-[320px] h-[40px] py-2 px-[40px] bg-[var(--secondary)] border border-[var(--neutral-400)] rounded-[8px] focus:outline-none focus:ring-0 placeholder:text-[#919191] placeholder:text-sm cursor-pointer text-[#919191] font-normal text-sm leading-[171%] text-[var(--text-disabled)]"
-        />
-        <div className="absolute left-[12px] top-1/2 -translate-y-1/2 pointer-events-none">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="17"
-            height="17"
-            viewBox="0 0 17 17"
-            fill="none"
-          >
-            <g opacity="0.8">
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M9.74991 12.7796C12.6606 11.5427 14.0174 8.1805 12.7804 5.26997C11.5434 2.35945 8.18098 1.00274 5.27028 2.23968C2.35958 3.47663 1.0028 6.83882 2.23982 9.74934C3.47683 12.6599 6.83921 14.0166 9.74991 12.7796Z"
-                stroke="#919191"
-                strokeWidth="1.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M11.5586 11.5581L15.9999 15.9998"
-                stroke="#919191"
-                strokeWidth="1.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </g>
-          </svg>
+      <div className="flex justify-end my-6">
+        <div className="flex items-center gap-x-6">
+          <div className="flex items-center gap-x-2 py-2 px-8 rounded-[8px] bg-[var(--primary)]  text-[var(--secondary)] cursor-pointer border border-[var(--primary)]">
+            {" "}
+            <FaPlus />
+            <Link
+              to="/addservices"
+              className="inline-block font-medium text-sm leading-[200%] text-center"
+            >
+              Add Services 
+            </Link>
+          </div>
+          <div className="flex items-center gap-x-2 py-2 px-8  text-[#343a40] cursor-pointer border border-[var(--text-secondary)] rounded-[8px]">
+            <UploadsIcon />
+            <h3 className="font-medium text-sm leading-[200%] text-center text-[#343a40]">
+              Import Services  Data
+            </h3>
+          </div>
+          <div className="flex items-center gap-x-2 py-2 px-8  text-[#343a40] cursor-pointer border border-[var(--text-secondary)] rounded-[8px]">
+            <DownloadIcon />
+            <h3 className="font-medium text-sm leading-[200%] text-center text-[#343a40]">
+              Export Services  Data
+            </h3>
+          </div>
         </div>
       </div>
-      <div className="mb-4 flex gap-x-3 items-center">
-        <CustomSort defaultValue="Status All" option={StatusAll} />
-        <CustomSort defaultValue="Asset Type All" option={AssetTypeAll} />
-
-        <div className="min-w-[125px] flex flex-col gap-y-[2px]">
-          <div className="relative cursor-pointer">
-            <Select
-              placeholder={
-                <span className="font-normal text-xs leading-[135%] text-[#343a40]">
-                  {categoryOptions[0].label}
-                </span>
-              }
-              onChange={handleCategoryChange}
-              className="w-full custom-select no-arrow-select bg-[var(--background)] !h-8 "
-              dropdownMatchSelectWidth={false}
-            >
-              {categoryOptions.map((option) => (
-                <Select.Option key={option.value} value={option.value}>
-                  <p className="font-normal text-xs leading-[135%] text-[#343a40]">
-                    {option.label}
-                  </p>
-                </Select.Option>
-              ))}
-            </Select>
-            <div className="absolute top-1/2 -translate-y-1/2 right-[16px] pointer-events-none">
-              <DownArrow2 color="var(--text-secondary)" />
+      <div className="mb-4 flex justify-between items-center">
+        <div className=" flex gap-x-3 items-center">
+          <CustomSort defaultValue="Status All" option={StatusAll} />
+          <CustomSort defaultValue="Asset Type All" option={AssetTypeAll} />
+          <div className="min-w-[125px] flex flex-col gap-y-[2px]">
+            <div className="relative cursor-pointer">
+              <Select
+                placeholder={
+                  <span className="font-normal text-xs leading-[135%] text-[#343a40]">
+                    {categoryOptions[0].label}
+                  </span>
+                }
+                onChange={handleCategoryChange}
+                className="w-full custom-select no-arrow-select bg-[var(--background)] !h-8 "
+                dropdownMatchSelectWidth={false}
+              >
+                {categoryOptions.map((option) => (
+                  <Select.Option key={option.value} value={option.value}>
+                    <p className="font-normal text-xs leading-[135%] text-[#343a40]">
+                      {option.label}
+                    </p>
+                  </Select.Option>
+                ))}
+              </Select>
+              <div className="absolute top-1/2 -translate-y-1/2 right-[16px] pointer-events-none">
+                <DownArrow2 color="var(--text-secondary)" />
+              </div>
+            </div>
+          </div>
+          <CustomSort
+            defaultValue="Clear Filter"
+            color="red"
+            option={ClearFilter}
+          />
+        </div>
+        <div className="flex gap-x-2 items-center">
+          <p className="font-normal text-sm leading-[171%] text-[var(--text-secondary)]">
+            Rows per page:
+          </p>
+          <div className="p-2 border border-[var(--neutral-400)] rounded-[8px]">
+            <div className="flex gap-x-[5px] items-center">
+              <p className="font-normal text-xs leading-[135%] text-[var(--primary2)]">
+                10
+              </p>
+              <DownArrowIcon />
             </div>
           </div>
         </div>
-        <CustomSort
-          defaultValue="Clear Filter"
-          color="red"
-          option={ClearFilter}
-        />
       </div>
-      <div class="mt-8 p-4 bg-[var(--secondary)] servicecard rounded-[8px]">
+
+      <div class="mt-4 p-4 bg-[var(--secondary)] servicecard rounded-[8px]">
         <div className="">
           <h2 className="font-medium text-[24px] leading-[117%] text-[var(--primary2)] mb-3">
             Services List
