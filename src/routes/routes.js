@@ -5,7 +5,7 @@ import CompanyRegistration from "@components/company/CompanyRegistration";
 import CompanyRegSuc from "@components/company/CompanyRegSuc";
 import Dashboard from "@components/daahboard/Dashboard";
 import Forget from "@components/forget/Forget";
-import InviteUser from "@components/InviteUser";
+import InviteUser from "@/invite/InviteUser";
 import Login from "@components/login/Login";
 import Register from "@components/registers/Register";
 import RegistrationSuccess from "@components/registers/RegistrationSuccess";
