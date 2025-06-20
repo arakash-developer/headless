@@ -27,6 +27,10 @@ import Demo6 from "@/components/demo/Demo6";
 import Demo7 from "@/components/demo/Demo7";
 import ConfirmEmail from "@/components/registers/ConfirmEmail";
 import Alluser from "@components/demo/Alluser";
+import AddAssets from "@/components/admin/addassets/AddAssets";
+import AddServices from "@/components/admin/addservices/AddServices";
+import AddCustomers from "@/components/admin/addcustomers/AddCustomers";
+import AddUsers from "@/components/admin/addusers/Adduser.jsx";
 export const routes = [
   // public routes
   // { path: "*", component: Error, access: "public" },
@@ -58,6 +62,9 @@ export const routes = [
     component: CompanyRegistration,
     access: "private",
   },
+
+  // administrator routes Only accessible by users with the "administrator" role
+  // These routes are protected and can only be accessed by users with the "administrator" role
   {
     path: "/administrator",
     component: Administrator,
@@ -88,6 +95,26 @@ export const routes = [
     component: ManageAssets,
     access: "administrator",
   },
+  {
+    path: "/addassets",
+    component: AddAssets,
+    access: "administrator",
+  },
+  {
+    path: "/addservices",
+    component: AddServices,
+    access: "administrator",
+  },
+  {
+    path: "/addcustomers",
+    component: AddCustomers,
+    access: "administrator",
+  },
+  {
+    path: "/addusers",
+    component: AddUsers,
+    access: "administrator",
+  }
   { path: "/regsuccess", component: RegistrationSuccess, access: "guest" },
   { path: "/residualanalysis", component: Residualanalysis, access: "private" },
   // wildcard 404 route — must be last
