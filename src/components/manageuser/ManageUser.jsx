@@ -209,6 +209,83 @@ const ManageUser = () => {
       color: "bg-[var(--secondary)]",
     },
   ];
+  const usersInformation = [
+    {
+      username: "jdoe92",
+      firstName: "John",
+      lastName: "Doe",
+      role: "Admin",
+      email: "jdoe92@gmail.com",
+      color: "bg-[var(--secondary)]",
+    },
+    {
+      username: "emily_smith",
+      firstName: "Emily",
+      lastName: "Smith",
+      role: "Manager",
+      email: "emily.smith@outlook.com",
+    },
+    {
+      username: "michaelb85",
+      firstName: "Michael",
+      lastName: "Brown",
+      role: "Asset Manager",
+      email: "michaelb85@yahoo.com",
+      color: "bg-[var(--secondary)]",
+    },
+    {
+      username: "sarah.james",
+      firstName: "Sarah",
+      lastName: "James",
+      role: "Financial Officer",
+      email: "sarah.james@gmail.com",
+    },
+    {
+      username: "tony.j",
+      firstName: "Tony",
+      lastName: "Johnson",
+      role: "Data Scientist",
+      email: "tony.j@gmail.com",
+      color: "bg-[var(--secondary)]",
+    },
+    {
+      username: "claire_lee",
+      firstName: "Claire",
+      lastName: "Lee",
+      role: "Service Coordinator",
+      email: "claire.lee@icloud.com",
+    },
+    {
+      username: "ryan_williams",
+      firstName: "Ryan",
+      lastName: "Williams",
+      role: "Analyst",
+      email: "ryan.williams@outlook.com",
+      color: "bg-[var(--secondary)]",
+    },
+    {
+      username: "andrew_07",
+      firstName: "Andrew",
+      lastName: "Davis",
+      role: "Analyst",
+      email: "andrew_07@hotmail.com",
+    },
+    {
+      username: "mia.adams",
+      firstName: "Mia",
+      lastName: "Adams",
+      role: "Analyst",
+      email: "mia.adams@gmail.com",
+      color: "bg-[var(--secondary)]",
+    },
+    {
+      username: "jason_22",
+      firstName: "Jason",
+      lastName: "Taylor",
+      role: "User",
+      email: "jason_22@yahoo.com",
+    },
+  ];
 
   return (
     <div className="mr-10">
@@ -322,8 +399,8 @@ const ManageUser = () => {
             </tr>
           </thead>
           <tbody>
-            {assets.map((asset, index) => (
-              <tr class={`${asset?.color}`}>
+            {usersInformation.map((user, index) => (
+              <tr class={`${user?.color}`}>
                 <td class="p-4 border border-gray-300 border-t-0 border-l-0">
                   <Checkbox
                     className="custom-red-checkbox"
@@ -331,15 +408,15 @@ const ManageUser = () => {
                   ></Checkbox>
                 </td>
                 <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                  {asset.projectId}
+                  {user?.username}
                 </td>
                 <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                  {asset.assetType}
+                  {user?.assetType}
                 </td>
                 <td
-                  class={`p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40] capitalize ${asset.status.color} `}
+                  class={`p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40] capitalize ${user?.status} `}
                 >
-                  {asset.status.value}
+                  {user?.value}
                 </td>
                 <td class="p-4 border border-gray-300 border-t-0 border-l-0 border-r-0">
                   <div className="flex items-center gap-x-3">
