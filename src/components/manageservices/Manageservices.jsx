@@ -354,8 +354,13 @@ const Manageservices = () => {
                   {asset.date}
                 </td>
                 <td class="p-4 border border-gray-300 border-t-0 border-l-0 border-r-0">
-                  <div className="rounded-[8px] w-10 h-10 flex items-center justify-center border-2 border-[var(--neutral-400)] bg-[var(--secondary)] cursor-pointer">
-                    <Draft />
+                  <div className="flex items-center gap-x-3">
+                    <div className="rounded-[8px] w-10 h-10 flex items-center justify-center border-2 border-[var(--neutral-400)] bg-[var(--secondary)] cursor-pointer">
+                      <Draft />
+                    </div>
+                    <div className="rounded-[8px] w-10 h-10 flex items-center justify-center border-2 border-[var(--neutral-400)] bg-[var(--secondary)] cursor-pointer">
+                      <Draft />
+                    </div>
                   </div>
                 </td>
               </tr>
