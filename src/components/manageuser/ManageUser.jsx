@@ -5,6 +5,7 @@ import DownloadIcon from "@/assets/DownloadIcon";
 import Draft from "@/assets/Draft";
 import EditIcon from "@/assets/EditIcon";
 import LeftArrow from "@/assets/LeftArrow";
+import RightArrowIcon2 from "@/assets/RightArrowIcon2";
 import UploadsIcon from "@/assets/UploadsIcon";
 import { Checkbox, Select } from "antd";
 import { useState } from "react";
@@ -511,8 +512,11 @@ const ManageUser = () => {
           </div>
           <div className="flex items-center justify-center h-10 w-10 border border-[var(--neutral)] rounded-[8px] bg-[var(--neutral)] cursor-pointer">
             <p className="font-normal text-sm leading-[171%] text-center text-[#343a40]">
-              <LeftArrow className="text-[#ADB5BD]" />
+              <RightArrowIcon2 className="text-[var(--text-normal)]" />
             </p>
+          </div>
+          <div className="font-normal text-sm leading-[171%] text-center text-[#343a40]">
+            /Page
           </div>
         </div>
       </div>
