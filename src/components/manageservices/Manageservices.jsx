@@ -294,6 +294,11 @@ const Manageservices = () => {
         />
       </div>
       <div class="mt-8 p-4 bg-[var(--secondary)] servicecard rounded-[8px]">
+        <div className="">
+          <h2 className="font-medium text-[24px] leading-[117%] text-[var(--primary2)] mb-3">
+            Services List
+          </h2>
+        </div>
         <table class="table-auto w-full border-collapse">
           <thead>
             <tr class="text-left bg-[var(--secondary)]">
@@ -305,19 +310,13 @@ const Manageservices = () => {
               </th>
               <th class="p-4 border border-gray-300 border-t-0 border-l-0">
                 <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                  Project ID
+                  Service Name
                   <IoFilterOutline className="text-md" />
                 </div>
               </th>
               <th class="p-4 border border-gray-300 border-t-0 border-l-0">
                 <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                  Asset Type
-                  <IoFilterOutline className="text-md" />
-                </div>
-              </th>
-              <th class="p-4 border border-gray-300 border-t-0 border-l-0">
-                <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                  Date
+                  Description
                   <IoFilterOutline className="text-md" />
                 </div>
               </th>
@@ -327,12 +326,7 @@ const Manageservices = () => {
                   <IoFilterOutline className="text-md" />
                 </div>
               </th>
-              <th class="p-4 border border-gray-300 border-t-0 border-l-0">
-                <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                  Health
-                  <IoFilterOutline className="text-md" />
-                </div>
-              </th>
+
               <th class="p-4 border border-gray-300 border-t-0 border-l-0">
                 <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
                   Action
@@ -362,14 +356,7 @@ const Manageservices = () => {
                 <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
                   {asset.date}
                 </td>
-                <td
-                  class={`p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] ${asset?.status?.color}`}
-                >
-                  {asset?.status?.value}
-                </td>
-                <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                  {asset.health}
-                </td>
+
                 <td
                   class={`p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] ${asset?.action?.color}`}
                 >
