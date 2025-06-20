@@ -327,14 +327,11 @@ const Manageservices = () => {
                 </div>
               </th>
 
-              <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+              <th class="p-4 border border-gray-300 border-t-0 border-l-0 border-r-0">
                 <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
                   Action
                   <IoFilterOutline className="text-md" />
                 </div>
-              </th>
-              <th class="p-4 border border-gray-300 border-t-0 border-l-0 border-r-0 font-medium text-xs text-[var(--text-secondary)]">
-                -
               </th>
             </tr>
           </thead>
@@ -355,12 +352,6 @@ const Manageservices = () => {
                 </td>
                 <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
                   {asset.date}
-                </td>
-
-                <td
-                  class={`p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] ${asset?.action?.color}`}
-                >
-                  {asset?.action?.value}
                 </td>
                 <td class="p-4 border border-gray-300 border-t-0 border-l-0 border-r-0">
                   <div className="rounded-[8px] w-10 h-10 flex items-center justify-center border-2 border-[var(--neutral-400)] bg-[var(--secondary)] cursor-pointer">
