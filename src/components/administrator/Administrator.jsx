@@ -304,7 +304,7 @@ const Administrator = () => {
         </h2>
         <p className="font-normal text-base leading-[150%] text-[var(--text-secondary)] mt-2 capitalize">
           Good Morning, {user?.first_name}. Here's your overview.
-          <span className="text-[#343a40;]"> All Residual Analysis</span>
+          <span className="text-[#343a40;]">All Residual Analysis</span>
         </p>
       </div>
       <div className="w-full mt-6 mb-5 flex justify-end items-center">
