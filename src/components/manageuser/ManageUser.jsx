@@ -469,10 +469,32 @@ const ManageUser = () => {
           </tbody>
         </table>
       </div>
-      <div className="mt-4 mb-[88px]">
+      <div className="mt-4 mb-[88px] flex justify-between items-center">
         <p className="font-normal text-sm leading-[171%] text-[var(--gray)]">
           1-10 of 120 items
         </p>
+        <div className="flex gap-x-2 items-center">
+          <div className="flex items-center justify-center h-10 w-10 border border-[var(--neutral-400)] rounded-[8px] bg-[var(--secondary)] cursor-pointer">
+            <p className="font-normal text-sm leading-[171%] text-center text-[#343a40]">
+              1
+            </p>
+          </div>
+          <div className="flex items-center justify-center h-10 w-10 border border-[var(--neutral-400)] rounded-[8px] bg-[var(--secondary)] cursor-pointer">
+            <p className="font-normal text-sm leading-[171%] text-center text-[#343a40]">
+              2
+            </p>
+          </div>
+          <div className="flex items-center justify-center h-10 w-10 border border-[var(--neutral-400)] rounded-[8px] bg-[var(--secondary)] cursor-pointer">
+            <p className="font-normal text-sm leading-[171%] text-center text-[#343a40]">
+              3
+            </p>
+          </div>
+          <div className="flex items-center justify-center h-10 w-10 border border-[var(--neutral-400)] rounded-[8px] bg-[var(--secondary)] cursor-pointer">
+            <p className="font-normal text-sm leading-[171%] text-center text-[#343a40]">
+              4
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
