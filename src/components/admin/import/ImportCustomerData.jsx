@@ -155,7 +155,7 @@ const ImportCustomerData = () => {
         </button>
       </div>
       <div
-        className={`mt-6 w-full  flex flex-col items-center justify-start cursor-pointer upload-box min-h-[280px] transition-all
+        className={`mt-6 mb-[58px] w-full  flex flex-col items-center justify-start cursor-pointer upload-box min-h-[280px] transition-all
           ${
             dragActive
               ? "bg-[#FFEBEC] border-2 border-dashed border-[var(--primary2)]"
@@ -181,18 +181,18 @@ const ImportCustomerData = () => {
           {!fileInfo && (
             <div className="flex flex-col items-center justify-center py-8 w-full">
               <img src={UploadIocn} alt="upload" className="" />
-              <div className="text-xl font-semibold text-[#343a40] mb-2">
+              <div className="mt-6  mb-2 font-semibold text-[32px] leading-[125%] text-center text-[#343a40]">
                 Drag and Drop Your File Here!
               </div>
-              <div className="text-base text-[#343a40] mb-1">
+              <div className="mb-1 font-semibold text-[18px] leading-[156%] text-center text-[#343a40]">
                 Please upload JSON or CSV files
               </div>
-              <div className="text-base text-[#343a40] mb-4">
+              <div className="mb-4 font-semibold text-[18px] leading-[156%] text-center text-[#343a40]">
                 A file maximum size should be 5MB
               </div>
               <button
                 type="button"
-                className="bg-[#e74c3c] text-white px-6 py-2 rounded font-medium flex items-center gap-2 text-base shadow hover:bg-[#d62c1a] transition"
+                className="bg-[var(--primary)] px-8 py-[10px] flex items-center gap-2  shadow transition font-medium text-sm leading-[200%] text-center text-[var(--secondary)] rounded-[8px]"
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
