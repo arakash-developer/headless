@@ -256,6 +256,12 @@ const AddCustomers = () => {
             </p>
           </div>
         </div>
+        <div className="mt-[28px]">
+          <p className="font-medium text-sm leading-[171%] text-[#343a40]">Send User Notification</p>
+          <div className="flex items-center gap-x-2">
+            <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">Send the new user an email about their account</p>
+          </div>
+        </div>
       </div>
     </>
   );
