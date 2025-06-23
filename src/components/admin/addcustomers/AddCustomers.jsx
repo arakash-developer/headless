@@ -1,3 +1,5 @@
+import UploadsIcon from "@/assets/UploadsIcon";
+import { Input } from "antd";
 import { useState } from "react";
 
 const AddCustomers = () => {
@@ -23,19 +25,135 @@ const AddCustomers = () => {
           <span className="text-[#343a40]">Add Customer</span>
         </p>
       </div>
-      <div className="mt-6 mb-4 p-8 bg-[var(--secondary)] rounded-[8px]">
-        <label
-          htmlFor="email"
-          className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
-        >
-          Username
-        </label>
-        <Input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
-        />
+      <div className="flex justify-end">
+        <div className="flex items-center gap-x-2 py-2 px-8  text-[var(--secondary)] cursor-pointer border border-[var(--primary)] rounded-[8px] bg-[var(--primary)]">
+          <UploadsIcon />
+          <h3 className="font-medium text-sm leading-[200%] text-center">
+            Import Customer Data
+          </h3>
+        </div>
+      </div>
+      <div className="flex flex-col gap-y-5 mt-6 mb-4 p-8 bg-[var(--secondary)] rounded-[8px] w-full">
+        <div className="flex gap-x-6 items-start">
+          <div className="inputbox w-1/2">
+            <label
+              htmlFor="username"
+              className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
+            >
+              Username
+            </label>
+            <Input
+              type="text"
+              value={formdata.username}
+              onChange={(e) =>
+                setFormdata({ ...formdata, username: e.target.value })
+              }
+              className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+            />
+          </div>
+          <div className="inputbox w-1/2">
+            <label
+              htmlFor="email"
+              className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
+            >
+              Email
+            </label>
+            <Input
+              type="email"
+              value={formdata.email}
+              onChange={(e) =>
+                setFormdata({ ...formdata, email: e.target.value })
+              }
+              className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+            />
+          </div>
+        </div>
+        <div className="flex gap-x-6 items-start">
+          <div className="inputbox w-1/2">
+            <label
+              htmlFor="firstName"
+              className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
+            >
+              First Name
+            </label>
+            <Input
+              type="text"
+              value={formdata.firstName}
+              onChange={(e) =>
+                setFormdata({ ...formdata, firstName: e.target.value })
+              }
+              className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+            />
+          </div>
+          <div className="inputbox w-1/2">
+            <label
+              htmlFor="email"
+              className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
+            >
+              Last Name
+            </label>
+            <Input
+              type="text"
+              value={formdata.lastName}
+              onChange={(e) =>
+                setFormdata({ ...formdata, lastName: e.target.value })
+              }
+              className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+            />
+          </div>
+        </div>
+        <div className="flex gap-x-6 items-start">
+          <div className="inputbox w-1/2 flex gap-x-6 items-start">
+            <div className="w-1/2">
+              <label
+                htmlFor="firstName"
+                className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
+              >
+                First Name
+              </label>
+              <Input
+                type="text"
+                value={formdata.firstName}
+                onChange={(e) =>
+                  setFormdata({ ...formdata, firstName: e.target.value })
+                }
+                className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+              />
+            </div>
+            <div className="w-1/2">
+              <label
+                htmlFor="firstName"
+                className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
+              >
+                First Name
+              </label>
+              <Input
+                type="text"
+                value={formdata.firstName}
+                onChange={(e) =>
+                  setFormdata({ ...formdata, firstName: e.target.value })
+                }
+                className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+              />
+            </div>
+          </div>
+          <div className="inputbox w-1/2">
+            <label
+              htmlFor="email"
+              className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
+            >
+              Last Name
+            </label>
+            <Input
+              type="text"
+              value={formdata.lastName}
+              onChange={(e) =>
+                setFormdata({ ...formdata, lastName: e.target.value })
+              }
+              className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+            />
+          </div>
+        </div>
       </div>
     </>
   );
