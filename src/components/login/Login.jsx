@@ -293,7 +293,7 @@ const Login = () => {
           </form>
         </div>
         <div className="h-full bg-red-500 rounded-[5px]">
-          <img className="w-full h-full" src={Loginbanner} alt="Login Banner" />
+          <img className="w-full h-full rounded-[5px]" src={Loginbanner} alt="Login Banner" />
         </div>
       </div>
     </>
