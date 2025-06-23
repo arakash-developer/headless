@@ -216,11 +216,11 @@ const ImportCustomerData = () => {
           {fileError && (
             <div className="flex flex-col items-center justify-center py-8 w-full">
               {/* File info box with red border and background */}
-              <div className="w-[340px] bg-[#FFF5F5] border border-[#E57373] rounded-[8px] px-4 py-3 flex flex-col items-start mb-6">
-                <div className="font-medium text-sm text-[#B71C1C] truncate">
+              <div className="w-[340px] bg-[] p-8 border border-[var(--error)] rounded-[8px] px-4 py-3 flex flex-col items-start mb-6">
+                <div className="text-[#B71C1C] truncate font-semibold text-base leading-[150%] text-[var(--error)]">
                   {fileInfo?.name}
                 </div>
-                <div className="text-xs text-[#B71C1C]">
+                <div className="font-normal text-sm leading-[171%] text-[var(--text-secondary)]">
                   {fileInfo?.size} KB
                 </div>
               </div>
