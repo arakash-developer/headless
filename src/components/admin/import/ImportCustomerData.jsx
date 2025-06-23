@@ -2,7 +2,7 @@ import DownloadIcon from "@/assets/DownloadIcon";
 import UploadsIcon from "@/assets/UploadsIcon";
 import { LoadingOutlined } from "@ant-design/icons";
 import UploadIocn from "@public/upload2.svg";
-import { message, Upload } from "antd";
+import { Upload } from "antd";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -12,25 +12,47 @@ const getBase64 = (img, callback) => {
   reader.readAsDataURL(img);
 };
 
-const beforeUpload = (file) => {
-  const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
-  if (!isJpgOrPng) {
-    message.error("You can only upload JPG/PNG file!");
-  }
-  const isLt2M = file.size / 1024 / 1024 < 2;
-  if (!isLt2M) {
-    message.error("Image must smaller than 2MB!");
-  }
-  return isJpgOrPng && isLt2M;
-};
-
 const ImportCustomerData = () => {
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [fileInfo, setFileInfo] = useState(null);
   const [uploadRequest, setUploadRequest] = useState(null);
   const [dragActive, setDragActive] = useState(false);
+  const [fileError, setFileError] = useState(null);
   const navigate = useNavigate();
+
+  const validateFile = (file) => {
+    const isAllowedType =
+      file.type === "application/json" ||
+      file.type === "text/csv" ||
+      file.name.endsWith(".json") ||
+      file.name.endsWith(".csv");
+    const isLt5M = file.size / 1024 / 1024 < 5;
+    if (!isAllowedType) {
+      return {
+        valid: false,
+        error: "The File Type is Wrong! Please upload JSON or CSV files",
+      };
+    }
+    if (!isLt5M) {
+      return { valid: false, error: "File size exceeds 5MB limit" };
+    }
+    return { valid: true };
+  };
+
+  const beforeUpload = (file) => {
+    const validation = validateFile(file);
+    if (!validation.valid) {
+      setFileError({ file, message: validation.error });
+      setFileInfo({
+        name: file.name,
+        size: (file.size / 1024).toFixed(0),
+      });
+      return Upload.LIST_IGNORE;
+    }
+    setFileError(null);
+    return true;
+  };
 
   const handleChange = (info) => {
     if (info.file.status === "uploading") {
@@ -84,6 +106,7 @@ const ImportCustomerData = () => {
     setFileInfo(null);
     setProgress(0);
     setUploading(false);
+    setFileError(null);
   };
 
   useEffect(() => {
@@ -184,13 +207,60 @@ const ImportCustomerData = () => {
           name="file"
           showUploadList={false}
           customRequest={customRequest}
-          beforeUpload={() => true}
+          beforeUpload={beforeUpload}
           accept=".json,.csv"
           className="w-full flex flex-col items-center"
           disabled={uploading}
           style={{ width: "100%" }}
         >
-          {!fileInfo && (
+          {fileError && (
+            <div className="flex flex-col items-center justify-center py-8 w-full">
+              {/* File info box with red border and background */}
+              <div className="w-[340px] bg-[#FFF5F5] border border-[#E57373] rounded-[8px] px-4 py-3 flex flex-col items-start mb-6">
+                <div className="font-medium text-sm text-[#B71C1C] truncate">
+                  {fileInfo?.name}
+                </div>
+                <div className="text-xs text-[#B71C1C]">
+                  {fileInfo?.size} KB
+                </div>
+              </div>
+              {/* Error message */}
+              <div className="font-bold text-[22px] text-[#B71C1C] text-center mb-2">
+                The File Type is Wrong!
+              </div>
+              <div className="text-base text-[#343a40] text-center font-medium mb-1">
+                Please upload JSON or CSV files
+              </div>
+              <div className="text-base text-[#343a40] text-center font-medium mb-6">
+                A file maximum size should be 5MB
+              </div>
+              {/* Buttons */}
+              <div className="flex gap-3 w-[340px]">
+                <button
+                  type="button"
+                  className="flex-1 flex items-center justify-center gap-2 bg-[#E53935] hover:bg-[#C62828] px-0 py-3 rounded-[8px] text-white font-semibold text-base transition"
+                  onClick={() => {
+                    setFileError(null);
+                    setFileInfo(null);
+                  }}
+                >
+                  <UploadsIcon />
+                  Import a File
+                </button>
+                <button
+                  type="button"
+                  className="flex-1 flex items-center justify-center gap-2 border border-[#343a40] px-0 py-3 rounded-[8px] text-[#343a40] font-semibold text-base bg-white transition"
+                  onClick={() => navigate("/manual-entry")}
+                >
+                  <span className="material-icons-outlined text-[20px]">
+                    edit
+                  </span>
+                  Enter Manually
+                </button>
+              </div>
+            </div>
+          )}
+          {!fileInfo && !fileError && (
             <div className="flex flex-col items-center justify-center py-8 w-full">
               <img src={UploadIocn} alt="upload" className="" />
               <div className="mt-6  mb-2 font-semibold text-[32px] leading-[125%] text-center text-[#343a40]">
@@ -221,7 +291,7 @@ const ImportCustomerData = () => {
             </div>
           )}
         </Upload>
-        {fileInfo && (
+        {fileInfo && !fileError && (
           <div className="w-full flex flex-col items-center mt-4">
             <div className="bg-white rounded shadow p-4 flex flex-col items-center w-[340px]">
               <div className="flex items-center w-full">
