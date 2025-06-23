@@ -59,9 +59,39 @@ const AddCustomers = () => {
     setChecked(!checked);
   };
   let [cancel, setCancel] = useState(false);
-  const handleCancelAsset = () => {
-    setCancel(!cancel);
+
+  // Reset form to initial state
+  const clearForm = () => {
+    setFormdata({
+      username: "",
+      email: "",
+      firstName: "",
+      lastName: "",
+      phone: "",
+      extrention: "",
+      mobile: "",
+      role: "",
+      password: "",
+    });
+    setChecked(false);
   };
+
+  // Show popup when Discard Changes is clicked
+  const handleDiscardChanges = () => {
+    setCancel(true);
+  };
+
+  // Hide popup
+  const handleCancelAsset = () => {
+    setCancel(false);
+  };
+
+  // Handle "Yes" in popup
+  const handleConfirmDiscard = () => {
+    clearForm();
+    setCancel(false);
+  };
+
   return (
     <>
       <div className="mt-6">
@@ -289,7 +319,7 @@ const AddCustomers = () => {
           </div>
           <div
             className="inline-block py-[6px] px-4 font-medium text-sm leading-[200%] text-center text-[var(--text-normal)] bg-[var(--secondary)] border border-[var(--text-normal)] rounded-[8px] cursor-pointer"
-            onClick={handleCancelAsset}
+            onClick={handleDiscardChanges}
           >
             Discard Changes
           </div>
@@ -307,7 +337,10 @@ const AddCustomers = () => {
             All unsaved changes will be lost.
           </p>
           <div className="flex gap-x-2 items-center justify-center">
-            <button className="py-2 px-[30px] bg-[var(--primary)] rounded-[5px] font-medium text-sm leading-[171%] text-[var(--secondary)] border border-[var(--primary)]">
+            <button
+              className="py-2 px-[30px] bg-[var(--primary)] rounded-[5px] font-medium text-sm leading-[171%] text-[var(--secondary)] border border-[var(--primary)]"
+              onClick={handleConfirmDiscard}
+            >
               Yes
             </button>
             <button
