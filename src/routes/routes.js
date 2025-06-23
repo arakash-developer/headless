@@ -31,6 +31,7 @@ import Demo6 from "@/components/demo/Demo6";
 import Demo7 from "@/components/demo/Demo7";
 import ConfirmEmail from "@/components/registers/ConfirmEmail";
 import Alluser from "@components/demo/Alluser";
+import ImportCustomerData from "@/components/admin/import/ImportCustomerData";
 export const routes = [
   // public routes
   // { path: "*", component: Error, access: "public" },
@@ -115,6 +116,11 @@ export const routes = [
   {
     path: "/manageassets/addassets",
     component: AddAssets,
+    access: "administrator",
+  },
+  {
+    path: "/managecustomers/iportcustomerdata",
+    component: ImportCustomerData,
     access: "administrator",
   },
   { path: "/regsuccess", component: RegistrationSuccess, access: "guest" },
