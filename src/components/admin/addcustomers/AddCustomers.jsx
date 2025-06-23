@@ -3,6 +3,7 @@ import UploadsIcon from "@/assets/UploadsIcon";
 import CloseIcon from "@public/close.svg";
 import { Checkbox, Input, notification, Select } from "antd";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 const AddCustomers = () => {
   let [formdata, setFormdata] = useState({
     username: "",
@@ -183,12 +184,12 @@ const AddCustomers = () => {
         </p>
       </div>
       <div className="flex justify-end">
-        <div className="flex items-center gap-x-2 py-2 px-8  text-[var(--secondary)] cursor-pointer border border-[var(--primary)] rounded-[8px] bg-[var(--primary)]">
+        <Link to='/managecustomers/iportcustomerdata' className="flex items-center gap-x-2 py-2 px-8  text-[var(--secondary)] cursor-pointer border border-[var(--primary)] rounded-[8px] bg-[var(--primary)]">
           <UploadsIcon />
           <h3 className="font-medium text-sm leading-[200%] text-center">
             Import Customer Data
           </h3>
-        </div>
+        </Link>
       </div>
       <div className="flex flex-col gap-y-5 mt-6 mb-4 p-8 bg-[var(--secondary)] rounded-[8px] w-full box_model">
         <div className="flex gap-x-6 items-start">
