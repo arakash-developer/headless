@@ -225,20 +225,20 @@ const ImportCustomerData = () => {
                 </div>
               </div>
               {/* Error message */}
-              <div className="font-bold text-[22px] text-[#B71C1C] text-center mb-2">
+              <div className="text-[24px] mt-6 mb-2 font-medium text-2xl leading-[117%] text-center text-[#343a40]">
                 The File Type is Wrong!
               </div>
-              <div className="text-base text-[#343a40] text-center font-medium mb-1">
+              <div className="mb-2 font-semibold text-lg leading-[156%] text-center text-[#343a40]">
                 Please upload JSON or CSV files
               </div>
-              <div className="text-base text-[#343a40] text-center font-medium mb-6">
+              <div className="mb-6 font-semibold text-lg leading-[156%] text-center text-[#343a40]">
                 A file maximum size should be 5MB
               </div>
               {/* Buttons */}
               <div className="flex gap-3 w-[340px]">
                 <button
                   type="button"
-                  className="flex-1 flex items-center justify-center gap-2 bg-[#E53935] hover:bg-[#C62828] px-0 py-3 rounded-[8px] text-white font-semibold text-base transition"
+                  className="flex items-center justify-center gap-2 bg-[var(--primary)] px-8 py-2 rounded-[8px] font-medium text-sm leading-[200%] text-center text-[var(--secondary)]"
                   onClick={() => {
                     setFileError(null);
                     setFileInfo(null);
