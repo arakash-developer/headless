@@ -1,8 +1,8 @@
 import DownArrow2 from "@/assets/DownArrow2";
 import UploadsIcon from "@/assets/UploadsIcon";
-import { Checkbox, Input, Select } from "antd";
+import CloseIcon from "@public/close.svg";
+import { Checkbox, Input, notification, Select } from "antd";
 import { useState } from "react";
-
 const AddCustomers = () => {
   let [formdata, setFormdata] = useState({
     username: "",
@@ -15,7 +15,7 @@ const AddCustomers = () => {
     role: "",
     password: "",
   });
-
+  const [api, contextHolder] = notification.useNotification();
   // Generate a strong random password
   const generatePassword = () => {
     const length = 12;
@@ -99,31 +99,26 @@ const AddCustomers = () => {
     if (!formdata.username || formdata.username.trim().length < 3) {
       errors.username =
         "Username is required and must be at least 3 characters.";
-    }
-    if (
+    } else if (
       !formdata.email ||
       !/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formdata.email)
     ) {
       errors.email = "Valid email is required.";
-    }
-    if (!formdata.firstName || formdata.firstName.trim().length < 2) {
+    } else if (!formdata.firstName || formdata.firstName.trim().length < 2) {
       errors.firstName =
         "First name is required and must be at least 2 characters.";
-    }
-    if (!formdata.lastName || formdata.lastName.trim().length < 2) {
+    } else if (!formdata.lastName || formdata.lastName.trim().length < 2) {
       errors.lastName =
         "Last name is required and must be at least 2 characters.";
-    }
-    if (!formdata.phone || formdata.phone.length < 7) {
+    } else if (!formdata.phone || formdata.phone.length < 7) {
       errors.phone = "Phone is required and must be at least 7 digits.";
-    }
-    if (!formdata.mobile || formdata.mobile.length < 7) {
+    } else if (!formdata.extrention || formdata.extrention.trim().length < 1) {
+      errors.extrention = "Extrention is required.";
+    } else if (!formdata.mobile || formdata.mobile.length < 7) {
       errors.mobile = "Mobile is required and must be at least 7 digits.";
-    }
-    if (!formdata.role) {
+    } else if (!formdata.role) {
       errors.role = "Role is required.";
-    }
-    if (
+    } else if (
       !formdata.password ||
       getPasswordStrength(formdata.password) === "Weak"
     ) {
@@ -131,22 +126,53 @@ const AddCustomers = () => {
         "Password is required and must be at least Medium strength.";
     }
     // extrention is optional
+    else {
+      console.log("Form is valid", formdata);
+    }
 
     return errors;
   };
 
-  // Handle Create button click
+  // NOTE: You are using Ant Design's notification, not Toastify.
+  // If you want to use Toastify, you need to import it and use its API.
+  // Example for Toastify (uncomment if you want to use):
+  // import { toast } from "react-toastify";
+  // import "react-toastify/dist/ReactToastify.css";
+  // Place <ToastContainer /> in your app root.
+
   const handleCreate = () => {
     const errors = validateForm();
     if (Object.keys(errors).length > 0) {
-      console.error("Form validation errors:", errors);
+      Object.entries(errors).forEach(([field, message]) => {
+        console.error(`Validation error [${field}]: ${message}`);
+        // Using Ant Design notification:
+        api.info({
+          message: (
+            <h2 className="text-[22px]  text-[#343a40] capitalize font-semibold text-lg leading-[156%] text-var(--secondary)">
+              {field}
+            </h2>
+          ),
+          description: (
+            <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
+              {message}
+            </p>
+          ),
+          icon: <img src={CloseIcon} alt="close" className="w-6 h-6" />, // Remove or fix import if needed
+          placement: "topRight",
+        });
+
+        // If you want to use Toastify instead, use:
+        // toast.error(message);
+      });
     } else {
       console.log("Form submitted successfully:", formdata);
+      // toast.success("Customer created successfully!"); // If using Toastify
     }
   };
 
   return (
     <>
+      {contextHolder}
       <div className="mt-6">
         <h2 className="font-medium text-[24px] leading-[117%] text-var(--primary2)">
           Add Customer
