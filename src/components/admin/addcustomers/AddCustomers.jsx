@@ -78,7 +78,8 @@ const AddCustomers = () => {
   };
 
   // Show popup when Discard Changes is clicked
-  const handleDiscardChanges = () => {
+  const handleDiscardChanges = (e) => {
+    e.preventDefault();
     setCancel(true);
   };
 
@@ -141,7 +142,8 @@ const AddCustomers = () => {
   // import "react-toastify/dist/ReactToastify.css";
   // Place <ToastContainer /> in your app root.
 
-  const handleCreate = () => {
+  const handleCreate = (e) => {
+    e.preventDefault();
     const errors = validateForm();
     if (Object.keys(errors).length > 0) {
       Object.entries(errors).forEach(([field, message]) => {
@@ -394,21 +396,21 @@ const AddCustomers = () => {
           </div>
         </div>
         <div className="mt-1 flex items-center gap-x-6">
-          <div
+          <button
             className="inline-block py-[6px] px-8 font-medium text-sm leading-[200%] text-center text-[var(--secondary)] bg-[var(--primary)] border border-[var(--primary)] rounded-[8px] cursor-pointer"
             onClick={handleCreate}
           >
             Create
-          </div>
-          <div
+          </button>
+          <button
             className="inline-block py-[6px] px-4 font-medium text-sm leading-[200%] text-center text-[var(--text-normal)] bg-[var(--secondary)] border border-[var(--text-normal)] rounded-[8px] cursor-pointer"
             onClick={handleDiscardChanges}
           >
             Discard Changes
-          </div>
-          <div className="inline-block py-[6px] px-4 font-medium text-sm leading-[200%] text-center text-[var(--text-normal)] bg-[var(--secondary)] border border-[var(--text-normal)] rounded-[8px] cursor-pointer">
+          </button>
+          <button className="inline-block py-[6px] px-4 font-medium text-sm leading-[200%] text-center text-[var(--text-normal)] bg-[var(--secondary)] border border-[var(--text-normal)] rounded-[8px] cursor-pointer">
             Cancel
-          </div>
+          </button>
         </div>
       </div>
       {cancel && (
