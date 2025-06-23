@@ -266,7 +266,10 @@ const AddCustomers = () => {
           <p className="font-medium text-sm leading-[171%] text-[#343a40]">
             Send User Notification
           </p>
-          <div className="flex items-center gap-x-2 cursor-pointer" onClick={handleRemember}>
+          <div
+            className="flex items-center gap-x-2 cursor-pointer"
+            onClick={handleRemember}
+          >
             <Checkbox
               checked={checked}
               className="custom-red-checkbox"
@@ -274,6 +277,17 @@ const AddCustomers = () => {
             <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
               Send the new user an email about their account
             </p>
+          </div>
+        </div>
+        <div className="mt-1 flex items-center gap-x-6">
+          <div className="inline-block py-[6px] px-8 font-medium text-sm leading-[200%] text-center text-[var(--secondary)] bg-[var(--primary)] border border-[var(--primary)] rounded-[8px] cursor-pointer">
+            Create
+          </div>
+          <div className="inline-block py-[6px] px-4 font-medium text-sm leading-[200%] text-center text-[var(--text-normal)] bg-[var(--secondary)] border border-[var(--text-normal)] rounded-[8px] cursor-pointer">
+            Discard Changes
+          </div>
+          <div className="inline-block py-[6px] px-4 font-medium text-sm leading-[200%] text-center text-[var(--text-normal)] bg-[var(--secondary)] border border-[var(--text-normal)] rounded-[8px] cursor-pointer">
+            Cancel
           </div>
         </div>
       </div>
