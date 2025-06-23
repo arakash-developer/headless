@@ -1,5 +1,6 @@
+import DownArrow2 from "@/assets/DownArrow2";
 import UploadsIcon from "@/assets/UploadsIcon";
-import { Input } from "antd";
+import { Input, Select } from "antd";
 import { useState } from "react";
 
 const AddCustomers = () => {
@@ -14,6 +15,15 @@ const AddCustomers = () => {
     role: "",
     password: "",
   });
+  const handleCategoryChange = (option) => {
+    setFormdata({ ...formdata, role: option });
+  };
+  const categoryOptions = [
+    { value: "segmentRep", label: "Segment Rep" },
+    { value: "banking", label: "Banking/Lessor" },
+    { value: "endUser", label: "End User" },
+    { value: "oemDealer", label: "OEM/Dealer" },
+  ];
   return (
     <>
       <div className="mt-6">
@@ -125,7 +135,7 @@ const AddCustomers = () => {
                 htmlFor="extrention"
                 className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
               >
-                Extrension
+                Extrention
               </label>
               <Input
                 type="text"
@@ -152,6 +162,31 @@ const AddCustomers = () => {
               }
               className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
             />
+          </div>
+        </div>
+        <div className="">
+          <label className="text-[var(--primary2)] font-medium text-sm leading-[171%] text-[#343a40]">
+            Category
+          </label>
+          <div className="relative cursor-pointer">
+            <Select
+              // defaultValue={<span style={{ color: "gray" }}>Select One</span>}
+              placeholder={<span style={{ color: "#ADB5BD" }}>Select One</span>}
+              style={{ height: "40px", color: "red" }}
+              onChange={handleCategoryChange}
+              value={formdata.role || undefined}
+              className="w-full custom-select no-arrow-select bg-[var(--background)]"
+              dropdownMatchSelectWidth={false}
+            >
+              {categoryOptions.map((option) => (
+                <Select.Option key={option.value} value={option.value}>
+                  <p>{option.label}</p>
+                </Select.Option>
+              ))}
+            </Select>
+            <div className="absolute top-1/2 -translate-y-1/2 right-[16px] pointer-events-none">
+              <DownArrow2 color="var(--text-secondary)" />
+            </div>
           </div>
         </div>
       </div>
