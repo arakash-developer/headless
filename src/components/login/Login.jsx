@@ -128,10 +128,6 @@ const Login = () => {
             placement: "topRight",
           });
         }
-
-        // const data = await response.json();
-
-        // Now check if the company email exists
         const companyDataResponse = await fetch(
           "https://4amitest-bli6.wp1.sh/wp-json/custom/v1/company-data",
           {
