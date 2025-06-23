@@ -33,7 +33,7 @@ const AddCustomers = () => {
           </h3>
         </div>
       </div>
-      <div className="flex flex-col gap-y-5 mt-6 mb-4 p-8 bg-[var(--secondary)] rounded-[8px] w-full">
+      <div className="flex flex-col gap-y-5 mt-6 mb-4 p-8 bg-[var(--secondary)] rounded-[8px] w-full box_model">
         <div className="flex gap-x-6 items-start">
           <div className="inputbox w-1/2">
             <label
@@ -106,32 +106,32 @@ const AddCustomers = () => {
           <div className="inputbox w-1/2 flex gap-x-6 items-start">
             <div className="w-1/2">
               <label
-                htmlFor="firstName"
+                htmlFor="phone"
                 className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
               >
-                First Name
+                Phone
               </label>
               <Input
-                type="text"
-                value={formdata.firstName}
+                type="number"
+                value={formdata.phone}
                 onChange={(e) =>
-                  setFormdata({ ...formdata, firstName: e.target.value })
+                  setFormdata({ ...formdata, phone: e.target.value })
                 }
                 className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
               />
             </div>
             <div className="w-1/2">
               <label
-                htmlFor="firstName"
+                htmlFor="extrention"
                 className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
               >
-                First Name
+                Extrension
               </label>
               <Input
                 type="text"
-                value={formdata.firstName}
+                value={formdata.extrention}
                 onChange={(e) =>
-                  setFormdata({ ...formdata, firstName: e.target.value })
+                  setFormdata({ ...formdata, extrention: e.target.value })
                 }
                 className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
               />
@@ -139,16 +139,16 @@ const AddCustomers = () => {
           </div>
           <div className="inputbox w-1/2">
             <label
-              htmlFor="email"
+              htmlFor="mobile"
               className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
             >
-              Last Name
+              Mobile
             </label>
             <Input
-              type="text"
-              value={formdata.lastName}
+              type="number"
+              value={formdata.mobile}
               onChange={(e) =>
-                setFormdata({ ...formdata, lastName: e.target.value })
+                setFormdata({ ...formdata, mobile: e.target.value })
               }
               className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
             />
