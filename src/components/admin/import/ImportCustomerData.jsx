@@ -1,7 +1,118 @@
 import DownloadIcon from "@/assets/DownloadIcon";
+import { LoadingOutlined } from "@ant-design/icons";
 import UploadIocn from "@public/upload2.svg";
+import { message, Upload } from "antd";
+import { useState } from "react";
+
+const getBase64 = (img, callback) => {
+  const reader = new FileReader();
+  reader.addEventListener("load", () => callback(reader.result));
+  reader.readAsDataURL(img);
+};
+
+const beforeUpload = (file) => {
+  const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
+  if (!isJpgOrPng) {
+    message.error("You can only upload JPG/PNG file!");
+  }
+  const isLt2M = file.size / 1024 / 1024 < 2;
+  if (!isLt2M) {
+    message.error("Image must smaller than 2MB!");
+  }
+  return isJpgOrPng && isLt2M;
+};
 
 const ImportCustomerData = () => {
+  const [uploading, setUploading] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [fileInfo, setFileInfo] = useState(null);
+  const [uploadRequest, setUploadRequest] = useState(null);
+  const [dragActive, setDragActive] = useState(false);
+
+  const handleChange = (info) => {
+    if (info.file.status === "uploading") {
+      setUploading(true);
+      return;
+    }
+    if (info.file.status === "done") {
+      getBase64(info.file.originFileObj, (url) => {
+        setUploading(false);
+        setFileInfo(url);
+      });
+    }
+  };
+
+  const customRequest = ({ file, onSuccess, onError, onProgress }) => {
+    setUploading(true);
+    setFileInfo({
+      name: file.name,
+      size: (file.size / 1024).toFixed(0), // KB
+      type: file.type,
+      thumb: URL.createObjectURL(file),
+    });
+
+    // Simulate upload with progress
+    let percent = 0;
+    const interval = setInterval(() => {
+      percent += Math.random() * 20;
+      if (percent >= 100) {
+        percent = 100;
+        clearInterval(interval);
+        setTimeout(() => {
+          setUploading(false);
+          setProgress(100);
+          onSuccess("ok");
+        }, 500);
+      }
+      setProgress(percent);
+      onProgress({ percent });
+    }, 400);
+
+    setUploadRequest(() => () => {
+      clearInterval(interval);
+      setUploading(false);
+      setProgress(0);
+      setFileInfo(null);
+    });
+  };
+
+  const handleRemove = () => {
+    if (uploadRequest) uploadRequest();
+    setFileInfo(null);
+    setProgress(0);
+    setUploading(false);
+  };
+
+  // Drag event handlers
+  const handleDragEnter = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(true);
+  };
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+  };
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(true);
+  };
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+    // Let antd Upload handle the file drop
+  };
+
+  const uploadButton = (
+    <div className="flex flex-col items-center justify-center">
+      {uploading ? <LoadingOutlined /> : <img src={UploadIocn} alt="upload" />}
+      <div className="mt-2 font-medium text-sm text-[#343a40]">Upload</div>
+    </div>
+  );
+
   return (
     <>
       <div className="mt-6">
@@ -43,8 +154,110 @@ const ImportCustomerData = () => {
           </p>
         </button>
       </div>
-      <div className="mt-6 bg-[var(--secondary)] rounded-[8px] w-full box_model flex flex-col items-center justify-start cursor-pointer">
-        <img src={UploadIocn} alt={UploadIocn} />
+      <div
+        className={`mt-6 w-full box_model flex flex-col items-center justify-start cursor-pointer upload-box min-h-[280px] transition-all
+          ${
+            dragActive
+              ? "bg-[#ffeaea] border-2 border-dashed border-[#e74c3c]"
+              : "bg-[#ffeaea] border-2 border-dashed border-[#e0e0e0]"
+          }
+          rounded-[12px] relative`}
+        onDragEnter={handleDragEnter}
+        onDragLeave={handleDragLeave}
+        onDragOver={handleDragOver}
+        onDrop={handleDrop}
+        style={{ borderStyle: "dashed", borderWidth: 2 }}
+      >
+        <Upload
+          name="file"
+          showUploadList={false}
+          customRequest={customRequest}
+          beforeUpload={() => true}
+          accept=".json,.csv"
+          className="w-full flex flex-col items-center"
+          disabled={uploading}
+          style={{ width: "100%" }}
+        >
+          {!fileInfo && (
+            <div className="flex flex-col items-center justify-center py-8 w-full">
+              <img src={UploadIocn} alt="upload" className="" />
+              <div className="text-xl font-semibold text-[#343a40] mb-2">
+                Drag and Drop Your File Here!
+              </div>
+              <div className="text-base text-[#343a40] mb-1">
+                Please upload JSON or CSV files
+              </div>
+              <div className="text-base text-[#343a40] mb-4">
+                A file maximum size should be 5MB
+              </div>
+              <button
+                type="button"
+                className="bg-[#e74c3c] text-white px-6 py-2 rounded font-medium flex items-center gap-2 text-base shadow hover:bg-[#d62c1a] transition"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  // trigger file input
+                  const input = document.querySelector(
+                    '.upload-box input[type="file"]'
+                  );
+                  if (input) input.click();
+                }}
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  className="inline-block"
+                >
+                  <path d="M10 2a1 1 0 0 1 1 1v8.586l2.293-2.293a1 1 0 0 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4A1 1 0 1 1 5.707 9.293L8 11.586V3a1 1 0 0 1 1-1zm-7 14a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1z" />
+                </svg>
+                Import a File
+              </button>
+            </div>
+          )}
+        </Upload>
+        {fileInfo && (
+          <div className="w-full flex flex-col items-center mt-4">
+            <div className="bg-white rounded shadow p-4 flex flex-col items-center w-[340px]">
+              <div className="flex items-center w-full">
+                <img
+                  src={fileInfo.thumb}
+                  alt="file"
+                  className="w-12 h-12 object-cover rounded mr-3 border"
+                />
+                <div className="flex-1">
+                  <div className="font-medium text-sm truncate">
+                    {fileInfo.name}
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    {fileInfo.size} KB
+                  </div>
+                </div>
+                <div className="text-xs text-gray-500">
+                  {Math.round(progress)}%
+                </div>
+              </div>
+              <div className="w-full mt-2">
+                <div className="h-2 bg-gray-200 rounded">
+                  <div
+                    className="h-2 bg-red-500 rounded"
+                    style={{ width: `${progress}%` }}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="mt-8 text-xl font-semibold text-[#343a40]">
+              Uploading..
+            </div>
+            <button
+              className="mt-4 px-6 py-2 border rounded text-[#343a40] hover:bg-gray-100"
+              onClick={handleRemove}
+              disabled={!uploading}
+            >
+              Cancel
+            </button>
+          </div>
+        )}
       </div>
     </>
   );
