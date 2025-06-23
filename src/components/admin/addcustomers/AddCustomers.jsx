@@ -1,6 +1,6 @@
 import DownArrow2 from "@/assets/DownArrow2";
 import UploadsIcon from "@/assets/UploadsIcon";
-import { Input, Select } from "antd";
+import { Checkbox, Input, Select } from "antd";
 import { useState } from "react";
 
 const AddCustomers = () => {
@@ -46,12 +46,18 @@ const AddCustomers = () => {
   const handleCategoryChange = (option) => {
     setFormdata({ ...formdata, role: option });
   };
+
   const roleOption = [
     { value: "segmentRep", label: "Segment Rep" },
     { value: "banking", label: "Banking/Lessor" },
     { value: "endUser", label: "End User" },
     { value: "oemDealer", label: "OEM/Dealer" },
   ];
+
+  const [checked, setChecked] = useState(false);
+  const handleRemember = (e) => {
+    setChecked(!checked);
+  };
   return (
     <>
       <div className="mt-6">
@@ -257,9 +263,17 @@ const AddCustomers = () => {
           </div>
         </div>
         <div className="mt-[28px]">
-          <p className="font-medium text-sm leading-[171%] text-[#343a40]">Send User Notification</p>
-          <div className="flex items-center gap-x-2">
-            <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">Send the new user an email about their account</p>
+          <p className="font-medium text-sm leading-[171%] text-[#343a40]">
+            Send User Notification
+          </p>
+          <div className="flex items-center gap-x-2 cursor-pointer" onClick={handleRemember}>
+            <Checkbox
+              checked={checked}
+              className="custom-red-checkbox"
+            ></Checkbox>
+            <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
+              Send the new user an email about their account
+            </p>
           </div>
         </div>
       </div>
