@@ -251,12 +251,12 @@ const ImportCustomerData = () => {
                 </div>
               </div>
             </div>
-            <div className="mt-8 text-xl font-semibold text-[#343a40]">
+            <div className="mt-8 font-semibold text-[32px] leading-[125%] text-center text-[#343a40]">
               {progress === 100 ? "Uploaded" : "Uploading.."}
             </div>
             {progress !== 100 && (
               <button
-                className="mt-4 px-6 py-2 border rounded text-[#343a40] hover:bg-gray-100"
+                className="mt-4 px-8 py-2 border border-[var(--text-secondary)] rounded-[8px] font-medium text-sm leading-[200%] text-center text-[#343a40]"
                 onClick={handleRemove}
                 disabled={!uploading}
               >
