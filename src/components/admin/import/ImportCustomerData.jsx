@@ -155,11 +155,11 @@ const ImportCustomerData = () => {
         </button>
       </div>
       <div
-        className={`mt-6 w-full box_model flex flex-col items-center justify-start cursor-pointer upload-box min-h-[280px] transition-all
+        className={`mt-6 w-full  flex flex-col items-center justify-start cursor-pointer upload-box min-h-[280px] transition-all
           ${
             dragActive
-              ? "bg-[#ffeaea] border-2 border-dashed border-[#e74c3c]"
-              : "bg-[#ffeaea] border-2 border-dashed border-[#e0e0e0]"
+              ? "bg-[#FFEBEC] border-2 border-dashed border-[var(--primary2)]"
+              : "bg-[var(--secondary)] border-2 border-dashed border-transparent"
           }
           rounded-[12px] relative`}
         onDragEnter={handleDragEnter}
