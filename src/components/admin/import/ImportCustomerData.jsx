@@ -156,7 +156,7 @@ const ImportCustomerData = () => {
         </button>
       </div>
       <div
-        className={`mt-6 mb-[58px] w-full  flex flex-col items-center justify-start cursor-pointer upload-box min-h-[280px] transition-all box_model_shadow
+        className={`mt-6 mb-[58px] w-full  flex flex-col items-center justify-center cursor-pointer upload-box h-[564px] transition-all box_model_shadow
           ${
             dragActive
               ? "bg-[#FFEBEC] border-2 border-dashed border-[var(--primary2)]"
