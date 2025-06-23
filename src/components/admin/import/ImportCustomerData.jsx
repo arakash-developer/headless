@@ -3,7 +3,8 @@ import UploadsIcon from "@/assets/UploadsIcon";
 import { LoadingOutlined } from "@ant-design/icons";
 import UploadIocn from "@public/upload2.svg";
 import { message, Upload } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const getBase64 = (img, callback) => {
   const reader = new FileReader();
@@ -29,6 +30,7 @@ const ImportCustomerData = () => {
   const [fileInfo, setFileInfo] = useState(null);
   const [uploadRequest, setUploadRequest] = useState(null);
   const [dragActive, setDragActive] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (info) => {
     if (info.file.status === "uploading") {
@@ -83,6 +85,15 @@ const ImportCustomerData = () => {
     setProgress(0);
     setUploading(false);
   };
+
+  useEffect(() => {
+    if (progress === 100) {
+      const timeout = setTimeout(() => {
+        navigate("/ok");
+      }, 1200);
+      return () => clearTimeout(timeout);
+    }
+  }, [progress, navigate]);
 
   // Drag event handlers
   const handleDragEnter = (e) => {
@@ -241,15 +252,17 @@ const ImportCustomerData = () => {
               </div>
             </div>
             <div className="mt-8 text-xl font-semibold text-[#343a40]">
-              Uploading..
+              {progress === 100 ? "Uploaded" : "Uploading.."}
             </div>
-            <button
-              className="mt-4 px-6 py-2 border rounded text-[#343a40] hover:bg-gray-100"
-              onClick={handleRemove}
-              disabled={!uploading}
-            >
-              Cancel
-            </button>
+            {progress !== 100 && (
+              <button
+                className="mt-4 px-6 py-2 border rounded text-[#343a40] hover:bg-gray-100"
+                onClick={handleRemove}
+                disabled={!uploading}
+              >
+                Cancel
+              </button>
+            )}
           </div>
         )}
       </div>
