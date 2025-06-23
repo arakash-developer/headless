@@ -11,8 +11,8 @@ import { Checkbox, Select } from "antd";
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { IoFilterOutline } from "react-icons/io5";
-import CustomSort from "./layers/CustomSort";
 import { Link } from "react-router-dom";
+import CustomSort from "./layers/CustomSort";
 
 const ManageUser = () => {
   const structureType = [
@@ -309,13 +309,16 @@ const ManageUser = () => {
 
       <div className="flex justify-end my-6">
         <div className="flex items-center gap-x-6">
-          <div className="flex items-center gap-x-2 py-2 px-8 rounded-[8px] bg-[var(--primary)]  text-[var(--secondary)] cursor-pointer border border-[var(--primary)]">
+          <Link
+            to="/manageusers/addusers"
+            className="flex items-center gap-x-2 py-2 px-8 rounded-[8px] bg-[var(--primary)]  text-[var(--secondary)] cursor-pointer border border-[var(--primary)]"
+          >
             {" "}
             <FaPlus />
-            <Link to='/manageusers/addusers' className="inline-block font-medium text-sm leading-[200%] text-center">
+            <p className="inline-block font-medium text-sm leading-[200%] text-center">
               Add User
-            </Link>
-          </div>
+            </p>
+          </Link>
           <div className="flex items-center gap-x-2 py-2 px-8  text-[#343a40] cursor-pointer border border-[var(--text-secondary)] rounded-[8px]">
             <UploadsIcon />
             <h3 className="font-medium text-sm leading-[200%] text-center text-[#343a40]">
