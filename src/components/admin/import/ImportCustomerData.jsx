@@ -166,7 +166,7 @@ const ImportCustomerData = () => {
         onDragLeave={handleDragLeave}
         onDragOver={handleDragOver}
         onDrop={handleDrop}
-        style={{ borderStyle: "dashed", borderWidth: 2 }}
+        style={{ borderStyle: "dashed", borderWidth: 1 }}
       >
         <Upload
           name="file"
