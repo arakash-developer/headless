@@ -1,4 +1,5 @@
 import DownloadIcon from "@/assets/DownloadIcon";
+import ManualHand from "@/assets/ManualHand";
 import UploadsIcon from "@/assets/UploadsIcon";
 import { LoadingOutlined } from "@ant-design/icons";
 import UploadIocn from "@public/upload2.svg";
@@ -235,10 +236,10 @@ const ImportCustomerData = () => {
                 A file maximum size should be 5MB
               </div>
               {/* Buttons */}
-              <div className="flex gap-3 w-[340px]">
+              <div className="flex gap-3">
                 <button
                   type="button"
-                  className="flex items-center justify-center gap-2 bg-[var(--primary)] px-8 py-2 rounded-[8px] font-medium text-sm leading-[200%] text-center text-[var(--secondary)]"
+                  className="flex items-center justify-center gap-2 bg-[var(--primary)] px-8 py-2 rounded-[8px] font-medium text-sm leading-[200%] text-center text-[var(--secondary)] border border-[var(--primary)]"
                   onClick={() => {
                     setFileError(null);
                     setFileInfo(null);
@@ -247,14 +248,13 @@ const ImportCustomerData = () => {
                   <UploadsIcon />
                   Import a File
                 </button>
+
                 <button
                   type="button"
-                  className="flex-1 flex items-center justify-center gap-2 border border-[#343a40] px-0 py-3 rounded-[8px] text-[#343a40] font-semibold text-base bg-white transition"
+                  className="flex items-center justify-center gap-2 border border-[#343a40] px-8 py-2 rounded-[8px] bg-[var(--secondary)]  font-medium text-sm leading-[200%] text-center text-[#343a40]"
                   onClick={() => navigate("/manual-entry")}
                 >
-                  <span className="material-icons-outlined text-[20px]">
-                    edit
-                  </span>
+                  <ManualHand />
                   Enter Manually
                 </button>
               </div>
