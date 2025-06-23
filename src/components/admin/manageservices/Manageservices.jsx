@@ -1,4 +1,5 @@
 import DownArrow2 from "@/assets/DownArrow2";
+import DownArrowIcon from "@/assets/DownArrowIcon";
 import DownloadIcon from "@/assets/DownloadIcon";
 import Draft from "@/assets/Draft";
 import EditIcon from "@/assets/EditIcon";
@@ -7,9 +8,8 @@ import { Checkbox, Select } from "antd";
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { IoFilterOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import CustomSort from "./layers/CustomSort";
-import DownArrowIcon from "@/assets/DownArrowIcon";
 
 const Manageservices = () => {
   const structureType = [
@@ -231,23 +231,24 @@ const Manageservices = () => {
           <div className="flex items-center gap-x-2 py-2 px-8 rounded-[8px] bg-[var(--primary)]  text-[var(--secondary)] cursor-pointer border border-[var(--primary)]">
             {" "}
             <FaPlus />
-            <Link
-              to="/addservices"
+            <NavLink
+              NavLink
+              to="/manageservices/addservices"
               className="inline-block font-medium text-sm leading-[200%] text-center"
             >
-              Add Services 
-            </Link>
+              Add Services
+            </NavLink>
           </div>
           <div className="flex items-center gap-x-2 py-2 px-8  text-[#343a40] cursor-pointer border border-[var(--text-secondary)] rounded-[8px]">
             <UploadsIcon />
             <h3 className="font-medium text-sm leading-[200%] text-center text-[#343a40]">
-              Import Services  Data
+              Import Services Data
             </h3>
           </div>
           <div className="flex items-center gap-x-2 py-2 px-8  text-[#343a40] cursor-pointer border border-[var(--text-secondary)] rounded-[8px]">
             <DownloadIcon />
             <h3 className="font-medium text-sm leading-[200%] text-center text-[#343a40]">
-              Export Services  Data
+              Export Services Data
             </h3>
           </div>
         </div>

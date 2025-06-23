@@ -312,7 +312,7 @@ const ManageAssets = () => {
           <div className="flex items-center gap-x-2 py-2 px-8 rounded-[8px] bg-[var(--primary)]  text-[var(--secondary)] cursor-pointer border border-[var(--primary)]">
             {" "}
             <FaPlus />
-            <Link to='/addassets' className="inline-block font-medium text-sm leading-[200%] text-center">
+            <Link to='/manageassets/addassets' className="inline-block font-medium text-sm leading-[200%] text-center">
               Add Assets
             </Link>
           </div>

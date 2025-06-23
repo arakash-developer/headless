@@ -1,17 +1,21 @@
 // src/routes.js
 import Error from "@/components/error/Error";
 import Profiles from "@/components/profile/Profiles";
+import InviteUser from "@/invite/InviteUser";
 import CompanyRegistration from "@components/company/CompanyRegistration";
 import CompanyRegSuc from "@components/company/CompanyRegSuc";
 import Dashboard from "@components/daahboard/Dashboard";
 import Forget from "@components/forget/Forget";
-import InviteUser from "@/invite/InviteUser";
 import Login from "@components/login/Login";
 import Register from "@components/registers/Register";
 import RegistrationSuccess from "@components/registers/RegistrationSuccess";
 import Residualanalysis from "@components/residualanalysis/Residualanalysis";
 import Services from "@components/services/Services";
 
+import AddAssets from "@/components/admin/addassets/AddAssets";
+import AddCustomers from "@/components/admin/addcustomers/AddCustomers";
+import AddServices from "@/components/admin/addservices/AddServices";
+import AddUsers from "@/components/admin/addusers/Adduser.jsx";
 import Administrator from "@/components/admin/administrator/Administrator";
 import AdminServices from "@/components/admin/adminservices/AdminServices";
 import ManageAssets from "@/components/admin/manageassets/ManageAssets";
@@ -27,10 +31,6 @@ import Demo6 from "@/components/demo/Demo6";
 import Demo7 from "@/components/demo/Demo7";
 import ConfirmEmail from "@/components/registers/ConfirmEmail";
 import Alluser from "@components/demo/Alluser";
-import AddAssets from "@/components/admin/addassets/AddAssets";
-import AddServices from "@/components/admin/addservices/AddServices";
-import AddCustomers from "@/components/admin/addcustomers/AddCustomers";
-import AddUsers from "@/components/admin/addusers/Adduser.jsx";
 export const routes = [
   // public routes
   // { path: "*", component: Error, access: "public" },
@@ -71,18 +71,8 @@ export const routes = [
     access: "administrator",
   },
   {
-    path: "/manageusers",
-    component: ManageUser,
-    access: "administrator",
-  },
-  {
     path: "/manageservices",
     component: Manageservices,
-    access: "administrator",
-  },
-  {
-    path: "/adminservices",
-    component: AdminServices,
     access: "administrator",
   },
   {
@@ -91,28 +81,40 @@ export const routes = [
     access: "administrator",
   },
   {
+    path: "/manageusers",
+    component: ManageUser,
+    access: "administrator",
+  },
+  {
+    path: "/manageusers/addusers",
+    component: AddUsers,
+    access: "administrator",
+  },
+
+  {
+    path: "/manageservices/addservices",
+    component: AddServices,
+    access: "administrator",
+  },
+  {
+    path: "/adminservices",
+    component: AdminServices,
+    access: "administrator",
+  },
+
+  {
+    path: "/managecustomers/addcustomers",
+    component: AddCustomers,
+    access: "administrator",
+  },
+  {
     path: "/manageassets",
     component: ManageAssets,
     access: "administrator",
   },
   {
-    path: "/addassets",
+    path: "/manageassets/addassets",
     component: AddAssets,
-    access: "administrator",
-  },
-  {
-    path: "/addservices",
-    component: AddServices,
-    access: "administrator",
-  },
-  {
-    path: "/addcustomers",
-    component: AddCustomers,
-    access: "administrator",
-  },
-  {
-    path: "/addusers",
-    component: AddUsers,
     access: "administrator",
   },
   { path: "/regsuccess", component: RegistrationSuccess, access: "guest" },
