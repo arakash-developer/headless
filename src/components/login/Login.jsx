@@ -8,7 +8,6 @@ import { Checkbox, Input, notification } from "antd";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ScaleLoader } from "react-spinners";
-import { toast } from "react-toastify";
 const Login = () => {
   const [api, contextHolder] = notification.useNotification();
   const [email, setEmail] = useState("");
@@ -27,23 +26,8 @@ const Login = () => {
     setChecked(!checked);
   };
 
-  const toastStyle = {
-    position: "bottom-left",
-    autoClose: 2000,
-    hideProgressBar: false,
-    closeOnClick: false,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "colored",
-    style: {
-      background: "var(--primary2)",
-      color: "#fff",
-    },
-  };
   const handleLogin = async (e) => {
     e.preventDefault();
-
     if (!email) {
       api.info({
         message: (
@@ -129,8 +113,6 @@ const Login = () => {
         }
         if (!response.ok) {
           setLoading(false);
-          console.log("dd");
-
           api.info({
             message: (
               <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40] capitalize">
@@ -179,14 +161,37 @@ const Login = () => {
               setLoading(false);
             }
           } else {
-            toast.error(
-              companyData.message || "Failed to load company data.",
-              toastStyle
-            );
+            api.info({
+              message: (
+                <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40] capitalize">
+                  Invalid email or password
+                </h2>
+              ),
+              // description: (
+              //   <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
+              //     The new customer’s record is created successfully.
+              //   </p>
+              // ),
+              icon: <img src={CloseIcon} alt="close" className="w-6 h-6" />,
+              placement: "topRight",
+            });
           }
         }
       } catch (error) {
-        toast.error(error.message, toastStyle);
+        api.info({
+          message: (
+            <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40] capitalize">
+              {error.message}
+            </h2>
+          ),
+          // description: (
+          //   <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
+          //     The new customer’s record is created successfully.
+          //   </p>
+          // ),
+          icon: <img src={CloseIcon} alt="close" className="w-6 h-6" />,
+          placement: "topRight",
+        });
         setLoading(false);
         setError(error.message);
       }
@@ -293,7 +298,11 @@ const Login = () => {
           </form>
         </div>
         <div className="h-full bg-red-500 rounded-[5px]">
-          <img className="w-full h-full rounded-[5px]" src={Loginbanner} alt="Login Banner" />
+          <img
+            className="w-full h-full rounded-[5px]"
+            src={Loginbanner}
+            alt="Login Banner"
+          />
         </div>
       </div>
     </>
