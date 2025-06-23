@@ -92,6 +92,59 @@ const AddCustomers = () => {
     setCancel(false);
   };
 
+  // Form validation
+  const validateForm = () => {
+    const errors = {};
+
+    if (!formdata.username || formdata.username.trim().length < 3) {
+      errors.username =
+        "Username is required and must be at least 3 characters.";
+    }
+    if (
+      !formdata.email ||
+      !/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formdata.email)
+    ) {
+      errors.email = "Valid email is required.";
+    }
+    if (!formdata.firstName || formdata.firstName.trim().length < 2) {
+      errors.firstName =
+        "First name is required and must be at least 2 characters.";
+    }
+    if (!formdata.lastName || formdata.lastName.trim().length < 2) {
+      errors.lastName =
+        "Last name is required and must be at least 2 characters.";
+    }
+    if (!formdata.phone || formdata.phone.length < 7) {
+      errors.phone = "Phone is required and must be at least 7 digits.";
+    }
+    if (!formdata.mobile || formdata.mobile.length < 7) {
+      errors.mobile = "Mobile is required and must be at least 7 digits.";
+    }
+    if (!formdata.role) {
+      errors.role = "Role is required.";
+    }
+    if (
+      !formdata.password ||
+      getPasswordStrength(formdata.password) === "Weak"
+    ) {
+      errors.password =
+        "Password is required and must be at least Medium strength.";
+    }
+    // extrention is optional
+
+    return errors;
+  };
+
+  // Handle Create button click
+  const handleCreate = () => {
+    const errors = validateForm();
+    if (Object.keys(errors).length > 0) {
+      console.error("Form validation errors:", errors);
+    } else {
+      console.log("Form submitted successfully:", formdata);
+    }
+  };
+
   return (
     <>
       <div className="mt-6">
@@ -314,7 +367,10 @@ const AddCustomers = () => {
           </div>
         </div>
         <div className="mt-1 flex items-center gap-x-6">
-          <div className="inline-block py-[6px] px-8 font-medium text-sm leading-[200%] text-center text-[var(--secondary)] bg-[var(--primary)] border border-[var(--primary)] rounded-[8px] cursor-pointer">
+          <div
+            className="inline-block py-[6px] px-8 font-medium text-sm leading-[200%] text-center text-[var(--secondary)] bg-[var(--primary)] border border-[var(--primary)] rounded-[8px] cursor-pointer"
+            onClick={handleCreate}
+          >
             Create
           </div>
           <div
