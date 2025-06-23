@@ -249,3 +249,6 @@ ul.companyProfile li a.active {
   box-shadow: 0 6px 25px 0 rgba(219, 220, 222, 0.2);
   background: var(--secondary);
 }
+.box_model_shadow {
+  box-shadow: 0 6px 25px 0 rgba(219, 220, 222, 0.2);
+}
