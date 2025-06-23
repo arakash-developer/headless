@@ -15,10 +15,23 @@ const AddCustomers = () => {
     role: "",
     password: "",
   });
+
+  // Generate a strong random password
+  const generatePassword = () => {
+    const length = 12;
+    const charset =
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=<>?";
+    let password = "";
+    for (let i = 0, n = charset.length; i < length; ++i) {
+      password += charset.charAt(Math.floor(Math.random() * n));
+    }
+    setFormdata({ ...formdata, password });
+  };
+
   const handleCategoryChange = (option) => {
     setFormdata({ ...formdata, role: option });
   };
-  const categoryOptions = [
+  const roleOption = [
     { value: "segmentRep", label: "Segment Rep" },
     { value: "banking", label: "Banking/Lessor" },
     { value: "endUser", label: "End User" },
@@ -178,7 +191,7 @@ const AddCustomers = () => {
               className="w-full custom-select no-arrow-select bg-[var(--background)]"
               dropdownMatchSelectWidth={false}
             >
-              {categoryOptions.map((option) => (
+              {roleOption.map((option) => (
                 <Select.Option key={option.value} value={option.value}>
                   <p>{option.label}</p>
                 </Select.Option>
@@ -188,6 +201,27 @@ const AddCustomers = () => {
               <DownArrow2 color="var(--text-secondary)" />
             </div>
           </div>
+        </div>
+        <div className="">
+          <label
+            htmlFor="phone"
+            className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
+          >
+            Password
+          </label>
+          <div className="cursor-pointer" onClick={generatePassword}>
+            <p className="my-3 font-medium text-sm leading-[200%] text-[#343a40] px-4 py-[6px] border border-[var(--primary2)] rounded-[8px] inline-block">
+              Generate Password
+            </p>
+          </div>
+          <Input
+            type="text"
+            value={formdata.password}
+            onChange={(e) =>
+              setFormdata({ ...formdata, password: e.target.value })
+            }
+            className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+          />
         </div>
       </div>
     </>
