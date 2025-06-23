@@ -3,8 +3,9 @@ import { encryptText } from "@/lib/cryptoUtils";
 import postRegistration from "@/lib/postRegistration";
 import { sendConfirmationEmail } from "@/utils/emailUtils";
 // import SignupIllustration from "@public/signupillustration.jpg";
+import CloseIcon from "@public/close.svg";
 import SignupIllustration from "@public/Illustration.svg";
-import { Button, Checkbox, Input, Select, theme } from "antd";
+import { Button, Checkbox, Input, notification, Select, theme } from "antd";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -20,6 +21,50 @@ const steps = [
     title: "",
   },
 ];
+
+const validateFormStep0 = (formData, checked) => {
+  const errors = {};
+
+  if (formData.code && !/^[A-Za-z0-9-]+$/.test(formData.code)) {
+    errors.code = "Invitation should be alphanumeric and hyphens only";
+  }
+  if (!formData.firstName || formData.firstName.trim().length < 2) {
+    errors.firstName =
+      "First name is required and must be at least 2 characters.";
+  } else if (!formData.lastName || formData.lastName.trim().length < 2) {
+    errors.lastName =
+      "Last name is required and must be at least 2 characters.";
+  } else if (!formData.title) {
+    errors.title = "Title is required";
+  } else if (!formData.company) {
+    errors.company = "Company name is required";
+  } else if (!formData.phone || formData.phone.length < 7) {
+    errors.phone = "Phone is required and must be at least 7 digits.";
+  } else if (
+    !/^\+?\(?\d{3}\)?[-\s\.]?\d{3}[-\s\.]?\d{4,6}$/.test(formData.phone)
+  ) {
+    errors.phone = "Enter a valid phone number";
+  } else if (!formData.extension || formData.extension.trim().length < 1) {
+    errors.extension = "Extension is required.";
+  } else if (!formData.mobile || formData.mobile.length < 7) {
+    errors.mobile = "Mobile is required and must be at least 7 digits.";
+  } else if (
+    !/^\+?\(?\d{3}\)?[-\s\.]?\d{3}[-\s\.]?\d{4,6}$/.test(formData.mobile)
+  ) {
+    errors.mobile = "Enter a valid mobile number";
+  } else if (!formData.email) {
+    errors.email = "Email is required";
+  } else if (
+    !/^[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+$/.test(formData.email)
+  ) {
+    errors.email = "Enter a valid email address";
+  } else if (!checked) {
+    errors.terms = "Please agree to the Terms and Privacy Policy";
+  }
+
+  return errors;
+};
+
 const Register = () => {
   const navigate = useNavigate();
   let { setForgetHide, forgetHide } = useContext(Contex);
@@ -28,6 +73,7 @@ const Register = () => {
   let { invitation, setInvitation } = useContext(Contex);
   const [selected, setSelected] = useState();
   const [checked, setChecked] = useState(false);
+  const [api, contextHolder] = notification.useNotification();
   const [formData, setFormData] = useState({
     code: "",
     email: "",
@@ -68,44 +114,28 @@ const Register = () => {
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
   let handleuserSubmitstep0 = () => {
-    // Validate the required checkbox for terms and conditions
-
-    // Validate invitation code if provided
-    if (formData.code && !/^[A-Za-z0-9-]+$/.test(formData.code))
-      return toast.error(
-        "Invitation should be alphanumeric and hyphens only",
-        toastStyle
-      );
-
-    // Validate required fields
-    if (!formData.firstName)
-      return toast.error("First Name is required", toastStyle);
-    if (!formData.lastName)
-      return toast.error("Last Name is required", toastStyle);
-    if (!formData.title) return toast.error("Title is required", toastStyle);
-    if (!formData.company)
-      return toast.error("Company name is required", toastStyle);
-    if (!formData.phone)
-      return toast.error("Phone number is required", toastStyle);
-    if (!/^\+?\(?\d{3}\)?[-\s\.]?\d{3}[-\s\.]?\d{4,6}$/.test(formData.phone))
-      return toast.error("Enter a valid phone number", toastStyle);
-    if (!formData.extension)
-      return toast.error("Extension number is required", toastStyle);
-    if (!formData.mobile)
-      return toast.error("Mobile number is required", toastStyle);
-    if (!/^\+?\(?\d{3}\)?[-\s\.]?\d{3}[-\s\.]?\d{4,6}$/.test(formData.mobile))
-      return toast.error("Enter a valid mobile number", toastStyle);
-    if (!formData.email) return toast.error("Email is required", toastStyle);
-    if (!/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(formData.email))
-      return toast.error("Enter a valid email address", toastStyle);
-    // If all validations pass, proceed to next step
-    if (!checked) {
-      return toast.error(
-        "Please agree to the Terms and Privacy Policy",
-        toastStyle
-      );
+    const errors = validateFormStep0(formData, checked);
+    if (Object.keys(errors).length > 0) {
+      Object.entries(errors).forEach(([field, message]) => {
+        // return toast.error(msg, toastStyle);
+        api.info({
+          message: (
+            <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40] capitalize">
+              {field}
+            </h2>
+          ),
+          description: (
+            <p className="font-normal text-sm leading-[135%] text-[var(--text-secondary)]">
+              {message}
+            </p>
+          ),
+          icon: <img src={CloseIcon} alt="close" className="w-6 h-6" />,
+          placement: "topRight",
+        });
+      });
+    } else {
+      setCurrent(current + 1);
     }
-    setCurrent(current + 1);
   };
 
   let handleuserSubmitstep1 = async (callback) => {
@@ -256,6 +286,7 @@ const Register = () => {
   };
   return (
     <>
+      {contextHolder}
       {current < 2 && (
         <div className="max-w-[1098px] pl-[55px] pt-[45px] pb-[46px] pr-[22px] bg-[#fff] rounded-[5px] formboxshadow mb-[105px]">
           <div className="flex justify-between items-start">
