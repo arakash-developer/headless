@@ -28,6 +28,21 @@ const AddCustomers = () => {
     setFormdata({ ...formdata, password });
   };
 
+  // Password strength checker
+  const getPasswordStrength = (password) => {
+    if (!password) return "";
+    let score = 0;
+    if (password.length >= 8) score++;
+    if (/[A-Z]/.test(password)) score++;
+    if (/[a-z]/.test(password)) score++;
+    if (/[0-9]/.test(password)) score++;
+    if (/[^A-Za-z0-9]/.test(password)) score++;
+    if (password.length >= 12) score++;
+    if (score >= 5) return "Strong";
+    if (score >= 3) return "Medium";
+    return "Weak";
+  };
+
   const handleCategoryChange = (option) => {
     setFormdata({ ...formdata, role: option });
   };
@@ -202,26 +217,44 @@ const AddCustomers = () => {
             </div>
           </div>
         </div>
-        <div className="">
-          <label
-            htmlFor="phone"
-            className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
-          >
-            Password
-          </label>
-          <div className="cursor-pointer" onClick={generatePassword}>
-            <p className="my-3 font-medium text-sm leading-[200%] text-[#343a40] px-4 py-[6px] border border-[var(--primary2)] rounded-[8px] inline-block">
-              Generate Password
+        <div className="flex items-end gap-x-6 justify-between">
+          <div className="">
+            <label
+              htmlFor="phone"
+              className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
+            >
+              Password
+            </label>
+            <div className="cursor-pointer" onClick={generatePassword}>
+              <p className="font-medium text-sm leading-[200%] text-[#343a40] px-4 py-[6px] border border-[var(--primary2)] rounded-[8px] inline-block w-[170px]">
+                Generate Password
+              </p>
+            </div>
+          </div>
+          <div className="w-full relative">
+            <Input
+              type="text"
+              value={formdata.password}
+              onChange={(e) =>
+                setFormdata({ ...formdata, password: e.target.value })
+              }
+              className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+            />
+            <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)] absolute top-1/2 -translate-y-1/2 right-4">
+              Password strength:{" "}
+              <span
+                className={
+                  getPasswordStrength(formdata.password) === "Strong"
+                    ? "ml-1 text-[var(--primary)]"
+                    : getPasswordStrength(formdata.password) === "Medium"
+                    ? "ml-1 text-yellow-500"
+                    : "ml-1 text-red-500"
+                }
+              >
+                {getPasswordStrength(formdata.password)}
+              </span>
             </p>
           </div>
-          <Input
-            type="text"
-            value={formdata.password}
-            onChange={(e) =>
-              setFormdata({ ...formdata, password: e.target.value })
-            }
-            className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
-          />
         </div>
       </div>
     </>
