@@ -97,7 +97,7 @@ const Navbar = () => {
                 </div>
                 <DownArrow />
 
-                <div className="absolute top-[50px] right-0 profile_popup min-w-[218px] h-[200px]  rounded-[8px]">
+                <div className="absolute top-[50px] right-0 profile_popup min-w-[218px]  rounded-[8px]">
                   <div className="py-3 pl-4 pr-[9px] flex items-start gap-x-3">
                     <div className="">
                       <div className="w-[40px] h-[40px] overflow-hidden rounded-full">
