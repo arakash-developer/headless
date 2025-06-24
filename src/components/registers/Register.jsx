@@ -2,6 +2,7 @@ import DownArrow2 from "@/assets/DownArrow2";
 import { encryptText } from "@/lib/cryptoUtils";
 import postRegistration from "@/lib/postRegistration";
 import { sendConfirmationEmail } from "@/utils/emailUtils";
+import Success from "@public/Success.svg";
 // import SignupIllustration from "@public/signupillustration.jpg";
 import CloseIcon from "@public/close.svg";
 import SignupIllustration from "@public/Illustration.svg";
@@ -117,7 +118,6 @@ const Register = () => {
     const errors = validateFormStep0(formData, checked);
     if (Object.keys(errors).length > 0) {
       Object.entries(errors).forEach(([field, message]) => {
-        // return toast.error(msg, toastStyle);
         api.info({
           message: (
             <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40] capitalize">
@@ -139,26 +139,49 @@ const Register = () => {
   };
 
   let handleuserSubmitstep1 = async (callback) => {
+    const errors = {};
+
     // Validate username
-    if (!formData.userName)
-      return toast.error("Username is required", toastStyle);
-    if (!/^[a-z0-9_-]{3,15}$/.test(formData.userName))
-      return toast.error(
-        "Username should be between 3 to 15 characters, alphanumeric, hyphens and underscores only",
-        toastStyle
-      );
+    if (!formData.userName) {
+      errors.userName = "Username is required";
+    } else if (!/^[a-z0-9_-]{3,15}$/.test(formData.userName)) {
+      errors.userName =
+        "Username should be between 3 to 15 characters, alphanumeric, hyphens and underscores only";
+    }
 
     // Validate password
-    if (!formData.password)
-      return toast.error("Password is required", toastStyle);
-    if (formData.password.length < 8)
-      return toast.error("Password must be at least 8 characters", toastStyle);
+    else if (!formData.password) {
+      errors.password = "Password is required";
+    } else if (formData.password.length < 8) {
+      errors.password = "Password must be at least 8 characters";
+    }
 
     // Validate password confirmation
-    if (!formData.confirmPassword)
-      return toast.error("Confirm Password is required", toastStyle);
-    if (formData.password !== formData.confirmPassword)
-      return toast.error("Password does not match", toastStyle);
+    else if (!formData.confirmPassword) {
+      errors.confirmPassword = "Confirm Password is required";
+    } else if (formData.password !== formData.confirmPassword) {
+      errors.confirmPassword = "Password does not match";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      Object.entries(errors).forEach(([field, message]) => {
+        api.info({
+          message: (
+            <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40] capitalize">
+              {field}
+            </h2>
+          ),
+          description: (
+            <p className="font-normal text-sm leading-[135%] text-[var(--text-secondary)]">
+              {message}
+            </p>
+          ),
+          icon: <img src={CloseIcon} alt="close" className="w-6 h-6" />,
+          placement: "topRight",
+        });
+      });
+      return; // Exit if there are errors
+    }
 
     // If all validations pass, proceed with registration
     let datas = {
@@ -179,9 +202,19 @@ const Register = () => {
       if (response?.login) {
         setCurrent(current + 1);
         callback();
-        toast.success(response.message, {
-          ...toastStyle,
-          style: { background: "var(--primary)", color: "#fff" },
+        api.info({
+          message: (
+            <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40] capitalize">
+              Registration Successful!
+            </h2>
+          ),
+          // description: (
+          //   <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
+          //     The new customer’s record is created successfully.
+          //   </p>
+          // ),
+          icon: <img src={Success} alt="success" className="w-6 h-6" />,
+          placement: "topRight",
         });
       } else {
         toast.error(response.message || "Registration failed", toastStyle);
@@ -275,8 +308,20 @@ const Register = () => {
       `https://4ami-client.wp1.sh/confirmemail/${formData.email}`
     ).then(
       () => {
-        console.log("SUCCESS!");
-        toast.success("Email sent successfully!", toastStyle);
+        api.info({
+          message: (
+            <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40] capitalize">
+              Email sent successfully
+            </h2>
+          ),
+          // description: (
+          //   <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
+          //     The new customer’s record is created successfully.
+          //   </p>
+          // ),
+          icon: <img src={Success} alt="success" className="w-6 h-6" />,
+          placement: "topRight",
+        });
       },
       (error) => {
         console.error("FAILED...", error.text);
