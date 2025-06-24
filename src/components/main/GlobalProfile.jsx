@@ -1,3 +1,5 @@
+import { Input } from "antd";
+
 const GlobalProfile = () => {
   let userData = JSON.parse(localStorage.getItem("user_data"));
   return (
@@ -92,8 +94,181 @@ const GlobalProfile = () => {
               to dates
             </p>
           </div>
-          <div className="mb-6">
-            
+          <div
+            className="mb-6 flex flex-col gap-y-5
+          "
+          >
+            <div className="flex justify-between items-start gap-x-6">
+              <div className="w-1/2 flex flex-col gap-y-[2px]">
+                <label
+                  htmlFor="text"
+                  className="text-[var(--primary2)] not-italic font-medium text-sm leading-[171%] text-[#343a40]"
+                >
+                  First Name
+                </label>
+                <Input
+                  type="text"
+                  // value={email}
+                  // onChange={(e) => setEmail(e.target.value)}
+                  placeholder={userData?.first_name}
+                  className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] capitalize"
+                />
+                {/* <div className="flex justify-end">
+                  <Link
+                    to="/forget"
+                    className="font-normal text-xs leading-[135%] text-[var(--primary)]"
+                  >
+                    Forgot Username?
+                  </Link>
+                </div> */}
+              </div>
+              <div className="w-1/2 flex flex-col gap-y-[2px]">
+                <label
+                  htmlFor="lastname"
+                  className="text-[var(--primary2)] not-italic font-medium text-sm leading-[171%] text-[#343a40]"
+                >
+                  last Name
+                </label>
+                <Input
+                  type="text"
+                  placeholder={userData?.last_name}
+                  // value={email}
+                  // onChange={(e) => setEmail(e.target.value)}
+                  className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+                />
+                {/* <div className="flex justify-end">
+                  <Link
+                    to="/forget"
+                    className="font-normal text-xs leading-[135%] text-[var(--primary)]"
+                  >
+                    Forgot Username?
+                  </Link>
+                </div> */}
+              </div>
+            </div>
+            <div className="flex justify-between items-start gap-x-6">
+              <div className="w-1/2 flex flex-col gap-y-[2px]">
+                <label
+                  htmlFor="
+                  jobtitle"
+                  className="text-[var(--primary2)] not-italic font-medium text-sm leading-[171%] text-[#343a40]"
+                >
+                  Job Title
+                </label>
+                <Input
+                  type="text"
+                  placeholder={userData?.job_title || "Enter your job title"}
+                  // value={email}
+                  // onChange={(e) => setEmail(e.target.value)}
+                  className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+                />
+                {/* <div className="flex justify-end">
+                  <Link
+                    to="/forget"
+                    className="font-normal text-xs leading-[135%] text-[var(--primary)]"
+                  >
+                    Forgot Username?
+                  </Link>
+                </div> */}
+              </div>
+              <div className="w-1/2 flex flex-col gap-y-[2px]">
+                <label
+                  htmlFor="email"
+                  className="text-[var(--primary2)] not-italic font-medium text-sm leading-[171%] text-[#343a40]"
+                >
+                  email
+                </label>
+                <Input
+                  type="email"
+                  placeholder={userData?.email || "Enter your email"}
+                  // value={email}
+                  // onChange={(e) => setEmail(e.target.value)}
+                  className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+                />
+                {/* <div className="flex justify-end">
+                  <Link
+                    to="/forget"
+                    className="font-normal text-xs leading-[135%] text-[var(--primary)]"
+                  >
+                    Forgot Username?
+                  </Link>
+                </div> */}
+              </div>
+            </div>
+            <div className="flex justify-between items-start gap-x-6">
+              <div className="w-[45%] flex flex-col gap-y-[2px]">
+                <label
+                  htmlFor="
+                  jobtitle"
+                  className="text-[var(--primary2)] not-italic font-medium text-sm leading-[171%] text-[#343a40]"
+                >
+                  Phone Number 1
+                </label>
+                <Input
+                  type="number"
+                  placeholder={
+                    userData?.phone_number_1 || "Enter your phone number 1"
+                  }
+                  // value={email}
+                  // onChange={(e) => setEmail(e.target.value)}
+                  className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+                />
+                {/* <div className="flex justify-end">
+                  <Link
+                    to="/forget"
+                    className="font-normal text-xs leading-[135%] text-[var(--primary)]"
+                  >
+                    Forgot Username?
+                  </Link>
+                </div> */}
+              </div>
+              <div className="w-[10%] flex flex-col gap-y-[2px]">
+                <label
+                  htmlFor="email"
+                  className="text-[var(--primary2)] not-italic font-medium text-sm leading-[171%] text-[#343a40]"
+                >
+                  Ext.
+                </label>
+                <Input
+                  type="text"
+                  placeholder="123"
+                  // value={email}
+                  // onChange={(e) => setEmail(e.target.value)}
+                  className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+                />
+                {/* <div className="flex justify-end">
+                  <Link
+                    to="/forget"
+                    className="font-normal text-xs leading-[135%] text-[var(--primary)]"
+                  >
+                    Forgot Username?
+                  </Link>
+                </div> */}
+              </div>
+              <div className="w-[45%] flex flex-col gap-y-[2px]">
+                <label
+                  htmlFor="email"
+                  className="text-[var(--primary2)] not-italic font-medium text-sm leading-[171%] text-[#343a40]"
+                >
+                  Ext.
+                </label>
+                <Input
+                  type="text"
+                  placeholder="Enter your extension"
+                  // value={email}
+                  // onChange={(e) => setEmail(e.target.value)}
+                  className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+                />
+                {/* <div className="flex justify-end">
+                  <Link
+                    to="/forget"
+                    className="font-normal text-xs leading-[135%] text-[var(--primary)]"
+                  >
+                    Forgot Username?
+                  </Link>
+                </div> */}
+              </div>
+            </div>
           </div>
         </div>
       </div>
