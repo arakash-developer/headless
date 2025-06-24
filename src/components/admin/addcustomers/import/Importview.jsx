@@ -96,7 +96,7 @@ const Importview = () => {
         </p>
       </div>
 
-      <div class="mt-4 p-4 bg-[var(--secondary)] servicecard rounded-[8px]">
+      <div class="mt-4 p-4 bg-[var(--secondary)] servicecard rounded-[8px] mb-[194px]">
         <table class="table-auto w-full border-collapse">
           <thead>
             <tr class="text-left bg-[var(--secondary)]">
@@ -189,6 +189,14 @@ const Importview = () => {
             ))}
           </tbody>
         </table>
+        <div className="mt-6 flex gap-x-6 items-center">
+          <button className="font-medium text-sm leading-[200%] text-center text-[var(--secondary)] py-2 px-8 bg-[var(--primary)] rounded-[8px] border border-[var(--primary)]">
+            Start Importing
+          </button>
+          <button className="font-medium text-sm leading-[200%] text-center text-[var(--text-normal)] py-2 px-8  rounded-[8px] border border-[var(--text-secondary)]">
+            Discard Changes
+          </button>
+        </div>
       </div>
     </div>
   );
