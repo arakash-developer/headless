@@ -269,6 +269,29 @@ const GlobalProfile = () => {
                 </div> */}
               </div>
             </div>
+            <div className="w-full flex flex-col gap-y-[2px]">
+              <label
+                htmlFor="email"
+                className="text-[var(--primary2)] not-italic font-medium text-sm leading-[171%] text-[#343a40]"
+              >
+                Mobile Phone
+              </label>
+              <Input
+                type="number"
+                placeholder="(555) 987-6543"
+                // value={email}
+                // onChange={(e) => setEmail(e.target.value)}
+                className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+              />
+              {/* <div className="flex justify-end">
+                  <Link
+                    to="/forget"
+                    className="font-normal text-xs leading-[135%] text-[var(--primary)]"
+                  >
+                    Forgot Username?
+                  </Link>
+                </div> */}
+            </div>
           </div>
         </div>
       </div>
