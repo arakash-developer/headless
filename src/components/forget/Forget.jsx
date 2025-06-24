@@ -421,9 +421,9 @@ const Forget = () => {
           )}
         </div>
         {!(current === 3) && (
-          <div className="px-8">
+          <div className="px-8 flex justify-center items-center h-[465px]">
             <img
-              className="w-[475px] h-[408px]"
+              className="w-[475px] h-[408px] rounded-[5px]"
               src={ForgetIcon}
               alt="forget"
             />
