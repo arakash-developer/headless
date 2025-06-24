@@ -213,7 +213,7 @@ const Login = () => {
                   htmlFor="email"
                   className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
                 >
-                  Username
+                  Email
                 </label>
                 <Input
                   type="email"
@@ -221,14 +221,14 @@ const Login = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
                 />
-                <div className="flex justify-end">
+                {/* <div className="flex justify-end">
                   <Link
                     to="/forget"
                     className="font-normal text-xs leading-[135%] text-[var(--primary)]"
                   >
                     Forgot Username?
                   </Link>
-                </div>
+                </div> */}
               </div>
 
               <div className="flex flex-col gap-y-[2px]">
