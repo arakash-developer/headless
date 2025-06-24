@@ -157,12 +157,15 @@ const Navbar = () => {
                   </div>
                   <div className="">
                     {ProfilemenuItems.map((item, index) => (
-                      <div className="py-[10px] pl-4 hover:bg-[var(--pop-up)] text-[var(--text-secondary)] flex items-center gap-x-3 group cursor-pointer hover:text-[var(--primary2)]">
+                      <Link
+                        to={item.link}
+                        className="py-[10px] pl-4 hover:bg-[var(--pop-up)] text-[var(--text-secondary)] flex items-center gap-x-3 group cursor-pointer hover:text-[var(--primary2)]"
+                      >
                         {item.icon}
                         <p className="font-normal text-sm leading-[171%] text-[var(--text-secondary)] group-hover:text-[var(--primary2)]">
                           {item.label}
                         </p>
-                      </div>
+                      </Link>
                     ))}
                   </div>
                 </div>
