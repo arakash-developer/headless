@@ -1,6 +1,10 @@
 import DownArrow from "@/assets/DownArrow";
+import Invite from "@/assets/Invite";
+import LogOut from "@/assets/LogOut";
 import Mail from "@/assets/Mail";
+import Notification from "@/assets/Notification";
 import NotifyIcon from "@/assets/NotifyIcon";
+import Setting from "@/assets/Setting";
 import UserProfile from "@/assets/UserProfile";
 import { Contex } from "@/context/User";
 import { Input } from "antd";
@@ -27,23 +31,23 @@ const Navbar = () => {
     },
     {
       label: "Invite",
-      icon: UserProfile,
+      icon: <Invite />,
 
       link: "/invite",
     },
     {
       label: "Notification",
-      icon: UserProfile,
+      icon: <Notification />,
       link: "/notifications",
     },
     {
       label: "Settings",
-      icon: UserProfile,
+      icon: <Setting />,
       link: "/settings",
     },
     {
       label: "Log Out",
-      icon: UserProfile,
+      icon: <LogOut />,
       link: "/logout",
     },
   ];
