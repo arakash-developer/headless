@@ -139,7 +139,7 @@ const Sidebar = () => {
                     activeClassName="active"
                   >
                     <ResidualanalysisIcon />
-                    <p className="py-1">Inviteuser</p>
+                    <p className="py-1">Invite User</p>
                   </NavLink>
                 </li>
                 {/* <li className="">
