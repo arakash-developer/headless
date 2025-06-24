@@ -1,3 +1,4 @@
+import Save from "@/assets/Save";
 import { Input } from "antd";
 
 const GlobalProfile = () => {
@@ -292,6 +293,10 @@ const GlobalProfile = () => {
                   </Link>
                 </div> */}
             </div>
+            <button className="bg-[var(--primary)] hover:bg-[var(--primary2)] text-white font-medium text-sm leading-[171%] flex items-center gap-x-2 justify-center  h-[44px] rounded-[8px] w-[184px]">
+              <Save />
+              Save Changes
+            </button>
           </div>
         </div>
       </div>
