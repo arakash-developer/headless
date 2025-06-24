@@ -22,28 +22,29 @@ const Navbar = () => {
   const ProfilemenuItems = [
     {
       label: "View profile",
-      icon: "user", // user icon for 'View profile'
-      link: "/profile", // Link to the profile page
+      icon: <UserProfile />,
+      link: "/profile",
     },
     {
       label: "Invite",
-      icon: "invite", // icon for 'Invite'
-      link: "/invite", // Link to the invite page
+      icon: UserProfile,
+
+      link: "/invite",
     },
     {
       label: "Notification",
-      icon: "bell", // bell icon for 'Notification'
-      link: "/notifications", // Link to the notifications page
+      icon: UserProfile,
+      link: "/notifications",
     },
     {
       label: "Settings",
-      icon: "settings", // gear icon for 'Settings'
-      link: "/settings", // Link to the settings page
+      icon: UserProfile,
+      link: "/settings",
     },
     {
       label: "Log Out",
-      icon: "power", // power icon for 'Log Out'
-      link: "/logout", // Link to log out page
+      icon: UserProfile,
+      link: "/logout",
     },
   ];
 
@@ -117,7 +118,7 @@ const Navbar = () => {
                   <div className="">
                     {ProfilemenuItems.map((item, index) => (
                       <div className="py-[10px] pl-4 hover:bg-[var(--pop-up)] text-[var(--text-secondary)] flex items-center gap-x-3 group cursor-pointer hover:text-[var(--primary2)]">
-                        <UserProfile />
+                        {item.icon}
                         <p className="font-normal text-sm leading-[171%] text-[var(--text-secondary)] group-hover:text-[var(--primary2)]">
                           {item.label}
                         </p>
