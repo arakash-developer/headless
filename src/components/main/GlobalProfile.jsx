@@ -82,7 +82,20 @@ const GlobalProfile = () => {
             </div>
           </div>
         </div>
-        <div className="box_model_shadow bg-[var(--secondary)] rounded-[8px]"></div>
+        <div className="box_model_shadow bg-[var(--secondary)] rounded-[8px] w-[702px] p-8">
+          <div className="mb-8">
+            <h2 className="font-medium text-[24px] leading-[117%] text-[var(--primary2)]">
+              Personal Information
+            </h2>
+            <p className="font-normal text-sm leading-[171%] text-[var(--text-secondary)] mt-2">
+              Update your personal details to keep your profile accurate and up
+              to dates
+            </p>
+          </div>
+          <div className="mb-6">
+            
+          </div>
+        </div>
       </div>
     </div>
   );
