@@ -187,7 +187,7 @@ const Addusers = () => {
       </div>
       <div className="flex justify-end">
         <Link
-          to="/managecustomers/importdata"
+          to="/manageusers/importuserdata"
           className="flex items-center gap-x-2 py-2 px-8  text-[var(--secondary)] cursor-pointer border border-[var(--primary)] rounded-[8px] bg-[var(--primary)]"
         >
           <UploadsIcon />

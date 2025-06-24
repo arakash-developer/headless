@@ -14,11 +14,12 @@ import Services from "@components/services/Services";
 
 import AddAssets from "@/components/admin/addassets/AddAssets";
 import AddCustomers from "@/components/admin/addcustomers/AddCustomers";
+import ImportCustomerData from "@/components/admin/addcustomers/import/ImportCustomerData";
+import Importview from "@/components/admin/addcustomers/import/Importview";
 import AddServices from "@/components/admin/addservices/AddServices";
 import AddUsers from "@/components/admin/addusers/Adduser.jsx";
 import Administrator from "@/components/admin/administrator/Administrator";
 import AdminServices from "@/components/admin/adminservices/AdminServices";
-import ImportCustomerData from "@/components/admin/addcustomers/import/ImportCustomerData";
 import ManageAssets from "@/components/admin/manageassets/ManageAssets";
 import ManageCustomers from "@/components/admin/managecustomers/ManageCustomers";
 import Manageservices from "@/components/admin/manageservices/Manageservices";
@@ -32,7 +33,7 @@ import Demo6 from "@/components/demo/Demo6";
 import Demo7 from "@/components/demo/Demo7";
 import ConfirmEmail from "@/components/registers/ConfirmEmail";
 import Alluser from "@components/demo/Alluser";
-import Importview from "@/components/admin/addcustomers/import/Importview";
+import ImportUserData from "@/components/admin/addusers/import/ImportUserData";
 export const routes = [
   // public routes
   // { path: "*", component: Error, access: "public" },
@@ -77,7 +78,7 @@ export const routes = [
     component: Manageservices,
     access: "administrator",
   },
-
+  // manage users start
   {
     path: "/manageusers",
     component: ManageUser,
@@ -88,7 +89,13 @@ export const routes = [
     component: AddUsers,
     access: "administrator",
   },
-
+  {
+    path: "/manageusers/importuserdata",
+    component: ImportUserData,
+    access: "administrator",
+  },
+  //  manage users end
+  // manage services start
   {
     path: "/manageservices/addservices",
     component: AddServices,
@@ -111,6 +118,11 @@ export const routes = [
     access: "administrator",
   },
   {
+    path: "/managecustomers/importcustomerdata",
+    component: ImportCustomerData,
+    access: "administrator",
+  },
+  {
     path: "/managecustomers/iportcustomerdata/importview",
     component: Importview,
     access: "administrator",
@@ -127,10 +139,17 @@ export const routes = [
     access: "administrator",
   },
   {
-    path: "/managecustomers/importcustomerdata",
-    component: ImportCustomerData,
+    path: "/manageassets/addassets",
+    component: AddAssets,
     access: "administrator",
   },
+  {
+    path: "/manageassets/importassetdata",
+    component: AddAssets,
+    access: "administrator",
+  },
+  //end manage assets
+
   { path: "/regsuccess", component: RegistrationSuccess, access: "guest" },
   { path: "/residualanalysis", component: Residualanalysis, access: "private" },
   // wildcard 404 route — must be last

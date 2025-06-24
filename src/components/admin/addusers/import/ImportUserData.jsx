@@ -13,7 +13,7 @@ const getBase64 = (img, callback) => {
   reader.readAsDataURL(img);
 };
 
-const ImportCustomerData = () => {
+const ImportUserData = () => {
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [fileInfo, setFileInfo] = useState(null);
@@ -364,4 +364,4 @@ const ImportCustomerData = () => {
   );
 };
 
-export default ImportCustomerData;
+export default ImportUserData;
