@@ -9,7 +9,6 @@ import SignupIllustration from "@public/Illustration.svg";
 import { Button, Checkbox, Input, notification, Select, theme } from "antd";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { Contex } from "../../context/User";
 const steps = [
   {
@@ -92,24 +91,22 @@ const Register = () => {
     confirmPassword: "",
   });
 
-  const toastStyle = {
-    position: "bottom-left",
-    autoClose: 2000,
-    hideProgressBar: false,
-    closeOnClick: false,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "colored",
-    style: {
-      background: "var(--primary2)",
-      color: "#fff",
-    },
-  };
-
   const showError = (msg) => {
     setToastError(msg);
-    toast.error(msg, toastStyle);
+    api.info({
+      message: (
+        <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40] capitalize">
+          Error1
+        </h2>
+      ),
+      description: (
+        <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
+          {msg}
+        </p>
+      ),
+      icon: <img src={Success} alt="success" className="w-6 h-6" />,
+      placement: "topRight",
+    });
   };
 
   const { token } = theme.useToken();
@@ -217,14 +214,36 @@ const Register = () => {
           placement: "topRight",
         });
       } else {
-        toast.error(response.message || "Registration failed", toastStyle);
+        api.info({
+          message: (
+            <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40] capitalize">
+              Error
+            </h2>
+          ),
+          description: (
+            <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
+              {response}
+            </p>
+          ),
+          icon: <img src={CloseIcon} alt="success" className="w-6 h-6" />,
+          placement: "topRight",
+        });
       }
     } catch (error) {
-      toast.error(
-        "An error occurred during registration. Please try again.",
-        toastStyle
-      );
-      console.error("Registration error:", error);
+      api.info({
+        message: (
+          <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40] capitalize">
+            Error3
+          </h2>
+        ),
+        description: (
+          <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
+            {error.message}
+          </p>
+        ),
+        icon: <img src={Success} alt="success" className="w-6 h-6" />,
+        placement: "topRight",
+      });
     }
   };
   const next = () => {
@@ -324,8 +343,20 @@ const Register = () => {
         });
       },
       (error) => {
-        console.error("FAILED...", error.text);
-        toast.error("Failed to send email. Please try again.", toastStyle);
+        api.info({
+          message: (
+            <h2 className="font-medium text-[22px] leading-[117%] text-[#343a40] capitalize">
+              Failed to send email. Please try again.
+            </h2>
+          ),
+          description: (
+            <p className="font-normal text-xs leading-[135%] text-[var(--text-secondary)]">
+              {error}
+            </p>
+          ),
+          icon: <img src={CloseIcon} alt="close" className="w-6 h-6" />,
+          placement: "topRight",
+        });
       }
     );
   };
