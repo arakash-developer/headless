@@ -139,7 +139,31 @@ const ImportCustomerData = () => {
     e.preventDefault();
     e.stopPropagation();
     setDragActive(false);
-    // Let antd Upload handle the file drop
+
+    // Handle file drop directly on the box_model_shadow div
+    const files = e.dataTransfer.files;
+    if (files && files.length > 0) {
+      // Only handle the first file
+      const file = files[0];
+      // Validate file before upload
+      const validation = validateFile(file);
+      if (!validation.valid) {
+        setFileError({ file, message: validation.error });
+        setFileInfo({
+          name: file.name,
+          size: (file.size / 1024).toFixed(0),
+        });
+        return;
+      }
+      setFileError(null);
+      // Manually trigger upload
+      customRequest({
+        file,
+        onSuccess: () => {},
+        onError: () => {},
+        onProgress: () => {},
+      });
+    }
   };
 
   const uploadButton = (
