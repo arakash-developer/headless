@@ -252,3 +252,7 @@ ul.companyProfile li a.active {
 .box_model_shadow {
   box-shadow: 0 6px 25px 0 rgba(219, 220, 222, 0.2);
 }
+.profile_popup {
+  box-shadow: 2px 4px 15px 0 rgba(0, 0, 0, 0.15);
+  background: var(--secondary);
+}

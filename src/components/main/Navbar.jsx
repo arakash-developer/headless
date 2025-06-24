@@ -1,5 +1,7 @@
 import DownArrow from "@/assets/DownArrow";
+import Mail from "@/assets/Mail";
 import NotifyIcon from "@/assets/NotifyIcon";
+import UserProfile from "@/assets/UserProfile";
 import { Contex } from "@/context/User";
 import { Input } from "antd";
 import { useContext, useEffect, useState } from "react";
@@ -17,12 +19,40 @@ const Navbar = () => {
     const currentRoute = window.location.pathname.split("/")[1];
     setRouteName(currentRoute);
   }, [location.pathname]);
+  const ProfilemenuItems = [
+    {
+      label: "View profile",
+      icon: "user", // user icon for 'View profile'
+      link: "/profile", // Link to the profile page
+    },
+    {
+      label: "Invite",
+      icon: "invite", // icon for 'Invite'
+      link: "/invite", // Link to the invite page
+    },
+    {
+      label: "Notification",
+      icon: "bell", // bell icon for 'Notification'
+      link: "/notifications", // Link to the notifications page
+    },
+    {
+      label: "Settings",
+      icon: "settings", // gear icon for 'Settings'
+      link: "/settings", // Link to the settings page
+    },
+    {
+      label: "Log Out",
+      icon: "power", // power icon for 'Log Out'
+      link: "/logout", // Link to log out page
+    },
+  ];
+
   return (
     <>
       <nav className="mt-[32px] mb-6 mr-[80px] flex justify-between items-center">
         {token || adminToken ? (
           <>
-            <div className="ml-8 flex items-center relative">
+            <div className="ml-8 flex items-center relative ">
               <Input
                 type="text"
                 // onChange={onChange}
@@ -61,11 +91,40 @@ const Navbar = () => {
             </div>
             <div className="flex gap-x-[25px] items-center">
               <NotifyIcon />
-              <div className="flex gap-x-1 items-center">
+              <div className="flex gap-x-1 items-center cursor-pointer relative">
                 <div className="w-[35px] h-[35px] overflow-hidden rounded-full">
                   <img src={userData?.avatar_url} alt="Avatar" />
                 </div>
                 <DownArrow />
+
+                <div className="absolute top-[50px] right-0 profile_popup min-w-[218px] h-[200px]  rounded-[8px]">
+                  <div className="py-3 pl-4 pr-[9px] flex items-start gap-x-3">
+                    <div className="">
+                      <div className="w-[40px] h-[40px] overflow-hidden rounded-full">
+                        <img src={userData?.avatar_url} alt="Avatar" />
+                      </div>
+                    </div>
+                    <div className="">
+                      <h3 className="font-medium text-sm leading-[171%] text-[var(--primary2)]">
+                        {userData?.username}
+                      </h3>
+                      <p className="font-normal text-xs leading-[135%] text-[var(--gray)] flex gap-x-1 items-center">
+                        <Mail />
+                        {userData?.email}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="">
+                    {ProfilemenuItems.map((item, index) => (
+                      <div className="py-[10px] pl-4 hover:bg-[var(--pop-up)] text-[var(--text-secondary)] flex items-center gap-x-3 group cursor-pointer hover:text-[var(--primary2)]">
+                        <UserProfile />
+                        <p className="font-normal text-sm leading-[171%] text-[var(--text-secondary)] group-hover:text-[var(--primary2)]">
+                          {item.label}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </>
