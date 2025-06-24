@@ -18,6 +18,7 @@ import ImportCustomerData from "@/components/admin/addcustomers/import/ImportCus
 import Importview from "@/components/admin/addcustomers/import/Importview";
 import AddServices from "@/components/admin/addservices/AddServices";
 import AddUsers from "@/components/admin/addusers/Adduser.jsx";
+import ImportUserData from "@/components/admin/addusers/import/ImportUserData";
 import Administrator from "@/components/admin/administrator/Administrator";
 import AdminServices from "@/components/admin/adminservices/AdminServices";
 import ManageAssets from "@/components/admin/manageassets/ManageAssets";
@@ -31,9 +32,9 @@ import Demo4 from "@/components/demo/Demo4";
 import Demo5 from "@/components/demo/Demo5";
 import Demo6 from "@/components/demo/Demo6";
 import Demo7 from "@/components/demo/Demo7";
+import GlobalProfile from "@/components/main/GlobalProfile";
 import ConfirmEmail from "@/components/registers/ConfirmEmail";
 import Alluser from "@components/demo/Alluser";
-import ImportUserData from "@/components/admin/addusers/import/ImportUserData";
 export const routes = [
   // public routes
   // { path: "*", component: Error, access: "public" },
@@ -150,6 +151,11 @@ export const routes = [
   },
   //end manage assets
 
+  {
+    path: "/globalprofile",
+    component: GlobalProfile,
+    access: "administrator",
+  },
   { path: "/regsuccess", component: RegistrationSuccess, access: "guest" },
   { path: "/residualanalysis", component: Residualanalysis, access: "private" },
   // wildcard 404 route — must be last

@@ -51,7 +51,7 @@ const Navbar = () => {
     {
       label: "View profile",
       icon: <UserProfile />,
-      link: "/profile",
+      link: "/globalprofile",
     },
     {
       label: "Invite",
