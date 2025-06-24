@@ -21,6 +21,32 @@ const GlobalProfile = () => {
               />
             </div>
           </div>
+          <p className="mt-4 font-medium text-sm leading-[171%] text-center text-[#343a40]">
+            Your Profile is 80% Complete
+          </p>
+          <div className="mt-2 mb-5 flex justify-center items-center">
+            <div className=" rounded-[15px] bg-[var(--neutral)] w-[278px] h-[8px] relative">
+              <div className="absolute top-0 left-0 h-full w-[80%] bg-[var(--primary)] rounded-[15px]"></div>
+            </div>
+          </div>
+          <div className="text-center">
+            <h2
+              className="font-semibold text-[18px] leading-[156%] text-center text-[#343a40] 
+            "
+            >
+              Michael Adams
+            </h2>
+            <p
+              className="my-1 font-normal text-sm leading-[171%] text-center text-[var(--text-secondary)]
+            "
+            >
+              m.adams@gmail.com
+            </p>
+            <p className="font-normal text-sm leading-[171%] text-center text-[var(--text-secondary)]">Senior Leasing Manager</p>
+            <p className="font-normal text-sm leading-[171%] text-center text-[var(--text-secondary)] my-1">Evergreen Equipment Leasing</p>
+            <p className="font-normal text-sm leading-[171%] text-center text-[var(--text-secondary)]">Lessor</p>
+            <p className="font-normal text-sm leading-[171%] text-[var(--primary2)]">www.evergreenequipmentleasing.com</p>
+          </div>
         </div>
         <div className="box_model_shadow bg-[var(--secondary)] rounded-[8px]"></div>
       </div>
