@@ -8,7 +8,7 @@ import Setting from "@/assets/Setting";
 import UserProfile from "@/assets/UserProfile";
 import { Contex } from "@/context/User";
 import { Input } from "antd";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
@@ -18,11 +18,35 @@ const Navbar = () => {
   let adminToken = localStorage.getItem("administrator");
   let userData = JSON.parse(localStorage.getItem("user_data"));
   let { setForgetHide, forgetHide } = useContext(Contex);
+  const [profileOpen, setProfileOpen] = useState(false);
+  const profileBtnRef = useRef(null);
+
   useEffect(() => {
     // Get the first part of the path after "/"
     const currentRoute = window.location.pathname.split("/")[1];
     setRouteName(currentRoute);
   }, [location.pathname]);
+
+  // Close profile box when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        profileBtnRef.current &&
+        !profileBtnRef.current.contains(event.target)
+      ) {
+        setProfileOpen(false);
+      }
+    }
+    if (profileOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [profileOpen]);
+
   const ProfilemenuItems = [
     {
       label: "View profile",
@@ -96,13 +120,25 @@ const Navbar = () => {
             </div>
             <div className="flex gap-x-[25px] items-center">
               <NotifyIcon />
-              <div className="flex gap-x-1 items-center cursor-pointer relative">
+              <div
+                className="flex gap-x-1 items-center cursor-pointer relative profile_btn"
+                ref={profileBtnRef}
+                onClick={() => setProfileOpen((prev) => !prev)}
+              >
                 <div className="w-[35px] h-[35px] overflow-hidden rounded-full">
                   <img src={userData?.avatar_url} alt="Avatar" />
                 </div>
                 <DownArrow />
 
-                <div className="absolute top-[50px] right-0 profile_popup min-w-[218px]  rounded-[8px]">
+                <div
+                  className={`profile_box absolute top-[50px] right-0 profile_popup min-w-[218px] rounded-[8px] transition-all duration-200 ease-in-out
+                    ${
+                      profileOpen
+                        ? "opacity-100 scale-100 pointer-events-auto visible"
+                        : "opacity-0 scale-95 pointer-events-none invisible"
+                    }`}
+                  style={{ zIndex: 100 }}
+                >
                   <div className="py-3 px-4 flex items-start gap-x-3">
                     <div className="">
                       <div className="w-[40px] h-[40px] overflow-hidden rounded-full">
