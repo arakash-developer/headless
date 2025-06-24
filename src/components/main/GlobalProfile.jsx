@@ -34,18 +34,52 @@ const GlobalProfile = () => {
               className="font-semibold text-[18px] leading-[156%] text-center text-[#343a40] 
             "
             >
-              Michael Adams
+              {userData?.first_name} {userData?.last_name}
             </h2>
             <p
               className="my-1 font-normal text-sm leading-[171%] text-center text-[var(--text-secondary)]
             "
             >
-              m.adams@gmail.com
+              {userData?.email}
             </p>
-            <p className="font-normal text-sm leading-[171%] text-center text-[var(--text-secondary)]">Senior Leasing Manager</p>
-            <p className="font-normal text-sm leading-[171%] text-center text-[var(--text-secondary)] my-1">Evergreen Equipment Leasing</p>
-            <p className="font-normal text-sm leading-[171%] text-center text-[var(--text-secondary)]">Lessor</p>
-            <p className="font-normal text-sm leading-[171%] text-[var(--primary2)]">www.evergreenequipmentleasing.com</p>
+            <p className="font-normal text-sm leading-[171%] text-center text-[var(--text-secondary)]">
+              Senior Leasing Manager
+            </p>
+            <p className="font-normal text-sm leading-[171%] text-center text-[var(--text-secondary)] my-1">
+              Evergreen Equipment Leasing
+            </p>
+            <p className="font-normal text-sm leading-[171%] text-center text-[var(--text-secondary)]">
+              Lessor
+            </p>
+            <p className="font-normal text-sm leading-[171%] text-[var(--primary2)] pb-5 border-b border-[var(--neutral)]">
+              www.evergreenequipmentleasing.com
+            </p>
+          </div>
+          <div className="mt-4">
+            <div className="flex justify-between items-center mb-2">
+              <p className="font-normal text-sm leading-[171%] text-[var(--text-secondary)]">
+                Username:
+              </p>
+              <p className="font-medium text-sm leading-[171%] text-[#343a40]">
+                {userData?.username}
+              </p>
+            </div>
+            <div className="flex justify-between items-center mb-2">
+              <p className="font-normal text-sm leading-[171%] text-[var(--text-secondary)]">
+                Member Since:
+              </p>
+              <p className="font-medium text-sm leading-[171%] text-[#343a40]">
+                28 April, 2025
+              </p>
+            </div>
+            <div className="flex justify-between items-center mb-2">
+              <p className="font-normal text-sm leading-[171%] text-[var(--text-secondary)]">
+                Membership:
+              </p>
+              <p className="font-medium text-sm leading-[171%] text-[#343a40]">
+                Standard Plan
+              </p>
+            </div>
           </div>
         </div>
         <div className="box_model_shadow bg-[var(--secondary)] rounded-[8px]"></div>
