@@ -254,11 +254,13 @@ const GlobalProfile = () => {
                   htmlFor="email"
                   className="text-[var(--primary2)] not-italic font-medium text-sm leading-[171%] text-[#343a40]"
                 >
-                  Ext.
+                  Phone Number 2
                 </label>
                 <Input
-                  type="text"
-                  placeholder="Enter your extension"
+                  type="number"
+                  placeholder={
+                    userData?.phone_number_2 || "Enter your phone number 2"
+                  }
                   // value={email}
                   // onChange={(e) => setEmail(e.target.value)}
                   className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
