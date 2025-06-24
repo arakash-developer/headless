@@ -197,24 +197,25 @@ const GlobalProfile = () => {
               </div>
             </div>
             <div className="flex justify-between items-start gap-x-6">
-              <div className="w-[45%] flex flex-col gap-y-[2px]">
-                <label
-                  htmlFor="
+              <div className="w-1/2 flex justify-between items-start gap-x-6">
+                <div className="w-[80%] flex flex-col gap-y-[2px]">
+                  <label
+                    htmlFor="
                   jobtitle"
-                  className="text-[var(--primary2)] not-italic font-medium text-sm leading-[171%] text-[#343a40]"
-                >
-                  Phone Number 1
-                </label>
-                <Input
-                  type="number"
-                  placeholder={
-                    userData?.phone_number_1 || "Enter your phone number 1"
-                  }
-                  // value={email}
-                  // onChange={(e) => setEmail(e.target.value)}
-                  className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
-                />
-                {/* <div className="flex justify-end">
+                    className="text-[var(--primary2)] not-italic font-medium text-sm leading-[171%] text-[#343a40]"
+                  >
+                    Phone Number 1
+                  </label>
+                  <Input
+                    type="number"
+                    placeholder={
+                      userData?.phone_number_1 || "Enter your phone number 1"
+                    }
+                    // value={email}
+                    // onChange={(e) => setEmail(e.target.value)}
+                    className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+                  />
+                  {/* <div className="flex justify-end">
                   <Link
                     to="/forget"
                     className="font-normal text-xs leading-[135%] text-[var(--primary)]"
@@ -222,22 +223,22 @@ const GlobalProfile = () => {
                     Forgot Username?
                   </Link>
                 </div> */}
-              </div>
-              <div className="w-[10%] flex flex-col gap-y-[2px]">
-                <label
-                  htmlFor="email"
-                  className="text-[var(--primary2)] not-italic font-medium text-sm leading-[171%] text-[#343a40]"
-                >
-                  Ext.
-                </label>
-                <Input
-                  type="text"
-                  placeholder="123"
-                  // value={email}
-                  // onChange={(e) => setEmail(e.target.value)}
-                  className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
-                />
-                {/* <div className="flex justify-end">
+                </div>
+                <div className="w-[20%] flex flex-col gap-y-[2px]">
+                  <label
+                    htmlFor="email"
+                    className="text-[var(--primary2)] not-italic font-medium text-sm leading-[171%] text-[#343a40]"
+                  >
+                    Ext.
+                  </label>
+                  <Input
+                    type="text"
+                    placeholder="123"
+                    // value={email}
+                    // onChange={(e) => setEmail(e.target.value)}
+                    className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+                  />
+                  {/* <div className="flex justify-end">
                   <Link
                     to="/forget"
                     className="font-normal text-xs leading-[135%] text-[var(--primary)]"
@@ -245,8 +246,10 @@ const GlobalProfile = () => {
                     Forgot Username?
                   </Link>
                 </div> */}
+                </div>
               </div>
-              <div className="w-[45%] flex flex-col gap-y-[2px]">
+
+              <div className="w-1/2 flex flex-col gap-y-[2px]">
                 <label
                   htmlFor="email"
                   className="text-[var(--primary2)] not-italic font-medium text-sm leading-[171%] text-[#343a40]"
