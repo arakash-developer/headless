@@ -113,7 +113,7 @@ const ImportCustomerData = () => {
   useEffect(() => {
     if (progress === 100) {
       const timeout = setTimeout(() => {
-        navigate("/ok");
+        navigate("/managecustomers/iportcustomerdata/importview");
       }, 1200);
       return () => clearTimeout(timeout);
     }

@@ -18,6 +18,7 @@ import AddServices from "@/components/admin/addservices/AddServices";
 import AddUsers from "@/components/admin/addusers/Adduser.jsx";
 import Administrator from "@/components/admin/administrator/Administrator";
 import AdminServices from "@/components/admin/adminservices/AdminServices";
+import ImportCustomerData from "@/components/admin/addcustomers/import/ImportCustomerData";
 import ManageAssets from "@/components/admin/manageassets/ManageAssets";
 import ManageCustomers from "@/components/admin/managecustomers/ManageCustomers";
 import Manageservices from "@/components/admin/manageservices/Manageservices";
@@ -31,7 +32,7 @@ import Demo6 from "@/components/demo/Demo6";
 import Demo7 from "@/components/demo/Demo7";
 import ConfirmEmail from "@/components/registers/ConfirmEmail";
 import Alluser from "@components/demo/Alluser";
-import ImportCustomerData from "@/components/admin/import/ImportCustomerData";
+import Importview from "@/components/admin/addcustomers/import/Importview";
 export const routes = [
   // public routes
   // { path: "*", component: Error, access: "public" },
@@ -76,11 +77,7 @@ export const routes = [
     component: Manageservices,
     access: "administrator",
   },
-  {
-    path: "/managecustomers",
-    component: ManageCustomers,
-    access: "administrator",
-  },
+
   {
     path: "/manageusers",
     component: ManageUser,
@@ -102,12 +99,23 @@ export const routes = [
     component: AdminServices,
     access: "administrator",
   },
-
+  // manage customers
+  {
+    path: "/managecustomers",
+    component: ManageCustomers,
+    access: "administrator",
+  },
   {
     path: "/managecustomers/addcustomers",
     component: AddCustomers,
     access: "administrator",
   },
+  {
+    path: "/managecustomers/iportcustomerdata/importview",
+    component: Importview,
+    access: "administrator",
+  },
+  // manage assets
   {
     path: "/manageassets",
     component: ManageAssets,
