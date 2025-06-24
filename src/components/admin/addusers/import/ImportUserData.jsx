@@ -177,11 +177,11 @@ const ImportUserData = () => {
     <>
       <div className="mt-6">
         <h2 className="font-medium text-[24px] leading-[117%] text-var(--primary2)">
-          Add Customer
+          Add User
         </h2>
         <p className="mt-2 font-normal text-base leading-[150%] text-[var(--text-secondary)]">
-          Dashboard / Manage Customers /{" "}
-          <span className="text-[#343a40]">Add Customer</span>
+          Dashboard / Manage Users /{" "}
+          <span className="text-[#343a40]">Add User</span>
         </p>
       </div>
 
