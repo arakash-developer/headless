@@ -174,7 +174,7 @@ const AddCustomers = () => {
   };
 
   return (
-    <>
+    <div className="mb-[218px]">
       {contextHolder}
       <div className="mt-6">
         <h2 className="font-medium text-[24px] leading-[117%] text-var(--primary2)">
@@ -437,7 +437,7 @@ const AddCustomers = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
