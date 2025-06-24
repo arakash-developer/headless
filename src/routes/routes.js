@@ -127,7 +127,7 @@ export const routes = [
     access: "administrator",
   },
   {
-    path: "/managecustomers/iportcustomerdata",
+    path: "/managecustomers/importcustomerdata",
     component: ImportCustomerData,
     access: "administrator",
   },

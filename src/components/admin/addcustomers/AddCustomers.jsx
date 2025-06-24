@@ -186,7 +186,7 @@ const AddCustomers = () => {
         </p>
       </div>
       <div className="flex justify-end">
-        <Link to='/managecustomers/iportcustomerdata' className="flex items-center gap-x-2 py-2 px-8  text-[var(--secondary)] cursor-pointer border border-[var(--primary)] rounded-[8px] bg-[var(--primary)]">
+        <Link to='/managecustomers/importcustomerdata' className="flex items-center gap-x-2 py-2 px-8  text-[var(--secondary)] cursor-pointer border border-[var(--primary)] rounded-[8px] bg-[var(--primary)]">
           <UploadsIcon />
           <h3 className="font-medium text-sm leading-[200%] text-center">
             Import Customer Data
