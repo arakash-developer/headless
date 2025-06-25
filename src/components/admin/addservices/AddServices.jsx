@@ -1,5 +1,6 @@
 import DownArrow2 from "@/assets/DownArrow2";
 import { Input, Select } from "antd";
+import TextArea from "antd/es/input/TextArea";
 import { useEffect, useState } from "react";
 
 const AddServices = () => {
@@ -155,6 +156,18 @@ const AddServices = () => {
                       </div>
                     </div>
                   </div>
+                </div>
+                <div className="">
+                  <label
+                    htmlFor="email"
+                    className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
+                  >
+                    Description
+                  </label>
+                  <TextArea
+                    className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)]"
+                    rows={4}
+                  />
                 </div>
               </div>
             </div>
