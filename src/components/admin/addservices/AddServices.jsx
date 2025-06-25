@@ -1,4 +1,16 @@
+import { useEffect, useState } from "react";
+
 const AddServices = () => {
+  const [activeHash, setActiveHash] = useState(
+    window.location.hash || "#home1"
+  );
+
+  useEffect(() => {
+    const onHashChange = () => setActiveHash(window.location.hash || "#home1");
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
+
   return (
     <div>
       <div className="mt-5">
@@ -12,6 +24,80 @@ const AddServices = () => {
             Add Services
           </span>
         </p>
+      </div>
+
+      <div className="mt-[35px]">
+        <ul className="flex items-center gap-x-[51px] companyProfile">
+          <li>
+            <a
+              href="#home1"
+              onClick={() => setActiveHash("#home1")}
+              className={`font-medium text-sm leading-[171%] ${
+                activeHash === "#home1"
+                  ? "text-[#343a40] border-b-2 border-[var(--primary)]"
+                  : "text-[var(--text-disabled)]"
+              }`}
+            >
+              Basic Details
+            </a>
+          </li>
+          <li>
+            <a
+              href="#home2"
+              onClick={() => setActiveHash("#home2")}
+              className={`font-medium text-sm leading-[171%] ${
+                activeHash === "#home2"
+                  ? "text-[#343a40] border-b-2 border-[var(--primary)]"
+                  : "text-[var(--text-disabled)]"
+              }`}
+            >
+              Pricing
+            </a>
+          </li>
+          <li>
+            <a
+              href="#home3"
+              onClick={() => setActiveHash("#home3")}
+              className={`font-medium text-sm leading-[171%] ${
+                activeHash === "#home3"
+                  ? "text-[#343a40] border-b-2 border-[var(--primary)]"
+                  : "text-[var(--text-disabled)]"
+              }`}
+            >
+              Requirements
+            </a>
+          </li>
+        </ul>
+        <div
+          className="mt-5
+        "
+        >
+          {activeHash === "#home1" && (
+            <div className="py-6 pl-8 max-w-[716px] box_model_shadow bg-[var(--secondary)] rounded-[8px]">
+              <div className="">
+                <h2 className="font-medium text-[24px] leading-[117%] text-[#343a40]">
+                  Basic Details
+                </h2>
+                <p className="font-normal text-sm leading-[171%] text-[var(--gray)]">
+                  Basic details about your service
+                </p>
+              </div>
+              <div className="mt-[35px]">dd</div>
+            </div>
+          )}
+          {activeHash === "#home2" && (
+            <div>
+              {/* Address Content */}
+              <p>Address form or details go here.</p>
+            </div>
+          )}
+          {activeHash === "#home3" && (
+            <div>
+              {/* Key Contacts Content */}
+              <p>Key Contacts form or details go here.</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
