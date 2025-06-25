@@ -7,6 +7,10 @@ import NotifyIcon from "@/assets/NotifyIcon";
 import Setting from "@/assets/Setting";
 import UserProfile from "@/assets/UserProfile";
 import { Contex } from "@/context/User";
+import User1 from "@public/user1.png";
+import User2 from "@public/user2.png";
+import User3 from "@public/user3.png";
+import User4 from "@public/user4.png";
 import { Input } from "antd";
 import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -20,7 +24,6 @@ const Navbar = () => {
   let { setForgetHide, forgetHide } = useContext(Contex);
   const [profileOpen, setProfileOpen] = useState(false);
   const profileBtnRef = useRef(null);
-
   useEffect(() => {
     // Get the first part of the path after "/"
     const currentRoute = window.location.pathname.split("/")[1];
@@ -73,6 +76,36 @@ const Navbar = () => {
       label: "Log Out",
       icon: <LogOut />,
       link: "/logout",
+    },
+  ];
+  const notifications = [
+    {
+      avatar: { User1 },
+      message:
+        "There are pending service approvals that need your attention. Please review the service details to approve or reject",
+      date: "April 15, 2025",
+      read: false,
+    },
+    {
+      avatar: { User2 },
+      message:
+        "The residual value analysis for [Asset Name] has been completed. Please review the results",
+      date: "March 28, 2025",
+      read: true,
+    },
+    {
+      avatar: { User3 },
+      message:
+        "A new service request has been submitted. Review the request details to proceed",
+      date: "March 20, 2025",
+      read: false,
+    },
+    {
+      avatar: { User4 },
+      message:
+        "A new user has registered on the platform. Please review their details and approve the account if necessary",
+      date: "March 20, 2025",
+      read: true,
     },
   ];
 
