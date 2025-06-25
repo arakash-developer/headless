@@ -176,49 +176,52 @@ const AddServices = () => {
                 <h3 className="font-medium text-[24px] leading-[117%] text-[#343a40]">
                   Pricing
                 </h3>
-                <div className="mt-[35px] max-w-[716px] flex justify-between items-start gap-x-6">
-                  <div className="w-1/2">
-                    <label
-                      htmlFor="email"
-                      className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
-                    >
-                      Service Name
-                    </label>
-                    <Input
-                      type="text"
-                      // value={email}
-                      // onChange={(e) => setEmail(e.target.value)}
-                      className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
-                    />
+                <div className="max-w-[716px]">
+                  <div className="mt-[35px] flex justify-between items-start gap-x-6">
+                    <div className="w-1/2">
+                      <label
+                        htmlFor="email"
+                        className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
+                      >
+                        Base Price ($)
+                      </label>
+                      <Input
+                        type="text"
+                        // value={email}
+                        // onChange={(e) => setEmail(e.target.value)}
+                        className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+                      />
+                    </div>
+                    <div className="w-1/2">
+                      <label
+                        htmlFor="email"
+                        className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
+                      >
+                        Processing Time
+                      </label>
+                      <Input
+                        type="text"
+                        // value={email}
+                        // onChange={(e) => setEmail(e.target.value)}
+                        className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+                      />
+                    </div>
+                    <div className="w-1/2">
+                      <label
+                        htmlFor="email"
+                        className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
+                      >
+                        Status
+                      </label>
+                      <Input
+                        type="text"
+                        // value={email}
+                        // onChange={(e) => setEmail(e.target.value)}
+                        className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+                      />
+                    </div>
                   </div>
-                  <div className="w-1/2">
-                    <label
-                      htmlFor="email"
-                      className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
-                    >
-                      Service Name
-                    </label>
-                    <Input
-                      type="text"
-                      // value={email}
-                      // onChange={(e) => setEmail(e.target.value)}
-                      className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
-                    />
-                  </div>
-                  <div className="w-1/2">
-                    <label
-                      htmlFor="email"
-                      className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
-                    >
-                      Service Name
-                    </label>
-                    <Input
-                      type="text"
-                      // value={email}
-                      // onChange={(e) => setEmail(e.target.value)}
-                      className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
-                    />
-                  </div>
+                  <div className="mt-5">sss</div>
                 </div>
               </div>
             </>
