@@ -84,37 +84,105 @@ const AddServices = () => {
         "
         >
           {activeHash === "#home1" && (
-            <div className="py-6 pl-8 max-w-[849px] box_model_shadow bg-[var(--secondary)] rounded-[8px]">
-              <div className="">
-                <h2 className="font-medium text-[24px] leading-[117%] text-[#343a40]">
-                  Basic Details
-                </h2>
-                <p className="font-normal text-sm leading-[171%] text-[var(--gray)]">
-                  Basic details about your service
-                </p>
-              </div>
-              <div className="mt-[35px] max-w-[716px] flex flex-col gap-y-5">
+            <>
+              <div className="py-6 pl-8 max-w-[849px] box_model_shadow bg-[var(--secondary)] rounded-[8px]">
                 <div className="">
-                  <label
-                    htmlFor="email"
-                    className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
-                  >
-                    Service Name
-                  </label>
-                  <Input
-                    type="text"
-                    // value={email}
-                    // onChange={(e) => setEmail(e.target.value)}
-                    className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
-                  />
+                  <h2 className="font-medium text-[24px] leading-[117%] text-[#343a40]">
+                    Basic Details
+                  </h2>
+                  <p className="font-normal text-sm leading-[171%] text-[var(--gray)]">
+                    Basic details about your service
+                  </p>
                 </div>
-                <div className="flex gap-x-6 items-start w-full">
+                <div className="mt-[35px] max-w-[716px] flex flex-col gap-y-5">
+                  <div className="">
+                    <label
+                      htmlFor="email"
+                      className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
+                    >
+                      Service Name
+                    </label>
+                    <Input
+                      type="text"
+                      // value={email}
+                      // onChange={(e) => setEmail(e.target.value)}
+                      className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+                    />
+                  </div>
+                  <div className="flex gap-x-6 items-start w-full">
+                    <div className="w-1/2">
+                      <label
+                        htmlFor="email"
+                        className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
+                      >
+                        Service Type
+                      </label>
+                      <Input
+                        type="text"
+                        // value={email}
+                        // onChange={(e) => setEmail(e.target.value)}
+                        className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+                      />
+                    </div>
+                    <div className="w-1/2">
+                      <label
+                        htmlFor="email"
+                        className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
+                      >
+                        Category
+                      </label>
+                      <div className="relative cursor-pointer">
+                        <Select
+                          // defaultValue={<span style={{ color: "gray" }}>Select One</span>}
+                          placeholder={
+                            <span style={{ color: "#ADB5BD" }}>Select One</span>
+                          }
+                          style={{ height: "40px", color: "red" }}
+                          onChange={handleSourceChange}
+                          value={selected} // Make Select controlled
+                          className="w-full custom-select no-arrow-select bg-[var(--background)]"
+                          dropdownMatchSelectWidth={false}
+                        >
+                          {sourceOptions.map((option) => (
+                            <Select.Option
+                              key={option.value}
+                              value={option.value}
+                            >
+                              <p>{option.label}</p>
+                            </Select.Option>
+                          ))}
+                        </Select>
+                        <div className="absolute top-1/2 -translate-y-1/2 right-[16px] pointer-events-none">
+                          <DownArrow2 color="var(--text-secondary)" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mb-[18px]">
+                    <label
+                      htmlFor="email"
+                      className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
+                    >
+                      Description
+                    </label>
+                    <TextArea
+                      className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)]"
+                      rows={4}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="mt-[35px] pt-6 pb-8 pl-8 max-w-[849px] box_model_shadow bg-[var(--secondary)] rounded-[8px]">
+                <h3 className="font-medium text-[24px] leading-[117%] text-[#343a40]">
+                  Pricing
+                </h3>
+                <div className="mt-[35px] max-w-[716px] flex justify-between items-start gap-x-6">
                   <div className="w-1/2">
                     <label
                       htmlFor="email"
                       className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
                     >
-                      Service Type
+                      Service Name
                     </label>
                     <Input
                       type="text"
@@ -128,49 +196,32 @@ const AddServices = () => {
                       htmlFor="email"
                       className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
                     >
-                      Category
+                      Service Name
                     </label>
-                    <div className="relative cursor-pointer">
-                      <Select
-                        // defaultValue={<span style={{ color: "gray" }}>Select One</span>}
-                        placeholder={
-                          <span style={{ color: "#ADB5BD" }}>Select One</span>
-                        }
-                        style={{ height: "40px", color: "red" }}
-                        onChange={handleSourceChange}
-                        value={selected} // Make Select controlled
-                        className="w-full custom-select no-arrow-select bg-[var(--background)]"
-                        dropdownMatchSelectWidth={false}
-                      >
-                        {sourceOptions.map((option) => (
-                          <Select.Option
-                            key={option.value}
-                            value={option.value}
-                          >
-                            <p>{option.label}</p>
-                          </Select.Option>
-                        ))}
-                      </Select>
-                      <div className="absolute top-1/2 -translate-y-1/2 right-[16px] pointer-events-none">
-                        <DownArrow2 color="var(--text-secondary)" />
-                      </div>
-                    </div>
+                    <Input
+                      type="text"
+                      // value={email}
+                      // onChange={(e) => setEmail(e.target.value)}
+                      className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+                    />
+                  </div>
+                  <div className="w-1/2">
+                    <label
+                      htmlFor="email"
+                      className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
+                    >
+                      Service Name
+                    </label>
+                    <Input
+                      type="text"
+                      // value={email}
+                      // onChange={(e) => setEmail(e.target.value)}
+                      className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+                    />
                   </div>
                 </div>
-                <div className="">
-                  <label
-                    htmlFor="email"
-                    className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
-                  >
-                    Description
-                  </label>
-                  <TextArea
-                    className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)]"
-                    rows={4}
-                  />
-                </div>
               </div>
-            </div>
+            </>
           )}
           {activeHash === "#home2" && (
             <div>
