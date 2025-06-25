@@ -1,4 +1,5 @@
-import { Input } from "antd";
+import DownArrow2 from "@/assets/DownArrow2";
+import { Input, Select } from "antd";
 import { useEffect, useState } from "react";
 
 const AddServices = () => {
@@ -11,7 +12,15 @@ const AddServices = () => {
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
-
+  const handleSourceChange = (option) => {
+    setSelected(option);
+    setFormData({ ...formData, source: option });
+  };
+  const sourceOptions = [
+    { value: "tech", label: "Tech" },
+    { value: "healthcare", label: "Healthcare" },
+    { value: "finance", label: "Finance" },
+  ];
   return (
     <div>
       <div className="mt-5">
@@ -97,6 +106,35 @@ const AddServices = () => {
                     // onChange={(e) => setEmail(e.target.value)}
                     className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
                   />
+                </div>
+                <div className="">
+                  <label
+                    htmlFor="email"
+                    className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
+                  >
+                    Service Name
+                  </label>
+                  <div className="relative cursor-pointer">
+                    <Select
+                      // defaultValue={<span style={{ color: "gray" }}>Select One</span>}
+                      placeholder={
+                        <span style={{ color: "#ADB5BD" }}>Select One</span>
+                      }
+                      style={{ height: "40px", color: "red" }}
+                      onChange={handleSourceChange}
+                      className="w-full custom-select no-arrow-select bg-[var(--background)]"
+                      dropdownMatchSelectWidth={false}
+                    >
+                      {sourceOptions.map((option) => (
+                        <Select.Option key={option.value} value={option.value}>
+                          <p>{option.label}</p>
+                        </Select.Option>
+                      ))}
+                    </Select>
+                    <div className="absolute top-1/2 -translate-y-1/2 right-[16px] pointer-events-none">
+                      <DownArrow2 color="var(--text-secondary)" />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
