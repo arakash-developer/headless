@@ -298,7 +298,7 @@ const GlobalProfile = () => {
                   </Link>
                 </div> */}
             </div>
-            <button className="bg-[var(--primary)] hover:bg-[var(--primary2)] text-white font-medium text-sm leading-[171%] flex items-center gap-x-2 justify-center  h-[44px] rounded-[8px] w-[184px]">
+            <button className="bg-[var(--primary)] hover:bg-[var(--primary2)] text-white font-medium text-sm leading-[171%] flex items-center gap-x-2 justify-center  h-[44px] rounded-[8px] w-[184px] mb-8">
               <Save />
               Save Changes
             </button>
