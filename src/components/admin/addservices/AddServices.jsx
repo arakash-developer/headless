@@ -1,3 +1,4 @@
+import { Input } from "antd";
 import { useEffect, useState } from "react";
 
 const AddServices = () => {
@@ -73,7 +74,7 @@ const AddServices = () => {
         "
         >
           {activeHash === "#home1" && (
-            <div className="py-6 pl-8 max-w-[716px] box_model_shadow bg-[var(--secondary)] rounded-[8px]">
+            <div className="py-6 pl-8 max-w-[849px] box_model_shadow bg-[var(--secondary)] rounded-[8px]">
               <div className="">
                 <h2 className="font-medium text-[24px] leading-[117%] text-[#343a40]">
                   Basic Details
@@ -82,7 +83,22 @@ const AddServices = () => {
                   Basic details about your service
                 </p>
               </div>
-              <div className="mt-[35px]">dd</div>
+              <div className="mt-[35px] max-w-[716px]">
+                <div className="">
+                  <label
+                    htmlFor="email"
+                    className="text-[var(--primary2)] not-italic  font-medium text-sm leading-[171%] text-[#343a40]"
+                  >
+                    Service Name
+                  </label>
+                  <Input
+                    type="text"
+                    // value={email}
+                    // onChange={(e) => setEmail(e.target.value)}
+                    className="custom-black-input focus:text-[var(--text-normal)] font-normal text-sm leading-[171%] border-[var(--neutral-400)]  w-full h-[40px] border-[1.4px] border-[#DBDCDE] rounded-[8px] placeholder:text-[#919191] placeholder:text-sm placeholder:not-italic placeholder:font-normal placeholder:leading-[normal] py-3 px-4 bg-[var(--background)] "
+                  />
+                </div>
+              </div>
             </div>
           )}
           {activeHash === "#home2" && (
