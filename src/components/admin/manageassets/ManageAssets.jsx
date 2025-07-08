@@ -11,8 +11,8 @@ import { Checkbox, Select } from "antd";
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { IoFilterOutline } from "react-icons/io5";
-import CustomSort from "./layers/CustomSort";
 import { Link } from "react-router-dom";
+import CustomSort from "./layers/CustomSort";
 
 const ManageAssets = () => {
   const structureType = [
@@ -292,6 +292,34 @@ const ManageAssets = () => {
     },
   ];
 
+  // Add state for selected checkboxes
+  const [selectedUsers, setSelectedUsers] = useState([]);
+  const [selectAll, setSelectAll] = useState(false);
+
+  // Handle select all checkbox
+  const handleSelectAll = (e) => {
+    const checked = e.target.checked;
+    setSelectAll(checked);
+    if (checked) {
+      setSelectedUsers(usersInformation.map((_, idx) => idx));
+    } else {
+      setSelectedUsers([]);
+    }
+  };
+
+  // Handle individual checkbox
+  const handleUserSelect = (idx) => (e) => {
+    const checked = e.target.checked;
+    let newSelected;
+    if (checked) {
+      newSelected = [...selectedUsers, idx];
+    } else {
+      newSelected = selectedUsers.filter((i) => i !== idx);
+    }
+    setSelectedUsers(newSelected);
+    setSelectAll(newSelected.length === usersInformation.length);
+  };
+
   return (
     <div className="mr-10">
       <div className="mt-5">
@@ -309,10 +337,13 @@ const ManageAssets = () => {
 
       <div className="flex justify-end my-6">
         <div className="flex items-center gap-x-6">
-          <Link to='/manageassets/addassets' className="flex items-center gap-x-2 py-2 px-8 rounded-[8px] bg-[var(--primary)]  text-[var(--secondary)] cursor-pointer border border-[var(--primary)]">
+          <Link
+            to="/manageassets/addassets"
+            className="flex items-center gap-x-2 py-2 px-8 rounded-[8px] bg-[var(--primary)]  text-[var(--secondary)] cursor-pointer border border-[var(--primary)]"
+          >
             {" "}
             <FaPlus />
-            <p  className="inline-block font-medium text-sm leading-[200%] text-center">
+            <p className="inline-block font-medium text-sm leading-[200%] text-center">
               Add Assets
             </p>
           </Link>
@@ -386,8 +417,13 @@ const ManageAssets = () => {
               <th class="p-4 border border-gray-300 border-t-0 border-l-0 font-medium text-xs text-[var(--text-secondary)]">
                 <Checkbox
                   className="custom-red-checkbox"
-                  onChange={onChange}
-                ></Checkbox>
+                  checked={selectAll}
+                  indeterminate={
+                    selectedUsers.length > 0 &&
+                    selectedUsers.length < usersInformation.length
+                  }
+                  onChange={handleSelectAll}
+                />
               </th>
               <th class="p-4 border border-gray-300 border-t-0 border-l-0">
                 <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
@@ -430,12 +466,13 @@ const ManageAssets = () => {
           </thead>
           <tbody>
             {usersInformation.map((user, index) => (
-              <tr class={`${user?.color}`}>
+              <tr class={`${user?.color}`} key={user.username}>
                 <td class="p-4 border border-gray-300 border-t-0 border-l-0">
                   <Checkbox
                     className="custom-red-checkbox"
-                    onChange={onChange}
-                  ></Checkbox>
+                    checked={selectedUsers.includes(index)}
+                    onChange={handleUserSelect(index)}
+                  />
                 </td>
                 <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
                   {user?.username}
