@@ -189,228 +189,238 @@ const InviteUser = () => {
     <div>
       {contextHolder}
       <div className="mt-5"></div>
-      <div className="max-w-[1098px] pt-[45px] pb-5 pl-[55px] pr-[22px] bg-[#fff] rounded-[5px] formboxshadow flex justify-between items-start gap-x-10 mb-[26px]">
-        <div className="">
-          <div className="">
-            <h2 className="text-[var(--primary2)] text-[24px] font-medium text-2xl leading-[117%]">
-              Send an Invitation
-            </h2>
-            <p className="max-w-[566px] mb-[28px] mt-2 font-normal text-base leading-[150%] text-[var(--text-secondary)]">
-              Use this form to invite a business colleague or client to register
-              and use the AMI website. Upon completion, a unique Invitation Code
-              will be sent to your invitee. After they register, you will
-              receive a notification email
-            </p>
-          </div>
-          <form className="flex flex-col gap-y-4">
-            {/* First & Last Name */}
-            <div className="flex gap-x-6">
-              <FormField
-                label="First Name"
-                value={formData.firstName}
-                onChange={(val) => setFormData({ ...formData, firstName: val })}
-                wrapperClass="w-1/2"
-              />
-              <FormField
-                label="Last Name"
-                value={formData.lastName}
-                onChange={(val) => setFormData({ ...formData, lastName: val })}
-                wrapperClass="w-1/2"
-              />
+      <div className="max-w-[1098px] pt-[45px] pb-5 pl-[55px] pr-[22px] bg-[#fff] rounded-[5px] formboxshadow mb-[26px]">
+        <div className="flex items-center gap-x-10 ">
+          <div className="left">
+            <div className="">
+              <h2 className="text-[var(--primary2)] text-[24px] font-medium text-2xl leading-[117%]">
+                Send an Invitation
+              </h2>
+              <p className="max-w-[566px] mb-[28px] mt-2 font-normal text-base leading-[150%] text-[var(--text-secondary)]">
+                Use this form to invite a business colleague or client to
+                register and use the AMI website. Upon completion, a unique
+                Invitation Code will be sent to your invitee. After they
+                register, you will receive a notification email
+              </p>
             </div>
-
-            {/* Title & Company */}
-            <div className="flex gap-x-6">
-              <FormField
-                label="Title"
-                value={formData.title}
-                onChange={(val) => setFormData({ ...formData, title: val })}
-                wrapperClass="w-1/2"
-              />
-              <FormField
-                label="Company"
-                value={formData.company}
-                onChange={(val) => setFormData({ ...formData, company: val })}
-                wrapperClass="w-1/2"
-              />
-            </div>
-
-            {/* Phone & Extension */}
-            <div className="flex gap-x-6">
-              <FormField
-                label="Phone"
-                type="text"
-                value={formData.phone}
-                onChange={(val) => setFormData({ ...formData, phone: val })}
-                wrapperClass="w-1/2"
-              />
-              <FormField
-                label="Extension"
-                value={formData.extension}
-                onChange={(val) => setFormData({ ...formData, extension: val })}
-                wrapperClass="w-1/2"
-              />
-            </div>
-
-            {/* mobile */}
-            <FormField
-              label="Mobile"
-              type="text"
-              required
-              value={formData.mobile}
-              onChange={(val) => setFormData({ ...formData, mobile: val })}
-            />
-
-            {/* Email */}
-            <FormField
-              label="Email"
-              type="email"
-              required
-              value={formData.email}
-              onChange={(val) => setFormData({ ...formData, email: val })}
-            />
-            <div className="flex items-end gap-x-6">
-              <div className="w-1/2">
+            <form className="flex flex-col gap-y-4">
+              {/* First & Last Name */}
+              <div className="flex gap-x-6">
                 <FormField
-                  label="Source"
-                  type="text"
-                  required
-                  description="where or how did we meet this person"
-                  value={formData.source}
-                  onChange={(val) => setFormData({ ...formData, source: val })}
+                  label="First Name"
+                  value={formData.firstName}
+                  onChange={(val) =>
+                    setFormData({ ...formData, firstName: val })
+                  }
+                  wrapperClass="w-1/2"
+                />
+                <FormField
+                  label="Last Name"
+                  value={formData.lastName}
+                  onChange={(val) =>
+                    setFormData({ ...formData, lastName: val })
+                  }
+                  wrapperClass="w-1/2"
                 />
               </div>
-              {/* Category */}
-              <div className="w-1/2 flex flex-col gap-y-2">
-                <label className="text-[var(--primary2)] font-medium text-sm leading-[171%] text-[#343a40]">
-                  Category
-                </label>
-                <div className="relative cursor-pointer">
-                  <Select
-                    // defaultValue={<span style={{ color: "gray" }}>Select One</span>}
-                    placeholder={
-                      <span style={{ color: "#ADB5BD" }}>Select One</span>
+
+              {/* Title & Company */}
+              <div className="flex gap-x-6">
+                <FormField
+                  label="Title"
+                  value={formData.title}
+                  onChange={(val) => setFormData({ ...formData, title: val })}
+                  wrapperClass="w-1/2"
+                />
+                <FormField
+                  label="Company"
+                  value={formData.company}
+                  onChange={(val) => setFormData({ ...formData, company: val })}
+                  wrapperClass="w-1/2"
+                />
+              </div>
+
+              {/* Phone & Extension */}
+              <div className="flex gap-x-6">
+                <FormField
+                  label="Phone"
+                  type="text"
+                  value={formData.phone}
+                  onChange={(val) => setFormData({ ...formData, phone: val })}
+                  wrapperClass="w-1/2"
+                />
+                <FormField
+                  label="Extension"
+                  value={formData.extension}
+                  onChange={(val) =>
+                    setFormData({ ...formData, extension: val })
+                  }
+                  wrapperClass="w-1/2"
+                />
+              </div>
+
+              {/* mobile */}
+              <FormField
+                label="Mobile"
+                type="text"
+                required
+                value={formData.mobile}
+                onChange={(val) => setFormData({ ...formData, mobile: val })}
+              />
+
+              {/* Email */}
+              <FormField
+                label="Email"
+                type="email"
+                required
+                value={formData.email}
+                onChange={(val) => setFormData({ ...formData, email: val })}
+              />
+              <div className="flex items-end gap-x-6">
+                <div className="w-1/2">
+                  <FormField
+                    label="Source"
+                    type="text"
+                    required
+                    description="where or how did we meet this person"
+                    value={formData.source}
+                    onChange={(val) =>
+                      setFormData({ ...formData, source: val })
                     }
-                    style={{ height: "40px", color: "red" }}
-                    onChange={handleCategoryChange}
-                    value={formData.category || undefined}
-                    className="w-full custom-select no-arrow-select bg-[var(--background)]"
-                    dropdownMatchSelectWidth={false}
-                  >
-                    {categoryOptions.map((option) => (
-                      <Select.Option key={option.value} value={option.value}>
-                        <p>{option.label}</p>
-                      </Select.Option>
-                    ))}
-                  </Select>
-                  <div className="absolute top-1/2 -translate-y-1/2 right-[16px] pointer-events-none">
-                    <DownArrow2 color="var(--text-secondary)" />
+                  />
+                </div>
+                {/* Category */}
+                <div className="w-1/2 flex flex-col gap-y-2">
+                  <label className="text-[var(--primary2)] font-medium text-sm leading-[171%] text-[#343a40]">
+                    Category
+                  </label>
+                  <div className="relative cursor-pointer">
+                    <Select
+                      // defaultValue={<span style={{ color: "gray" }}>Select One</span>}
+                      placeholder={
+                        <span style={{ color: "#ADB5BD" }}>Select One</span>
+                      }
+                      style={{ height: "40px", color: "red" }}
+                      onChange={handleCategoryChange}
+                      value={formData.category || undefined}
+                      className="w-full custom-select no-arrow-select bg-[var(--background)]"
+                      dropdownMatchSelectWidth={false}
+                    >
+                      {categoryOptions.map((option) => (
+                        <Select.Option key={option.value} value={option.value}>
+                          <p>{option.label}</p>
+                        </Select.Option>
+                      ))}
+                    </Select>
+                    <div className="absolute top-1/2 -translate-y-1/2 right-[16px] pointer-events-none">
+                      <DownArrow2 color="var(--text-secondary)" />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div className="flex gap-x-2 items-end">
-              {/* Code Display */}
-              <div className="w-[248px]">
-                <label className="text-[var(--primary2)] font-medium text-sm leading-[171%] text-[#343a40]">
-                  Invitation Code
-                </label>
-                <div className="cursor-pointer">
-                  <p
-                    className="text-[var(--primary2)] font-medium text-sm leading-[200%] text-center text-[#343a40] rounded-[8px] py-2 px-8 border border-[var(--text-secondary)] inline-block"
-                    onClick={generateInvitationCode}
-                  >
-                    Generate Code
-                  </p>
+              <div className="flex gap-x-2 items-end">
+                {/* Code Display */}
+                <div className="w-[248px]">
+                  <label className="text-[var(--primary2)] font-medium text-sm leading-[171%] text-[#343a40]">
+                    Invitation Code
+                  </label>
+                  <div className="cursor-pointer">
+                    <p
+                      className="text-[var(--primary2)] font-medium text-sm leading-[200%] text-center text-[#343a40] rounded-[8px] py-2 px-8 border border-[var(--text-secondary)] inline-block"
+                      onClick={generateInvitationCode}
+                    >
+                      Generate Code
+                    </p>
+                  </div>
+                </div>
+
+                <div className="w-full py-[10px] px-3 border border-[var(--neutral-400)] rounded-[8px] bg-[var(--background)] text-[var(--primary2)] font-normal text-sm leading-[171%] text-[#343a40]">
+                  {formData.code || "No code generated yet"}
                 </div>
               </div>
 
-              <div className="w-full py-[10px] px-3 border border-[var(--neutral-400)] rounded-[8px] bg-[var(--background)] text-[var(--primary2)] font-normal text-sm leading-[171%] text-[#343a40]">
-                {formData.code || "No code generated yet"}
+              {/* Submit & Clear */}
+              <div className="flex gap-x-6 items-center mt-2">
+                <button
+                  onClick={registerCheck}
+                  disabled={isLoading}
+                  className={`py-2 px-8 bg-[var(--primary)] rounded-[8px] text-white cursor-pointer font-medium text-sm text-center text-[var(--secondary)] block border border-[var(--secondary)] leading-[28px] ${
+                    isLoading ? "opacity-70 cursor-not-allowed" : ""
+                  }`}
+                >
+                  {isLoading ? "Sending..." : "Send Invitation"}
+                </button>
+                <button
+                  type="button"
+                  disabled={isLoading}
+                  onClick={() => {
+                    setFormData({
+                      code: "",
+                      email: "",
+                      mobile: "",
+                      firstName: "",
+                      lastName: "",
+                      title: "",
+                      company: "",
+                      phone: "",
+                      extension: "",
+                      source: "",
+                      category: "",
+                    });
+                    setToastError("");
+                    setErrorMessage("");
+                  }}
+                  className={`py-2 px-8 border border-[#919191] rounded-[8px] text-[var(--primary2)80] cursor-pointer font-medium text-sm text-center text-[#343a40] leading-[28px] ${
+                    isLoading ? "opacity-70 cursor-not-allowed" : ""
+                  }`}
+                >
+                  Discard Changes
+                </button>
               </div>
-            </div>
-
-            {/* Submit & Clear */}
-            <div className="flex gap-x-6 items-center mt-2">
-              <button
-                onClick={registerCheck}
-                disabled={isLoading}
-                className={`py-2 px-8 bg-[var(--primary)] rounded-[8px] text-white cursor-pointer font-medium text-sm text-center text-[var(--secondary)] block border border-[var(--secondary)] leading-[28px] ${
-                  isLoading ? "opacity-70 cursor-not-allowed" : ""
-                }`}
-              >
-                {isLoading ? "Sending..." : "Send Invitation"}
-              </button>
-              <button
-                type="button"
-                disabled={isLoading}
-                onClick={() => {
-                  setFormData({
-                    code: "",
-                    email: "",
-                    mobile: "",
-                    firstName: "",
-                    lastName: "",
-                    title: "",
-                    company: "",
-                    phone: "",
-                    extension: "",
-                    source: "",
-                    category: "",
-                  });
-                  setToastError("");
-                  setErrorMessage("");
-                }}
-                className={`py-2 px-8 border border-[#919191] rounded-[8px] text-[var(--primary2)80] cursor-pointer font-medium text-sm text-center text-[#343a40] leading-[28px] ${
-                  isLoading ? "opacity-70 cursor-not-allowed" : ""
-                }`}
-              >
-                Discard Changes
-              </button>
-            </div>
-          </form>
-        </div>
-        <div className="">
-          <img
-            className="rounded-[8px]"
-            src={InviteImage}
-            alt={"invite image"}
-          />
-          <div className="pt-[45px] flex justify-end items-center gap-x-4">
-            <Link
-              to="https://4ami.com/terms-of-use-policy/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-normal text-xs text-[var(--primary2)] underline"
-            >
-              Terms of Use
-            </Link>
-            <Link
-              to="https://4ami.com/privacy-policy-agreement/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-normal text-xs text-[var(--primary2)] underline"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              target="_blank"
-              rel="noopener noreferrer"
-              to="https://4ami.com/cookie-policy/"
-              className="font-normal text-xs text-[var(--primary2)] underline"
-            >
-              Cookie Policy
-            </Link>
-            <Link
-              to="https://4ami.com/anti-bribery-policy/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-normal text-xs text-[var(--primary2)] underline"
-            >
-              Anti Bribery Policy
-            </Link>
+            </form>
           </div>
+          <div className="right h-full">
+            <img
+              className="rounded-[8px] h-full"
+              src={InviteImage}
+              alt={"invite image"}
+            />
+          </div>
+        </div>
+        <div className="pt-[45px] flex justify-end items-center gap-x-4">
+          <Link
+            to="https://4ami.com/terms-of-use-policy/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-normal text-xs text-[var(--primary2)] underline"
+          >
+            Terms of Use
+          </Link>
+          <Link
+            to="https://4ami.com/privacy-policy-agreement/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-normal text-xs text-[var(--primary2)] underline"
+          >
+            Privacy Policy
+          </Link>
+          <Link
+            target="_blank"
+            rel="noopener noreferrer"
+            to="https://4ami.com/cookie-policy/"
+            className="font-normal text-xs text-[var(--primary2)] underline"
+          >
+            Cookie Policy
+          </Link>
+          <Link
+            to="https://4ami.com/anti-bribery-policy/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-normal text-xs text-[var(--primary2)] underline"
+          >
+            Anti Bribery Policy
+          </Link>
         </div>
       </div>
     </div>
