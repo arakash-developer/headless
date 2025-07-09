@@ -215,6 +215,7 @@ const ManageUser = () => {
     },
   ];
   const [usersInformation, setUsersInformation] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -235,6 +236,8 @@ const ManageUser = () => {
         setUsersInformation(mapped);
       } catch (error) {
         console.error("Failed to fetch users:", error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchUsers();
@@ -317,7 +320,7 @@ const ManageUser = () => {
           />
         </div>
         <div className="flex gap-x-2 items-center">
-          <p className="font-normal text-sm leading-[171%] text-[var(--text-secondary)]">
+          <p className="font-normal text-sm leading-[171%] text-[var(--gray)]">
             Rows per page:
           </p>
           <div className="p-2 border border-[var(--neutral-400)] rounded-[8px]">
@@ -331,98 +334,108 @@ const ManageUser = () => {
         </div>
       </div>
       <div class="mt-4 p-4 bg-[var(--secondary)] servicecard rounded-[8px]">
-        <table class="table-auto w-full border-collapse">
-          <thead>
-            <tr class="text-left bg-[var(--secondary)]">
-              <th class="p-4 border border-gray-300 border-t-0 border-l-0 font-medium text-xs text-[var(--text-secondary)]">
-                <Checkbox
-                  className="custom-red-checkbox"
-                  onChange={onChange}
-                ></Checkbox>
-              </th>
-              <th class="p-4 border border-gray-300 border-t-0 border-l-0">
-                <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                  Username
-                  <IoFilterOutline className="text-md" />
-                </div>
-              </th>
-              <th class="p-4 border border-gray-300 border-t-0 border-l-0">
-                <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                  First Name
-                  <IoFilterOutline className="text-md" />
-                </div>
-              </th>
-              <th class="p-4 border border-gray-300 border-t-0 border-l-0">
-                <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                  Last Name
-                  <IoFilterOutline className="text-md" />
-                </div>
-              </th>
-              <th class="p-4 border border-gray-300 border-t-0 border-l-0">
-                <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                  Role
-                  <IoFilterOutline className="text-md" />
-                </div>
-              </th>
-              <th class="p-4 border border-gray-300 border-t-0 border-l-0">
-                <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                  E-Mail
-                  <IoFilterOutline className="text-md" />
-                </div>
-              </th>
-
-              <th class="p-4 border border-gray-300 border-t-0 border-l-0 border-r-0">
-                <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
-                  Action
-                  <IoFilterOutline className="text-md" />
-                </div>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {usersInformation.map((user, index) => (
-              <tr className={index % 2 === 1 ? "bg-[var(--neutral-100)]" : ""}>
-                <td class="p-4 border border-gray-300 border-t-0 border-l-0">
+        {loading ? (
+          <div className="flex justify-center items-center h-40">
+            <span className="text-lg text-[var(--primary2)] font-semibold">
+              Loading users...
+            </span>
+          </div>
+        ) : (
+          <table class="table-auto w-full border-collapse">
+            <thead>
+              <tr class="text-left bg-[var(--secondary)]">
+                <th class="p-4 border border-gray-300 border-t-0 border-l-0 font-medium text-xs text-[var(--text-secondary)]">
                   <Checkbox
                     className="custom-red-checkbox"
                     onChange={onChange}
                   ></Checkbox>
-                </td>
-                <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                  {user?.username}
-                </td>
-                <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
-                  {user?.firstName}
-                </td>
-                <td
-                  class={`p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40] capitalize ${user?.status} `}
-                >
-                  {user?.lastName}
-                </td>
-                <td
-                  class={`p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40] capitalize ${user?.status} `}
-                >
-                  {user?.role}
-                </td>
-                <td
-                  class={`p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40] lowercase ${user?.status} `}
-                >
-                  {user?.email}
-                </td>
-                <td class="p-4 border border-gray-300 border-t-0 border-l-0 border-r-0">
-                  <div className="flex items-center gap-x-3">
-                    <div className="rounded-[8px] w-10 h-10 flex items-center justify-center border-2 border-[var(--neutral-400)] bg-[var(--secondary)] cursor-pointer">
-                      <EditIcon />
-                    </div>
-                    <div className="rounded-[8px] w-10 h-10 flex items-center justify-center border-2 border-[var(--neutral-400)] bg-[var(--secondary)] cursor-pointer">
-                      <Draft />
-                    </div>
+                </th>
+                <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+                  <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                    Username
+                    <IoFilterOutline className="text-md" />
                   </div>
-                </td>
+                </th>
+                <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+                  <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                    First Name
+                    <IoFilterOutline className="text-md" />
+                  </div>
+                </th>
+                <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+                  <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                    Last Name
+                    <IoFilterOutline className="text-md" />
+                  </div>
+                </th>
+                <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+                  <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                    Role
+                    <IoFilterOutline className="text-md" />
+                  </div>
+                </th>
+                <th class="p-4 border border-gray-300 border-t-0 border-l-0">
+                  <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                    E-Mail
+                    <IoFilterOutline className="text-md" />
+                  </div>
+                </th>
+
+                <th class="p-4 border border-gray-300 border-t-0 border-l-0 border-r-0">
+                  <div className="flex justify-between items-center font-medium text-xs text-[var(--text-secondary)]">
+                    Action
+                    <IoFilterOutline className="text-md" />
+                  </div>
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {usersInformation.map((user, index) => (
+                <tr
+                  className={index % 2 === 1 ? "bg-[var(--neutral-100)]" : ""}
+                >
+                  <td class="p-4 border border-gray-300 border-t-0 border-l-0">
+                    <Checkbox
+                      className="custom-red-checkbox"
+                      onChange={onChange}
+                    ></Checkbox>
+                  </td>
+                  <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
+                    {user?.username}
+                  </td>
+                  <td class="p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40]">
+                    {user?.firstName}
+                  </td>
+                  <td
+                    class={`p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40] capitalize ${user?.status} `}
+                  >
+                    {user?.lastName}
+                  </td>
+                  <td
+                    class={`p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40] capitalize ${user?.status} `}
+                  >
+                    {user?.role}
+                  </td>
+                  <td
+                    class={`p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40] lowercase ${user?.status} `}
+                  >
+                    {user?.email}
+                  </td>
+                  <td class="p-4 border border-gray-300 border-t-0 border-l-0 border-r-0">
+                    <div className="flex items-center gap-x-3">
+                      <div className="rounded-[8px] w-10 h-10 flex items-center justify-center border-2 border-[var(--neutral-400)] bg-[var(--secondary)] cursor-pointer">
+                        <EditIcon />
+                      </div>
+                      <div className="rounded-[8px] w-10 h-10 flex items-center justify-center border-2 border-[var(--neutral-400)] bg-[var(--secondary)] cursor-pointer">
+                        <Draft />
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
       <div className="mt-4 mb-[88px] flex justify-between items-center">
         <p className="font-normal text-sm leading-[171%] text-[var(--gray)]">
