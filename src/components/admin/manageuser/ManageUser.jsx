@@ -7,7 +7,7 @@ import EditIcon from "@/assets/EditIcon";
 import LeftArrow from "@/assets/LeftArrow";
 import RightArrowIcon2 from "@/assets/RightArrowIcon2";
 import UploadsIcon from "@/assets/UploadsIcon";
-import Table from "@/shimmereffect/Table";
+import TableShimmer from "@/shimmereffect/TableShimmer";
 import { Checkbox, Select } from "antd";
 import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
@@ -336,7 +336,7 @@ const ManageUser = () => {
       </div>
       <div class="mt-4 p-4 bg-[var(--secondary)] servicecard rounded-[8px]">
         {loading ? (
-          <Table />
+          <TableShimmer />
         ) : (
           <table class="table-auto w-full border-collapse">
             <thead>
