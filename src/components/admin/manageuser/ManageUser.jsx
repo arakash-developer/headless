@@ -300,12 +300,12 @@ const ManageUser = () => {
               Add User
             </p>
           </Link>
-          <div className="flex items-center gap-x-2 py-2 px-8  text-[#343a40] cursor-pointer border border-[var(--text-secondary)] rounded-[8px]">
+          <Link to={"/manageusers/importuserdata"} className="flex items-center gap-x-2 py-2 px-8  text-[#343a40] cursor-pointer border border-[var(--text-secondary)] rounded-[8px]">
             <UploadsIcon />
             <h3 className="font-medium text-sm leading-[200%] text-center text-[#343a40]">
               Import User Data
             </h3>
-          </div>
+          </Link>
           <div className="flex items-center gap-x-2 py-2 px-8  text-[#343a40] cursor-pointer border border-[var(--text-secondary)] rounded-[8px]">
             <DownloadIcon />
             <h3 className="font-medium text-sm leading-[200%] text-center text-[#343a40]">
