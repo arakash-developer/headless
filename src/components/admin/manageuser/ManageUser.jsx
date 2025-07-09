@@ -8,7 +8,7 @@ import LeftArrow from "@/assets/LeftArrow";
 import RightArrowIcon2 from "@/assets/RightArrowIcon2";
 import UploadsIcon from "@/assets/UploadsIcon";
 import { Checkbox, Select } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { IoFilterOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
@@ -214,83 +214,31 @@ const ManageUser = () => {
       color: "bg-[var(--secondary)]",
     },
   ];
-  const usersInformation = [
-    {
-      username: "jdoe92",
-      firstName: "John",
-      lastName: "Doe",
-      role: "Admin",
-      email: "jdoe92@gmail.com",
-      color: "bg-[var(--secondary)]",
-    },
-    {
-      username: "emily_smith",
-      firstName: "Emily",
-      lastName: "Smith",
-      role: "Manager",
-      email: "emily.smith@outlook.com",
-    },
-    {
-      username: "michaelb85",
-      firstName: "Michael",
-      lastName: "Brown",
-      role: "Asset Manager",
-      email: "michaelb85@yahoo.com",
-      color: "bg-[var(--secondary)]",
-    },
-    {
-      username: "sarah.james",
-      firstName: "Sarah",
-      lastName: "James",
-      role: "Financial Officer",
-      email: "sarah.james@gmail.com",
-    },
-    {
-      username: "tony.j",
-      firstName: "Tony",
-      lastName: "Johnson",
-      role: "Data Scientist",
-      email: "tony.j@gmail.com",
-      color: "bg-[var(--secondary)]",
-    },
-    {
-      username: "claire_lee",
-      firstName: "Claire",
-      lastName: "Lee",
-      role: "Service Coordinator",
-      email: "claire.lee@icloud.com",
-    },
-    {
-      username: "ryan_williams",
-      firstName: "Ryan",
-      lastName: "Williams",
-      role: "Analyst",
-      email: "ryan.williams@outlook.com",
-      color: "bg-[var(--secondary)]",
-    },
-    {
-      username: "andrew_07",
-      firstName: "Andrew",
-      lastName: "Davis",
-      role: "Analyst",
-      email: "andrew_07@hotmail.com",
-    },
-    {
-      username: "mia.adams",
-      firstName: "Mia",
-      lastName: "Adams",
-      role: "Analyst",
-      email: "mia.adams@gmail.com",
-      color: "bg-[var(--secondary)]",
-    },
-    {
-      username: "jason_22",
-      firstName: "Jason",
-      lastName: "Taylor",
-      role: "User",
-      email: "jason_22@yahoo.com",
-    },
-  ];
+  const [usersInformation, setUsersInformation] = useState([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch(
+          "https://4amitest-bli6.wp1.sh/wp-json/users/v1/all"
+        );
+        const data = await response.json();
+        // Map API data to expected format if needed
+        const mapped = data.map((user, idx) => ({
+          username: user.username || user.user_login || `user${idx + 1}`,
+          firstName: user.first_name || user.firstName || "",
+          lastName: user.last_name || user.lastName || "",
+          role: user.role || (user.roles && user.roles[0]) || "User",
+          email: user.email || "",
+          color: idx % 2 === 0 ? "bg-[var(--secondary)]" : "",
+        }));
+        setUsersInformation(mapped);
+      } catch (error) {
+        console.error("Failed to fetch users:", error);
+      }
+    };
+    fetchUsers();
+  }, []);
 
   return (
     <div className="mr-10">
@@ -433,7 +381,7 @@ const ManageUser = () => {
           </thead>
           <tbody>
             {usersInformation.map((user, index) => (
-              <tr class={`${user?.color}`}>
+              <tr className={index % 2 === 1 ? "bg-[var(--neutral-100)]" : ""}>
                 <td class="p-4 border border-gray-300 border-t-0 border-l-0">
                   <Checkbox
                     className="custom-red-checkbox"
@@ -457,7 +405,7 @@ const ManageUser = () => {
                   {user?.role}
                 </td>
                 <td
-                  class={`p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40] capitalize ${user?.status} `}
+                  class={`p-4 ml-2 border border-gray-300 border-t-0 border-l-0 font-normal text-sm leading-[171%] text-[#343a40] lowercase ${user?.status} `}
                 >
                   {user?.email}
                 </td>
