@@ -218,6 +218,29 @@ const ManageUser = () => {
   const [usersInformation, setUsersInformation] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+
+  const totalItems = usersInformation.length;
+  const totalPages = Math.ceil(totalItems / rowsPerPage);
+
+  // Slice users for current page
+  const paginatedUsers = usersInformation.slice(
+    (currentPage - 1) * rowsPerPage,
+    currentPage * rowsPerPage
+  );
+
+  // Handlers
+  const handlePageChange = (page) => {
+    if (page >= 1 && page <= totalPages) setCurrentPage(page);
+  };
+
+  const handleRowsPerPageChange = (num) => {
+    setRowsPerPage(num);
+    setCurrentPage(1);
+  };
+
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -324,10 +347,21 @@ const ManageUser = () => {
           <p className="font-normal text-sm leading-[171%] text-[var(--gray)]">
             Rows per page:
           </p>
-          <div className="p-2 border border-[var(--neutral-400)] rounded-[8px]">
-            <div className="flex gap-x-[5px] items-center">
+          <div className="p-2 border border-[var(--neutral-400)] rounded-[8px] relative">
+            <select
+              className="absolute inset-0 opacity-0 cursor-pointer"
+              value={rowsPerPage}
+              onChange={(e) => handleRowsPerPageChange(Number(e.target.value))}
+            >
+              {[10, 20, 50, 100].map((num) => (
+                <option key={num} value={num}>
+                  {num}
+                </option>
+              ))}
+            </select>
+            <div className="flex gap-x-[5px] items-center pointer-events-none">
               <p className="font-normal text-xs leading-[135%] text-[var(--primary2)]">
-                10
+                {rowsPerPage}
               </p>
               <DownArrowIcon />
             </div>
@@ -387,7 +421,7 @@ const ManageUser = () => {
               </tr>
             </thead>
             <tbody>
-              {usersInformation.map((user, index) => (
+              {paginatedUsers.map((user, index) => (
                 <tr
                   className={index % 2 === 1 ? "bg-[var(--neutral-100)]" : ""}
                 >
@@ -436,43 +470,70 @@ const ManageUser = () => {
       </div>
       <div className="mt-4 mb-[88px] flex justify-between items-center">
         <p className="font-normal text-sm leading-[171%] text-[var(--gray)]">
-          1-10 of 120 items
+          {totalItems === 0
+            ? "0 items"
+            : `${(currentPage - 1) * rowsPerPage + 1}-${Math.min(
+                currentPage * rowsPerPage,
+                totalItems
+              )} of ${totalItems} items`}
         </p>
         <div className="flex gap-x-2 items-center">
-          <div className="flex items-center justify-center h-10 w-10 border border-[var(--neutral)] rounded-[8px] bg-[var(--neutral)] cursor-pointer">
+          {/* Prev */}
+          <div
+            className={`flex items-center justify-center h-10 w-10 border border-[var(--neutral)] rounded-[8px] bg-[var(--neutral)] cursor-pointer ${
+              currentPage === 1 ? "opacity-50 pointer-events-none" : ""
+            }`}
+            onClick={() => handlePageChange(currentPage - 1)}
+          >
             <p className="font-normal text-sm leading-[171%] text-center text-[#343a40]">
               <LeftArrow className="text-[#ADB5BD]" />
             </p>
           </div>
-          <div className="flex items-center justify-center h-10 w-10 border border-[var(--primary2)] rounded-[8px] bg-[var(--secondary)] cursor-pointer">
-            <p className="font-normal text-sm leading-[171%] text-center text-[#343a40]">
-              1
-            </p>
-          </div>
-          <div className="flex items-center justify-center h-10 w-10 border border-[var(--neutral-400)] rounded-[8px] bg-[var(--secondary)] cursor-pointer">
-            <p className="font-normal text-sm leading-[171%] text-center text-[#343a40]">
-              2
-            </p>
-          </div>
-          <div className="flex items-center justify-center h-10 w-10 border border-[var(--neutral-400)] rounded-[8px] bg-[var(--secondary)] cursor-pointer">
-            <p className="font-normal text-sm leading-[171%] text-center text-[#343a40]">
-              3
-            </p>
-          </div>
-          <div className="flex items-center justify-center h-10 w-10 border border-[var(--neutral-400)] rounded-[8px] bg-[var(--secondary)] cursor-pointer">
-            <p className="font-normal text-sm leading-[171%] text-center text-[#343a40]">
-              4
-            </p>
-          </div>
-          <div className="flex items-center h-10 border border-[var(--neutral-400)] rounded-[8px] bg-[var(--secondary)] cursor-pointer px-3">
-            <p className="font-normal text-sm leading-[171%] text-[#343a40] w-[90px]">
-              10
+          {/* Page numbers */}
+          {[...Array(totalPages).keys()].slice(0, 5).map((i) => (
+            <div
+              key={i}
+              className={`flex items-center justify-center h-10 w-10 border ${
+                currentPage === i + 1
+                  ? "border-[var(--primary2)]"
+                  : "border-[var(--neutral-400)]"
+              } rounded-[8px] bg-[var(--secondary)] cursor-pointer`}
+              onClick={() => handlePageChange(i + 1)}
+            >
+              <p className="font-normal text-sm leading-[171%] text-center text-[#343a40]">
+                {i + 1}
+              </p>
+            </div>
+          ))}
+          {/* Rows per page select */}
+          <div className="flex items-center h-10 border border-[var(--neutral-400)] rounded-[8px] bg-[var(--secondary)] cursor-pointer px-3 relative">
+            <select
+              className="absolute inset-0 opacity-0 cursor-pointer"
+              value={rowsPerPage}
+              onChange={(e) => handleRowsPerPageChange(Number(e.target.value))}
+            >
+              {[10, 20, 50, 100].map((num) => (
+                <option key={num} value={num}>
+                  {num}
+                </option>
+              ))}
+            </select>
+            <p className="font-normal text-sm leading-[171%] text-[#343a40] w-[40px]">
+              {rowsPerPage}
             </p>
             <div className="text-[#6F7482]">
               <DownArrowicon2 />
             </div>
           </div>
-          <div className="flex items-center justify-center h-10 w-10 border border-[var(--neutral)] rounded-[8px] bg-[var(--neutral)] cursor-pointer">
+          {/* Next */}
+          <div
+            className={`flex items-center justify-center h-10 w-10 border border-[var(--neutral)] rounded-[8px] bg-[var(--neutral)] cursor-pointer ${
+              currentPage === totalPages || totalPages === 0
+                ? "opacity-50 pointer-events-none"
+                : ""
+            }`}
+            onClick={() => handlePageChange(currentPage + 1)}
+          >
             <p className="font-normal text-sm leading-[171%] text-center text-[#343a40]">
               <RightArrowIcon2 className="text-[var(--text-normal)]" />
             </p>
