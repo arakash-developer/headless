@@ -1,18 +1,18 @@
-import { ShimmerTable } from "react-shimmer-effects";
+import { Skeleton } from "antd";
 
 const Table = () => {
   return (
-    <div>
-      <ShimmerTable
-        mode="dark"
-        row={7}
-        col={5}
-        border={1}
-        borderColor={"#374151"}
-        rounded={0.25}
-        rowGap={16}
-        colPadding={[10, 5, 10, 5]}
-      />
+    <div
+      style={{
+        padding: "1rem",
+        width: "300px",
+        borderRadius: "8px",
+        background: "#fff",
+      }}
+    >
+      <Skeleton height={180} borderRadius={8} />
+      <Skeleton height={20} width={200} style={{ marginTop: "1rem" }} />
+      <Skeleton height={15} width={150} style={{ marginTop: "0.5rem" }} />
     </div>
   );
 };
