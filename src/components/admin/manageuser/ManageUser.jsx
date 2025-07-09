@@ -233,12 +233,18 @@ const ManageUser = () => {
 
   // Handlers
   const handlePageChange = (page) => {
-    if (page >= 1 && page <= totalPages) setCurrentPage(page);
+    if (page >= 1 && page <= totalPages) {
+      setLoading(true);
+      setCurrentPage(page);
+      setTimeout(() => setLoading(false), 400);
+    }
   };
 
   const handleRowsPerPageChange = (num) => {
+    setLoading(true);
     setRowsPerPage(num);
     setCurrentPage(1);
+    setTimeout(() => setLoading(false), 400);
   };
 
   useEffect(() => {
