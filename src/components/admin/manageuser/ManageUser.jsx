@@ -7,7 +7,8 @@ import EditIcon from "@/assets/EditIcon";
 import LeftArrow from "@/assets/LeftArrow";
 import RightArrowIcon2 from "@/assets/RightArrowIcon2";
 import UploadsIcon from "@/assets/UploadsIcon";
-import { Checkbox, Select } from "antd";
+import { Checkbox, Select, Table } from "antd";
+// import Table from "@/shimmereffect/Table";
 import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { IoFilterOutline } from "react-icons/io5";
@@ -335,11 +336,7 @@ const ManageUser = () => {
       </div>
       <div class="mt-4 p-4 bg-[var(--secondary)] servicecard rounded-[8px]">
         {loading ? (
-          <div className="flex justify-center items-center h-40">
-            <span className="text-lg text-[var(--primary2)] font-semibold">
-              Loading users...
-            </span>
-          </div>
+          <Table />
         ) : (
           <table class="table-auto w-full border-collapse">
             <thead>
