@@ -306,11 +306,6 @@ const Manageservices = () => {
       </div>
 
       <div class="mt-4 p-4 bg-[var(--secondary)] servicecard rounded-[8px]">
-        <div className="">
-          <h2 className="font-medium text-[24px] leading-[117%] text-[var(--primary2)] mb-3">
-            Services List
-          </h2>
-        </div>
         <table class="table-auto w-full border-collapse">
           <thead>
             <tr class="text-left bg-[var(--secondary)]">
